@@ -1,0 +1,35 @@
+<?php $job = $this->getItem() ?>
+<?php $jobs = $this->getJobsInCategory() ?>
+<div class
+<div id="page-title">
+	<h2 class="blue-tit text-blue">
+		<?php echo $this->__('Ứng tuyển') ?>
+	</h2>
+</div>
+<div class="fll width-60">
+	<div id="job-title" class="text-blue">
+		<?php echo Mage::helper('job')->renderTitle($job); ?>
+	</div>
+	<div class="apply-success-message">
+		<div class="message">
+			<p><?php echo $this->__('Xin chúc mừng!') ?></p>
+			<p><?php echo $this->__('Bạn đã ứng tuyển thành công.') ?></p>
+		</div>
+	</div>
+</div>
+<!-- Jobs Same Category -->
+<div class="flr width-35" id="job-same-category">
+	<div class="heading">
+		<h5 class="blue-tit text-blue"><?php echo $this->__('Các công việc cùng ngành nghề') ?></h5>
+	</div>
+	<ul class="jobs-list">
+	<?php if(count($jobs) > 0): ?>
+		<?php foreach($jobs as $jb): ?>
+			<li>
+				<?php echo Mage::helper('job')->renderJob($jb) ?>
+			</li>
+		<?php endforeach; ?>
+	<?php endif; ?>
+	</ul>
+	<a class="text-blue view-more-category" href="<?php echo Mage::helper('job')->getCategoryUrl($job->getCategoryId()); ?>"><?php echo $this->__('Xem thêm') ?></a>
+</div>
