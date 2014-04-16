@@ -12,6 +12,9 @@ input::-webkit-inner-spin-button {
 .hide {
     display: none;
 }
+p{
+	line-height: 18px;
+}
 .fll {
 	float: left;
 }
@@ -73,34 +76,41 @@ input::-webkit-inner-spin-button {
 }
 
 .blue-tit{
-	background: url('../images/title-blue.png') bottom left no-repeat transparent;
+	border-bottom: solid 2px #4571EB;
 	padding-bottom: 10px;
+	font-size: 24px;
+	font-weight: bold;
 }
 .white-tit{
 	background: url('../images/white-tit.png') bottom left no-repeat transparent;
 	padding-bottom: 10px;
 }
 select{
-	color: #000;
+	padding: 6px 15px;
+	width: 100%;
+	border: none;
+	border-radius: 3px;
+	background: url('../images/select.png') 98% center no-repeat #e6ecfc;
+	appearance: none;
+	-webkit-appearance: none;
+	border: solid 1px transparent;
+}
+select:focus{
+	border-color: #4571eb;
 }
 select:disabled{
-	background-color: #F0F0F0!important;
-	color: #58595b;
 }
 input{
-	width: 100%;
-	border: solid 3px #d2d4d5;
-	padding: 3px 10px;
-	color: #000;
+	padding: 8px 10px;
+	border: none;
+	border-radius: 3px;
+}
+input:focus{
+	background-color: #dbdcdd;
 }
 input[readonly]{
-	background-color: #F0F0F0!important;
 }
 textarea{
-	width: 100%;
-	border: solid 3px #d2d4d5;
-	padding: 3px 10px;
-	color: #000;
 }
 .btn{
 	text-transform: uppercase;
@@ -173,23 +183,18 @@ textarea{
 }
 
 .button-blue{
-	background-color: #1197Ec;
+	background-color: #4571eb;
 	border-radius: 8px;
 }
 .button-grey{
 	background-color: #bcbec0;
 	border-radius: 8px;
 }
-input:focus,textarea:focus{
-	outline: none;
-	border-color: #808285;
-	color: #000;
-}
 *:focus{
 	outline: none;
 }
 h1,h2,h3,h4,h5,h6{
-	color: #1197EC;
+	color: #4571eb;
 }
 ul.small-grey{
 	list-style: url('../images/small-grey-circle.jpg');

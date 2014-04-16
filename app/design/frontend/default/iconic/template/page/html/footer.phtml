@@ -24,122 +24,147 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<?php if(strpos($this->getLayout()->getBlock('root')->getBodyClass(), 'cms-gioi-thieu-cong-ty')): ?>
-<div id="gioi-thieu">
-	<div class="wrapper">
-		<div class="content">
-			<h2 class="black-tit"><?php echo $this->__('Lĩnh vực hoạt động') ?></h2>
-			<div class="clearfix">
-				<div class="fll width-35 tuvan">
-					<h4 class"text-blue">
-						<?php echo $this->__('Tư vấn nhân sự') ?>
-					</h4>
-					<ul>
-						<li><?php echo $this->__('Giới thiệu nhân sự') ?></li>
-						<li><?php echo $this->__('Cung cấp thông dịch viên tiếng Nhật') ?></li>
-					</ul>
-				</div>
-				<div class="flr width-35 hotro">
-					<h4 class"text-blue">
-						<?php echo $this->__('Hỗ trợ thương mại') ?>
-					</h4>
-					<ul>
-						<li><?php echo $this->__('Tư vấn và hỗ trợ quản lý nghiệp vụ nhân sự') ?></li>
-					</ul>
-				</div>
+<footer id="footer">
+	<!-- SLOGAN -->
+	<div id="banner">
+		<div class="heading">
+			<h2 class="centerwide">
+				お取引先
+			</h2>
+		</div>
+		<div class="wrapper">
+			<div class="banners">
+				<img src="<?php echo $this->getSkinUrl('images/banners.png') ?>" alt="banners" />
 			</div>
 		</div>
 	</div>
-</div>
-<?php endif; ?>
-<footer id="footer">
-	<!-- SLOGAN -->
-	<div id="slogan">
-		<div class="wrapper">
-			<h2><?php echo $this->__('KHI BẠN ĐĂNG KÝ TÀI KHOẢN TRÊN ICONIC, BẠN SẼ ĐƯỢC <span>TƯ VẤN BỞI CÁC CHUYÊN VIÊN CỦA CHÚNG TÔI</span><br />
-				CŨNG NHƯ NHẬN ĐƯỢC CÁC THÔNG TIN VỀ VIỆC LÀM <span>HOÀN TOÀN MIỄN PHÍ</span>') ?>
-			</h2>
-		</div>
-	</div>
 	
-	<!-- CONTACT INFORMAPTION -->
-    <div id="contact-information">
+	<!-- Blog News -->
+    <div id="blog-news">
     	<div class="wrapper clearfix">
-    		<div id="map" class="flr">
-    			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7838.503953205817!2d106.69885744999999!3d10.792003150000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f34c5c75e43%3A0xd22addcca3b456ed!2sICONIC+co.%2C+ltd!5e0!3m2!1sen!2s!4v1389607551898&iwloc=near" width="350" height="200" frameborder="0" style="border:0"></iframe>
-    		</div>
-    		<div id="address" class="flr">
-    			<div class="hcm clearfix">
-    				<?php
-    				echo $this->__('<strong>Chi Nhánh Hồ Chí Minh:</strong><br />
-							Tầng 4 Avenis Building, 145 Điện Biên Phủ, Quận 1, Hồ Chí Minh<br />
-							Phone: (84-8) 3821-5122');
-    				?>
-    			</div>
-    			<div class="hn clearfix">
-    				<?php
-    				echo $this->__('<strong>Chi Nhánh Hà Nội:</strong><br />
-							Phòng 901, Tòa nhà Ford Thăng Long, 105 Láng Hạ, Đống Đa, <br />Hà Nội<br />
-							Phone: (84-4) 3776-5963');
-    				?>
-    			</div>
-    		</div>
-    		<div id="contact-form" class="fll">
-    			<h4 class="black-tit heading">
-    				<?php echo $this->__('Gửi email cho chúng tôi') ?>
-    			</h4>
-    			
-    			<!-- FORM -->
-    			<form id="contact-us">
-    				<div class="row clearfix">
-	    				<input class="fll width-45" required id="email" name="email" type="email" placeholder="<?php echo $this->__('Email') ?>" />
-	    				<input class="flr width-45" required id="subject" name="subject" type="text" placeholder="<?php echo $this->__('Tiêu đề') ?>" />
-    				</div>
-    				<textarea required id="message" name="message" placeholder="<?php echo $this->__('Nhập nội dung') ?>"></textarea>
-    				<div id="response" class="fll width-60">
+    		<div class="fll width-45 news">
+    			<h3 class="blue-tit">
+    				新着情報
+    			</h3>
+    			<div class="content" id="news-scroll">
+    				<div class="inside">
     					
     				</div>
-    				<button id="submit" class="btn flr btn-blue" name="submit" type="submit"><?php echo $this->__('Gửi') ?></button>
-    			</form>
+    			</div>
+    		</div>
+    		<div class="flr width-45 countries">
+    			<h3 class="blue-tit">
+    				各国の概要の紹介
+    			</h3>
+    			<div class="content">
+    				<a class="vn" href="#" title="<?php echo $this->__('ベトナム') ?>">
+    					<?php echo $this->__('ベトナム') ?>
+    				</a>
+    				<a class="myan" href="#" title="<?php echo $this->__('ミャンマー') ?>">
+    					<?php echo $this->__('ミャンマー') ?>
+    				</a>
+    				<a class="cambodia" href="#" title="<?php echo $this->__('カンボジア') ?>">
+    					<?php echo $this->__('カンボジア') ?>
+    				</a>
+    				<a class="indo" href="#" title="<?php echo $this->__('インドネシア') ?>">
+    					<?php echo $this->__('インドネシア') ?>
+    				</a>
+    				<a class="india" href="#" title="<?php echo $this->__('インド') ?>">
+    					<?php echo $this->__('インド') ?>
+    				</a>
+    			</div>
     		</div>
     	</div>
-    </div>
+    	
+	    <!-- Contact Info -->
+	    <div id="contact-info" class="centerwide">
+	    	<div class="fll yasu-info clearfix width-45">
+				<div class="fll yasu-photo">
+					
+				</div>
+				<div class="fll">
+					<a href="#" class="yasu-blog" title="<?php echo $this->__('ブログ') ?>">
+						<?php echo $this->__('ブログ') ?>
+					</a>
+					<p>
+						<b><?php echo $this->__('社長ブログ') ?></b>
+					</p>
+					<p><?php echo $this->__('ベトナムでビジネスを立ち上げている人の話t') ?></p>
+				</div>    		
+	    	</div>
+	    	<div class="flr info">
+	    		<div class="content clearfix">
+	    			<p>ICONICへお越しいただきありがとうございます。 次のオプションからお選びください。</p>
+	    			<div class="inline">
+	    				<img src="<?php echo $this->getSkinUrl('images/phone.png') ?>" />
+	    				<b>03 6222 5520</b>
+	    			</div>
+	    			<div class="inline">
+	    				<img src="<?php echo $this->getSkinUrl('images/mail.png') ?>" />
+	    				<b>info@iconic-jp.com</b>
+	    			</div>
+	    			<a class="flr btn contact-btn" href="#">
+	    				<?php echo $this->__('お問い合わせ') ?>
+	    			</a>
+	    		</div>
+	    	</div>
+	    </div><!-- End Contact Info -->
+    </div><!-- End Blog News -->
     
     <!-- Other websites -->
     <div id="other-web">
     	<div class="wrapper">
-    		<span class="top">
-    			<?php echo $this->__('CÁC WEBSITE KHÁC CỦA ICONIC:') ?>
-    		</span>
-    		<a title="<?php echo $this->__('Dành cho người Nhật tại Việt Nam') ?>" target="_blank" href="http://www.iconic-intl.com">
-    			www.iconic-intl.com
-    		</a>
-    		<?php echo $this->__('Dành cho người Nhật tại Việt Nam') ?>
-    		<span class="line">|</span>
-    		<a title="<?php echo $this->__('(Dành cho người Việt tại Nhật Bản)') ?>" target="_blank" href="http://www.iconic-jp.com">
+    		<a title="<?php echo $this->__('(べトナム在住の日本人用)') ?>" target="_blank" href="http://www.iconic-jp.com">
     			www.iconic-jp.com
     		</a>
-    		<?php echo $this->__('(Dành cho người Việt tại Nhật Bản)') ?>
-    		<span class="line">|</span>
-    		<a title="<?php echo $this->__('Indonesia') ?>" target="_blank" href="http://www.iconic-id.com">
+    		<?php echo $this->__('(べトナム在住の日本人用)') ?>
+    		<a title="<?php echo $this->__('(日本在住のべトナム人用)') ?>" target="_blank" href="http://www.iconic-intl.com">
+    			www.iconic-intl.com
+    		</a>
+    		<?php echo $this->__('(日本在住のべトナム人用)') ?>
+    		<a title="<?php echo $this->__('(べトナム)') ?>" target="_blank" href="http://www.iconicvn.com">
+    			www.iconicvn.com
+    		</a>
+    		<?php echo $this->__('(べトナム)') ?>
+    		<a title="<?php echo $this->__('(インドネシア)') ?>" target="_blank" href="http://www.iconic-id.com">
     			www.iconic-id.com
     		</a>
-    		<?php echo $this->__('(Indonesia)') ?>
+    		<?php echo $this->__('(インドネシア)') ?>
     	</div>
     </div>
     
     <!-- COPYRIGHT -->
-    <div id="copyright">
+    <div id="footer-menu">
     	<div class="wrapper clearfix">
     		<div class="fll">
-    			<a class="sitemap" href="/so-do-trang" title="<?php echo $this->__('Sơ đồ trang') ?>"><?php echo $this->__('Sơ đồ trang') ?></a>
-    			<span class="line">|</span>
-    			<a class="privacy" href="/chinh-sach-bao-mat" title="<?php echo $this->__('Chính sách bảo mật') ?>"><?php echo $this->__('Chính sách bảo mật') ?></a>
-    			<p><?php echo $this->__('Copyright © 2008-2014 ICONIC CO.,LTD · All Rights Reserved.') ?></p>
+    			<ul>
+					<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
+						<a href="/"><?php echo $this->__('ホーム') ?></a>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'cms-nguoi-tim-viec') ? 'current-menu-item' : ''  ?>">
+						<a href="/nguoi-tim-viec"><?php echo $this->__('アイコニックとは ') ?></a>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'cms-nha-tuyen-dung') ? 'current-menu-item' : ''  ?>">
+						<a href="/nha-tuyen-dung"><?php echo $this->__('求職者の皆様') ?></a>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'clnews') ? 'current-menu-item' : ''  ?>">
+						<a href="/blog"><?php echo $this->__('採用担当者の皆様') ?></a>
+					</li> 
+					<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
+						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('よくある質問と答え ') ?></a>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
+						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('会社概要 ') ?></a>
+					</li>
+					<li class="border <?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
+						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('ログイン ') ?></a>
+					</li>
+				</ul>
     		</div>
 			<div class="social-links flr">   				
-				<a title="Instagram" class="in" href="http://www.linkedin.com/profile/view?id=228013283&authType=name&authToken=iK1o&trk=prof-sb-browse_map-name">&nbsp;</a>    	
-				<a title="Facebook" class="facebook" href="https://www.facebook.com/iconic4vn">&nbsp;</a>  				
+				<a title="Twitter" class="twitter" href="http://www.linkedin.com/profile/view?id=228013283&authType=name&authToken=iK1o&trk=prof-sb-browse_map-name">&nbsp;</a>   	
+				<a title="Facebook" class="fb" href="https://www.facebook.com/iconic4vn">&nbsp;</a>
+				<a title="Instagram" class="in" href="http://www.linkedin.com/profile/view?id=228013283&authType=name&authToken=iK1o&trk=prof-sb-browse_map-name">&nbsp;</a>				
 				<a title="Google+" class="google" href="https://plus.google.com/u/0/b/112764902169096553590/112764902169096553590/">&nbsp;</a>
 			</div>
     	</div>

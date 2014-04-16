@@ -28,8 +28,8 @@
  */
 ?>
 <header id="header">
-	<!-- Header Menu & Logo -->
-	<div id="header-menu">
+	<!-- Header Logo -->
+	<div id="header-logo">
 		<div class="wrapper clearfix">
 			<!-- Logo -->
 			<div id="logo" class="fll">
@@ -43,40 +43,54 @@
 				<?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
 				<ul>
 					<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
-						<a href="/"><?php echo $this->__('Trang chủ') ?></a>
+						<a href="/"><?php echo $this->__('オンラインサポート') ?></a>
 					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-nguoi-tim-viec') ? 'current-menu-item' : ''  ?>">
-						<a href="/nguoi-tim-viec"><?php echo $this->__('Người tìm việc') ?></a>
+					<li class="border <?php echo strpos($bodyclass, 'cms-nguoi-tim-viec') ? 'current-menu-item' : ''  ?>">
+						<a href="/nguoi-tim-viec"><?php echo $this->__('お問い合わせ') ?></a>
 					</li>
 					<li class="<?php echo strpos($bodyclass, 'cms-nha-tuyen-dung') ? 'current-menu-item' : ''  ?>">
-						<a href="/nha-tuyen-dung"><?php echo $this->__('Nhà tuyển dụng') ?></a>
+						<a href="/nha-tuyen-dung"><?php echo $this->__('求職登録') ?></a>
 					</li>
-					<li class="<?php echo strpos($bodyclass, 'clnews') ? 'current-menu-item' : ''  ?>">
-						<a href="/blog"><?php echo $this->__('Blog') ?></a>
-					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
-						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('Giới thiệu công ty') ?></a>
+					<li class="border <?php echo strpos($bodyclass, 'clnews') ? 'current-menu-item' : ''  ?>">
+						<a href="/blog"><?php echo $this->__('転職支援サービスに申し込む') ?></a>
 					</li>
 				</ul>
 			</div><!-- End Menu -->
-			
-			<!-- Begin Top Social Icons -->
-			<div class="top-social">
-				<?php if(!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-					<a class="login" title="<?php echo $this->__('Đăng nhập') ?>" href="/<?php echo Mage::helper('job')->getLoginUrl() ?>"><?php echo $this->__('Đăng nhập') ?></a>
-				<?php else: ?>
-					<?php if(Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() == 0): ?>
-					<a title="<?php echo $this->__('Tạo hồ sơ trên Iconic') ?>" href="<?php echo Mage::getUrl(Mage::helper('job')->getCreateCVUrl()) ?>" class="login"><?php echo $this->__('Tạo hồ sơ') ?></a>
-					<?php endif; ?>
-				<?php endif; ?>
-				<a class="in" target="_blank" title="Instagram" href="http://www.linkedin.com/profile/view?id=228013283&authType=name&authToken=iK1o&trk=prof-sb-browse_map-name">&nbsp;</a>
-				<a class="facebook" target="_blank" title="Facebook" href="https://www.facebook.com/iconic4vn">&nbsp;</a>
-				<a class="google" target="_blank" title="Google+" href="https://plus.google.com/u/0/b/112764902169096553590/112764902169096553590/">&nbsp;</a>
-			</div><!-- End Top Social Icons -->
 		</div>
-	</div><!-- End Header Menu & Logo -->
+	</div><!-- End Header Logo -->
 	
-	<!-- Breadcrumb -->
+	<!-- Header Menu -->
+	<div id="header-menu">
+		<div class="wrapper">
+			<ul>
+				<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
+					<a href="/">
+						<img src="<?php echo $this->getSkinUrl('images/home.png') ?>" src="Homepage" />
+					</a>
+				</li>
+				<li class="<?php echo strpos($bodyclass, 'cms-nguoi-tim-viec') ? 'current-menu-item' : ''  ?>">
+					<a href="/nguoi-tim-viec"><?php echo $this->__('アイコニックとは ') ?></a>
+				</li>
+				<li class="<?php echo strpos($bodyclass, 'cms-nha-tuyen-dung') ? 'current-menu-item' : ''  ?>">
+					<a href="/nha-tuyen-dung"><?php echo $this->__('求職者の皆様') ?></a>
+				</li>
+				<li class="<?php echo strpos($bodyclass, 'clnews') ? 'current-menu-item' : ''  ?>">
+					<a href="/blog"><?php echo $this->__('採用担当者の皆様') ?></a>
+				</li> 
+				<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
+					<a href="/gioi-thieu-cong-ty"><?php echo $this->__('よくある質問と答え ') ?></a>
+				</li>
+				<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
+					<a href="/gioi-thieu-cong-ty"><?php echo $this->__('会社概要 ') ?></a>
+				</li>
+				<li class="border <?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
+					<a href="/gioi-thieu-cong-ty"><?php echo $this->__('ログイン ') ?></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- Breadcrumb 
 	<?php if($this->getChildHtml('breadcrumbs')): ?>
 	<div id="breadcrumbs">
 		<div class="wrapper">
@@ -88,28 +102,64 @@
 	
 	<!-- Header Landing -->
 	<div id="header-landing">
-		<div class="wrapper">
-			<p class="slogan"><?php echo $this->__('Việc Làm Tốt Nhất Cho Người Việt') ?></p>
-			
-			<!-- Logged In -->
-			<?php if(Mage::getSingleton('customer/session')->isLoggedIn()): ?>
-				<div id="user" class="logged">
-					<span id="logged-user">
-						<?php echo $this->__('Xin chào, %s', Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>
-					</span>
-					<a class="last" id="logout" href="<?php echo Mage::helper('customer')->getLogoutUrl() ?>"><?php echo $this->__('Đăng xuất') ?></a>
-					<?php if(Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() == 0): ?>
-						<a href="<?php echo Mage::getUrl(Mage::helper('job')->getCreateCVUrl()) ?>" class="bg-blue logged" id="login"><?php echo $this->__('Tạo hồ sơ trên Iconic') ?></a>
-					<?php endif; ?>
-				</div>
+		<div class="background">
+			<div class="bg bg1 current">
 				
-			<!-- Logged Out -->
-			<?php else: ?>
-				<div id="user">
-					<a href="<?php echo Mage::getUrl(Mage::helper('job')->getCreateCVUrl()) ?>" class="bg-blue" id="login"><?php echo $this->__('Tạo hồ sơ trên Iconic') ?></a>
-					<a href="<?php echo Mage::getUrl(Mage::helper('job')->getRegisterUrl()) ?>" class="bg-white last" id="register"><?php echo $this->__('Đăng ký') ?></a>
+			</div>
+			<div class="bg bg2">
+				
+			</div>
+		</div>
+		<div class="wrapper">
+			<div class="create-cv">
+				<p class="slogan">
+					<?php echo $this->__('人材紹介(人材採用支援サービス)') ?>
+				</p>
+				<p>
+					ベトナムで働く意志のある日本人、在住日本人を紹介
+						ベトナム人スタッフ・幹部候補生を紹介
+				</p>
+				<div class="buttons">
+					<a href="#">
+							公開求人情報の詳細を閲覧する<br />
+							（会員登録）
+					</a>
+					<a href="#">
+							転職支援サービスに申し込む<br />
+							(求職登録）
+					</a>
 				</div>
-			<?php endif; ?>
+			</div>
 		</div>
 	</div><!-- End Header Landing -->
+	
+	<!-- Search Block -->
+	<div id="search-block">
+		<div class="wrapper">
+			<div class="search-block clearfix">
+				<form action="/job/search/searchform" method="get">
+					<input name="q" class="width-80" id="keyword"
+						value="<?php echo $this->getKeyword();?>"
+						placeholder="<?php echo $this->__('タイトル . . .') ?>" />
+					<br class="clear"/>
+					<select name="category" id="category" class="inline">
+						<option value=""><?php echo $this->__('国から探す') ?></option>
+						<?php echo $this->getCategoryList() ?>
+					</select>
+					
+					<select name="function_category" id="function-category" class="inline">
+						<option value=""><?php echo $this->__('業界・職種から探す') ?></option>
+						<?php echo $this->getFunctionList() ?>
+					</select>
+					
+					<select name="location" id="location" class="inline">
+						<option value=""><?php echo $this->__('母国語から探す') ?></option>
+						<?php echo $this->getLocationList() ?>			
+					</select>
+					
+					<button id="search-btn" name"submit" type="submit" class="flr inline btn btn-orange"><?php echo $this->__('検索する') ?></button>		
+				</form>
+			</div>
+		</div>
+	</div><!-- End Search Block -->
 </header>
