@@ -46,7 +46,7 @@ html, button, input, select, textarea {
 	font-size: 15px;
 }
 #header-menu ul li{
-	margin: 0 27px;
+	margin: 0 23px;
 }
 #header-menu ul li > a{
 	color: #7495f0;
@@ -74,14 +74,17 @@ html, button, input, select, textarea {
 	z-index: 1;
 }
 .bg1{
-	background: url('../images/slide1.png') center top white repeat-x;
+	background: url('../images/slide2.png') center top white repeat-x;
 }
 #header-landing .create-cv{
 	position: relative;
 	z-index: 2;
 	width: 470px;
-	top: 220px;
-	left: 250px;
+	top: 181px;
+	left: 216px;
+	background-color: #fff;
+	padding: 0 28px;
+	padding-top: 30px;
 }
 #header-landing .create-cv p{
 	text-align: center;

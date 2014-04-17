@@ -28,66 +28,68 @@
  */
 ?>
 <header id="header">
-	<!-- Header Logo -->
-	<div id="header-logo">
-		<div class="wrapper clearfix">
-			<!-- Logo -->
-			<div id="logo" class="fll">
-				<a title="Iconic" href="/">
-					<img src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="Iconic's Logo"  />
-				</a>
-			</div><!-- End Logo -->
-			
-			<!-- Menu -->
-			<div id="menu" class="flr">
-				<?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
+	<div id="fixed-menu">
+		<!-- Header Logo -->
+		<div id="header-logo">
+			<div class="wrapper clearfix">
+				<!-- Logo -->
+				<div id="logo" class="fll">
+					<a title="Iconic" href="/">
+						<img src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="Iconic's Logo"  />
+					</a>
+				</div><!-- End Logo -->
+				
+				<!-- Menu -->
+				<div id="menu" class="flr">
+					<?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
+					<ul>
+						<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
+							<a href="/"><?php echo $this->__('オンラインサポート') ?></a>
+						</li>
+						<li class="border <?php echo strpos($bodyclass, 'cms-nguoi-tim-viec') ? 'current-menu-item' : ''  ?>">
+							<a href="/nguoi-tim-viec"><?php echo $this->__('お問い合わせ') ?></a>
+						</li>
+						<li class="<?php echo strpos($bodyclass, 'cms-nha-tuyen-dung') ? 'current-menu-item' : ''  ?>">
+							<a href="/nha-tuyen-dung"><?php echo $this->__('求職登録') ?></a>
+						</li>
+						<li class="border <?php echo strpos($bodyclass, 'clnews') ? 'current-menu-item' : ''  ?>">
+							<a href="/blog"><?php echo $this->__('転職支援サービスに申し込む') ?></a>
+						</li>
+					</ul>
+				</div><!-- End Menu -->
+			</div>
+		</div><!-- End Header Logo -->
+	
+		<!-- Header Menu -->
+		<div id="header-menu">
+			<div class="wrapper">
 				<ul>
 					<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
-						<a href="/"><?php echo $this->__('オンラインサポート') ?></a>
+						<a href="/">
+							<img src="<?php echo $this->getSkinUrl('images/home.png') ?>" src="Homepage" />
+						</a>
 					</li>
-					<li class="border <?php echo strpos($bodyclass, 'cms-nguoi-tim-viec') ? 'current-menu-item' : ''  ?>">
-						<a href="/nguoi-tim-viec"><?php echo $this->__('お問い合わせ') ?></a>
+					<li class="<?php echo strpos($bodyclass, 'cms-nguoi-tim-viec') ? 'current-menu-item' : ''  ?>">
+						<a href="/nguoi-tim-viec"><?php echo $this->__('アイコニックとは ') ?></a>
 					</li>
 					<li class="<?php echo strpos($bodyclass, 'cms-nha-tuyen-dung') ? 'current-menu-item' : ''  ?>">
-						<a href="/nha-tuyen-dung"><?php echo $this->__('求職登録') ?></a>
+						<a href="/nha-tuyen-dung"><?php echo $this->__('求職者の皆様') ?></a>
 					</li>
-					<li class="border <?php echo strpos($bodyclass, 'clnews') ? 'current-menu-item' : ''  ?>">
-						<a href="/blog"><?php echo $this->__('転職支援サービスに申し込む') ?></a>
+					<li class="<?php echo strpos($bodyclass, 'clnews') ? 'current-menu-item' : ''  ?>">
+						<a href="/blog"><?php echo $this->__('採用担当者の皆様') ?></a>
+					</li> 
+					<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
+						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('よくある質問と答え ') ?></a>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
+						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('会社概要 ') ?></a>
+					</li>
+					<li class="border <?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
+						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('ログイン ') ?></a>
 					</li>
 				</ul>
-			</div><!-- End Menu -->
-		</div>
-	</div><!-- End Header Logo -->
-	
-	<!-- Header Menu -->
-	<div id="header-menu">
-		<div class="wrapper">
-			<ul>
-				<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
-					<a href="/">
-						<img src="<?php echo $this->getSkinUrl('images/home.png') ?>" src="Homepage" />
-					</a>
-				</li>
-				<li class="<?php echo strpos($bodyclass, 'cms-nguoi-tim-viec') ? 'current-menu-item' : ''  ?>">
-					<a href="/nguoi-tim-viec"><?php echo $this->__('アイコニックとは ') ?></a>
-				</li>
-				<li class="<?php echo strpos($bodyclass, 'cms-nha-tuyen-dung') ? 'current-menu-item' : ''  ?>">
-					<a href="/nha-tuyen-dung"><?php echo $this->__('求職者の皆様') ?></a>
-				</li>
-				<li class="<?php echo strpos($bodyclass, 'clnews') ? 'current-menu-item' : ''  ?>">
-					<a href="/blog"><?php echo $this->__('採用担当者の皆様') ?></a>
-				</li> 
-				<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
-					<a href="/gioi-thieu-cong-ty"><?php echo $this->__('よくある質問と答え ') ?></a>
-				</li>
-				<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
-					<a href="/gioi-thieu-cong-ty"><?php echo $this->__('会社概要 ') ?></a>
-				</li>
-				<li class="border <?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
-					<a href="/gioi-thieu-cong-ty"><?php echo $this->__('ログイン ') ?></a>
-				</li>
-			</ul>
-		</div>
+			</div>
+		</div><!-- End Header Menu -->
 	</div>
 	
 	<!-- Breadcrumb 
