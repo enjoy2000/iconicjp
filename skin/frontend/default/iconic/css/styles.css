@@ -10,7 +10,7 @@ html, button, input, select, textarea {
 	color: #636466;
 	font-size: 14px;
 }
-#fixed-menu.f-nav{
+#fixed-menu{
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -72,6 +72,7 @@ html, button, input, select, textarea {
 	height: 447px;
 	border-top: solid 2px #dadbdc;
 	border-bottom: solid 2px #dadbdc;
+	margin-top: 130px;
 }
 #header-landing .background .bg{
 	width: 100%;
@@ -110,18 +111,26 @@ html, button, input, select, textarea {
 }
 #header-landing .buttons a{
 	display: inline-block;
-	background: url('../images/button.png') top center no-repeat transparent;
+	background: url('../images/left-button.png') top center no-repeat transparent;
 	width: 198px;
 	height: 25px;
-	color: #fff;
+	color: #4571EB;
 	text-align: center;
-	padding: 30px 10px;
+	padding: 21px 10px;
 	font-size: 14px;
 	letter-spacing: -0.5px;
 	line-height: 18px;
 }
+#header-landing .buttons a+a{
+	background: url('../images/right-button.png') top center no-repeat transparent;
+	color: #fff;
+}
 #header-landing .buttons a:hover{
-	background-image: url('../images/button-hover.png');
+	opacity: 0.7;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	filter: alpha(opacity=70);
+	-moz-opacity: 0.7;
+	-khtml-opacity: 0.7;
 }
 #header-landing .buttons a+a{
 	margin-left: 20px;
