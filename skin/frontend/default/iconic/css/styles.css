@@ -14,8 +14,8 @@ html, button, input, select, textarea {
 	background-color: #4571eb;
 }
 #header-logo #logo{
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	margin-left: 20px;
 }
 #header-logo #menu{
@@ -43,7 +43,7 @@ html, button, input, select, textarea {
 }
 #header-logo ul li, #header-menu ul li{
 	display: inline;
-	font-size: 15px;
+	font-size: 14px;
 }
 #header-menu ul li{
 	margin: 0 23px;

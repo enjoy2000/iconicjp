@@ -86,7 +86,7 @@ p{
 	padding-bottom: 10px;
 }
 select{
-	padding: 6px 15px;
+	padding: 3px 15px;
 	width: 100%;
 	border: none;
 	border-radius: 3px;
@@ -101,7 +101,7 @@ select:focus{
 select:disabled{
 }
 input{
-	padding: 8px 10px;
+	padding: 5px 10px;
 	border: none;
 	border-radius: 3px;
 }
