@@ -3,6 +3,15 @@
 		$('.centerwide').each(function(){
 			centerwide($(this));
 		});
+		//fixed menu
+		var nav = $('#fixed-menu');
+	    $(window).scroll(function () {
+	        if ($(this).scrollTop() > 130) {
+	            nav.addClass("f-nav");
+	        } else {
+	            nav.removeClass("f-nav");
+	        }
+	    });
 	});
 	
 	function centerwide(div){
