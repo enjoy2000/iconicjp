@@ -53,7 +53,7 @@ html, button, input, select, textarea {
 	font-size: 14px;
 }
 #header-menu ul li{
-	margin: 0 23px;
+	margin: 0 26px;
 }
 #header-menu ul li > a{
 	color: #7495f0;
@@ -65,7 +65,6 @@ html, button, input, select, textarea {
 	float: right;
 	display: block;
 	margin: 0;
-	margin-top: 6px;
 	padding: 3px 10px;
 	border: solid 1px #94adf3;
 }
