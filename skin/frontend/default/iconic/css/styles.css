@@ -39,6 +39,14 @@ html, button, input, select, textarea {
 	border: solid 3px #B5C6F7;
 	margin-left: 15px;
 	border-radius: 3px;
+	-webkit-transition: color 200ms,background-color 200ms;
+	-moz-transition: color 200ms,background-color 200ms;
+	-o-transition: color 200ms,background-color 200ms;
+	transition: color 200ms,background-color 200ms;
+}
+#header-logo ul li.border a:hover{
+	background-color: #b5c6f7;
+	color: #4571EB;
 }
 #header-menu{
 	background-color: #b5c6f7;
@@ -65,14 +73,57 @@ html, button, input, select, textarea {
 	float: right;
 	display: block;
 	margin: 0;
+	margin-top: 5px;
+}
+#header-menu ul li.border > a{
+	-webkit-transition: color 200ms,background-color 200ms;
+	-moz-transition: color 200ms,background-color 200ms;
+	-o-transition: color 200ms,background-color 200ms;
+	transition: color 200ms,background-color 200ms;
 	padding: 3px 10px;
-	border: solid 1px #94adf3;
+	border: solid 2px #7495f0;
+}
+#header-menu ul li.border > a:hover{
+	color: #b5c6f7;
+	background-color: #7495f0;
 }
 #header-landing{
 	height: 447px;
 	border-top: solid 2px #dadbdc;
 	border-bottom: solid 2px #dadbdc;
 	margin-top: 130px;
+}
+#header-landing #ajax-load{
+	width: 100%;
+	height: 0;
+	position: absolute;
+	z-index: 3;
+	background-color: rgba(181, 198, 247, 0.9);
+	-webkit-transition: height 0.35s ease-out;
+    -moz-transition: height 0.35s ease-out;
+    -ms-transition: height 0.35s ease-out;
+    -o-transition: height 0.35s ease-out;
+    transition: height 0.35s ease-out;
+}
+#header-landing #ajax-load.open{
+	height: 178px;
+}
+#header-landing #ajax-load .content .account-login{
+	width: 360px;
+	margin: 20px auto;
+}
+/*
+ * Account Login
+ */
+.account-login input{
+	width: 338px;
+	background-position: 98% center;
+	background-repeat: no-repeat;
+	background-image: url('../images/user.png');
+}
+.account-login input+input{
+	margin: 15px 0;
+	background-image: url('../images/password.png');
 }
 #header-landing .background .bg{
 	width: 100%;
@@ -96,7 +147,7 @@ html, button, input, select, textarea {
 #header-landing .create-cv p{
 	text-align: center;
 	color: #000;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 26px;
 }
 #header-landing .create-cv p.slogan{
@@ -113,13 +164,13 @@ html, button, input, select, textarea {
 	display: inline-block;
 	background: url('../images/left-button.png') top center no-repeat transparent;
 	width: 198px;
-	height: 25px;
 	color: #4571EB;
 	text-align: center;
-	padding: 21px 10px;
-	font-size: 14px;
 	letter-spacing: -0.5px;
 	line-height: 18px;
+	height: 32px;
+	padding: 17px 10px;
+	font-size: 13px;
 }
 #header-landing .buttons a+a{
 	background: url('../images/right-button.png') top center no-repeat transparent;
@@ -135,13 +186,6 @@ html, button, input, select, textarea {
 #header-landing .buttons a+a{
 	margin-left: 20px;
 }
-#header-landing .buttons a:first-child{
-	opacity: 0.7;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
-	filter: alpha(opacity=70);
-	-moz-opacity: 0.7;
-	-khtml-opacity: 0.7;
-}
 #search-block{
 	background-color: #b5c6f7;
 }
@@ -155,6 +199,9 @@ html, button, input, select, textarea {
 	margin-bottom: 15px;
 	color: #4571eb;
 	width: 700px;
+}
+#search-block .search-block input:focus{
+	background-color: #dbdcdd;
 }
 #search-block .search-block select{
 	width: 230px;
@@ -285,6 +332,14 @@ html, button, input, select, textarea {
 	display: block;
 	width: 68px;
 	margin-bottom: 15px;
+	-webkit-transition: color 200ms,background-color 200ms;
+	-moz-transition: color 200ms,background-color 200ms;
+	-o-transition: color 200ms,background-color 200ms;
+	transition: color 200ms,background-color 200ms;
+}
+#contact-info .yasu-info .yasu-blog:hover{
+	background-color: #4571EB;
+	color: #fff;
 }
 #contact-info .yasu-info p{
 	color: #4571eb;
@@ -327,9 +382,9 @@ html, button, input, select, textarea {
 #other-web{
 	background-color: #fff;
 	padding-top: 115px;
-	padding-bottom: 15px;
+	padding-bottom: 16px;
 	letter-spacing: -1.8px;
-	border-bottom: solid 2px #4571EB;
+	border-bottom: solid 1px #4571EB;
 }
 #other-web a{
 	margin-left: 20px;
@@ -337,7 +392,7 @@ html, button, input, select, textarea {
 }
 #footer-menu{
 	background-color: #fff;
-	padding: 20px;
+	padding: 16px;
 }
 #footer-menu .fll{
 	margin-top: 10px;
@@ -352,7 +407,7 @@ html, button, input, select, textarea {
 #footer-menu .social-links a{
 	width: 30px;
 	height: 30px;
-	background-color: #4571EB;
+	background-color: transparent;
 	background-position: center;
 	background-repeat: no-repeat;
 	display: inline-block;

@@ -102,11 +102,11 @@ select:disabled{
 }
 input{
 	padding: 5px 10px;
-	border: none;
+	border: solid 1px transparent;
 	border-radius: 3px;
 }
 input:focus{
-	background-color: #dbdcdd;
+	border-color: #4571eb;
 }
 input[readonly]{
 }
@@ -121,6 +121,7 @@ textarea{
 	-webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    border: none;
 }
 .btn-blue{
 	background: url('../images/btn-blue.png') center no-repeat transparent;
@@ -183,8 +184,9 @@ textarea{
 }
 
 .button-blue{
-	background-color: #4571eb;
-	border-radius: 8px;
+	background-color: #6a8def;
+	border-radius: 3px;
+	border-bottom: solid 2px #4571EB;
 }
 .button-grey{
 	background-color: #bcbec0;

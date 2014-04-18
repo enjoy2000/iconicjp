@@ -12,6 +12,13 @@
 	            nav.removeClass("f-nav");
 	        }
 	    });
+	    $('#login-button').click(function(){
+	    	$('#ajax-load .content').load('dang-nhap #ajax-content');
+	    	$(document).ajaxStop(function(){
+	    		$('#ajax-load').addClass('open');
+	    	});
+	    	return false;
+	    });
 	});
 	
 	function centerwide(div){

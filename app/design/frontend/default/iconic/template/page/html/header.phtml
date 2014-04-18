@@ -85,7 +85,7 @@
 						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('会社概要 ') ?></a>
 					</li>
 					<li class="border <?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
-						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('ログイン ') ?></a>
+						<a id="login-button" href="/gioi-thieu-cong-ty"><?php echo $this->__('ログイン ') ?></a>
 					</li>
 				</ul>
 			</div>
@@ -104,7 +104,15 @@
 	
 	<!-- Header Landing -->
 	<div id="header-landing">
-		<div class="background">
+		<div id="ajax-load">
+			<div class="wrapper">
+				<div class="content">
+					
+				</div>
+			</div>
+			
+		</div>
+		<div u="slides" class="background">
 			<div class="bg bg1 current">
 				
 			</div>
@@ -115,11 +123,11 @@
 		<div class="wrapper">
 			<div class="create-cv">
 				<p class="slogan">
-					<?php echo $this->__('人材紹介(人材採用支援サービス)') ?>
+					<?php echo $this->__('アジアで働くならICONIC') ?>
 				</p>
 				<p>
-					ベトナムで働く意志のある日本人、在住日本人を紹介
-						ベトナム人スタッフ・幹部候補生を紹介
+					ICONIC（アイコニック）はアジアを舞台に国境を超<br />
+					えて働きたい方々に特化した転職エージェントです。
 				</p>
 				<div class="buttons">
 					<a href="#">
@@ -155,7 +163,7 @@
 					</select>
 					
 					<select name="location" id="location" class="inline">
-						<option value=""><?php echo $this->__('母国語から探す') ?></option>
+						<option value=""><?php echo $this->__('言語から探す') ?></option>
 						<?php echo $this->getLocationList() ?>			
 					</select>
 					
