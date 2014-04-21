@@ -152,6 +152,8 @@
     #RewriteRule ^(.*)$ /mobiledirectoryhere/ [L,R=302]
 
 ############################################
+
+
 ## always send 404 on missing files in these folders
 
     RewriteCond %{REQUEST_URI} !^/(media|skin|js)/
@@ -162,11 +164,28 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-l
-
-############################################
-## rewrite everything else to index.php
-
-    RewriteRule .* index.php [L]
+	RewriteRule ^en$ index.php?___store=en&___path=/ [QSA,L]
+	
+	
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteRule ^en/(.*) index.php?___store=en&___path=/$1 [QSA,L]
+	
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteRule ^jp$ index.php?___store=jp&___path=/ [QSA,L]
+	
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteRule ^jp/(.*) index.php/$1?___store=jp&___path=/$1 [QSA,L]
+	
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteRule (.*) index.php?___store=jp [L]
 
 </IfModule>
 

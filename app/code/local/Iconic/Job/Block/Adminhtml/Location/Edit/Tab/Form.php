@@ -14,6 +14,29 @@ class Iconic_Job_Block_Adminhtml_Location_Edit_Tab_Form extends Mage_Adminhtml_B
             'required'  => true,
             'name'      => 'name',
         ));
+		
+		$fieldset->addField('name_en', 'text', array(
+            'label'     => Mage::helper('job')->__('Name En'),
+            'class'     => 'required-entry',
+            'required'  => true,
+            'name'      => 'name_en',
+        ));
+		
+		$countries = Mage::getModel('job/country')->getCollection();
+		foreach($countries as $country){
+			$arrayCountries[] = array(
+					'label'		=> $country->getName(),
+					'value' 	=> $country->getId(),
+					);
+		}
+		
+		$fieldset->addField('country_id', 'select', array(
+            'label'     => Mage::helper('job')->__('Country'),
+            'class'     => 'required-entry',
+            'required'  => true,
+            'name'      => 'country_id',
+            'values'	=> $arrayCountries,
+        ));
  
         if ( Mage::getSingleton('adminhtml/session')->getLocationData() )
         {

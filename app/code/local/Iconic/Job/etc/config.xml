@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Iconic_Job>
-            <version>0.2.5</version>
+            <version>0.2.6</version>
         </Iconic_Job>
     </modules>
     <frontend>
@@ -80,6 +80,14 @@
                 <class>Iconic_Job_Model_Location</class>
                 <resourceModel>job_location</resourceModel>
             </location>
+            <language>
+                <class>Iconic_Job_Model_Language</class>
+                <resourceModel>job_language</resourceModel>
+            </language>
+            <country>
+                <class>Iconic_Job_Model_Country</class>
+                <resourceModel>job_country</resourceModel>
+            </country>
             <job_mysql4>
                 <class>Iconic_Job_Model_Mysql4</class>
                 <entities>
@@ -104,6 +112,12 @@
                     <type>
                         <table>job_type</table>
                     </type>
+                    <language>
+                        <table>job_language</table>
+                    </language>
+                    <country>
+                        <table>job_country</table>
+                    </country>
                 </entities>
             </job_mysql4>
         </models>

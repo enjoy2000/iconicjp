@@ -42,11 +42,22 @@
                             </parent>
                         </children>
                 </categories>
-                <location module="job">
+                <locations module="job">
                     <title>Manage Location</title>
-                    <sort_order>0</sort_order>
-                    <action>adminhtml/job_location</action>
-                </location>
+                    <sort_order>2</sort_order>
+                        <children>
+                            <sub module="job">
+                                <title>Country</title>
+                                <sort_order>1</sort_order>
+                                <action>adminhtml/job_country</action>
+                            </sub>
+                            <parent module="job">
+                                <title>Location</title>
+                                <sort_order>2</sort_order>
+                                <action>adminhtml/job_location</action>
+                            </parent>
+                        </children>
+                </locations>
                 <level module="job">
                     <title>Manage Job Level</title>
                     <sort_order>0</sort_order>
