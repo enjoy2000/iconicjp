@@ -127,7 +127,14 @@ textarea{
 	background: url('../images/btn-blue.png') center no-repeat transparent;
 }
 .btn-orange{
-	background: url('../images/btn-orange.png') center no-repeat transparent;
+	background-color: #df8c56;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 3px;
+	padding: 3px 10px;
+	font-size: 15px;
+	border-bottom: solid 2px #d7712e;
 }
 .btn:hover{
 	opacity: 0.8;

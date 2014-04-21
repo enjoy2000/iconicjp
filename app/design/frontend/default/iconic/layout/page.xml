@@ -36,11 +36,11 @@ Default layout, loads most of the pages
 
             <block type="page/html_head" name="head" as="head">
                 <action method="addJs"><script>iconic/jquery.min.js</script></action>
+                <action method="addJs"><script>iconic/jquery.cycle.all.js</script></action>
                 <action method="addJs"><script>iconic/iconic.js</script></action>
 		
 				<action method="addCss"><stylesheet>css/reset.css</stylesheet></action>
 				<action method="addCss"><stylesheet>css/utilities.css</stylesheet></action>				
-                <action method="addCss"><stylesheet>fonts/myriadpro-boldcondensed/stylesheet.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
             </block>
 

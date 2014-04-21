@@ -85,7 +85,12 @@
 						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('会社概要 ') ?></a>
 					</li>
 					<li class="border <?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
-						<a id="login-button" href="/gioi-thieu-cong-ty"><?php echo $this->__('ログイン ') ?></a>
+						<?php if(!$this->helper('customer')->isLoggedIn()): ?>
+							<a id="login-button" href="#"><?php echo $this->__('ログイン ') ?></a>
+						<?php else: ?>
+							<a id="logout-button" href="<?php echo $this->helper('customer')->getLogoutUrl() ?>"><?php echo $this->__('ログアウト
+							') ?></a>
+						<?php endif; ?>
 					</li>
 				</ul>
 			</div>
@@ -112,7 +117,7 @@
 			</div>
 			
 		</div>
-		<div u="slides" class="background">
+		<div class="background">
 			<div class="bg bg1 current">
 				
 			</div>

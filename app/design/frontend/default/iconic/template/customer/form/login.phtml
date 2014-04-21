@@ -35,35 +35,12 @@
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <?php /* Extensions placeholder */ ?>
     <?php echo $this->getChildHtml('customer.form.login.extra')?>
-    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+    <div id="response"></div>
+    <form action="<?php //echo $this->getPostActionUrl() ?>" method="post" id="login-form">
         <input required placeholder="<?php echo $this->__('メールアドレス') ?>" type="email" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
         <input required placeholder="<?php echo $this->__('パスワード') ?>" type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
        
         <button type="submit" class="btn button-blue button" title="<?php echo $this->__('ログイン') ?>" name="send" id="send2"><span><span><?php echo $this->__('ログイン') ?></span></span></button>
-    	 <a href="<?php echo Mage::getUrl(Mage::helper('job')->getForgotUrl()) ?>" class="forgot-pass text-blue f-left"><?php echo $this->__('パスワードをお忘れの方 ?') ?></a>
+    	 <a id="forgot-password" href="#<?php //echo Mage::getUrl(Mage::helper('job')->getForgotUrl()) ?>" class="forgot-pass text-blue f-left"><?php echo $this->__('パスワードをお忘れの方 ?') ?></a>
     </form>
-    <script type="text/javascript">
-    //<![CDATA[
-        var dataForm = new VarienForm('login-form', true);
-    //]]>
-    </script>
 </div>
-
-<div class="create-account">
-	<p><?php echo $this->__('Nếu bạn chưa có tài khoản trên <a title="IconicVN" href="/">iconicvn.com</a>, hãy tạo ngay một tài khoản hoàn toàn miễn phí:') ?></p>
-	<a href="/<?php echo Mage::helper('job')->getRegisterUrl() ?>" title="<?php echo $this->__('Tạo tài khoản mới') ?>" class="register"><?php echo $this->__('Tạo tài khoản mới') ?></a>
-</div>
-<style>
-	#account-page{
-		width: 510px;
-		padding: 0;
-	}
-	#account-page .account-login{
-		padding: 20px 80px;
-	}
-	#account-page .create-account{
-		background-color: #dcddde;
-		color: #58595b;
-		padding: 10px;
-	}
-</style>

@@ -75,44 +75,19 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
         $this->_redirectError($errUrl);
     }
 
-	
-    /**
-     * Forgot customer password action
+	/**
+     * Customer login form page
      */
-    public function forgotPasswordPostAction()
+    public function loginAction()
     {
-        $email = (string) $this->getRequest()->getPost('email');
-        if ($email) {
-            if (!Zend_Validate::is($email, 'EmailAddress')) {
-                $this->_getSession()->setForgottenEmail($email);
-                $this->_getSession()->addError($this->__('Invalid email address.'));
-                $this->_redirect('*/*/forgotpassword');
-                return;
-            }
-
-            /** @var $customer Mage_Customer_Model_Customer */
-            $customer = $this->_getModel('customer/customer')
-                ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
-                ->loadByEmail($email);
-
-            if ($customer->getId()) {
-                try {
-                    $newResetPasswordLinkToken =  $this->_getHelper('customer')->generateResetPasswordLinkToken();
-                    $customer->changeResetPasswordLinkToken($newResetPasswordLinkToken);
-                    $customer->sendPasswordResetConfirmationEmail();
-                } catch (Exception $exception) {
-                    $this->_getSession()->addError($exception->getMessage());
-                    $this->_redirect('*/*/forgotpassword');
-                    return;
-                }
-            }
-            $this->_redirect('job/index/afterforgot', array('m'=>$email));
-			
-            return;
-        } else {
-            $this->_getSession()->addError($this->__('Please enter your email.'));
-            $this->_redirect('*/*/forgotpassword');
+        if ($this->_getSession()->isLoggedIn()) {
+            $this->_redirect('*/*/');
             return;
         }
+        $this->getResponse()->setHeader('Login-Required', 'true');
+        $this->loadLayout();
+        $this->_initLayoutMessages('customer/session');
+        $this->_initLayoutMessages('catalog/session');
+        $this->renderLayout();
     }
 }

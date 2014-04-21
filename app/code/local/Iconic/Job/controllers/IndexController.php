@@ -51,11 +51,6 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		}
 		
 	}
-
-	public function afterforgotAction(){
-		$this->loadLayout();
-		$this->renderLayout();
-	}
 	
 	public function afterregisterAction(){
 		$this->loadLayout();
@@ -164,4 +159,79 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		$this->loadLayout();
 		$this->renderLayout();
 	}
+	
+	public function ajaxloginPostAction(){
+        $session = Mage::getSingleton('customer/session');
+
+        if ($this->getRequest()->isPost()) {
+            $login = $this->getRequest()->getPost('login');
+            if (!empty($login['username']) && !empty($login['password'])) {
+                try {
+                    $session->login($login['username'], $login['password']);
+                    if ($session->getCustomer()->getIsJustConfirmed()) {
+                    }
+					echo 1;
+                } catch (Mage_Core_Exception $e) {
+                    switch ($e->getCode()) {
+                        case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
+                            $value = Mage::helper('customer')->getEmailConfirmationUrl($login['username']);
+                            $message = Mage::helper('customer')->__('This account is not confirmed. <a href="%s">Click here</a> to resend confirmation email.', $value);
+                            break;
+                        case Mage_Customer_Model_Customer::EXCEPTION_INVALID_EMAIL_OR_PASSWORD:
+                            $message = $e->getMessage();
+                            break;
+                        default:
+                            $message = $e->getMessage();
+                    }
+                    echo $message;
+                    $session->setUsername($login['username']);
+                } catch (Exception $e) {
+                    // Mage::logException($e); // PA DSS violation: this exception log can disclose customer password
+                }
+            } else {
+                $session->addError($this->__('Login and password are required.'));
+            }
+        }
+	}
+
+	/**
+     * Forgot customer password action
+     */
+    public function ajaxforgotPasswordAction()
+    {
+    	$session = Mage::getSingleton('customer/session');
+        $email = (string) $this->getRequest()->getPost('email');
+        if ($email) {
+			if (!Zend_Validate::is($email, 'EmailAddress')) {
+                $session->setForgottenEmail($email);
+                $message = $this->__('Invalid email address.');
+                $status = false;
+            }
+			
+            /** @var $customer Mage_Customer_Model_Customer */
+            $customer = Mage::getModel('customer/customer')
+                ->setWebsiteId(Mage::app()->getStore()->getWebsiteId())
+                ->loadByEmail($email);
+            if ($customer->getId()) {
+                try {
+                    $newResetPasswordLinkToken =  Mage::helper('customer')->generateResetPasswordLinkToken();
+                    $customer->changeResetPasswordLinkToken($newResetPasswordLinkToken);
+                    $customer->sendPasswordResetConfirmationEmail();
+					$message = $this->__('%sでアカウントがあるお方はパスワードリセットの為メール送信致しました。メールをご確認ください。', $email);
+					$status = true;
+                } catch (Exception $exception) {
+                    $message = $exception->getMessage();
+					$status = false;
+                }
+            }else{
+            	$message = $this->__('This email has not been used.');
+				$status = false;
+            }
+        } else {
+            $message =  $this->__('Please enter your email.');
+			$status = false;
+        }
+		header('Content-Type: application/json');
+		echo json_encode(array('message' => $message, 'status' => $status));
+    }
 }
