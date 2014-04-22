@@ -178,7 +178,7 @@ html, button, input, select, textarea {
 	z-index: 1;
 }
 .bg1{
-	background: url('../images/slide2.jpg') center top white repeat-x;
+	background: url('../images/slide2.png') center top white repeat-x;
 }
 .bg2{
 	background: url('../images/slide1.png') center top white repeat-x;
@@ -450,6 +450,7 @@ html, button, input, select, textarea {
 #other-web a{
 	color: #4571EB;
 	letter-spacing: -1px;
+	display: block;
 }
 #footer-menu{
 	background-color: #fff;
