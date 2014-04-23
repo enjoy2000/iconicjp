@@ -152,19 +152,19 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 	
 	public function getLoginUrl(){
-		return 'dang-nhap';
+		return 'login';
 	}
 	
 	public function getRegisterUrl(){
-		return 'dang-ky';
+		return 'register';
 	}
 	
 	public function getSearchUrl(){
-		return 'tim-viec-lam';
+		return 'search-job';
 	}
 	
 	public function getForgotUrl(){
-		return 'quen-mat-khau';
+		return 'forgot-password';
 	}
 	
 	public function getCreateCVUrl(){

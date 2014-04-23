@@ -34,7 +34,7 @@
 ?>
 <div class="account-create">
     <div class="page-title">
-        <h1><?php echo $this->__('Đăng ký thành viên mới') ?></h1>
+        <h1><?php echo $this->__('公開求人情報の詳細を閲覧する') ?></h1>
     </div>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
@@ -47,7 +47,7 @@
                 </li>
                 <li>
                     <div class="input-box">
-                        <input required placeholder="<?php echo $this->__('Email') ?>" type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email') ?>" class="input-text validate-email required-entry" />
+                        <input required placeholder="<?php echo $this->__('ユーザー(メールアドレス)') ?>" type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('ユーザー(メールアドレス)') ?>" class="input-text validate-email required-entry" />
                     </div>
                 </li>
             <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
@@ -144,104 +144,29 @@
                 <li class="fields">
                     <div class="field">
                         <div class="input-box">
-                            <input required placeholder="<?php echo $this->__('Mật khẩu') ?>" type="password" name="password" id="password" title="<?php echo $this->__('Mật khẩu') ?>" class="input-text required-entry validate-password" />
+                            <input required placeholder="<?php echo $this->__('パスワード') ?>" type="password" name="password" id="password" title="<?php echo $this->__('Mật khẩu') ?>" class="input-text required-entry validate-password" />
                         </div>
                     </div>
                     <div class="field">
                         <div class="input-box">
-                            <input required placeholder="<?php echo $this->__('Xác nhận lại mật khẩu') ?>" type="password" name="confirmation" title="<?php echo $this->__('Xác nhận lại mật khẩu') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+                            <input required placeholder="<?php echo $this->__('確認（パスワード）') ?>" type="password" name="confirmation" title="<?php echo $this->__('Xác nhận lại mật khẩu') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
                         </div>
                     </div>
                     
                     <div class="field clearfix">
-                        <div class="input-box fll width-45">
-                            <select required placeholder="<?php echo $this->__('Chọn giới tính') ?>" name="sex" title="<?php echo $this->__('Chọn giới tính') ?>" id="sex" class="select-box required-entry">
-                            	<option value=""><?php echo $this->__('Chọn giới tính') ?></option>
+                        <div class="input-box">
+                            <select required placeholder="<?php echo $this->__('性別') ?>" name="sex" title="<?php echo $this->__('Chọn giới tính') ?>" id="sex" class="select-box required-entry">
+                            	<option value=""><?php echo $this->__('性別') ?></option>
                             	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nam')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('Nam') ?>"><?php echo $this->__('Nam') ?></option>
                             	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nữ')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('Nữ') ?>"><?php echo $this->__('Nữ') ?></option>
-                            </select>
-                        </div>
-                        <div class="input-box flr width-45">
-                            <select required placeholder="<?php echo $this->__('Năm sinh') ?>" name="birthyear" title="<?php echo $this->__('Năm sinh') ?>" id="birthyear" class="select-box required-entry">
-                            	<option value=""><?php echo $this->__('Năm sinh') ?></option>
-                            	<?php 
-                            	$y = (int) Date('Y');
-                            	for($i = $y-10; $i >= $y-60;$i--): ?>
-                            	<option <?php echo ($this->getFormData()->getBirthyear()==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
-                            	<?php endfor; ?>
                             </select>
                         </div>
                     </div>
                     
                     <div class="field">
                     	<div class="input-box">
-                            <select required placeholder="<?php echo $this->__('Nơi cư trú') ?>" name="location" title="<?php echo $this->__('Nơi cư trú') ?>" id="location" class="select-box required-entry">
-                            	<option value=""><?php echo $this->__('Nơi cư trú') ?></option>
-								<!--
-								<option value="1">Hồ Chí Minh</option>
-								<option value="2">Hà Nội</option>
-								<option value="3">Hải Phòng</option>
-								<option value="4">Thừa Thiên-Huế</option>
-								<option value="5">Đà Nẵng</option>
-								<option value="6">Cần Thơ</option>
-								<option value="7">An Giang</option>
-								<option value="8">BR - Vũng Tàu</option>
-								<option value="9">Bắc Cạn</option>
-								<option value="10">Bắc Giang</option>
-								<option value="11">Bạc Liêu</option>
-								<option value="12">Bắc Ninh</option>
-								<option value="13">Bến Tre</option>
-								<option value="14">Bình Định</option>
-								<option value="15">Bình Dương</option>
-								<option value="16">Bình Phước</option>
-								<option value="17">Bình Thuận</option>
-								<option value="18">Cà Mau</option>
-								<option value="19">Cao Bằng</option>
-								<option value="20">Đắk Lắk</option>
-								<option value="21">Đắk Nông</option>
-								<option value="22">Điện Biên</option>
-								<option value="23">Đồng Nai</option>
-								<option value="24">Đồng Tháp</option>
-								<option value="25">Gia Lai</option>
-								<option value="26">Hà Giang</option>
-								<option value="27">Hà Nam</option>
-								<option value="29">Hà Tĩnh</option>
-								<option value="30">Hải Dương</option>
-								<option value="31">Hậu Giang</option>
-								<option value="32">Hòa Bình</option>
-								<option value="33">Hưng Yên</option>
-								<option value="34">Khánh Hòa</option>
-								<option value="35">Kiên Giang</option>
-								<option value="36">Kon Tum</option>
-								<option value="37">Lai Châu</option>
-								<option value="38">Lâm Đồng</option>
-								<option value="39">Lạng Sơn</option>
-								<option value="40">Lào Cai</option>
-								<option value="41">Long An</option>
-								<option value="42">Nam Định</option>
-								<option value="43">Nghệ An</option>
-								<option value="44">Ninh Bình</option>
-								<option value="45">Ninh Thuận</option>
-								<option value="46">Phú Thọ</option>
-								<option value="47">Phú Yên</option>
-								<option value="48">Quảng Bình</option>
-								<option value="49">Quảng Nam</option>
-								<option value="50">Quảng Ngãi</option>
-								<option value="51">Quảng Ninh</option>
-								<option value="52">Quảng Trị</option>
-								<option value="53">Sóc Trăng</option>
-								<option value="54">Sơn La</option>
-								<option value="55">Tây Ninh</option>
-								<option value="56">Thái Bình</option>
-								<option value="57">Thái Nguyên</option>
-								<option value="58">Thanh Hóa</option>
-								<option value="59">Tiền Giang</option>
-								<option value="60">Trà Vinh</option>
-								<option value="61">Tuyên Quang</option>
-								<option value="62">Vĩnh Long</option>
-								<option value="63">Vĩnh Phúc</option>
-								<option value="64">Yên Bái</option>
-								-->
+                            <select required placeholder="<?php echo $this->__('居住地域') ?>" name="location" title="<?php echo $this->__('Nơi cư trú') ?>" id="location" class="select-box required-entry">
+                            	<option value=""><?php echo $this->__('居住地域') ?></option>
 								<?php $list = Mage::getModel('job/listlocation')->getCollection() ?>
 								<?php foreach($list as $loc): ?>
 									<option <?php echo ($this->getFormData()->getLocation()==$loc->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $loc->getId() ?>"><?php echo $loc->getName() ?></option>

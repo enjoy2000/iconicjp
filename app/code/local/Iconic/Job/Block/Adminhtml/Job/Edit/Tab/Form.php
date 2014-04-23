@@ -78,11 +78,20 @@ class Iconic_Job_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_Block_
         ));
 		
 		//get location values
-		$locationModel = Mage::getModel('job/location')->getCollection();
-		foreach($locationModel as $loc){
+		$countries = Mage::getModel('job/country')->getCollection();
+		foreach($countries as $country){
+			$locations = Mage::getModel('job/location')->getCollection()
+							->addFieldToFilter('country_id', $country->getId());
+			$arrayLoc = array();
+			foreach($locations as $loc){
+				$arrayLoc[] = array(
+								'label'	=> $loc->getName(),
+								'value' => $loc->getId(),
+				);
+			}
 			$arrayLocation[] = array(
-							'label'		=> $loc->getName(),
-							'value'		=> $loc->getLocationId(),
+								'label' => $country->getName(),
+								'value' => $arrayLoc,
 			);
 		}
 		
