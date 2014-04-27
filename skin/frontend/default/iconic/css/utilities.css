@@ -241,3 +241,7 @@ ol.grey > li:before{
 	counter-increment: my-counter;
 	background: url('../images/big-grey-circle.jpg') 7px -1px no-repeat transparent;
 }
+.after-input{
+	background-color: #fff!important;
+	color: #000!important;
+}

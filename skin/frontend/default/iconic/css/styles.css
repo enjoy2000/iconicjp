@@ -10,6 +10,18 @@ html, button, input, select, textarea {
 	color: #636466;
 	font-size: 14px;
 }
+/*
+ * SHORT TEMPLATE
+ */
+body.short #header-landing,
+body.short #search-block,
+body.short #banner,
+body.short #blog-news .wrapper > *{
+	display: none;
+}
+body.short #main .main{
+	background-color: transparent!important;
+}
 #header-logo{
 	background-color: #4571eb;
 	position: fixed;
@@ -273,7 +285,7 @@ html, button, input, select, textarea {
 	padding: 3px 10px;
 	font-size: 15px;
 	border-bottom: solid 2px #d7712e;
-	margin: 3px 16px 0 20px;
+	margin: 3px 35px 0 20px;
 }
 /*
  * Main
@@ -287,6 +299,7 @@ html, button, input, select, textarea {
 	background-color: #fff;
 	padding: 20px;
 }
+
 /*
  * Footer
  */
@@ -415,6 +428,14 @@ html, button, input, select, textarea {
 	background-color: #fff;
 	padding: 20px;
 	font-size: 13px;
+	padding-bottom: 10px;
+}
+#contact-info .info .content .fll{
+	margin-top: 10px;
+}
+#contact-info .info .content .fll + .fll{
+	margin-left: 15px;
+	margin-top: 13px;
 }
 #contact-info .info .content p{
 	margin-bottom: 5px;
@@ -486,4 +507,210 @@ html, button, input, select, textarea {
 }
 #footer-menu .social-links a.twitter{
 	background-image: url('../images/socials/twitter.png');
+}
+
+/*
+ * HOMEPAGE BLOCK
+ */
+#tab-content{
+	width: 880px;
+	border-bottom: solid 5px #bababb;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	overflow: hidden;
+}
+#tab-content-location{
+	position: relative;
+	background-color: #dae0e6;
+}
+#tab-content-location img.map{
+	display: none;
+	position: absolute;
+}
+#tab-content-location img.map.show{
+	display: block!important;
+}
+#tab-content-location img.map:hover{
+	cursor: pointer;
+}
+#tab-content-location img.vn{
+	top: 317px;
+	left: 102px;
+}
+#tab-content-location img.jp{
+	top: 47px;
+	left: 430px;
+}
+#tab-content-location img.id{
+	top: 539px;
+	left: 12px;
+}
+#tab-content-location .location{
+	position: absolute;
+	height: 100%;
+	width: 160px;
+	top: 0;
+	right: 0;
+	padding: 0 10px;
+	background-color: #fff;
+}
+#tab-content-location .location >div{
+	margin-top: 45px;
+}
+#tab-content-location .location h3 a{
+	color: #000;
+	font-weight: bold;
+	text-decoration: underline;
+}
+#tab-content-location .location h3{
+	padding-left: 25px;
+}
+#tab-content-location .location .vietnam h3{
+	background: url('../images/country/vietnam.png') left center no-repeat;
+}
+#tab-content-location .location .japan h3{
+	background: url('../images/country/japan.png') left center no-repeat;
+}
+#tab-content-location .location .indonesia h3{
+	background: url('../images/country/indonesia.png') left center no-repeat;
+}
+#tab-content-location .location ul li:before{
+	content: ">";
+	color: #d76f2c;
+	font-weight: bold;
+	margin-left: 10px;
+	margin-right: 2px;
+}
+#tab-content-location .location ul li a{
+	color: #636466;
+	text-decoration: underline;
+}
+#tab-content-location .location a:hover{
+	color: #4571EB;
+}
+#tab-control .tab{
+	color: #fff;
+	font-weight: bold;
+	background-color: #4571EB;
+	padding: 15px 40px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	font-size: 19px;
+}
+#tab-control .tab:hover{
+	cursor: pointer;
+	color: #fff;
+	background-color: #86a3f2;
+}
+#tab-control .tab+.tab{
+	margin-left: 8px;
+}
+#tab-control .tab.active{
+	color: #636466;
+	background-color: #F8F8F8;
+}
+#tab-content-category{
+	padding: 30px;
+	background-color: #fff;
+}
+#tab-content-category h5{
+	font-weight: bold;
+	font-size: 21px;
+	padding-bottom: 5px;
+	border-bottom: solid 2px #4571EB;
+	padding-left: 10px;
+	margin-bottom: 15px;
+}
+#tab-content-category .left{
+	margin-left: 10px;
+}
+#tab-content-category div.parent a.parent{
+	color: #272525;
+	font-weight: bold;
+	font-size: 15px;
+	text-decoration: none;
+}
+#tab-content-category div.parent ul li a{
+	color: #636466;
+	text-decoration: none;
+	font-size: 13px;
+	letter-spacing: -1px;
+}
+#tab-content-category a:hover{
+	color: #4571EB!important;
+	text-decoration: underline!important;
+}
+#tab-content-category .function .mid{
+	margin-left: 152px;
+	margin-right: 50px;
+}
+#tab-content-category .industry .mid{
+	margin-left: 50px;
+	margin-right: 30px;
+}
+#tab-content-category .group-category+.group-category{
+	margin-top: 50px;
+}
+#tab-content-category div.parent+div.parent{
+	margin-top: 60px;
+}
+#tab-content-language{
+	padding: 40px;
+	background-color: #f8f8f8;
+}
+#tab-content-language ul li{
+	display: inline-block;
+	width: 20%;
+	padding-left: 30px;
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	margin-top: 15px;
+}
+#tab-content-language ul li.vietnamese{
+	background-image: url('../images/language/vietnamese.png');
+}
+#tab-content-language ul li.japanese{
+	background-image: url('../images/language/japanese.png');
+}
+#tab-content-language ul li.english{
+	background-image: url('../images/language/english.png');
+}
+#tab-content-language ul li.chinese{
+	background-image: url('../images/language/chinese.png');
+}
+#tab-content-language ul li.korean{
+	background-image: url('../images/language/korean.png');
+}
+#tab-content-language ul li.thai{
+	background-image: url('../images/language/thai.png');
+}
+#tab-content-language ul li.indonesian{
+	background-image: url('../images/language/indonesian.png');
+}
+#tab-content-language ul li.malay{
+	background-image: url('../images/language/malay.png');
+}
+#tab-content-language ul li.tagalog{
+	background-image: url('../images/language/tagalog.png');
+}
+#tab-content-language ul li.khmer{
+	background-image: url('../images/language/khmer.png');
+}
+#tab-content-language ul li.hindi{
+	background-image: url('../images/language/hindi.png');
+}
+#tab-content-language ul li.bengali{
+	background-image: url('../images/language/bengali.png');
+}
+#tab-content-language ul li.burmese{
+	background-image: url('../images/language/burmese.png');
+}
+#tab-content-language ul li a{
+	color: #636466;
+	text-decoration: none;
+}
+#tab-content-language ul li a:hover{
+	color: #000;
+	text-decoration: underline;
 }

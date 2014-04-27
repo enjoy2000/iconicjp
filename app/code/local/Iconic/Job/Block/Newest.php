@@ -18,8 +18,12 @@ class Iconic_Job_Block_Newest extends Mage_Core_Block_Template
 		$this->setIndustryCollection($industryCategory);
 		$this->setFunctionCollection($functionCategory);
 		
-		//set job level to view
-		$jobLevel = Mage::getModel('job/level')->getCollection();
-		$this->setJobLevel($jobLevel);
+		//set Country to view
+		$country = Mage::getModel('job/country')->getCollection();
+		$this->setCountryCollection($country);
+		
+		//set job language to view
+		$lang = Mage::getModel('job/language')->getCollection();
+		$this->setLanguageCollection($lang);
 	}
 }

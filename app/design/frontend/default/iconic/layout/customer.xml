@@ -120,8 +120,11 @@ New customer registration
         <remove name="left"/>
 
         <reference name="root">
-            <action method="setTemplate"><template>page/1column.phtml</template></action>
+            <action method="setTemplate"><template>page/short.phtml</template></action>
         </reference>
+        <reference name="head">          	
+             <action method="addCss"><stylesheet>css/user.css</stylesheet></action>
+		</reference>
         <reference name="content">
             <block type="customer/form_register" name="customer_form_register" template="customer/form/register.phtml">
                 <block type="page/html_wrapper" name="customer.form.register.fields.before" as="form_fields_before" translate="label">

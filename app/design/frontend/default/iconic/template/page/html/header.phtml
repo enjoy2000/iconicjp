@@ -97,16 +97,6 @@
 		</div><!-- End Header Menu -->
 	</div>
 	
-	<!-- Breadcrumb 
-	<?php if($this->getChildHtml('breadcrumbs')): ?>
-	<div id="breadcrumbs">
-		<div class="wrapper">
-    		<?php echo $this->getChildHtml('breadcrumbs') ?>
-    	</div>
-	</div>
-	<?php endif; ?>
-	<!-- End Breadcrumb -->
-	
 	<!-- Header Landing -->
 	<div id="header-landing">
 		<div id="ajax-load">
@@ -178,3 +168,22 @@
 		</div>
 	</div><!-- End Search Block -->
 </header>
+
+
+	<!-- Breadcrumb -->
+	<?php if($this->getChildHtml('breadcrumbs')): ?>
+	<div id="breadcrumbs">
+		<div class="wrapper">
+    		<?php echo $this->getChildHtml('breadcrumbs') ?>
+    	</div>
+	</div>
+	<?php endif; ?>
+	<!-- End Breadcrumb -->
+<?php if(strpos($bodyclass, 'cms-index-index')): ?>
+<style>
+	#main .main{
+		background-color: transparent!important;
+		padding: 0!important;
+	}
+</style>
+<?php endif; ?>

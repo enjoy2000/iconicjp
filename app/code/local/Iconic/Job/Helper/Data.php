@@ -186,7 +186,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		return $str;
 	}
 	
-	function writeExcel($fileName, $arrData){
+	public function writeExcel($fileName, $arrData){
 		//Create new PHPExcel object
 		$objPHPExcel = new PHPExcel();
 		//$objReader = PHPExcel_IOFactory::createReader('Excel2007');
@@ -206,6 +206,15 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		}
 		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 		$objWriter->save($fileName);
+	}
+
+	public function getTransName($obj){
+		$storeCode = Mage::app()->getStore()->getCode();
+		if($storeCode == 'jp'){
+			return $obj->getName();
+		}else{
+			return $obj->getNameEn();
+		}
 	}
 }
 	

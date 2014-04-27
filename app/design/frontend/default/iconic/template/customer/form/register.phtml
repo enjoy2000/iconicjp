@@ -46,7 +46,7 @@
                     <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
                 </li>
                 <li>
-                    <div class="input-box">
+                    <div class="input-box field">
                         <input required placeholder="<?php echo $this->__('ユーザー(メールアドレス)') ?>" type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('ユーザー(メールアドレス)') ?>" class="input-text validate-email required-entry" />
                     </div>
                 </li>
@@ -174,21 +174,40 @@
                             </select>
                         </div>
                     </div>
+                    <div class="field">
+                    	<div class="inline">
+                    		<?php echo $this->__('ニュースレター ') ?>:
+                    	</div>
+                    	<div class="inline">
+                    		<input checked type="radio" name="newsletter" value="1" />
+                    		<?php echo $this->__('登録する ') ?>
+                    	</div>
+                    	<div class="inline">
+                    		<input type="radio" name="newsletter" value="0" />
+                    		<?php echo $this->__('登録しない ') ?>
+                    	</div>
+                    </div>
                 </li>
             </ul>
         </div>
         <div class="buttons-set">
-            <button type="submit" title="<?php echo $this->__('Đăng ký') ?>" class="btn button-blue button"><span><span><?php echo $this->__('Đăng ký') ?></span></span></button>
+            <button type="submit" title="<?php echo $this->__('登録') ?>" class="btn button-blue button"><span><span><?php echo $this->__('登録') ?></span></span></button>
         </div>
         <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
             <input name="context" type="hidden" value="checkout" />
         <?php endif; ?>
     </form>
 </div>
-<?php if($this->getFormData()->getSex()): ?>
 <script>
 	jQuery(document).ready(function(){
-		jQuery('select').css('color','black');
+		jQuery('input, select').on('change', function(){
+			if(jQuery(this).val != ''){
+				jQuery(this).addClass('after-input');
+			}else{
+				jQuery(this).removeClass('after-input');
+			}
+		});
 	});
 </script>
+<?php if($this->getFormData()->getSex()): ?>
 <?php endif; ?>

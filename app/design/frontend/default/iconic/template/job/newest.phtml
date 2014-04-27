@@ -1,176 +1,237 @@
-<div id="newest-block" class="fll width-65">
+<div id="newest-block">
 	<!-- Tab Control -->
 	<div id="tab-control" class="clearfix">
-		<div data-tab="newest-jobs" class="tab fll width-40 first newest-jobs active">
-			<span><?php echo $this->__('Việc làm mới nhất') ?></span>
+		<div data-tab="map" class="tab fll first map active">
+			<span><?php echo $this->__('国から探す') ?></span>
 		</div>
-		<div data-tab="category" class="tab flr width-40 last catgory">
-			<span><?php echo $this->__('Ngành nghề') ?></span>
+		<div data-tab="category" class="tab fll mid catgory">
+			<span><?php echo $this->__('業界・職種から探す') ?></span>
+		</div>
+		<div data-tab="language" class="tab fll last language">
+			<span><?php echo $this->__('言語から探す') ?></span>
 		</div>
 	</div>
 	
 	<!-- Tab Content -->
 	<div id="tab-content">
 		<!-- Content for newest-jobs -->
-		<div id="tab-content-newest-jobs" class="tab-content newest-jobs">
-			<?php $i=1; foreach($this->getJobCollection() as $job): ?>
-				<div class="job inline-b width-45 <?php echo ($i%2==0) ? 'right' : 'left' ?>">
-					<div class="job-wrapper">
-						<?php echo Mage::helper('job')->renderJob($job) ?>
-					</div>
+		<div id="tab-content-location" class="tab-content map">
+			<img id="world-map" src="<?php echo $this->getSkinUrl('images/map.png') ?>" border="0" width="749" height="754" orgWidth="749" orgHeight="754" usemap="#image-maps" alt="" />
+			<map name="image-maps" id="world-map">
+			<area shape="rect" coords="747,752,749,754" alt="Image Map" style="outline:none;" title="Image Map" href="#" />
+			<area onmouseover="jQuery('img.vn').show();" onmouseout="jQuery('img.vn').hide();" alt="" title="VN" href="#" shape="poly" coords="103,328,107,326,115,327,119,323,128,324,139,316,150,321,162,324,164,333,175,336,172,351,159,361,153,373,161,385,173,402,191,426,197,470,169,489,139,511,133,494,134,490,144,479,154,478,149,470,165,462,164,429,159,410,136,381,124,374,125,362,108,351" style="outline:none;" target="_self"  />
+			<area onmouseover="jQuery('img.jp').show();" onmouseout="jQuery('img.jp').hide();"  alt="" title="JP" href="#" shape="poly" coords="427,240,432,208,451,198,485,192,502,191,521,169,532,153,548,145,553,123,552,97,566,75,567,52,572,39,602,51,609,65,632,65,645,80,602,105,577,102,587,121,589,159,580,171,574,184,572,202,531,222,500,241,479,241,469,251,456,267,447,272,438,255,438,243" style="outline:none;" target="_self"  />
+			<area onmouseover="jQuery('img.id').show();" onmouseout="jQuery('img.id').hide();"  alt="" title="ID" href="#" shape="poly" coords="9,539,31,538,55,550,77,573,115,595,133,620,134,634,154,621,175,616,180,591,191,588,210,596,231,586,247,592,265,566,268,555,295,557,302,578,313,594,338,591,366,591,392,588,423,578,437,580,437,597,460,601,492,614,529,617,553,629,584,640,584,725,534,727,522,706,486,712,415,730,359,756,309,746,263,726,189,714,136,703,91,657,61,641,26,590,18,565" style="outline:none;" target="_self"  />
+			</map>
+			<img data-class="vietnam" onmouseover="jQuery('img.vn').show();" onmouseout="jQuery('img.vn').hide();" title="<?php echo $this->__('ベトナム') ?>" class="map vn" src="<?php echo $this->getSkinUrl('images/vn-map.png') ?>" alt="Vietnam Map" />
+			<img data-class="japan" onmouseover="jQuery('img.jp').show();" onmouseout="jQuery('img.jp').hide();" title="<?php echo $this->__('日本') ?>" class="map jp" src="<?php echo $this->getSkinUrl('images/jp-map.png') ?>" alt="Japan Map" />
+			<img data-class="indonesia" onmouseover="jQuery('img.id').show();" onmouseout="jQuery('img.id').hide();" title="<?php echo $this->__('インドネシア') ?>" class="map id" src="<?php echo $this->getSkinUrl('images/id-map.png') ?>" alt="Indonesia Map" />
+			
+			<div class="location">
+				<?php foreach($this->getCountryCollection() as $country): ?>
+				<div class="country <?php echo strtolower($country->getNameEn()) ?>">
+					<h3><a href="<?php echo $country->getUrl() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></a></h3>
+					<ul>
+						<?php $locations = Mage::getModel('job/location')->getCollection()->addFieldToFilter('country_id', array('eq'=>$country->getId())); ?>
+						<?php foreach($locations as $location): ?>
+						<li><a href="<?php echo $location->getUrl() ?>"><?php echo Mage::helper('job')->getTransName($location) ?></a></li>
+						<?php endforeach; ?>
+					</ul>
 				</div>
-				<?php if($i%2 ==0 && $i < count($this->getJobCollection())): ?>
-					<hr class="job-line"/>
-				<?php endif; ?>
-			<?php $i++; endforeach; ?>
+				<?php endforeach; ?>
+			</div>
 		</div>
 		
 		<!-- Content for category -->
 		<div style="display: none;" id="tab-content-category" class="tab-content category">
-			<!-- Industry Category -->
-			<div class="group-category clearfix industry">
-				<h5><?php echo $this->__('Tìm việc theo ngành nghề') ?></h5>
-				<div class="list-category">
-					<div class="fll width-45">
-					<?php						
-						$ins = 0;
-						foreach($this->getIndustryCollection() as $parent):
-						$subCat = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id',array('eq'=>$parent->getParentcategoryId()));
-					?>
-						<?php if($ins < $this->getIndustryCollection()->count()/2): ?>
-						<div class="parent <?php echo ($subCat->count() > 0) ? 'has-child' : '' ?>">
-							<a href="<?php echo $parent->getUrl() ?>" title="<?php echo $parent->getName() ?>"><?php echo $parent->getName(); ?> <span>(<?php echo $parent->getCount() ?>)</span></a>
-							<?php if($subCat->count() > 0): ?>
-							<ul>
-								<?php foreach($subCat as $cat): ?>
-									<li>
-										<a href="<?php echo $cat->getUrl() ?>" title="<?php echo $cat->getName() ?>">
-											<?php echo $cat->getName() ?> <span>(<?php echo $cat->getCount() ?>)</span>
-										</a>
-									</li>
-								<?php endforeach; ?>
-							</ul>
-							<?php endif; ?>
-						</div>
-						<?php endif; ?>
-					<?php $ins++; endforeach; ?>
-					</div>
-					<div class="flr width-45">
-					<?php						
-						$ins = 0;
-						foreach($this->getIndustryCollection() as $parent):
-						$subCat = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id',array('eq'=>$parent->getParentcategoryId()));
-					?>
-						<?php if($ins >= $this->getIndustryCollection()->count()/2): ?>
-						<div class="parent <?php echo ($subCat->count() > 0) ? 'has-child' : '' ?>">
-							<a href="<?php echo $parent->getUrl() ?>" title="<?php echo $parent->getName() ?>"><?php echo $parent->getName(); ?> <span>(<?php echo $parent->getCount() ?>)</span></a>
-							<?php if($subCat->count() > 0): ?>
-							<ul>
-								<?php foreach($subCat as $cat): ?>
-									<li>
-										<a href="<?php echo $cat->getUrl() ?>" title="<?php echo $cat->getName() ?>">
-											<?php echo $cat->getName() ?> <span>(<?php echo $cat->getCount() ?>)</span>
-										</a>
-									</li>
-								<?php endforeach; ?>
-							</ul>
-							<?php endif; ?>
-						</div>
-						<?php endif; ?>
-					<?php $ins++; endforeach; ?>
-					</div>
-				</div>
-			</div>
-			<hr class="line"/>
-			
 			<!-- Function Category -->
 			<div class="group-category clearfix function">
-				<h5><?php echo $this->__('Tìm việc theo chức năng') ?></h5>
+				<h5><?php echo $this->__('職種から探す') ?></h5>
 				<div class="list-category">
-					<div class="fll width-45">
-					<?php						
-						$func = 0;
-						foreach($this->getFunctionCollection() as $parent):
-						$subCat = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id',array('eq'=>$parent->getParentcategoryId()));
-					?>
-						<?php if($func < $this->getFunctionCollection()->count()/2): ?>
-						<div class="parent <?php echo ($subCat->count() > 0) ? 'has-child' : '' ?>">
-							<a href="<?php echo $parent->getUrl() ?>" title="<?php echo $parent->getName() ?>"><?php echo $parent->getName(); ?> <span>(<?php echo $parent->getCount() ?>)</span></a>
-							<?php if($subCat->count() > 0): ?>
-							<ul>
-								<?php foreach($subCat as $cat): ?>
-									<li>
-										<a href="<?php echo $cat->getUrl() ?>" title="<?php echo $cat->getName() ?>">
-											<?php echo $cat->getName() ?> <span>(<?php echo $cat->getCount() ?>)</span>
-										</a>
-									</li>
-								<?php endforeach; ?>
-							</ul>
-							<?php endif; ?>
-						</div>
-						<?php endif; ?>
-					<?php $func++; endforeach; ?>
+					<?php $functionsCat = clone $this->getFunctionCollection(); ?>
+					<?php $leftFunction = $functionsCat->clear()->setPageSize(2)->setCurPage(1)->load(); ?>
+					<div class="left fll">
+						<?php foreach($leftFunction as $parent): ?>
+							<div class="parent">
+								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
+									<?php echo Mage::helper('job')->getTransName($parent) ?>
+								</a>
+								<ul>
+									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
+									<?php foreach($categories as $cat): ?>
+										<li>
+											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
+												<?php echo Mage::helper('job')->getTransName($cat) ?>
+											</a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+						<?php endforeach; ?>
 					</div>
-					<div class="flr width-45">
-					<?php						
-						$func = 0;
-						foreach($this->getFunctionCollection() as $parent):
-						$subCat = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id',array('eq'=>$parent->getParentcategoryId()));
-					?>
-						<?php if($func >= $this->getFunctionCollection()->count()/2): ?>
-						<div class="parent <?php echo ($subCat->count() > 0) ? 'has-child' : '' ?>">
-							<a href="<?php echo $parent->getUrl() ?>" title="<?php echo $parent->getName() ?>"><?php echo $parent->getName(); ?> <span>(<?php echo $parent->getCount() ?>)</span></a>
-							<?php if($subCat->count() > 0): ?>
-							<ul>
-								<?php foreach($subCat as $cat): ?>
-									<li>
-										<a href="<?php echo $cat->getUrl() ?>" title="<?php echo $cat->getName() ?>">
-											<?php echo $cat->getName() ?> <span>(<?php echo $cat->getCount() ?>)</span>
-										</a>
-									</li>
-								<?php endforeach; ?>
-							</ul>
-							<?php endif; ?>
-						</div>
-						<?php endif; ?>
-					<?php $func++; endforeach; ?>
+					
+					<?php $midFunction = $functionsCat->clear()->setPageSize(2)->setCurPage(2)->load(); ?>
+					<div class="mid fll">
+						<?php foreach($midFunction as $parent): ?>
+							<div class="parent">
+								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
+									<?php echo Mage::helper('job')->getTransName($parent) ?>
+								</a>
+								<ul>
+									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
+									<?php foreach($categories as $cat): ?>
+										<li>
+											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
+												<?php echo Mage::helper('job')->getTransName($cat) ?>
+											</a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+						<?php endforeach; ?>
+					</div>
+					
+					<?php $rightFunction = $functionsCat->clear()->setPageSize(2)->setCurPage(3)->load(); ?>
+					<div class="right fll">
+						<?php foreach($rightFunction as $parent): ?>
+							<div class="parent">
+								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
+									<?php echo Mage::helper('job')->getTransName($parent) ?>
+								</a>
+								<ul>
+									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
+									<?php foreach($categories as $cat): ?>
+										<li>
+											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
+												<?php echo Mage::helper('job')->getTransName($cat) ?>
+											</a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>
-			<hr class="line"/>
 			
-			<!-- Job Level -->
-			<div class="group-category clearfix job-level">
-				<h5><?php echo $this->__('Tìm việc theo đối tượng') ?></h5>
+			<!-- Industry Category -->
+			<div class="group-category clearfix industry">
+				<h5><?php echo $this->__('業界から探す') ?></h5>
 				<div class="list-category">
-					<div class="fll width-45">
-					<?php						
-						$lev = 0;
-						foreach($this->getJobLevel() as $parent):
-						$subCat = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id',array('eq'=>$parent->getParentcategoryId()));
-					?>
-						<?php if($lev < $this->getJobLevel()->count()/2): ?>
-						<div class="parent">
-							<a href="<?php echo Mage::getBaseUrl().Mage::helper('job')->getSearchUrl().'?level='.$parent->getId() ?>" title="<?php echo $parent->getName() ?>"><?php echo $parent->getName(); ?> <span>(<?php echo $parent->getCount() ?>)</span></a>
-						</div>
-						<?php endif; ?>
-					<?php $lev++; endforeach; ?>
+					<?php $industry = $this->getIndustryCollection(); ?>
+					<div class="left fll">
+						<?php $i=1;foreach($industry as $parent): ?>
+							<?php if($i > 0 && $i < 6): ?>
+							<div class="parent">
+								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
+									<?php echo Mage::helper('job')->getTransName($parent) ?>
+								</a>
+								<ul>
+									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
+									<?php foreach($categories as $cat): ?>
+										<li>
+											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
+												<?php echo Mage::helper('job')->getTransName($cat) ?>
+											</a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+							<?php endif; ?>
+						<?php $i++;endforeach; ?>
 					</div>
-					<div class="flr width-45">
-					<?php						
-						$lev = 0;
-						foreach($this->getJobLevel() as $parent):
-						$subCat = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id',array('eq'=>$parent->getParentcategoryId()));
-					?>
-						<?php if($lev >= $this->getJobLevel()->count()/2): ?>
-						<div class="parent">
-							<a href="<?php echo Mage::getBaseUrl().Mage::helper('job')->getSearchUrl().'?level='.$parent->getId() ?>" title="<?php echo $parent->getName() ?>"><?php echo $parent->getName(); ?> <span>(<?php echo $parent->getCount() ?>)</span></a>
-						</div>
-						<?php endif; ?>
-					<?php $lev++; endforeach; ?>
+					
+					<div class="mid fll">
+						<?php $i=1;foreach($industry as $parent): ?>
+							<?php if($i > 5 && $i < 8): ?>
+							<div class="parent">
+								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
+									<?php echo Mage::helper('job')->getTransName($parent) ?>
+								</a>
+								<ul>
+									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
+									<?php foreach($categories as $cat): ?>
+										<li>
+											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
+												<?php echo Mage::helper('job')->getTransName($cat) ?>
+											</a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+							<?php endif; ?>
+						<?php $i++;endforeach; ?>
+					</div>
+					
+					<div class="right fll">
+						<?php $i=1;foreach($industry as $parent): ?>
+							<?php if($i > 7): ?>
+							<div class="parent">
+								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
+									<?php echo Mage::helper('job')->getTransName($parent) ?>
+								</a>
+								<ul>
+									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
+									<?php foreach($categories as $cat): ?>
+										<li>
+											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
+												<?php echo Mage::helper('job')->getTransName($cat) ?>
+											</a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+							<?php endif; ?>
+						<?php $i++;endforeach; ?>
 					</div>
 				</div>
+				</div>
+			</div>
+			
+			<!-- Content for Language Tab -->
+			<div style="display: none" id="tab-content-language" class="tab-content language">
+				<?php $languages = $this->getLanguageCollection(); ?>
+				<ul>
+				<?php foreach($languages as $lang): ?>
+					<li class="<?php echo strtolower($lang->getNameEn()) ?>">
+						<a href="<?php echo $lang->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($lang) ?>">
+							<?php echo Mage::helper('job')->getTransName($lang) ?>
+						</a>
+					</li>
+				<?php endforeach; ?>
+				</ul>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+(function($){
+	$(document).ready(function(){
+		$('img.map').click(function(e){
+			e.preventDefault();
+			$('img.map').removeClass('show');
+			$(this).addClass('show');
+			$('.location > div').hide();
+			$('.location .'+$(this).data('class')).show();
+			$('.location').css('right', -160);
+			$('.location').stop().animate({right: 0}, 2000);
+			event.stopPropagation();
+		});
+		
+		$('#world-map').click(function() {
+			$('.location > div').show();
+			$('img.map').removeClass('show');
+			$('.location').css('right', -160);
+			$('.location').stop().animate({right: 0}, 2000);
+		});
+		
+		$('#tab-control .tab').click(function(e){
+			e.preventDefault();
+			$('.tab').removeClass('active');
+			$(this).addClass('active');
+			$('.tab-content').fadeOut(200);
+			$('.tab-content.'+$(this).data('tab')).fadeIn(200);
+		});
+	});
+})(jQuery)
+</script>
