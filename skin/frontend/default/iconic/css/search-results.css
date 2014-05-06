@@ -50,3 +50,23 @@
 .info-search .amount span{
 	color: #f58220;
 }
+.pager{
+	text-align: center;
+}
+.pager ul li a{
+	padding: 3px 10px;
+	border-radius: 3px;
+	border: solid 1px #4571EB;
+	color: #4571EB;
+	background-color: #fff;
+}
+.pager ul li span{
+	background-color: #4571EB;
+	color: #fff;
+}
+.no-results{
+	margin-top: 20px;
+}
+.no-results .fll.text{
+	margin-left: 10px;
+}

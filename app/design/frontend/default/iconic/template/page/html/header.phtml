@@ -39,20 +39,30 @@
 					</a>
 				</div><!-- End Logo -->
 				
+				<!-- Switch languages
+				<div id="switch-languages">
+					<ul>
+						<li>
+							<a href="<?php echo Mage::getBaseUrl() ?>" title="Japanese">
+								<img src="<?php echo $this->getSkinUrl('images/language/japanese.png') ?>" alt="Japanese" />
+							</a>
+						</li>
+						<li>
+							<a href="<?php echo Mage::getBaseUrl().'en/' ?>" title="English">
+								<img src="<?php echo $this->getSkinUrl('images/language/english.png') ?>" alt="English" />
+							</a>
+						</li>
+					</ul>
+				</div><!-- End Switch Languages -->
+				
 				<!-- Menu -->
 				<div id="menu" class="flr">
 					<?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
 					<ul>
-						<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
-							<a href="/"><?php echo $this->__('オンラインサポート') ?></a>
-						</li>
-						<li class="border <?php echo strpos($bodyclass, 'cms-nguoi-tim-viec') ? 'current-menu-item' : ''  ?>">
+						<li class="border">
 							<a href="/nguoi-tim-viec"><?php echo $this->__('お問い合わせ') ?></a>
 						</li>
-						<li class="<?php echo strpos($bodyclass, 'cms-nha-tuyen-dung') ? 'current-menu-item' : ''  ?>">
-							<a href="/nha-tuyen-dung"><?php echo $this->__('求職登録') ?></a>
-						</li>
-						<li class="border <?php echo strpos($bodyclass, 'clnews') ? 'current-menu-item' : ''  ?>">
+						<li class="border">
 							<a href="/blog"><?php echo $this->__('転職支援サービスに申し込む') ?></a>
 						</li>
 					</ul>

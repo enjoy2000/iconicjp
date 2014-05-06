@@ -51,9 +51,7 @@
 			<span><?php echo Mage::getModel('job/category')->load($this->getFunctionCategory())->getName() ?></span>
 		</div>
 		<?php endif; ?>
-		
 		<p>
-			<?php echo $this->__('Hiển thị <span>%s</span> việc làm', $this->getResults()->count()) ?>
 		</p>
 	</div>
 	<div class="results">
@@ -108,7 +106,7 @@
 		<?php else: ?>
 			<div class="no-results clearfix">
 				<img class="fll" src="<?php echo $this->getSkinUrl('images/no-results.png') ?>" alt="" />
-				<span class="fll text"><?php echo $this->__('Không tìm thấy việc làm phù hợp. Bạn vui lòng thử lại.') ?></span>
+				<span class="fll text"><?php echo $this->__('該当する条件の求人情報が見つかりませんでした。・検索条件を変えて再度求人検索してください。') ?></span>
 			</div>
 		<?php endif; ?>
 	</div>

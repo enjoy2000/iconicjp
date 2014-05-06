@@ -100,35 +100,6 @@ class CommerceLab_News_Block_Adminhtml_News_Edit_Tab_Info extends Mage_Adminhtml
                             ->addFieldToFilter('news_id', $this->getRequest()->getParam('id'));
         
         $data = Mage::registry('clnews_data');
-        if ($data && (($data->getImageShortContent() == $data->getImageFullContent()) || $data->getImageShortContent() == '' || !$data->getImageShortContent())) {
-            $fieldset->addField('use_full_img', 'checkbox', array(
-                'label'     => Mage::helper('clnews')->__('Use Full Description Image'),
-                'required'  => false,
-                'name'      => 'use_full_img',
-                'onclick'   => 'checkboxSwitch();',
-                'checked'   => true,
-            ));
-            $fieldset->addField('image_short_content', 'image', array(
-                'label'     => Mage::helper('clnews')->__('Image for Short Description'),
-                'required'  => false,
-                'name'      => 'image_short_content',
-                'after_element_html' => '<script type="text/javascript">jQuery("#image_short_content").parent().parent().css("display","none");</script>',
-            ));
-
-        } else {
-            $fieldset->addField('use_full_img', 'checkbox', array(
-                'label'     => Mage::helper('clnews')->__('Use Full Description Image'),
-                'required'  => false,
-                'name'      => 'use_full_img',
-                'onclick'   => 'checkboxSwitch();'
-            ));
-
-            $fieldset->addField('image_short_content', 'image', array(
-                'label'     => Mage::helper('clnews')->__('Image for Short Description'),
-                'required'  => true,
-                'name'      => 'image_short_content',
-            ));
-        }
 
         $fieldset->addField('short_content', 'editor', array(
             'name'      => 'short_content',

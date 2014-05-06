@@ -39,12 +39,12 @@ body.short #main .main{
 	margin-right: 20px;
 	margin-top: 30px;
 }
-#header-logo ul li a{
+#header-logo #menu ul li a{
 	color: #b5c6f7;
 	font-weight: bold;
 	margin-left: 50px;
 }
-#header-logo ul li.border a{
+#header-logo #menu ul li.border a{
 	padding: 3px 10px;
 	border: solid 3px #B5C6F7;
 	margin-left: 15px;
@@ -54,9 +54,17 @@ body.short #main .main{
 	-o-transition: color 200ms,background-color 200ms;
 	transition: color 200ms,background-color 200ms;
 }
-#header-logo ul li.border a:hover{
+#header-logo #menu ul li.border a:hover{
 	background-color: #b5c6f7;
 	color: #4571EB;
+}
+#header-logo #switch-languages{
+	float: right;
+	margin-top: 30px;
+	margin-right: 20px;
+}
+#header-logo #switch-languages ul li{
+	display: inline;
 }
 #header-menu{
 	background-color: #b5c6f7;
@@ -67,7 +75,7 @@ body.short #main .main{
 #header-menu ul{
 	padding: 0 20px;
 }
-#header-logo ul li, #header-menu ul li{
+#header-logo #menu ul li, #header-menu ul li{
 	display: inline;
 	font-size: 14px;
 }
@@ -336,10 +344,7 @@ body.short #main .main{
 #blog-news .news .content{
 	height: 280px;
 	margin-top: 30px;
-	overflow-y:scroll;
-}
-#blog-news .news .content .inside{
-	height: 400px;
+	overflow-y: auto;
 }
 #blog-news .countries .content{
 	margin-top: 10px;
@@ -724,4 +729,12 @@ body.short #main .main{
 }
 #breadcrumbs span{
 	color: #f58220;
+}
+#news-scroll .item-content .date{
+	font-weight: bold;
+	color: #000;
+}
+#news-scroll .item-content a:hover,
+#news-scroll .item-content a:hover .date{
+	color: #4571EB;
 }
