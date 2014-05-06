@@ -5,10 +5,10 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 	public function indexAction(){        
 		$this->loadLayout();
        	$this->getLayout()->getBlock('head')->setTitle($this->__('Jobs Board For IconicVN')); 
-		$locations = Mage::getModel('job/location')->getCollection();
-		foreach($locations as $loc){
-			$urlkey = Mage::helper('job')->formatUrlKey($loc->getNameEn());
-			$loc->setUrlKey($urlkey)->save();
+		$parents = Mage::getModel('job/parentcategory')->getCollection();
+		foreach($parents as $parent){
+			$urlkey = Mage::helper('job')->formatUrlKey($parent->getNameEn());
+			$parent->setUrlKey($urlkey)->save();
 			echo $urlkey . '<br />';
 		}
     }
