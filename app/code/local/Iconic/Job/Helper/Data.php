@@ -43,7 +43,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 	protected function _toSlugTransliterate($string) {
 	    // Lowercase equivalents found at:
 	    // https://github.com/kohana/core/blob/3.3/master/utf8/transliterate_to_ascii.php
-	    $lower = [
+	    $lower = array(
 	        'à'=>'a','ô'=>'o','d'=>'d','?'=>'f','ë'=>'e','š'=>'s','o'=>'o',
 	        'ß'=>'ss','a'=>'a','r'=>'r','?'=>'t','n'=>'n','a'=>'a','k'=>'k',
 	        's'=>'s','?'=>'y','n'=>'n','l'=>'l','h'=>'h','?'=>'p','ó'=>'o',
@@ -59,7 +59,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 	        'â'=>'a','l'=>'l','?'=>'w','z'=>'z','i'=>'i','ã'=>'a','g'=>'g',
 	        '?'=>'m','o'=>'o','i'=>'i','ù'=>'u','i'=>'i','z'=>'z','á'=>'a',
 	        'û'=>'u','þ'=>'th','ð'=>'dh','æ'=>'ae','µ'=>'u','e'=>'e','i'=>'i',
-	    ];
+	    );
 	    return str_replace(array_keys($lower), array_values($lower), $string);
 	}
 	

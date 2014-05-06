@@ -169,7 +169,28 @@ class Iconic_Job_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_Block_
 			),
             'value'		=> 'Gross',
         ));
-		
+		//job ammount
+		$fieldset->addField('amount', 'text', array(
+            'label'     => Mage::helper('job')->__('Job Amount'),
+            'class'     => 'required-entry',
+            'required'  => true,
+            'name'      => 'amount',
+        ));
+		//job language
+		$languages = Mage::getModel('job/language')->getCollection();
+		foreach($languages as $lang){
+			$arrayLang[] = array(
+							'label' => $lang->getName(),
+							'value' => $lang->getId(),
+			);
+		}
+		$fieldset->addField('language_id', 'select', array(
+            'label'     => Mage::helper('job')->__('Job Language'),
+            'class'     => 'required-entry',
+            'required'  => true,
+            'name'      => 'language_id',
+            'values'    => $arrayLang,
+        ));
 		//get type values
 		$typeModel = Mage::getModel('job/type')->getCollection();
 		foreach($typeModel as $type){
