@@ -267,5 +267,20 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 			return Mage::getBaseUrl().'en/';
 		}
 	}
+	
+	public function checkLogin(){
+		if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+			$session = Mage::getSingleton('customer/session');
+			Mage::getSingleton('core/session')->setShowLogin(1);
+            $session->setAfterAuthUrl( Mage::helper('core/url')->getCurrentUrl() );
+            $session->setBeforeAuthUrl( Mage::helper('core/url')->getCurrentUrl() );
+            $app = Mage::app()
+                ->getResponse()
+                ->setRedirect('/');
+            return $app;
+        }else{
+        	return;
+        }
+	}
 }
 	

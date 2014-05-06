@@ -6,23 +6,26 @@
 #job-title > span{
 	margin: 0 8px;
 }
+form#form-apply input,
+form#form-apply textarea{
+	border-color: #c6c7c9;
+	background-color: #e6e6e7;
+	border-radius: 4px;
+}
 form#form-apply input{
-	background-color: #fff;
-	color: #000;
 	font-weight: bold;
 }
 form#form-apply .row{
-	padding: 3px 20px;
+	padding: 3px 0px;
 }
 .row textarea{
-	width: 95%;
+	width: 99%;
 	height: 120px;
 }
 .row input[type="file"]{
-	width: 95%;
+	width: 96%;
 }
 .row .btn{
-	border: none;
 	padding: 5px;
 	width: 130px;
 	font-size: 20px;
@@ -31,7 +34,7 @@ form#form-apply .row{
 }
 .row a.btn{
 	display: inline-block;
-	padding: 9px;
+	padding: 5px;
 	color: #fff;
 	text-decoration: none;
 }
@@ -125,4 +128,17 @@ div#job-same-category a.view-more-category{
 }
 .apply-success-message .message > p+p{
 	margin-top: 15px;
+}
+.iconic-id{
+	padding: 3px 10px;
+	background-color: #c6c7c9;
+	color: #000;
+	display: inline-block;
+	margin-bottom: 5px;
+	margin-top: 20px;
+}
+h1{
+	color: #272525;
+	font-weight: bold;
+	font-size: 18px;
 }

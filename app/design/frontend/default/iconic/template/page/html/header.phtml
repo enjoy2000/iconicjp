@@ -167,3 +167,11 @@
 	}
 </style>
 <?php endif; ?>
+<?php if(!$this->helper('customer')->isLoggedIn() && (Mage::getSingleton('core/session')->getShowLogin() == 1)): ?>
+	<?php Mage::getSingleton('core/session')->setShowLogin(0);  ?>
+<script>
+jQuery(document).ready(function(){
+	showLogin();
+});
+</script>
+<?php endif; ?>

@@ -5,10 +5,10 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 	public function indexAction(){        
 		$this->loadLayout();
        	$this->getLayout()->getBlock('head')->setTitle($this->__('Jobs Board For IconicVN')); 
-		$parents = Mage::getModel('job/parentcategory')->getCollection();
-		foreach($parents as $parent){
-			$urlkey = Mage::helper('job')->formatUrlKey($parent->getNameEn());
-			$parent->setUrlKey($urlkey)->save();
+		$langs = Mage::getModel('job/language')->getCollection();
+		foreach($langs as $lang){
+			$urlkey = Mage::helper('job')->formatUrlKey($lang->getNameEn());
+			$lang->setUrlKey($urlkey)->save();
 			echo $urlkey . '<br />';
 		}
     }
@@ -75,9 +75,10 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		// redirect if user not login 
 		if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
             $session = Mage::getSingleton('customer/session');
+			Mage::getSingleton('core/session')->setShowLogin(1);
             $session->setAfterAuthUrl( Mage::helper('core/url')->getCurrentUrl() );
             $session->setBeforeAuthUrl( Mage::helper('core/url')->getCurrentUrl() );
-            $this->_redirect(Mage::helper('job')->getLoginUrl());
+            $this->_redirect('/');
             return $this;
         }
 		if($this->getRequest()->getPost()){
@@ -175,27 +176,35 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
                     $session->login($login['username'], $login['password']);
                     if ($session->getCustomer()->getIsJustConfirmed()) {
                     }
-					echo 1;
+					$status = true;
+					$message = $session->getAfterAuthUrl();
                 } catch (Mage_Core_Exception $e) {
                     switch ($e->getCode()) {
                         case Mage_Customer_Model_Customer::EXCEPTION_EMAIL_NOT_CONFIRMED:
                             $value = Mage::helper('customer')->getEmailConfirmationUrl($login['username']);
+                            $status = false;
                             $message = Mage::helper('customer')->__('This account is not confirmed. <a href="%s">Click here</a> to resend confirmation email.', $value);
                             break;
                         case Mage_Customer_Model_Customer::EXCEPTION_INVALID_EMAIL_OR_PASSWORD:
                             $message = $e->getMessage();
+                            $status = false;
                             break;
                         default:
                             $message = $e->getMessage();
+                            $status = false;
                     }
-                    echo $message;
                     $session->setUsername($login['username']);
                 } catch (Exception $e) {
+                	$message = $e;
+                    $status = false;
                     // Mage::logException($e); // PA DSS violation: this exception log can disclose customer password
                 }
             } else {
-                $session->addError($this->__('Login and password are required.'));
+                $status = false;
+                $message = $this->__('Login and password are required.');
             }
+			header('Content-Type: application/json');
+			echo json_encode(array('message' => $message, 'status' => $status));
         }
 	}
 

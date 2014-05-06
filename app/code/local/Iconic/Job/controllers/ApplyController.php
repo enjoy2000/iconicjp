@@ -8,9 +8,10 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 		// redirect if user not login 
 		if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
             $session = Mage::getSingleton('customer/session');
+			Mage::getSingleton('core/session')->setShowLogin(1);
             $session->setAfterAuthUrl( Mage::helper('core/url')->getCurrentUrl() );
             $session->setBeforeAuthUrl( Mage::helper('core/url')->getCurrentUrl() );
-            $this->_redirect(Mage::helper('job')->getLoginUrl());
+            $this->_redirect('/');
             return $this;
         }
 		
@@ -27,10 +28,9 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 		//set breadcrumbs		
 		$helper = Mage::helper('job');
 		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
-			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('Trang chủ'), 'title'=>$helper->__('Trang chủ'), 'link'=>Mage::getBaseUrl()));
-			$breadcrumbs->addCrumb('search_results', array('label'=>$helper->__('Kết quả tìm kiếm'), 'title'=>$helper->__('Kết quả tìm kiếm'), 'link'=>Mage::getUrl(Mage::helper('job')->getSearchUrl())));
-			$breadcrumbs->addCrumb('job_details', array('label'=>$helper->__('Chi tiết công việc'), $helper->__('Chi tiết công việc')));
-			$breadcrumbs->addCrumb('job_apply', array('label'=>$helper->__('Liên hệ ứng tuyển'), $helper->__('Liên hệ ứng tuyển')));
+			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム'), 'title'=>$helper->__('ホーム'), 'link'=>Mage::helper('job')->getBaseUrl()));
+			$breadcrumbs->addCrumb('search_results', array('label'=>$helper->__('コミュニケーション・メディ'), 'title'=>$helper->__('コミュニケーション・メディ'), 'link'=>Mage::getUrl(Mage::helper('job')->getSearchUrl())));
+			$breadcrumbs->addCrumb('job_apply', array('label'=>$helper->__('応募する | %s', $item->getTitle()), $helper->__('応募する | %s', $item->getTitle())));
 		}	
 		//set user
 		$user = Mage::getSingleton('customer/session')->getCustomer();
