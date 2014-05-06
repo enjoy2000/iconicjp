@@ -13,9 +13,9 @@ class Iconic_Job_SearchController extends Mage_Core_Controller_Front_Action{
 			$searchBlock->setCategory((int)$category);
 		}
 		
-		$location = $this->getRequest()->get("location");
-		if($location){
-			$searchBlock->setLocation((int)$location);
+		$language = $this->getRequest()->get("language");
+		if($language){
+			$searchBlock->setLanguage((int)$language);
 		}
 		
 		$level = $this->getRequest()->get("level");
@@ -44,8 +44,8 @@ class Iconic_Job_SearchController extends Mage_Core_Controller_Front_Action{
 	public function searchformAction(){
 		$request = $this->getRequest();
 		$url = Mage::helper('job')->getSearchUrl();
-		if($request->get('location')){
-			$url .= '/' . Mage::getModel('job/location')->load($request->get('location'))->getUrlKey();
+		if($request->get('language')){
+			$url .= '/' . Mage::getModel('job/language')->load($request->get('language'))->getUrlKey();
 		}
 		if($request->get('category')){
 			$url .= '/' . Mage::getModel('job/category')->load($request->get('category'))->getUrlKey();
@@ -54,13 +54,18 @@ class Iconic_Job_SearchController extends Mage_Core_Controller_Front_Action{
 			$url .= '/' . Mage::getModel('job/category')->load($request->get('function_category'))->getUrlKey();
 		}
 		if($request->get('q')){
-			$url .= '/' . Mage::helper('job')->formatUrlKey($request->get('q'));
+			$url .= '/' . Mage::helper('job')->formatUrlKeyJp($request->get('q'));
 			Mage::getSingleton('core/session')->setKeywordSearch($request->get('q'));
 		}else{
 			Mage::getSingleton('core/session')->unsKeywordSearch();
 		}
 		$url .= '/';
-		$base = Mage::getBaseUrl();
+		if(Mage::app()->getStore()->getCode() == 'jp'){
+			$base = Mage::getBaseUrl();
+		}else{
+			$base = Mage::getBaseUrl().'en/';
+		}
+		
 		$url = $base.$url;
 		header("Location: {$url}");
 		die();

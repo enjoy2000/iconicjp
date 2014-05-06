@@ -5,13 +5,33 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 	protected function _prepareLayout(){
 		$helper = Mage::helper('job');
 		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
-			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('Trang chủ'), 'title'=>$helper->__('Trang chủ'), 'link'=>Mage::getBaseUrl()));
-			$breadcrumbs->addCrumb('search_results', array('label'=>$helper->__('Kết quả tìm kiếm'), 'title'=>$helper->__('Kết quả tìm kiếm'), 'link'=>Mage::getUrl(Mage::helper('job')->getSearchUrl())));
+			$tit = '';
+			if($keyword = $this->getRequest()->get('q')){
+				$tit .= '【' .$keyword. '】';
+			}
+			if($langId = $this->getRequest()->get('language')){
+				$lang = Mage::getModel('job/language')->load($langId);
+				$name = Mage::helper('job')->getTransName($lang);
+				$tit .= '【' .$name. '】';
+			}
+			if($catId = $this->getRequest()->get('category')){
+				$cat = Mage::getModel('job/category')->load($catId);
+				$name = Mage::helper('job')->getTransName($cat);
+				$tit .= '【' .$name. '】';
+			}
+			if($functioncatId = $this->getRequest()->get('function_category')){
+				$cat = Mage::getModel('job/category')->load($functioncatId);
+				$name = Mage::helper('job')->getTransName($cat);
+				$tit .= '【' .$name. '】';
+			}
+			$tit .= $helper->__('の求人検索結果');
+			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム'), 'title'=>$helper->__('ホーム'), 'link'=>Mage::getBaseUrl()));
+			$breadcrumbs->addCrumb('search_results', array('label'=>$tit, 'title'=>$tit, 'link'=>Mage::getUrl(Mage::helper('job')->getSearchUrl())));
 		}		
 		
 		$this->setPost($this->getRequest()->getPost());
 		
-		$this->getLayout()->getBlock('head')->setTitle(Mage::helper('job')->__('Tìm việc làm')); 
+		$this->getLayout()->getBlock('head')->setTitle($tit); 
 		
 		
 		return parent::_prepareLayout();
@@ -45,8 +65,8 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 			$collection->addFieldToFilter('category_id', array('eq' => $this->getCategory()));
 		}
 		
-		if ($this->getLocation()){
-			$collection->addFieldToFilter('location_id', array('eq' => $this->getLocation()));
+		if ($this->getLanguage()){
+			$collection->addFieldToFilter('language_id', array('eq' => $this->getLocation()));
 		}
 		if ($this->getJobLevel()){
 			$collection->addFieldToFilter('job_level', array('eq' => $this->getJobLevel()));
@@ -89,97 +109,6 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 		return true;
 	}
 	
-	public function getLocationList(){
-		//get list location and category
-		if (!$this->hasData('locationList')){
-			$location = Mage::getModel('job/location')->getCollection()
-						->addFieldToFilter('name',array('neq'=>'Hồ Chí Minh','neq'=>'Hà Nội'))
-						->setOrder('url_key','ASC')->load();
-			$listLocation = '<option value="'.Mage::getModel('job/location')->load('Hồ Chí Minh','name')->getId().'">Hồ Chí Minh</option><option value="'.Mage::getModel('job/location')->load('Hà Nội','name')->getId().'">Hà Nội</option>';
-			if ($this->getLocation()){
-				foreach ($location as $loc){
-					$selected = "";
-					if($loc->getLocationId() == $this->getLocation()){
-						$selected = " selected=\"selected\"";
-					}
-					$listLocation .= "<option value=\"{$loc->getLocationId()}\"{$selected}>{$loc->getName()}</option>";
-				}
-			} else {
-				foreach ($location as $loc){
-					$listLocation .= '<option value="' . $loc->getLocationId() . '">' . $loc->getName() . '</option>';
-				}				
-			}
-			$this->setData('locationList', $listLocation);
-		}
-		return $this->getData('locationList');
-	}
-	
-	public function getCategoryList(){
-		if (!$this->hasData('categoryList')){
-		
-			$parentCategory = Mage::getModel('job/parentcategory')->getCollection()->addFieldToFilter('group_category', array('eq'=>'industry'));
-			$listCategory = '';
-			if ($this->getCategory()){
-				foreach ($parentCategory as $parent){
-					$categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getParentcategoryId()));
-					$catOptions = '';
-					foreach ($categories as $cat){
-						$selected = "";
-						if($cat->getId() == $this->getCategory()){
-							$selected = " selected=\"selected\"";
-						}
-						$catOptions .= "<option value=\"{$cat->getCategoryId()}\"{$selected}>{$cat->getName()}</option>";
-					}
-					$listCategory .= '<optgroup label="'.$parent->getName().'">'.$catOptions.'</optgroup>';
-				}
-			} else {
-				foreach ($parentCategory as $parent){
-					$categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getParentcategoryId()));
-					$catOptions = '';
-					foreach ($categories as $cat){
-						$catOptions .= '<option value="' . $cat->getCategoryId() . '">' . $cat->getName() . '</option>';
-					}
-					$listCategory .= '<optgroup label="'.$parent->getName().'">'.$catOptions.'</optgroup>';
-				}
-			}
-			$this->setData('categoryList', $listCategory);
-		}
-		return $this->getData('categoryList');
-	}
-	
-	public function getFunctionList(){
-		if (!$this->hasData('functionList')){
-		
-			$parentCategory = Mage::getModel('job/parentcategory')->getCollection()->addFieldToFilter('group_category', array('eq'=>'function'));
-			$listCategory = '';
-			if ($this->getFunctionCategory()){
-				foreach ($parentCategory as $parent){
-					$categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getParentcategoryId()));
-					$catOptions = '';
-					foreach ($categories as $cat){
-						$selected = "";
-						if($cat->getId() == $this->getFunctionCategory()){
-							$selected = " selected=\"selected\"";
-						}
-						$catOptions .= "<option value=\"{$cat->getCategoryId()}\"{$selected}>{$cat->getName()}</option>";
-					}
-					$listCategory .= '<optgroup label="'.$parent->getName().'">'.$catOptions.'</optgroup>';
-				}
-			} else {
-				foreach ($parentCategory as $parent){
-					$categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getParentcategoryId()));
-					$catOptions = '';
-					foreach ($categories as $cat){
-						$catOptions .= '<option value="' . $cat->getCategoryId() . '">' . $cat->getName() . '</option>';
-					}
-					$listCategory .= '<optgroup label="'.$parent->getName().'">'.$catOptions.'</optgroup>';
-				}
-			}
-			$this->setData('functionList', $listCategory);
-		}
-		return $this->getData('functionList');
-	}
-
 	public function getFilters(){
 		if($this->needFetchJobs()){
 			$this->_fetchJobs();

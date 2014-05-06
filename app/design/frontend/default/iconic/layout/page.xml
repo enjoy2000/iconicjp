@@ -63,6 +63,7 @@ Default layout, loads most of the pages
                 </block>
                 <block type="page/html_welcome" name="welcome" as="welcome"/>
             	<block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+            	<block type="job/search_form" name="searchform" as="searchform" template="job/search/form.phtml" />
             </block>
 
 
@@ -88,6 +89,7 @@ Default layout, loads most of the pages
                 </block>
                 <block type="page/switch" name="store_switcher" as="store_switcher" template="page/switch/stores.phtml"/>
                 <block type="page/template_links" name="footer_links" as="footer_links" template="page/template/links.phtml"/>
+                <block type="clnews/news" name="news" as="news" template="clnews/latest.phtml" />
             </block>
 
             <block type="core/text_list" name="before_body_end" as="before_body_end" translate="label">

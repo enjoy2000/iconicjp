@@ -42,4 +42,92 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 					->load();
 		return $jobsInCategory;
 	}
+	
+	public function getWorkLocation(){
+		$location = Mage::getModel('job/location')->load($this->getLocationId());
+		if(Mage::app()->getStore()->getCode() == 'jp'){
+			return $location->getName();
+		}else{
+			return $location->getNameEn();
+		}
+	}
+	
+	public function getCountry(){
+		$location = Mage::getModel('job/location')->load($this->getLocationId());
+		$country = Mage::getModel('job/country')->load($location->getCountryId());
+		if(Mage::app()->getStore()->getCode() == 'jp'){
+			return $country->getName();
+		}else{
+			return $country->getNameEn();
+		}
+	}
+	
+	public function getCategoryName(){
+		$category = Mage::getModel('job/category')->load($this->getCategoryId());
+		if(Mage::app()->getStore()->getCode() == 'jp'){
+			return $category->getName();
+		}else{
+			return $category->getNameEn();
+		}
+	}
+	
+	public function getFunctionName(){
+		$function = Mage::getModel('job/category')->load($this->getFunctionCategoryId());
+		if(Mage::app()->getStore()->getCode() == 'jp'){
+			return $function->getName();
+		}else{
+			return $function->getNameEn();
+		}
+	}
+	
+	public function getLanguage(){
+		$language = Mage::getModel('job/language')->load($this->getLanguageId());
+		if(Mage::app()->getStore()->getCode() == 'jp'){
+			return $language->getName();
+		}else{
+			return $language->getNameEn();
+		}
+	}
+	
+	public function getLevel(){
+		$level = Mage::getModel('job/level')->load($this->getJobLevel());
+		if(Mage::app()->getStore()->getCode() == 'jp'){
+			return $level->getName();
+		}else{
+			return $level->getNameEn();
+		}
+	}
+	
+	public function getFullSalary(){
+		if($this->getJobSalary() && $this->getJobSalaryTo()){
+			$salary = $this->getJobSalary() . ' - ' . $this->getJobSalaryTo() . '(' .$this->getJobSalaryType() . ')'; 
+		}else if($this->getJobSalary() && !$this->getJobSalaryTo()){
+			$salary = $this->getJobSalary() . '(' .$this->getJobSalaryType() . ')'; 
+		}else{
+			$salary = Mage::helper('job')->__('Negotiable');
+		}
+		return $salary;
+	}
+	
+	public function getUrl(){
+		$category = Mage::getModel('job/category')->load($this->getCategoryId());
+		$parentCategory = Mage::getModel('job/parentcategory')->load($category->getParentcategoryId());
+		if(Mage::app()->getStore()->getCode() == 'jp'){
+			$url = Mage::getBaseUrl() . $parentCategory->getUrlKey().'/'.$category->getUrlKey().'/'.$this->getUrlKey();
+		}else{
+			$url = Mage::getBaseUrl() . 'en/' . $parentCategory->getUrlKey().'/'.$category->getUrlKey().'/'.$this->getUrlKey();
+		}
+
+		return $url;
+	}
+	
+	public function getApplyUrl(){
+		if(Mage::app()->getStore()->getCode() == 'jp'){
+			$url = Mage::getBaseUrl() . 'job/apply?id=' . $this->getId();
+		}else{
+			$url = Mage::getBaseUrl() . 'en/' . 'job/apply?id=' . $this->getId();
+		}
+		
+		return $url;
+	}
 }

@@ -39,6 +39,48 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
     
         return $urlKey;
     }
+
+	protected function _toSlugTransliterate($string) {
+	    // Lowercase equivalents found at:
+	    // https://github.com/kohana/core/blob/3.3/master/utf8/transliterate_to_ascii.php
+	    $lower = [
+	        'à'=>'a','ô'=>'o','d'=>'d','?'=>'f','ë'=>'e','š'=>'s','o'=>'o',
+	        'ß'=>'ss','a'=>'a','r'=>'r','?'=>'t','n'=>'n','a'=>'a','k'=>'k',
+	        's'=>'s','?'=>'y','n'=>'n','l'=>'l','h'=>'h','?'=>'p','ó'=>'o',
+	        'ú'=>'u','e'=>'e','é'=>'e','ç'=>'c','?'=>'w','c'=>'c','õ'=>'o',
+	        '?'=>'s','ø'=>'o','g'=>'g','t'=>'t','?'=>'s','e'=>'e','c'=>'c',
+	        's'=>'s','î'=>'i','u'=>'u','c'=>'c','e'=>'e','w'=>'w','?'=>'t',
+	        'u'=>'u','c'=>'c','ö'=>'o','è'=>'e','y'=>'y','a'=>'a','l'=>'l',
+	        'u'=>'u','u'=>'u','s'=>'s','g'=>'g','l'=>'l','ƒ'=>'f','ž'=>'z',
+	        '?'=>'w','?'=>'b','å'=>'a','ì'=>'i','ï'=>'i','?'=>'d','t'=>'t',
+	        'r'=>'r','ä'=>'a','í'=>'i','r'=>'r','ê'=>'e','ü'=>'u','ò'=>'o',
+	        'e'=>'e','ñ'=>'n','n'=>'n','h'=>'h','g'=>'g','d'=>'d','j'=>'j',
+	        'ÿ'=>'y','u'=>'u','u'=>'u','u'=>'u','t'=>'t','ý'=>'y','o'=>'o',
+	        'â'=>'a','l'=>'l','?'=>'w','z'=>'z','i'=>'i','ã'=>'a','g'=>'g',
+	        '?'=>'m','o'=>'o','i'=>'i','ù'=>'u','i'=>'i','z'=>'z','á'=>'a',
+	        'û'=>'u','þ'=>'th','ð'=>'dh','æ'=>'ae','µ'=>'u','e'=>'e','i'=>'i',
+	    ];
+	    return str_replace(array_keys($lower), array_values($lower), $string);
+	}
+	
+	public function formatUrlKeyJp($string, $separator = '-') {
+	    // Work around this...
+	    #$string = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $string);
+	    $string = $this->_toSlugTransliterate($string);
+	
+	    // Remove unwanted chars + trim excess whitespace
+	    // I got the character ranges from the following URL:
+	    // https://stackoverflow.com/questions/6787716/regular-expression-for-japanese-characters#10508813
+	    $regex = '/[^一-龠ぁ-ゔァ-ヴーａ-ｚＡ-Ｚ０-９a-zA-Z0-9々〆〤.+ -]|^\s+|\s+$/u';
+	    $string = preg_replace($regex, '', $string);
+	
+	    // Using the mb_* version seems safer for some reason
+	    $string = mb_strtolower($string);
+	
+	    // Same as before
+	    $string = preg_replace("/[ {$separator}]+/", $separator, $string);
+	    return $string;
+	}
 	
 	public function noAccent($str)
     {
@@ -75,7 +117,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 	
 	public function formatDate($date)
     {
-        $format = date('d M, Y', strtotime($date));
+        $format = date('Y/m/d', strtotime($date));
         return $format;
     }
 	
@@ -172,7 +214,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 
 	public function getSitemapUrl(){
-		return 'ている方';
+		return 'site-map';
 	}
 	
 	public function limitText($str, $limit=58){
@@ -214,6 +256,15 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 			return $obj->getName();
 		}else{
 			return $obj->getNameEn();
+		}
+	}
+	
+	public function getBaseUrl(){
+		$storeCode = Mage::app()->getStore()->getCode();
+		if($storeCode == 'jp'){
+			return Mage::getBaseUrl();
+		}else{
+			return Mage::getBaseUrl().'en/';
 		}
 	}
 }

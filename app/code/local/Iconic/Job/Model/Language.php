@@ -40,4 +40,8 @@ class Iconic_Job_Model_Language extends Mage_Core_Model_Abstract
 		parent::_afterSave();
 
 	}
+	
+	public function getUrl(){
+		return Mage::helper('job')->getBaseUrl() . Mage::helper('job')->getSearchUrl() . '/' . $this->getUrlKey();
+	}
 }

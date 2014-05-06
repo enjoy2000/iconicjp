@@ -1,0 +1,28 @@
+<div id="search-block">
+	<div class="wrapper">
+		<div class="search-block clearfix">
+			<form action="/job/search/searchform" method="get">
+				<input name="q" class="width-80" id="keyword"
+					value="<?php echo $this->getKeyword();?>"
+					placeholder="<?php echo $this->__('タイトル . . .') ?>" />
+				<br class="clear"/>
+				<select name="category" id="category" class="inline">
+					<option value=""><?php echo $this->__('国から探す') ?></option>
+					<?php echo $this->getCategoryList() ?>
+				</select>
+				
+				<select name="function_category" id="function-category" class="inline">
+					<option value=""><?php echo $this->__('業界・職種から探す') ?></option>
+					<?php echo $this->getFunctionList() ?>
+				</select>
+				
+				<select name="language" id="language" class="inline">
+					<option value=""><?php echo $this->__('言語から探す') ?></option>
+					<?php echo $this->getLanguageList() ?>			
+				</select>
+				
+				<button id="search-btn" name"submit" type="submit" class="flr inline btn btn-orange"><?php echo $this->__('検索する') ?></button>		
+			</form>
+		</div>
+	</div>
+</div>

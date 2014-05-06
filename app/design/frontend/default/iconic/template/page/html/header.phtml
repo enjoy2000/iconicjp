@@ -70,7 +70,7 @@
 						</a>
 					</li>
 					<li class="<?php echo strpos($bodyclass, 'cms-nguoi-tim-viec') ? 'current-menu-item' : ''  ?>">
-						<a href="/nguoi-tim-viec"><?php echo $this->__('アイコニックとは ') ?></a>
+						<a href="/nguoi-tim-viec"><?php echo $this->__('アイコニックとは') ?></a>
 					</li>
 					<li class="<?php echo strpos($bodyclass, 'cms-nha-tuyen-dung') ? 'current-menu-item' : ''  ?>">
 						<a href="/nha-tuyen-dung"><?php echo $this->__('求職者の皆様') ?></a>
@@ -79,17 +79,16 @@
 						<a href="/blog"><?php echo $this->__('採用担当者の皆様') ?></a>
 					</li> 
 					<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
-						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('よくある質問と答え ') ?></a>
+						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('よくある質問と答え') ?></a>
 					</li>
 					<li class="<?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
-						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('会社概要 ') ?></a>
+						<a href="/gioi-thieu-cong-ty"><?php echo $this->__('会社概要') ?></a>
 					</li>
 					<li class="border <?php echo strpos($bodyclass, 'cms-gioi-thieu-cong-ty') ? 'current-menu-item' : ''  ?>">
 						<?php if(!$this->helper('customer')->isLoggedIn()): ?>
-							<a id="login-button" href="#"><?php echo $this->__('ログイン ') ?></a>
+							<a id="login-button" href="#"><?php echo $this->__('ログイン') ?></a>
 						<?php else: ?>
-							<a id="logout-button" href="<?php echo $this->helper('customer')->getLogoutUrl() ?>"><?php echo $this->__('ログアウト
-							') ?></a>
+							<a id="logout-button" href="<?php echo $this->helper('customer')->getLogoutUrl() ?>"><?php echo $this->__('ログアウト') ?></a>
 						<?php endif; ?>
 					</li>
 				</ul>
@@ -121,17 +120,14 @@
 					<?php echo $this->__('アジアで働くならICONIC') ?>
 				</p>
 				<p>
-					ICONIC（アイコニック）はアジアを舞台に国境を超<br />
-					えて働きたい方々に特化した転職エージェントです。
+					<?php echo $this->__('ICONIC（アイコニック）はアジアを舞台に国境を超<br />えて働きたい方々に特化した転職エージェントです。') ?>
 				</p>
 				<div class="buttons">
 					<a href="#">
-							公開求人情報の詳細を閲覧する<br />
-							（会員登録）
+						<?php echo $this->__('公開求人情報の詳細を閲覧する<br />（会員登録）') ?>
 					</a>
 					<a href="#">
-							転職支援サービスに申し込む<br />
-							(求職登録）
+						<?php echo $this->__('転職支援サービスに申し込む<br />(求職登録）') ?>
 					</a>
 				</div>
 			</div>
@@ -139,34 +135,8 @@
 	</div><!-- End Header Landing -->
 	
 	<!-- Search Block -->
-	<div id="search-block">
-		<div class="wrapper">
-			<div class="search-block clearfix">
-				<form action="/job/search/searchform" method="get">
-					<input name="q" class="width-80" id="keyword"
-						value="<?php echo $this->getKeyword();?>"
-						placeholder="<?php echo $this->__('タイトル . . .') ?>" />
-					<br class="clear"/>
-					<select name="category" id="category" class="inline">
-						<option value=""><?php echo $this->__('国から探す') ?></option>
-						<?php echo $this->getCategoryList() ?>
-					</select>
-					
-					<select name="function_category" id="function-category" class="inline">
-						<option value=""><?php echo $this->__('業界・職種から探す') ?></option>
-						<?php echo $this->getFunctionList() ?>
-					</select>
-					
-					<select name="location" id="location" class="inline">
-						<option value=""><?php echo $this->__('言語から探す') ?></option>
-						<?php echo $this->getLocationList() ?>			
-					</select>
-					
-					<button id="search-btn" name"submit" type="submit" class="flr inline btn btn-orange"><?php echo $this->__('検索する') ?></button>		
-				</form>
-			</div>
-		</div>
-	</div><!-- End Search Block -->
+	<?php echo $this->getChildHtml('searchform') ?>
+	<!-- End Search Block -->
 </header>
 
 

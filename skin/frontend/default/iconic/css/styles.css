@@ -256,7 +256,7 @@ body.short #main .main{
 	background-color: #b5c6f7;
 }
 #search-block .search-block{
-	padding: 20px;
+	padding: 20px 40px;
 }
 #search-block .search-block input{
 	background-color: #e1e8fc;
@@ -285,7 +285,6 @@ body.short #main .main{
 	padding: 3px 10px;
 	font-size: 15px;
 	border-bottom: solid 2px #d7712e;
-	margin: 3px 35px 0 20px;
 }
 /*
  * Main
@@ -295,9 +294,12 @@ body.short #main .main{
 	margin-bottom: 75px;
 }
 #main .main{
-	margin: 20px;
+	margin: 20px 40px;
 	background-color: #fff;
-	padding: 20px;
+	padding: 30px;
+	border-bottom: solid 5px #bababb;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
 /*
@@ -513,10 +515,6 @@ body.short #main .main{
  * HOMEPAGE BLOCK
  */
 #tab-content{
-	width: 880px;
-	border-bottom: solid 5px #bababb;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
 	overflow: hidden;
 }
 #tab-content-location{
@@ -713,4 +711,17 @@ body.short #main .main{
 #tab-content-language ul li a:hover{
 	color: #000;
 	text-decoration: underline;
+}
+/*
+ * BREADCRUMBS
+ */
+#breadcrumbs ul{
+	margin-left: 75px;
+	margin-top: 10px;
+}
+#breadcrumbs ul li{
+	display: inline-block;
+}
+#breadcrumbs span{
+	color: #f58220;
 }

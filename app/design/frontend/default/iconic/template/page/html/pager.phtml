@@ -40,7 +40,7 @@
     <?php if($this->getShowAmounts()): ?>
     <p class="amount">
         <?php if($this->getLastPageNum()>=1): ?>
-            <?php echo $this->__('Hiển thị <span>%s - %s</span> trong <span>%s</span> việc làm', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+            <?php echo $this->__('<span>%s</span>件中<span>%s - %s</span>件の求人を表示', $this->getTotalNum(), $this->getFirstNum(), $this->getLastNum()) ?>
         <?php else: ?>
             <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
         <?php endif; ?>
