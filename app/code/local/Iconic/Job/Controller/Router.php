@@ -165,7 +165,7 @@ class Iconic_Job_Controller_Router extends Mage_Core_Controller_Varien_Router_Ab
                 }
                 break;
             case 3: //job detail
-                $job = Mage::getModel('job/job')->load($parts[2], 'url_key');
+                $job = Mage::getModel('job/job')->load(urldecode($parts[2]), 'url_key');
                 if($job->getId()){
                     $request
                         ->setModuleName('job')
