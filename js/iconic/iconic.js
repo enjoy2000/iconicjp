@@ -57,7 +57,7 @@ function loginAjax(){
 				jQuery('#ajax-load').removeClass('open');
 				window.location.replace(msg.message);
 			}else{
-				jQuery('#ajax-load #response').html(msg);
+				jQuery('#ajax-load #response').html(msg.message);
 				jQuery('#ajax-load #response').show();
 				jQuery('input#pass').val('');
 			}
