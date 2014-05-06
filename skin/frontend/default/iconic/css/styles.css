@@ -343,7 +343,7 @@ body.short #main .main{
 }
 #blog-news .news .content{
 	height: 280px;
-	margin-top: 30px;
+	margin-top: 20px;
 	overflow-y: auto;
 }
 #blog-news .countries .content{
@@ -726,6 +726,9 @@ body.short #main .main{
 }
 #breadcrumbs ul li{
 	display: inline-block;
+}
+#breadcrumbs ul li a{
+	text-decoration: underline;
 }
 #breadcrumbs span{
 	color: #f58220;

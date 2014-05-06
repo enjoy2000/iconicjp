@@ -147,6 +147,9 @@ textarea{
 .text-blue{
 	color: #4571EB;
 }
+.text-orange{
+	color: #f58220;
+}
 .text-black{
 	color: #000;
 }
@@ -197,7 +200,8 @@ textarea{
 }
 .button-grey{
 	background-color: #bcbec0;
-	border-radius: 8px;
+	border-radius: 3px;
+	border-bottom: solid 2px #a6a8aa;
 }
 *:focus{
 	outline: none;

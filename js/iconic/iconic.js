@@ -12,82 +12,83 @@
 	            nav.removeClass("f-nav");
 	        }
 	    });
-	    $('#login-button').click(function(event){
+	    $('#login-button, .btn-login').click(function(event){
 	    	event.preventDefault();
 	    	showLogin();
 	    });
 	    $('#header-landing .background').cycle({fx:'scrollHorz',next: '.ui-buttonNextSlide',prev: '.ui-buttonPrevSlide' ,delay: -4000});
 	});
 	
-	function centerwide(div){
-		div.css("left", Math.max(0, (($(window).width() - $(div).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
-	}
-	function showLogin(){
-		$('#ajax-load .content').load('/customer/account/login', function(){
-			scrollToTop();
-	    	$('#ajax-load').addClass('open');
-	    	loginAjax();
-	    	showForgotPass();
-		});
-	}
-	function showForgotPass(){
-		$('#forgot-password').click(function(e){
-			e.preventDefault();
-			$('#ajax-load .content').load('/customer/account/forgotpassword', function(){
-				scrollToTop();
-		    	$('#ajax-load').addClass('open');
-		    	forgotpassAjax();
-			});
-		});
-	}
-	function loginAjax(){
-		$('#login-form').submit(function(ev){
-			ev.preventDefault();
-			var request = $.ajax({
-				url: '/job/index/ajaxloginPost',
-				type: 'POST',
-				data: $(this).serialize(),
-			});
-			request.done(function(msg){
-				if(msg == 1){ //logged in
-					$('#ajax-load').removeClass('open');
-					location.reload();
-				}else{
-					$('#ajax-load #response').html(msg);
-					$('#ajax-load #response').show();
-					$('input#pass').val('');
-				}
-			});
-		});
-	}
-	function forgotpassAjax(){
-		$('#form-forgot-password').submit(function(ev){
-			ev.preventDefault();
-			var request = $.ajax({
-				url: '/job/index/ajaxforgotPassword',
-				type: 'POST',
-				data: $(this).serialize(),
-				dataType: 'json',
-			});
-			request.done(function(msg){
-				console.log(msg);
-				if(msg.status == true){ 
-					$('#ajax-load').addClass('open-1');
-					$('#ajax-load .content').html('<p class="success">'+ msg.message +'</p>');
-				}else{
-					$('#ajax-load #response').html(msg.message);
-					$('#ajax-load #response').show();
-					$(this.input).val('');
-				}
-			});
-		});
-	}
-	function scrollToTop(){
-		$('html,body').animate({
-          scrollTop: 0
-        }, 1000);
-	}
 })(jQuery);
 
 
+function centerwide(div){
+	div.css("left", Math.max(0, ((jQuery(window).width() - jQuery(div).outerWidth()) / 2) + jQuery(window).scrollLeft()) + "px");
+}
+function showLogin(){
+	jQuery('#ajax-load .content').load('/customer/account/login', function(){
+		scrollToTop();
+    	jQuery('#ajax-load').addClass('open');
+    	loginAjax();
+    	showForgotPass();
+	});
+}
+function showForgotPass(){
+	jQuery('#forgot-password').click(function(e){
+		e.preventDefault();
+		jQuery('#ajax-load .content').load('/customer/account/forgotpassword', function(){
+			scrollToTop();
+	    	jQuery('#ajax-load').addClass('open');
+	    	forgotpassAjax();
+		});
+	});
+}
+function loginAjax(){
+	jQuery('#login-form').submit(function(ev){
+		ev.preventDefault();
+		var request = jQuery.ajax({
+			url: '/job/index/ajaxloginPost',
+			type: 'POST',
+			data: jQuery(this).serialize(),
+			dataType: 'json',
+		});
+		request.done(function(msg){
+			if(msg.status == true){ //logged in
+				jQuery('#ajax-load').removeClass('open');
+				window.location.replace(msg.message);
+			}else{
+				jQuery('#ajax-load #response').html(msg);
+				jQuery('#ajax-load #response').show();
+				jQuery('input#pass').val('');
+			}
+		});
+	});
+}
+function forgotpassAjax(){
+	jQuery('#form-forgot-password').submit(function(ev){
+		ev.preventDefault();
+		var request = jQuery.ajax({
+			url: '/job/index/ajaxforgotPassword',
+			type: 'POST',
+			data: jQuery(this).serialize(),
+			dataType: 'json',
+		});
+		request.done(function(msg){
+			console.log(msg);
+			if(msg.status == true){ 
+				jQuery('#ajax-load').addClass('open-1');
+				jQuery('#ajax-load .content').html('<p class="success">'+ msg.message +'</p>');
+			}else{
+				jQuery('#ajax-load #response').html(msg.message);
+				jQuery('#ajax-load #response').show();
+				jQuery(this.input).val('');
+			}
+		});
+	});
+}
+function scrollToTop(){
+	jQuery('html,body').animate({
+      scrollTop: 0
+    }, 1000);
+}
 
