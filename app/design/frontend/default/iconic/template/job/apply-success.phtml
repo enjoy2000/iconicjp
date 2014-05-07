@@ -3,33 +3,70 @@
 <div class
 <div id="page-title">
 	<h2 class="blue-tit text-blue">
-		<?php echo $this->__('Ứng tuyển') ?>
+		<?php echo $this->__('応募する') ?>
 	</h2>
 </div>
-<div class="fll width-60">
-	<div id="job-title" class="text-blue">
-		<?php echo Mage::helper('job')->renderTitle($job); ?>
-	</div>
-	<div class="apply-success-message">
+<div class="greetings">
+	<h3 class="iconic-id">
+		<?php echo $this->__('<b>No. %s</b>   |   登録日: %s', $job->getIconicId(), Mage::helper('job')->formatDate($job->getCreatedTime())) ?>
+	</h3>
+	<h1>
+		<?php echo $job->getTitle() ?>
+	</h1>
+	<div class="apply-success-message clearfix">
 		<div class="message">
-			<p><?php echo $this->__('Xin chúc mừng!') ?></p>
-			<p><?php echo $this->__('Bạn đã ứng tuyển thành công.') ?></p>
+			<p class="success text-orange"><?php echo $this->__('完了!!!') ?></p>
+			<p><?php echo $this->__('申込完了致しました。 ご検討をお祈りします。') ?></p>
+			<p><?php echo $this->__('ご質問がありましたら、御気軽にご<a href="/%s">連絡ください</a>。', Mage::helper('job')->getContactUrl()) ?></p>
 		</div>
 	</div>
 </div>
+
 <!-- Jobs Same Category -->
-<div class="flr width-35" id="job-same-category">
-	<div class="heading">
-		<h5 class="blue-tit text-blue"><?php echo $this->__('Các công việc cùng ngành nghề') ?></h5>
-	</div>
-	<ul class="jobs-list">
-	<?php if(count($jobs) > 0): ?>
-		<?php foreach($jobs as $jb): ?>
-			<li>
-				<?php echo Mage::helper('job')->renderJob($jb) ?>
-			</li>
-		<?php endforeach; ?>
-	<?php endif; ?>
-	</ul>
-	<a class="text-blue view-more-category" href="<?php echo Mage::helper('job')->getCategoryUrl($job->getCategoryId()); ?>"><?php echo $this->__('Xem thêm') ?></a>
+<?php if(count($jobs) > 0): ?>
+<div id="job-same-category">
+	<fieldset>
+		<legend class="text-blue">
+			<?php echo $this->__('さらに同じカテゴリーお仕事') ?>
+		</legend>
+		<ul class="jobs-list">
+		
+			<?php foreach($jobs as $jb): ?>
+				<li>
+					<p class="iconic-id">
+						<?php echo $this->__('<b>No. %s</b>   |   登録日: %s', $jb->getIconicId(), Mage::helper('job')->formatDate($jb->getCreatedTime())) ?>
+					</p>
+					<p class="title">
+						<?php if($this->getKeyword()): ?>
+							<?php echo Mage::helper('job')->highlight($jb->getTitle(), explode(' ',$this->getKeyword())) ?>
+						<?php else: ?>
+							<?php echo $jb->getTitle() ?>
+						<?php endif; ?>
+					</p>
+					<div class="job-details">
+						<table>
+							<tr>
+								<td><b><?php echo $this->__('勤務地') ?>:</b> <?php echo $jb->getWorkLocation() ?></td>
+								<td><b><?php echo $this->__('国') ?>:</b> <?php echo $jb->getCountry() ?></td>
+								<td><b><?php echo $this->__('業種') ?>:</b> <?php echo $jb->getFunctionName() ?></td>
+								<td><b><?php echo $this->__('職種') ?>:</b> <?php echo $jb->getCategoryName() ?></td>
+							</tr>
+							<tr>
+								<td><b><?php echo $this->__('言語') ?>:</b> <?php echo $jb->getLanguage() ?></td>
+								<td><b><?php echo $this->__('レベル ') ?>:</b> <?php echo $jb->getLevel() ?></td>
+								<td><b><?php echo $this->__('給与') ?>:</b> <?php echo $jb->getFullSalary() ?></td>
+								<td><b><?php echo $this->__('採用定数') ?>:</b> <?php echo $jb->getAmount() ?></td>
+							</tr>
+						</table>
+					</div>
+					<div class="actions">
+						<a class="view" href="<?php echo $jb->getUrl() ?>"><?php echo $this->__('詳細を見る') ?></a>
+						<a class="apply" href="<?php echo $jb->getApplyUrl() ?>"><?php echo $this->__('応募する') ?></a>
+					</div>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+		<a class="text-blue view-more-category" href="<?php echo Mage::helper('job')->getCategoryUrl($job->getCategoryId()); ?>">>> <?php echo $this->__('さらに同じカテゴリーお仕事') ?></a>
+	</fieldset>
 </div>
+<?php endif; ?>

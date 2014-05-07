@@ -144,33 +144,51 @@
                 <li class="fields">
                     <div class="field">
                         <div class="input-box">
-                            <input required placeholder="<?php echo $this->__('パスワード') ?>" type="password" name="password" id="password" title="<?php echo $this->__('Mật khẩu') ?>" class="input-text required-entry validate-password" />
+                            <input required placeholder="<?php echo $this->__('パスワード') ?>" type="password" name="password" id="password" title="<?php echo $this->__('パスワード') ?>" class="input-text required-entry validate-password" />
                         </div>
                     </div>
                     <div class="field">
                         <div class="input-box">
-                            <input required placeholder="<?php echo $this->__('確認（パスワード）') ?>" type="password" name="confirmation" title="<?php echo $this->__('Xác nhận lại mật khẩu') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+                            <input required placeholder="<?php echo $this->__('確認（パスワード）') ?>" type="password" name="confirmation" title="<?php echo $this->__('確認（パスワード）') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
                         </div>
                     </div>
                     
                     <div class="field clearfix">
-                        <div class="input-box">
-                            <select required placeholder="<?php echo $this->__('性別') ?>" name="sex" title="<?php echo $this->__('Chọn giới tính') ?>" id="sex" class="select-box required-entry">
+                        <div class="input-box fll width-45">
+                            <select required placeholder="<?php echo $this->__('性別 ') ?>" name="sex" title="<?php echo $this->__('性別') ?>" id="sex" class="select-box required-entry">
                             	<option value=""><?php echo $this->__('性別') ?></option>
-                            	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nam')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('Nam') ?>"><?php echo $this->__('Nam') ?></option>
-                            	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nữ')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('Nữ') ?>"><?php echo $this->__('Nữ') ?></option>
+                            	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nam')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('男性') ?>"><?php echo $this->__('男性') ?></option>
+                            	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nữ')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('女性') ?>"><?php echo $this->__('女性') ?></option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-box flr width-45">
+                            <select required placeholder="<?php echo $this->__('年齢 ') ?>" name="birthyear" title="<?php echo $this->__('年齢 ') ?>" id="birthyear" class="select-box required-entry">
+                            	<option value=""><?php echo $this->__('年齢 ') ?></option>
+                            	<?php 
+                            	$y = (int) Date('Y');
+                            	for($i = $y-10; $i >= $y-60;$i--): ?>
+                            	<option <?php echo ($this->getFormData()->getBirthyear()==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+                            	<?php endfor; ?>
                             </select>
                         </div>
                     </div>
                     
                     <div class="field">
                     	<div class="input-box">
-                            <select required placeholder="<?php echo $this->__('居住地域') ?>" name="location" title="<?php echo $this->__('Nơi cư trú') ?>" id="location" class="select-box required-entry">
+                            <select required placeholder="<?php echo $this->__('居住地域') ?>" name="location" title="<?php echo $this->__('居住地域') ?>" id="location" class="select-box required-entry">
                             	<option value=""><?php echo $this->__('居住地域') ?></option>
-								<?php $list = Mage::getModel('job/listlocation')->getCollection() ?>
-								<?php foreach($list as $loc): ?>
-									<option <?php echo ($this->getFormData()->getLocation()==$loc->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $loc->getId() ?>"><?php echo $loc->getName() ?></option>
-								<?php endforeach; ?>	
+								<?php $countries = Mage::getModel('job/country')->getCollection() ?>
+								<?php foreach($countries as $country): ?>
+								<optgroup label="<?php echo Mage::helper('job')->getTransName($country) ?>">
+									<?php $locations = Mage::getModel('job/location')->getCollection()
+														->addFieldToFilter('country_id', array('eq'=>$country->getId()))
+									?>
+									<?php foreach($locations as $loc): ?>
+									<option <?php echo ($this->getFormData()->getLocation()==$loc->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $loc->getId() ?>"><?php echo Mage::helper('job')->getTransName($loc) ?></option>
+									<?php endforeach; ?>
+								</optgroup>
+								<?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -191,7 +209,7 @@
             </ul>
         </div>
         <div class="buttons-set">
-            <button type="submit" title="<?php echo $this->__('登録') ?>" class="btn button-blue button"><span><span><?php echo $this->__('登録') ?></span></span></button>
+            <button type="submit" title="<?php echo $this->__('登録') ?>" class="btn button"><?php echo $this->__('未入力の項目があります') ?></button>
         </div>
         <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
             <input name="context" type="hidden" value="checkout" />

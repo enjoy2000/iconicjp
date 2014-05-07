@@ -217,6 +217,10 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		return 'site-map';
 	}
 	
+	public function getContactUrl(){
+		return 'contact';
+	}
+	
 	public function limitText($str, $limit=58){
 		if(strlen($str) > $limit){
 			// truncate string

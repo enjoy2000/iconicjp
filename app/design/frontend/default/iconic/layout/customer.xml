@@ -114,7 +114,7 @@ New customer registration
 -->
 
     <customer_account_create translate="label">
-        <label>Customer Account Registration Form</label>
+        <label>公開求人情報の詳細を閲覧する</label>
         <!-- Mage_Customer -->
         <remove name="right"/>
         <remove name="left"/>

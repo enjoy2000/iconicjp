@@ -5,7 +5,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 	public function indexAction(){        
 		$this->loadLayout();
        	$this->getLayout()->getBlock('head')->setTitle($this->__('Jobs Board For IconicVN')); 
-		$langs = Mage::getModel('job/language')->getCollection();
+		$langs = Mage::getModel('job/location')->getCollection();
 		foreach($langs as $lang){
 			$urlkey = Mage::helper('job')->formatUrlKey($lang->getNameEn());
 			$lang->setUrlKey($urlkey)->save();

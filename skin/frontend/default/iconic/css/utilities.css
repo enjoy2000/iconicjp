@@ -90,7 +90,7 @@ select{
 	width: 100%;
 	border: none;
 	border-radius: 3px;
-	background: url('../images/select.png') 98% center no-repeat #e6ecfc;
+	background: url('../images/select.png') right 5px center no-repeat #e6ecfc;
 	appearance: none;
 	-webkit-appearance: none;
 	border: solid 1px transparent;
@@ -104,11 +104,16 @@ input{
 	padding: 5px 10px;
 	border: solid 1px transparent;
 	border-radius: 3px;
+	background-color: #e6ecfc;
 }
 input:focus{
 	border-color: #4571eb;
 }
 input[readonly]{
+}
+input:required,
+select:required{
+	background-color: #f5dbca;
 }
 textarea{
 }

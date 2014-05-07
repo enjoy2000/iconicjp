@@ -1,11 +1,11 @@
 <?php $data = $this->getFormData(); ?>
 <div class="create-cv">
     <div class="page-title">
-        <h1><?php echo $this->__('Tạo hồ sơ') ?></h1>
+        <h1><?php echo $this->__('転職支援サービスに申し込む') ?></h1>
     </div>
     <form action="/<?php echo Mage::helper('job')->getCreateCVUrl() ?>" method="post" id="form-validate">
     	<div class="row heading">
-    		<span><?php echo $this->__('Thông tin chung') ?></span>
+    		<span><?php echo $this->__('プロフィール') ?></span>
     	</div>
     	<div class="row row2">
     		<input readonly required type="text" class="first" id="ho" name="ho" placeholder="<?php echo $this->__('Họ') ?>" value="<?php echo $this->getCustomer()->getLastname() ?>" />

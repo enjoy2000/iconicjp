@@ -70,9 +70,10 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 		// redirect if user not login 
 		if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
             $session = Mage::getSingleton('customer/session');
+			Mage::getSingleton('core/session')->setShowLogin(1);
             $session->setAfterAuthUrl( Mage::helper('core/url')->getCurrentUrl() );
             $session->setBeforeAuthUrl( Mage::helper('core/url')->getCurrentUrl() );
-            $this->_redirect(Mage::helper('job')->getLoginUrl());
+            $this->_redirect('/');
             return $this;
         }
 		$id = (int) $this->getRequest()->get('id');
@@ -90,10 +91,9 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			//set breadcrumbs		
 			$helper = Mage::helper('job');
 			if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
-				$breadcrumbs->addCrumb('home', array('label'=>$helper->__('Home'), 'title'=>$helper->__('Go to Home Page'), 'link'=>Mage::getBaseUrl()));
-				$breadcrumbs->addCrumb('search_results', array('label'=>$helper->__('Kết quả tìm kiếm'), 'title'=>$helper->__('Kết quả tìm kiếm'), 'link'=>Mage::getUrl('job/search')));
-				$breadcrumbs->addCrumb('job_details', array('label'=>$helper->__('Chi tiết công việc'), $helper->__('Chi tiết công việc')));
-				$breadcrumbs->addCrumb('job_apply', array('label'=>$helper->__('Liên hệ ứng tuyển'), $helper->__('Liên hệ ứng tuyển')));
+				$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム '), 'title'=>$helper->__('ホーム '), 'link'=>Mage::helper('job')->getBaseUrl()));
+				$breadcrumbs->addCrumb('search_results', array('label'=>$helper->__('コミュニケーション・メディ'), 'title'=>$helper->__('コミュニケーション・メディ'), 'link'=>Mage::getUrl('job/search')));
+				$breadcrumbs->addCrumb('job_apply', array('label'=>$helper->__('応募する | %s', $job->getTitle()), $helper->__('応募する | %s', $job->getTitle())));
 			}	
 			//get jobs form same category
 			$block->setJobsInCategory($job->getJobsInCategory());
@@ -133,18 +133,18 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			
 			$bodyHtml = '<table><tbody>';			
 			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Link').':</td><td> '.Mage::helper('job')->getJobLink($job).'</td></tr>';
-			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Tên ứng viên').':</td><td> '.$data['name'].'</td></tr>';
+			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Name').':</td><td> '.$data['name'].'</td></tr>';
 			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Email').':</td><td> '.$data['email'].'</td></tr>';			
-			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Nội dung').':</td><td> '.$data['message'].'</td></tr>';
+			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Content').':</td><td> '.$data['message'].'</td></tr>';
 			$bodyHtml .= '</tbody></table>';
 			
 			$mail->setBodyHtml($bodyHtml);
-			$mail->addTo('auto_iconic_vn@iconic-intl.com',Mage::helper('job')->__('IconicVN'));
-			$mail->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicVN'));
-			$mail->setSubject(Mage::helper('job')->__('Ứng tuyển').' "'. $job->getTitle()).'"';
+			$mail->addTo('auto_iconic_vn@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
+			$mail->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
+			$mail->setSubject(Mage::helper('job')->__('応募する').' "'. $job->getTitle()).'"';
 			$checkSend = $mail->send($transport);
 			if($checkSend){
-				$this->getLayout()->getBlock('head')->setTitle(Mage::helper('job')->__('Bạn đã ứng tuyển thành công!'));
+				$this->getLayout()->getBlock('head')->setTitle(Mage::helper('job')->__('申込完了致しました。 ご検討をお祈りします。'));
 			}
 			
 			//set upload link to database
@@ -155,7 +155,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$this->renderLayout();
 		}catch(Exception $e){
 			//Mage::getSingleton('core/session')->addError($e);
-			Mage::getSingleton('core/session')->addError(Mage::helper('job')->__('Không thể gửi mail.'));
+			Mage::getSingleton('core/session')->addError(Mage::helper('job')->__('Can\'t send mail.'));
 			$this->_redirect('*/apply', array('id'=> $data['id']));
 		}
 	}
