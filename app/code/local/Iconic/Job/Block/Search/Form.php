@@ -37,6 +37,43 @@ class Iconic_Job_Block_Search_Form extends Mage_Core_Block_Template
 		return $this->getData('languageList');
 	}
 	
+	public function getLocationList(){
+		//get list location and category
+		if (!$this->hasData('locationList')){
+			$countries = Mage::getModel('job/country')->getCollection();
+			$listLocation = '';
+			if ($this->getLocation()){
+				foreach($countries as $country){
+					$countryname = Mage::helper('job')->getTransName($country);
+					$location = Mage::getModel('job/location')->getCollection()->addFieldToFilter('country_id', array('eq'=>$country->getId()));
+					$listLoc = '';
+					foreach ($location as $loc){
+						$name = Mage::helper('job')->getTransName($loc);
+						$selected = "";
+						if($loc->getId() == $this->getLocation()){
+							$selected = " selected=\"selected\"";
+						}
+						$listLoc .= "<option value=\"{$loc->getId()}\"{$selected}>{$name}</option>";
+					}
+					$listLocation .= '<optgroup label="'.$countryname.'">'.$listLoc.'</optgroup>';
+				}
+			} else {
+				foreach($countries as $country){
+					$countryname = Mage::helper('job')->getTransName($country);
+					$location = Mage::getModel('job/location')->getCollection()->addFieldToFilter('country_id', array('eq'=>$country->getId()));
+					$listLoc = '';
+					foreach ($location as $loc){
+						$name = Mage::helper('job')->getTransName($loc);
+						$listLoc .= "<option value=\"{$loc->getId()}\">{$name}</option>";
+					}
+					$listLocation .= '<optgroup label="'.$countryname.'">'.$listLoc.'</optgroup>';
+				}			
+			}
+			$this->setData('locationList', $listLocation);
+		}
+		return $this->getData('locationList');
+	}
+	
 	public function getCategoryList(){
 		if (!$this->hasData('categoryList')){
 		

@@ -53,6 +53,7 @@ class Iconic_Job_Controller_Router extends Mage_Core_Controller_Varien_Router_Ab
 			foreach($parts as $part){
 				$loc = Mage::getModel('job/language')->load($part, 'url_key');
 				$cat = Mage::getModel('job/category')->load($part, 'url_key');
+				$location = Mage::getModel('job/location')->load($part, 'url_key');
 				if($loc->getId()){
 					$request
 						->setParam('language', $loc->getId());
@@ -67,7 +68,11 @@ class Iconic_Job_Controller_Router extends Mage_Core_Controller_Varien_Router_Ab
 							->setParam('function_category', $cat->getId());
 					}
 				}
-				if(!$loc->getId() && !$cat->getId() && ($part != Mage::helper('job')->getSearchUrl())){
+				if($location->getId()){
+					$request
+						->setParam('location', $location->getId());
+				}
+				if(!$loc->getId() && !$location->getId() && !$cat->getId() && ($part != Mage::helper('job')->getSearchUrl())){
 					$request
 						->setParam('q', Mage::getSingleton('core/session')->getKeywordSearch());
 					//Mage::getSingleton('core/session')->unsKeywordSearch();

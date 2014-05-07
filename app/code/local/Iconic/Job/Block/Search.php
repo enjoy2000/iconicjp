@@ -14,12 +14,12 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 				$name = Mage::helper('job')->getTransName($lang);
 				$tit .= '【' .$name. '】';
 			}
-			if($catId = $this->getRequest()->get('category')){
-				$cat = Mage::getModel('job/category')->load($catId);
+			if($catId = $this->getRequest()->get('location')){
+				$cat = Mage::getModel('job/location')->load($catId);
 				$name = Mage::helper('job')->getTransName($cat);
 				$tit .= '【' .$name. '】';
 			}
-			if($functioncatId = $this->getRequest()->get('function_category')){
+			if($functioncatId = $this->getRequest()->get('category')){
 				$cat = Mage::getModel('job/category')->load($functioncatId);
 				$name = Mage::helper('job')->getTransName($cat);
 				$tit .= '【' .$name. '】';
@@ -63,6 +63,10 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 		
 		if ($this->getCategory()){
 			$collection->addFieldToFilter('category_id', array('eq' => $this->getCategory()));
+		}
+		
+		if ($this->getLocation()){
+			$collection->addFieldToFilter('location_id', array('eq' => $this->getCategory()));
 		}
 		
 		if ($this->getLanguage()){

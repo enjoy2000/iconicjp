@@ -6,14 +6,14 @@
 					value="<?php echo $this->getKeyword();?>"
 					placeholder="<?php echo $this->__('タイトル . . .') ?>" />
 				<br class="clear"/>
-				<select name="category" id="category" class="inline">
+				<select name="location" id="location" class="inline">
 					<option value=""><?php echo $this->__('国から探す') ?></option>
-					<?php echo $this->getCategoryList() ?>
+					<?php echo $this->getLocationList() ?>
 				</select>
 				
-				<select name="function_category" id="function-category" class="inline">
+				<select name="category" id="category" class="inline">
 					<option value=""><?php echo $this->__('業界・職種から探す') ?></option>
-					<?php echo $this->getFunctionList() ?>
+					<?php echo $this->getCategoryList() ?>
 				</select>
 				
 				<select name="language" id="language" class="inline">
