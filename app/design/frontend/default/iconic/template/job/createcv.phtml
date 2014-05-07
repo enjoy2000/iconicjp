@@ -7,29 +7,48 @@
     	<div class="row heading">
     		<span><?php echo $this->__('プロフィール') ?></span>
     	</div>
+    	
     	<div class="row row2">
-    		<input readonly required type="text" class="first" id="ho" name="ho" placeholder="<?php echo $this->__('Họ') ?>" value="<?php echo $this->getCustomer()->getLastname() ?>" />
-    		<input readonly required type="text" class="last" id="ten" name="ten" placeholder="<?php echo $this->__('Tên') ?>" value="<?php echo $this->getCustomer()->getFirstname() ?>" />
+    		<input required type="text" class="first" id="ho" name="last" placeholder="<?php echo $this->__('姓 ') ?>" value="<?php echo $this->getCustomer()->getLastname() ?>" />
+    		<input required type="text" class="last" id="ten" name="first" placeholder="<?php echo $this->__('名') ?>" value="<?php echo $this->getCustomer()->getFirstname() ?>" />
+    	</div>
+    	
+    	<div class="row row2">
+    		<input required class="first" name="username" />
+    		<input required class="last" name="kana" /> 
     	</div>
     	
     	<div class="row row3">
-    		<span class="re">*</span>
-    		<span class="re re3">*</span>
-    		<select required id="day" class="first" name="day">
-    			<option value=""><?php echo $this->__('Ngày') ?></option>
-            	<?php 
-            	for($i = 1; $i <= 31;$i++): ?>
-            	<option <?php echo ($data['day']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
-            	<?php endfor; ?>
-    		</select>
-    		<select required id="month" name="month" class="middle">
-    			<option value=""><?php echo $this->__('Tháng') ?></option>
-            	<?php 
-            	for($i = 1; $i <= 12;$i++): ?>
-            	<option <?php echo ($data['month']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $this->__('Tháng') .' '. $i ?></option>
-            	<?php endfor; ?>
-    		</select>
-    		<input readonly class="last select" id="year" type="text" name="year" value="<?php echo $this->getCustomer()->getBirthYear() ?>" />
+    		<div class="first">
+    			<select required id="year" name="year" class="first">
+    				<option value=""><?php echo $this->__('年齢 ') ?></option>
+                	<?php 
+                	$y = (int) Date('Y');
+                	for($i = $y-10; $i >= $y-60;$i--): ?>
+                	<option <?php echo ($this->getFormData()->getYear()==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+                	<?php endfor; ?>
+    			</select>
+	    		<select required id="month" name="month" class="middle">
+	    			<option value=""><?php echo $this->__('Tháng') ?></option>
+	            	<?php 
+	            	for($i = 1; $i <= 12;$i++): ?>
+	            	<option <?php echo ($data['month']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $this->__('Tháng') .' '. $i ?></option>
+	            	<?php endfor; ?>
+	    		</select>
+	    		<select required id="day" class="first" name="day">
+	    			<option value=""><?php echo $this->__('Ngày') ?></option>
+	            	<?php 
+	            	for($i = 1; $i <= 31;$i++): ?>
+	            	<option <?php echo ($data['day']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+	            	<?php endfor; ?>
+	    		</select>
+    		</div>
+    		
+    		<select required class="last" name="sex" title="<?php echo $this->__('性別') ?>" id="sex" class="select-box required-entry">
+            	<option value=""><?php echo $this->__('性別') ?></option>
+            	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nam')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('男性') ?>"><?php echo $this->__('男性') ?></option>
+            	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nữ')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('女性') ?>"><?php echo $this->__('女性') ?></option>
+            </select>
     	</div>
     	
     	<div class="row row2 clearfix">
@@ -57,7 +76,6 @@
     	</div>
     	
     	<div class="row row2">
-    		<span class="re">*</span>
     		<input required type="number" class="first" name="phone" id="phone" placeholder="Di động*" />
     		<input readonly required type="text" class="last" name="email" id="email" placeholder="Email*" value="<?php echo $this->getCustomer()->getEmail() ?>" />
     	</div>
@@ -95,8 +113,6 @@
     	</div>
     	
     	<div class="row row2">
-    		<span class="re">*</span>
-    		<span class="re re2">*</span>
     		<select required class="first" name="category" id="category">
     			<option value="">Ngành nghề</option>
 				<?php echo $this->getCategoryList($data['category']) ?>
@@ -165,8 +181,6 @@
     	</div>
     	
     	<div class="row row2">
-    		<span class="re">*</span>
-    		<span class="re re2">*</span>
     		<select required class="first" name="category2" id="category2">
     			<option value="">Ngành nghề</option>
 				<?php echo $this->getCategoryList($data['category2']) ?>

@@ -86,6 +86,8 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
         }
         $this->getResponse()->setHeader('Login-Required', 'true');
         $this->loadLayout();
+		
+		Mage::getSingleton('core/session')->setShowLogin(1);
         $this->_initLayoutMessages('customer/session');
         $this->_initLayoutMessages('catalog/session');
         $this->renderLayout();

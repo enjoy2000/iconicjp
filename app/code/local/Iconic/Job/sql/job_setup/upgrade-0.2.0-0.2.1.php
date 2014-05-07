@@ -10,7 +10,7 @@ $installer->run("
  
 DROP TABLE IF EXISTS {$this->getTable('list_location')};
 CREATE TABLE {$this->getTable('list_location')} (
-  `id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL default ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
