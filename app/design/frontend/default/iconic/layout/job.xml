@@ -101,7 +101,7 @@
     </job_index_aftercreatecv>
     
     <job_index_createcv>
-    	<label>Tạo hồ sơ</label>
+    	<label>転職支援サービスに申し込む</label>
         <remove name="right"/>
         <remove name="left"/>
         <reference name="root">
@@ -109,12 +109,12 @@
                 <template>page/1column.phtml</template>
             </action>
             <action method="setHeaderTitle">
-                <title>Tạo hồ sơ</title>
+                <title>転職支援サービスに申し込む</title>
             </action>
         </reference>
         <reference name="head">
             <action method="setTitle">
-                <title>Tạo hồ sơ</title>
+                <title>転職支援サービスに申し込む</title>
             </action>
              <action method="addJs"><script>select2/select2.min.js</script></action>
              <action method="addCss"><stylesheet>css/createcv.css</stylesheet></action>

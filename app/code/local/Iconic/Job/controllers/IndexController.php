@@ -81,6 +81,12 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
             $this->_redirect('/');
             return $this;
         }
+		$helper = Mage::helper('job');
+		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
+			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム'), 'title'=>$helper->__('ホーム'), 'link'=>Mage::helper('job')->getBaseUrl()));
+			$breadcrumbs->addCrumb('create_cv', array('label'=>$helper->__('転職支援サービスに申し込む'), $helper->__('転職支援サービスに申し込む')));
+		}
+		$this->getLayout()->getBlock('head')->setTitle($helper->__('転職支援サービスに申し込む'));
 		if($this->getRequest()->getPost()){
 			$data = $this->getRequest()->getPost();
 			$birthday = $data['month'].'/'.$data['day'].'/'.$data['year'];

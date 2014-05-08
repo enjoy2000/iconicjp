@@ -63,7 +63,7 @@
 							<a href="/nguoi-tim-viec"><?php echo $this->__('お問い合わせ') ?></a>
 						</li>
 						<li class="border">
-							<a href="/blog"><?php echo $this->__('転職支援サービスに申し込む') ?></a>
+							<a href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getCreateCVUrl() ?>"><?php echo $this->__('転職支援サービスに申し込む') ?></a>
 						</li>
 					</ul>
 				</div><!-- End Menu -->

@@ -210,7 +210,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 	
 	public function getCreateCVUrl(){
-		return 'tao-ho-so';
+		return 'submit-cv';
 	}
 
 	public function getSitemapUrl(){
