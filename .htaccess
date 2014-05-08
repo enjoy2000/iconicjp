@@ -190,7 +190,7 @@
     RewriteCond %{REQUEST_FILENAME} !-l
 	RewriteRule (.*) index.php?___store=jp&___path=/$1 [QSA,L]
 	
-	RewriteRule index\.php index.php?___store=jp&___path=/ [QSA,L]
+	RewriteRule ^index\.php$ index.php?___store=jp&___path=/ [QSA,L]
 
 </IfModule>
 
