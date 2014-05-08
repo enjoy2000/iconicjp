@@ -118,4 +118,68 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
         $this->_initLayoutMessages('customer/session');
         $this->renderLayout();
     }
+	
+	 /**
+     * Confirm customer account by id and confirmation key
+     */
+    public function confirmAction()
+    {
+        $session = $this->_getSession();
+        if ($session->isLoggedIn()) {
+            $this->_redirect('*/*/');
+            return;
+        }
+        try {
+            $id      = $this->getRequest()->getParam('id', false);
+            $key     = $this->getRequest()->getParam('key', false);
+            $backUrl = $this->getRequest()->getParam('back_url', false);
+            if (empty($id) || empty($key)) {
+                throw new Exception($this->__('Bad request.'));
+            }
+
+            // load customer by id (try/catch in case if it throws exceptions)
+            try {
+                $customer = $this->_getModel('customer/customer')->load($id);
+                if ((!$customer) || (!$customer->getId())) {
+                    throw new Exception('Failed to load customer by id.');
+                }
+            }
+            catch (Exception $e) {
+                throw new Exception($this->__('Wrong customer account specified.'));
+            }
+
+            // check if it is inactive
+            if ($customer->getConfirmation()) {
+                if ($customer->getConfirmation() !== $key) {
+                    throw new Exception($this->__('Wrong confirmation key.'));
+                }
+
+                // activate customer
+                try {
+                    $customer->setConfirmation(null);
+                    $customer->save();
+                }
+                catch (Exception $e) {
+                    throw new Exception($this->__('Failed to confirm customer account.'));
+                }
+
+                $session->renewSession();
+                // log in and send greeting email, then die happy
+                $session->setCustomerAsLoggedIn($customer);
+                $successUrl = $this->_welcomeCustomer($customer, true);
+                $this->_redirect('job/success/confirm');
+                return;
+            }
+
+            // die happy
+            $this->_redirectSuccess($this->_getUrl('*/*/index', array('_secure' => true)));
+            return;
+        }
+        catch (Exception $e) {
+            // die unhappy
+            $this->_getSession()->addError($e->getMessage());
+            $this->_redirectError($this->_getUrl('*/*/index', array('_secure' => true)));
+            return;
+        }
+    }
 }
