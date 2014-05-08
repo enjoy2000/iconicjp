@@ -4,12 +4,6 @@
 body{
 	background-color: #dadbdc;
 }
-html, button, input, select, textarea {
-	font: 15px 'MS PGothic';
-	font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,Osaka,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
-	color: #636466;
-	font-size: 14px;
-}
 /*
  * SHORT TEMPLATE
  */

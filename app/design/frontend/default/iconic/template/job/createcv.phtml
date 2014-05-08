@@ -19,7 +19,7 @@
     	</div>
     	
     	<div class="row row2">
-    		<div class="first">
+    		<div class="first div3">
     			<select required id="year" name="year" class="first">
     				<option value=""><?php echo $this->__('年齢') ?></option>
                 	<?php 
@@ -32,7 +32,7 @@
 	    			<option value=""><?php echo $this->__('生月') ?></option>
 	            	<?php 
 	            	for($i = 1; $i <= 12;$i++): ?>
-	            	<option <?php echo ($data['month']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $this->__('Tháng') .' '. $i ?></option>
+	            	<option <?php echo ($data['month']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 	            	<?php endfor; ?>
 	    		</select>
 	    		<select required id="day" class="last" name="day">
@@ -60,9 +60,9 @@
     			<?php endforeach; ?>
     		</select>
     		<div class="last">
-    			<input name="postcode1" type="number" placeholder="郵便番号" />
+    			<input class="first" name="postcode1" type="number" placeholder="郵便番号" />
     			<span>-</span>
-    			<input name="postcode2" type="number" />
+    			<input class="last" name="postcode2" type="number" />
     		</div>
     	</div>
     	
@@ -129,7 +129,7 @@
     	
     	<div class="row row2">
     		<div class="first div3">
-    			<input type="number" name="phone1" placeholder="<?php echo $this->__('電話番号') ?>" />
+    			<input class="first" type="number" name="phone1" placeholder="<?php echo $this->__('電話番号') ?>" />
     			<span>-</span>
     			<input type="number" name="phone2" />
     			<span>-</span>
@@ -143,7 +143,7 @@
     	</div>
     	
     	<div class="row degree">
-    		<select id="degree" class="fll" required name="degree">
+    		<select id="degree" class="" required name="degree">
     			<option value=""><?php echo $this->__('最終学歴') ?></option>
     			<option value="<?php echo $this->__('（MBA含む）') ?>"><?php echo $this->__('（MBA含む）') ?></option>
     			<option value="<?php echo $this->__('大学') ?>"><?php echo $this->__('大学') ?></option>
@@ -155,7 +155,7 @@
     			<option value="<?php echo $this->__('中学校') ?>"><?php echo $this->__('中学校') ?></option>
     		</select>
     		<input required type="radio" name=="graduated" value="1" /><?php echo $this->__('卒業') ?>
-    		<input required type="radio" name=="graduated" value="0" /><?php echo $this->__('中退') ?>
+    		<input type="radio" name=="graduated" value="0" /><?php echo $this->__('中退') ?>
     	</div>
     	
     	<div class="row row2">
@@ -170,7 +170,7 @@
     	<div class="row work-status">
     		<?php echo $this->__(' 就業状況') ?><span class="red"></span>
     		<input required name="workstatus" type="radio" value="1" /><?php echo $this->__('卒業') ?>
-    		<input required name="workstatus" type="radio" value="0" /><?php echo $this->__('中退') ?>
+    		<input name="workstatus" type="radio" value="0" /><?php echo $this->__('中退') ?>
     	</div>
     	
     	<div class="row row2">
@@ -187,7 +187,7 @@
     	<div class="company">
 	    	<div class="row row2">
 	    		<input required class="first" type="text" name="companyname" placeholder="<?php echo $this->__('企業名') ?>" />
-	    		<div class="last">
+	    		<div class="last income">
 		    		<input required type="number" name="companysalary" placeholder="<?php echo $this->__('年収') ?>" />
 		    		<?php echo $this->__('万円') ?>
 	    		</div>
@@ -216,7 +216,7 @@
 	    	<div class="row row2">
 	    		<input required class="first" type="number" name="companyemploye" placeholder="<?php echo $this->__('従業員数') ?>" />
 	    		<div class="last div4">
-	    			<select required name="yearfrom">
+	    			<select class="first" required name="yearfrom">
 	    				<option value=""><?php echo $this->__('年') ?></option>
 	    				<?php 
 	                	$y = (int) Date('Y');
@@ -228,7 +228,7 @@
 	    				<option value=""><?php echo $this->__('月') ?></option>
 	    				<?php 
 		            	for($i = 1; $i <= 12;$i++): ?>
-		            	<option <?php echo ($data['monthfrom']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $this->__('Tháng') .' '. $i ?></option>
+		            	<option <?php echo ($data['monthfrom']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 		            	<?php endfor; ?>
 	    			</select>
 	    			<span>-</span>
@@ -240,11 +240,11 @@
 	                	<option <?php echo ($data['yearto']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 	                	<?php endfor; ?>
 	    			</select>
-	    			<select required name="monthto">
+	    			<select class="last" required name="monthto">
 	    				<option value=""><?php echo $this->__('月') ?></option>
 	    				<?php 
 		            	for($i = 1; $i <= 12;$i++): ?>
-		            	<option <?php echo ($data['monthto']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $this->__('Tháng') .' '. $i ?></option>
+		            	<option <?php echo ($data['monthto']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 		            	<?php endfor; ?>
 	    			</select>
 	    		</div>
@@ -305,7 +305,7 @@
     	<div class="row dashed-border"></div>
     	
     	<div class="row submit">
-    		<button data-not="<?php echo $this->__('未入力の項目があります') ?>" data-checked="<?php echo $this->__('登録') ?>" class="checkform btn button-blue button" type="submit" name="submit"><?php echo $this->__('SEND') ?></button>
+    		<button data-not="<?php echo $this->__('未入力の項目があります') ?>" data-checked="<?php echo $this->__('登録') ?>" class="checkform btn button-blue button" type="submit" name="submit"><?php echo $this->__('未入力の項目があります') ?></button>
     	</div>
     </form>
 </div>

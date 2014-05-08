@@ -33,7 +33,13 @@
 	float: right;
 	width: 357px;
 }
-
+div.first,
+div.last{
+	text-align: center;
+}
+.row.row2 div.div4 > select{
+	width: 80px;
+}
 .row.row2 > input{
 	width: 335px;
 }
@@ -82,12 +88,6 @@ textarea{
 	margin-top: 0;
 	margin-left: 10px;
 }
-.row #month{
-	margin-left: 15px;
-}
-#year{
-	width: 80px!important;
-}
 input[readonly]{
 	background-color: #ffe6cb!important;
 }
@@ -121,4 +121,16 @@ input[readonly]{
 .row.dashed-border{
 	border-top: dashed 2px #929496;
 	margin: 20px 0;
+}
+.row.row2 div.income{
+	text-align: left;
+}
+.row.row2 div.income > input{
+	width: 300px;
+}
+.row.degree > select{
+	width: 150px;
+}
+input[type="radio"]{
+	margin-left: 20px;
 }
