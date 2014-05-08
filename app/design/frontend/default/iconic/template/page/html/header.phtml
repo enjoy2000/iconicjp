@@ -175,3 +175,11 @@ jQuery(document).ready(function(){
 });
 </script>
 <?php endif; ?>
+<?php if(!$this->helper('customer')->isLoggedIn() && (Mage::getSingleton('core/session')->getShowForgotPassword() == 1)): ?>
+	<?php Mage::getSingleton('core/session')->setShowForgotPassword(0);  ?>
+<script>
+jQuery(document).ready(function(){
+	showForgotPass();
+});
+</script>
+<?php endif; ?>
