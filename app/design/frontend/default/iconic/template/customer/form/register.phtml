@@ -178,16 +178,9 @@
                     	<div class="input-box">
                             <select required placeholder="<?php echo $this->__('居住地域') ?>" name="location" title="<?php echo $this->__('居住地域') ?>" id="location" class="select-box required-entry">
                             	<option value=""><?php echo $this->__('居住地域') ?></option>
-								<?php $countries = Mage::getModel('job/country')->getCollection() ?>
+								<?php $countries = Mage::getModel('job/listlocation')->getCollection() ?>
 								<?php foreach($countries as $country): ?>
-								<optgroup label="<?php echo Mage::helper('job')->getTransName($country) ?>">
-									<?php $locations = Mage::getModel('job/location')->getCollection()
-														->addFieldToFilter('country_id', array('eq'=>$country->getId()))
-									?>
-									<?php foreach($locations as $loc): ?>
-									<option <?php echo ($this->getFormData()->getLocation()==$loc->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $loc->getId() ?>"><?php echo Mage::helper('job')->getTransName($loc) ?></option>
-									<?php endforeach; ?>
-								</optgroup>
+									<option <?php echo ($this->getFormData()->getLocation()==$country->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $country->getId() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></option>
 								<?php endforeach; ?>
                             </select>
                         </div>
@@ -209,23 +202,12 @@
             </ul>
         </div>
         <div class="buttons-set">
-            <button type="submit" title="<?php echo $this->__('登録') ?>" class="btn button"><?php echo $this->__('未入力の項目があります') ?></button>
+            <button type="submit" data-not="<?php echo $this->__('未入力の項目があります') ?>" data-checked="<?php echo $this->__('登録') ?>" title="<?php echo $this->__('登録') ?>" class="btn button"><?php echo $this->__('未入力の項目があります') ?></button>
         </div>
         <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
             <input name="context" type="hidden" value="checkout" />
         <?php endif; ?>
     </form>
 </div>
-<script>
-	jQuery(document).ready(function(){
-		jQuery('input, select').on('change', function(){
-			if(jQuery(this).val != ''){
-				jQuery(this).addClass('after-input');
-			}else{
-				jQuery(this).removeClass('after-input');
-			}
-		});
-	});
-</script>
 <?php if($this->getFormData()->getSex()): ?>
 <?php endif; ?>

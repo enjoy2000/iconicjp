@@ -17,6 +17,31 @@
 	    	showLogin();
 	    });
 	    $('#header-landing .background').cycle({fx:'scrollHorz',next: '.ui-buttonNextSlide',prev: '.ui-buttonPrevSlide' ,delay: -4000});
+		
+		//input effect
+		$('input, select').on('change blur', function(){
+			if($(this).val() != ''){
+				$(this).removeClass('error');
+				$(this).addClass('after-input');
+			}else{
+				if($(this).attr('required')){
+					$(this).addClass('error');
+				}
+				$(this).removeClass('after-input');
+			}
+		});
+		//add class to button submit when no-error
+		$('input, select').on('change', function(){
+			//console.log($(this.form).find('input:required.after-input, select:required.after-input').length);
+			//console.log($(this.form).find('input:required, select:required').length);
+			if(($(this.form).find('.error').length < 1) && ($(this.form).find('input:required.after-input, select:required.after-input').length == $(this.form).find('input:required, select:required').length)){
+				$(this.form).find('button[type="submit"]').addClass('checked');
+				$(this.form).find('button[type="submit"]').text($(this.form).find('button[type="submit"]').data('checked'));
+			}else{
+				$(this.form).find('button[type="submit"]').removeClass('checked');
+				$(this.form).find('button[type="submit"]').text($(this.form).find('button[type="submit"]').data('not'));
+			}
+		});
 	});
 	
 })(jQuery);

@@ -93,7 +93,7 @@ select{
 	background: url('../images/select.png') right 5px center no-repeat #e6ecfc;
 	appearance: none;
 	-webkit-appearance: none;
-	border: solid 1px transparent;
+	border: solid 1px #b0b2b4;
 }
 select:focus{
 	border-color: #4571eb;
@@ -102,18 +102,28 @@ select:disabled{
 }
 input{
 	padding: 5px 10px;
-	border: solid 1px transparent;
+	border: solid 1px #b0b2b4;
 	border-radius: 3px;
 	background-color: #e6ecfc;
-}
-input:focus{
-	border-color: #4571eb;
-}
-input[readonly]{
 }
 input:required,
 select:required{
 	background-color: #f5dbca;
+}
+input:focus{
+	border-color: #4571eb;
+	background-color: #fff;
+}
+input.after-input,
+select.after-input{
+	background-color: #fff;
+	color: #000;
+}
+input.error,
+select.error{
+	border-color: #d76f2c;
+}
+input[readonly]{
 }
 textarea{
 }
@@ -249,8 +259,4 @@ ol.grey > li:before{
 	content: counter(my-counter);
 	counter-increment: my-counter;
 	background: url('../images/big-grey-circle.jpg') 7px -1px no-repeat transparent;
-}
-.after-input{
-	background-color: #fff!important;
-	color: #000!important;
 }

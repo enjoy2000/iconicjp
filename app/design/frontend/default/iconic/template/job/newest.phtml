@@ -214,7 +214,7 @@
 			$('.location > div').hide();
 			$('.location .'+$(this).data('class')).show();
 			$('.location').css('right', -160);
-			$('.location').stop().animate({right: 0}, 2000);
+			$('.location').stop().animate({right: 0}, 1000);
 			event.stopPropagation();
 		});
 		
@@ -222,7 +222,7 @@
 			$('.location > div').show();
 			$('img.map').removeClass('show');
 			$('.location').css('right', -160);
-			$('.location').stop().animate({right: 0}, 2000);
+			$('.location').stop().animate({right: 0}, 1000);
 		});
 		
 		$('#tab-control .tab').click(function(e){

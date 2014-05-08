@@ -16,25 +16,25 @@
 .account-create input[type="text"],
 .account-create input[type="password"]{
 	width: 337px;
-	border-color: #b0b2b4;
 }
 .account-create input[type="radio"]{
 	margin-left: 35px;
-}
-.account-create select{
-	border-color: #b0b2b4;
-	color: rgb(150, 150, 150);
 }
 .account-create .buttons-set{
 	text-align: center;
 }
 .account-create .buttons-set button{
-	background: url('../images/register-btn.png') center no-repeat transparent;
-	padding-left: 85px;
+	padding: 7px 20px;
+	background: url('../images/error-btn.png') 10px center no-repeat #E9955D;
+	padding-left: 35px;
 	font-size: 11px;
+	border-radius: 3px;
+	border-bottom: solid 2px #d76f2c;
 }
-.account-create button{
-	padding: 7px 62px;
+.account-create .buttons-set button.checked{
+	background: none #6a8def;
+	border-color: #4571EB;
+	padding: 7px 20px;
 }
 body.customer-account-create #main .main{
 	border: none;

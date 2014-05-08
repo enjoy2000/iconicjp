@@ -25,18 +25,18 @@
                 	<?php 
                 	$y = (int) Date('Y');
                 	for($i = $y-10; $i >= $y-60;$i--): ?>
-                	<option <?php echo ($this->getFormData()->getYear()==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+                	<option <?php echo ($data['year']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
                 	<?php endfor; ?>
     			</select>
 	    		<select required id="month" name="month" class="middle">
-	    			<option value=""><?php echo $this->__('Tháng') ?></option>
+	    			<option value=""><?php echo $this->__('生月 ') ?></option>
 	            	<?php 
 	            	for($i = 1; $i <= 12;$i++): ?>
 	            	<option <?php echo ($data['month']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $this->__('Tháng') .' '. $i ?></option>
 	            	<?php endfor; ?>
 	    		</select>
 	    		<select required id="day" class="first" name="day">
-	    			<option value=""><?php echo $this->__('Ngày') ?></option>
+	    			<option value=""><?php echo $this->__('生日 ') ?></option>
 	            	<?php 
 	            	for($i = 1; $i <= 31;$i++): ?>
 	            	<option <?php echo ($data['day']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
@@ -46,17 +46,18 @@
     		
     		<select required class="last" name="sex" title="<?php echo $this->__('性別') ?>" id="sex" class="select-box required-entry">
             	<option value=""><?php echo $this->__('性別') ?></option>
-            	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nam')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('男性') ?>"><?php echo $this->__('男性') ?></option>
-            	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nữ')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('女性') ?>"><?php echo $this->__('女性') ?></option>
+            	<option value="<?php echo $this->__('男性') ?>"><?php echo $this->__('男性') ?></option>
+            	<option value="<?php echo $this->__('女性') ?>"><?php echo $this->__('女性') ?></option>
             </select>
     	</div>
     	
     	<div class="row row2 clearfix">
-    		<input readonly type="text" id="sex" class="first select" name="sex" value="<?php echo $this->getCustomer()->getSex() ?>" />
-    		<select name="nation" id="nation" class="last">
-    			<option value="">Quốc tịch</option>
-    			<option value="Việt Nam">Việt Nam</option>
-    			<option value="Nước ngoài">Nước ngoài</option>
+    		<select name="nation" id="nation" class="first">
+    			<option value="">国籍</option>
+    			<?php $list = Mage::getModel('job/listlocation')->getCollection ?>
+    			<?php foreach($list as $loc): ?>
+    			<option value="<?php echo $loc->getId() ?>"><?php echo Mage::helper('job')->getTransName($loc) ?></option>
+    			<?php endforeach; ?>
     		</select>
     	</div>
     	
