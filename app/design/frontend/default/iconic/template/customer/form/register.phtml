@@ -47,7 +47,7 @@
                 </li>
                 <li>
                     <div class="input-box field">
-                        <input required placeholder="<?php echo $this->__('ユーザー(メールアドレス)') ?>" type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('ユーザー(メールアドレス)') ?>" class="input-text validate-email required-entry" />
+                        <input required placeholder="<?php echo $this->__('ユーザー(メールアドレス)') ?>" type="email" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('ユーザー(メールアドレス)') ?>" class="input-text validate-email required-entry" />
                     </div>
                 </li>
             <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
@@ -190,7 +190,7 @@
                     		<?php echo $this->__('ニュースレター ') ?>:
                     	</div>
                     	<div class="inline">
-                    		<input checked type="radio" name="newsletter" value="1" />
+                    		<input required type="radio" name="newsletter" value="1" />
                     		<?php echo $this->__('登録する ') ?>
                     	</div>
                     	<div class="inline">
@@ -211,3 +211,10 @@
 </div>
 <?php if($this->getFormData()->getSex()): ?>
 <?php endif; ?>
+<script>
+	window.onbeforeunload = function(){
+		if(hook){
+			return 'Are you sure you want to leave?';
+		}
+	};
+</script>

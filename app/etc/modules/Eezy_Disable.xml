@@ -60,7 +60,7 @@
             <active>false</active>
         </Mage_Reports>
         <Mage_Newsletter>
-            <active>false</active>
+            <active>true</active>
         </Mage_Newsletter>
         <Mage_Tax>
             <active>false</active>

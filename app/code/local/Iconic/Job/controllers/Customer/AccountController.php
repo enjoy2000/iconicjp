@@ -52,6 +52,10 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 		            $session->renewSession();
 		            $url = $this->_welcomeCustomer($customer);
 		        }
+				if($this->getRequest()->getParam('newsletter') == 1){
+					$subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($customer->getEmail());
+					$subscriber->setStatus(1)->save();
+				}
                 $this->_redirect('job/index/afterregister');
                 return;
             } else {

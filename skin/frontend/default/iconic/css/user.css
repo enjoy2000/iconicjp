@@ -14,7 +14,8 @@
 	margin-bottom: 20px;
 }
 .account-create input[type="text"],
-.account-create input[type="password"]{
+.account-create input[type="password"],
+.account-create input[type="email"]{
 	width: 337px;
 }
 .account-create input[type="radio"]{

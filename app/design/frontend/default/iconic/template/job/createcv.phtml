@@ -5,7 +5,7 @@
     </div>
     <form action="/<?php echo Mage::helper('job')->getCreateCVUrl() ?>" method="post" id="form-validate">
     	<div class="row heading">
-    		<span><?php echo $this->__('プロフィール') ?></span>
+    		<?php echo $this->__('プロフィール') ?>
     	</div>
     	
     	<div class="row row2">
@@ -21,7 +21,7 @@
     	<div class="row row3">
     		<div class="first">
     			<select required id="year" name="year" class="first">
-    				<option value=""><?php echo $this->__('年齢 ') ?></option>
+    				<option value=""><?php echo $this->__('年齢') ?></option>
                 	<?php 
                 	$y = (int) Date('Y');
                 	for($i = $y-10; $i >= $y-60;$i--): ?>
@@ -29,14 +29,14 @@
                 	<?php endfor; ?>
     			</select>
 	    		<select required id="month" name="month" class="middle">
-	    			<option value=""><?php echo $this->__('生月 ') ?></option>
+	    			<option value=""><?php echo $this->__('生月') ?></option>
 	            	<?php 
 	            	for($i = 1; $i <= 12;$i++): ?>
 	            	<option <?php echo ($data['month']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $this->__('Tháng') .' '. $i ?></option>
 	            	<?php endfor; ?>
 	    		</select>
 	    		<select required id="day" class="first" name="day">
-	    			<option value=""><?php echo $this->__('生日 ') ?></option>
+	    			<option value=""><?php echo $this->__('生日') ?></option>
 	            	<?php 
 	            	for($i = 1; $i <= 31;$i++): ?>
 	            	<option <?php echo ($data['day']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
@@ -53,235 +53,300 @@
     	
     	<div class="row row2 clearfix">
     		<select name="nation" id="nation" class="first">
-    			<option value="">国籍</option>
+    			<option value=""><?php echo $this->__('国籍') ?></option>
     			<?php $list = Mage::getModel('job/listlocation')->getCollection ?>
     			<?php foreach($list as $loc): ?>
     			<option value="<?php echo $loc->getId() ?>"><?php echo Mage::helper('job')->getTransName($loc) ?></option>
     			<?php endforeach; ?>
     		</select>
-    	</div>
-    	
-    	<div class="row row1">
-    		<input type="text" name="address" id="address" placeholder="Địa chỉ cư trú" />
+    		<div class="last">
+    			<input name="postcode1" type="number" placeholder="郵便番号" />
+    			<span>-</span>
+    			<input name="postcode2" type="number" />
+    		</div>
     	</div>
     	
     	<div class="row row2">
-    		<input readonly class="first select" type="text" id="location" name="location" value="<?php echo Mage::getModel('job/listlocation')->load($this->getCustomer()->getLocation())->getName() ?>" />
+    		<select class="first" name="location">
+    			<option value=""><?php echo $this->__('<住所詳細') ?></option>
+    			<?php $countries = Mage::getModel('job/country')->getCollection() ?>
+    			<?php foreach($countries as $country): ?>
+    			<option value="<?php echo $country->getId() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></option>
+    			<?php endforeach; ?>
+    		</select>
     		
-    		<select name="country" id="country" class="last">
-    			<option value="">Quốc gia</option>
-    			<option value="Việt Nam">Việt Nam</option>
-    			<option value="Malaysia">Malaysia</option>
-    			<option value="Nhật Bản">Nhật Bản</option>
+    		<select required class="last" name="province">
+    			  <option value=""><?php echo $this->__('都道府県') ?></option>
+    			  <option value="<?php echo $this->__('京都府') ?>"><?php echo $this->__('京都府') ?></option>
+				  <option value="<?php echo $this->__('佐賀県') ?>"><?php echo $this->__('佐賀県') ?></option>
+				  <option value="<?php echo $this->__('兵庫県') ?>"><?php echo $this->__('兵庫県') ?></option>
+				  <option value="<?php echo $this->__('北海道') ?>"><?php echo $this->__('北海道') ?></option>
+				  <option value="<?php echo $this->__('千葉県') ?>"><?php echo $this->__('千葉県') ?></option>
+				  <option value="<?php echo $this->__('和歌山県') ?>"><?php echo $this->__('和歌山県') ?></option>
+				  <option value="<?php echo $this->__('埼玉県') ?>"><?php echo $this->__('埼玉県') ?></option>
+				  <option value="<?php echo $this->__('大分県') ?>"><?php echo $this->__('大分県') ?></option>
+				  <option value="<?php echo $this->__('大阪府') ?>"><?php echo $this->__('大阪府') ?></option>
+				  <option value="<?php echo $this->__('奈良県') ?>"><?php echo $this->__('奈良県') ?></option>
+				  <option value="<?php echo $this->__('宮城県') ?>"><?php echo $this->__('宮城県') ?></option>
+				  <option value="<?php echo $this->__('宮崎県') ?>"><?php echo $this->__('宮崎県') ?></option>
+				  <option value="<?php echo $this->__('富山県') ?>"><?php echo $this->__('富山県') ?></option>
+				  <option value="<?php echo $this->__('山口県') ?>"><?php echo $this->__('山口県') ?></option>
+				  <option value="<?php echo $this->__('山形県') ?>"><?php echo $this->__('山形県') ?></option>
+				  <option value="<?php echo $this->__('山梨県') ?>"><?php echo $this->__('山梨県') ?></option>
+				  <option value="<?php echo $this->__('岐阜県') ?>"><?php echo $this->__('岐阜県') ?></option>
+				  <option value="<?php echo $this->__('岡山県') ?>"><?php echo $this->__('岡山県') ?></option>
+				  <option value="<?php echo $this->__('岩手県') ?>"><?php echo $this->__('岩手県') ?></option>
+				  <option value="<?php echo $this->__('島根県') ?>"><?php echo $this->__('島根県') ?></option>
+				  <option value="<?php echo $this->__('広島県') ?>"><?php echo $this->__('広島県') ?></option>
+				  <option value="<?php echo $this->__('徳島県') ?>"><?php echo $this->__('徳島県') ?></option>
+				  <option value="<?php echo $this->__('愛媛県') ?>"><?php echo $this->__('愛媛県') ?></option>
+				  <option value="<?php echo $this->__('三重県') ?>"><?php echo $this->__('三重県') ?></option>
+				  <option value="<?php echo $this->__('愛知県') ?>"><?php echo $this->__('愛知県') ?></option>
+				  <option value="<?php echo $this->__('新潟県') ?>"><?php echo $this->__('新潟県') ?></option>
+				  <option value="<?php echo $this->__('東京都') ?>"><?php echo $this->__('東京都') ?></option>
+				  <option value="<?php echo $this->__('栃木県') ?>"><?php echo $this->__('栃木県') ?></option>
+				  <option value="<?php echo $this->__('沖縄県') ?>"><?php echo $this->__('沖縄県') ?></option>
+				  <option value="<?php echo $this->__('滋賀県') ?>"><?php echo $this->__('滋賀県') ?></option>
+				  <option value="<?php echo $this->__('熊本県') ?>"><?php echo $this->__('熊本県') ?></option>
+				  <option value="<?php echo $this->__('石川県') ?>"><?php echo $this->__('石川県') ?></option>
+				  <option value="<?php echo $this->__('神奈川県') ?>"><?php echo $this->__('神奈川県') ?></option>
+				  <option value="<?php echo $this->__('福井県') ?>"><?php echo $this->__('福井県') ?></option>
+				  <option value="<?php echo $this->__('福岡県') ?>"><?php echo $this->__('福岡県') ?></option>
+				  <option value="<?php echo $this->__('福島県') ?>"><?php echo $this->__('福島県') ?></option>
+				  <option value="<?php echo $this->__('秋田県') ?>"><?php echo $this->__('秋田県') ?></option>
+				  <option value="<?php echo $this->__('群馬県') ?>"><?php echo $this->__('群馬県') ?></option>
+				  <option value="<?php echo $this->__('茨城県') ?>"><?php echo $this->__('茨城県') ?></option>
+				  <option value="<?php echo $this->__('長崎県') ?>"><?php echo $this->__('長崎県') ?></option>
+				  <option value="<?php echo $this->__('長野県') ?>"><?php echo $this->__('長野県') ?></option>
+				  <option value="<?php echo $this->__('青森県') ?>"><?php echo $this->__('青森県') ?></option>
+				  <option value="<?php echo $this->__('静岡県') ?>"><?php echo $this->__('静岡県') ?></option>
+				  <option value="<?php echo $this->__('香川県') ?>"><?php echo $this->__('香川県') ?></option>
+				  <option value="<?php echo $this->__('高知県') ?>"><?php echo $this->__('高知県') ?></option>
+				  <option value="<?php echo $this->__('鳥取県') ?>"><?php echo $this->__('鳥取県') ?></option>
+				  <option value="<?php echo $this->__('鹿児島県') ?>"><?php echo $this->__('鹿児島県') ?></option>
     		</select>
     	</div>
     	
     	<div class="row row2">
-    		<input required type="number" class="first" name="phone" id="phone" placeholder="Di động*" />
+    		<div class="first">
+    			<input type="number" name="phone1" placeholder="<?php echo $this->__('電話番号') ?>" />
+    			<span>-</span>
+    			<input type="number" name="phone2" />
+    			<span>-</span>
+    			<input type="number" name="phone3" />
+    		</div>
     		<input readonly required type="text" class="last" name="email" id="email" placeholder="Email*" value="<?php echo $this->getCustomer()->getEmail() ?>" />
     	</div>
     	
-    	<div class="row row3">
-    		<input type="number" class="first" name="salary" id="salary" placeholder="Mức lương hiện tại" />
-    		<select class="mid" name="currency" id="currency">
-    			<option value="">Tiền tệ</option>
-    			<option value="USD">USD</option>
-    			<option value="VND">VND</option>
+    	<div class="row heading">
+    		<?php echo $this->__('学歴') ?>
+    	</div>
+    	
+    	<div class="row degree">
+    		<select id="degree" class="fll" required name="degree">
+    			<option value=""><?php echo $this->__('最終学歴') ?></option>
+    			<option value="<?php echo $this->__('（MBA含む）') ?>"><?php echo $this->__('（MBA含む）') ?></option>
+    			<option value="<?php echo $this->__('大学') ?>"><?php echo $this->__('大学') ?></option>
+    			<option value="<?php echo $this->__('短期大学') ?>"><?php echo $this->__('短期大学') ?></option>
+    			<option value="<?php echo $this->__('高等専門学校') ?>"><?php echo $this->__('高等専門学校') ?></option>
+    			<option value="<?php echo $this->__('専門学校') ?>"><?php echo $this->__('専門学校') ?></option>
+    			<option value="<?php echo $this->__('高校') ?>"><?php echo $this->__('高校') ?></option>
+    			<option value="<?php echo $this->__('中学校') ?>"><?php echo $this->__('中学校') ?></option>
+    			<option value="<?php echo $this->__('中学校') ?>"><?php echo $this->__('中学校') ?></option>
     		</select>
-    		<select class="last" name="salarytype" id="salarytype">
-    			<option value="">Gross/NET</option>
-    			<option value="Gross">Gross</option>
-    			<option value="NET">NET</option>
-    		</select>
+    		<input required type="radio" name=="graduated" value="1" /><?php echo $this->__('卒業') ?>
+    		<input required type="radio" name=="graduated" value="0" /><?php echo $this->__('中退') ?>
+    	</div>
+    	
+    	<div class="row row2">
+    		<input class="first" type="text" name="major" placeholder="<?php echo $this->__('学部・学科名') ?>" />
+    		<input required class="last" type="text" name="school" placeholder="<?php echo $this->__('メールアドレス') ?>" />
     	</div>
     	
     	<div class="row heading">
-    		<span>Công việc mong muốn</span>
+    		<?php echo $this->__('職歴') ?>
     	</div>
     	
-    	<div class="row row3">
-    		<input required type="number" class="first" name="salary2" id="salary2" placeholder="Mức lương mong muốn*" />
-    		<select required class="mid" name="currency2" id="currency2">
-    			<option value="">Tiền tệ</option>
-    			<option value="USD">USD</option>
-    			<option value="VND">VND</option>
-    		</select>
-    		<select required class="last" name="salarytype2" id="salarytype2">
-    			<option value="">Gross/NET</option>
-    			<option value="Gross">Gross</option>
-    			<option value="NET">NET</option>
-    		</select>
+    	<div class="row work-status">
+    		<?php echo $this->__(' 就業状況') ?><span class="red"></span>
+    		<input required name="workstatus" type="radio" value="1" /><?php echo $this->__('卒業') ?>
+    		<input required name="workstatus" type="radio" value="0" /><?php echo $this->__('中退') ?>
     	</div>
     	
     	<div class="row row2">
-    		<select required class="first" name="category" id="category">
-    			<option value="">Ngành nghề</option>
-				<?php echo $this->getCategoryList($data['category']) ?>
-    		</select>
-    		<select required class="last" name="function" id="function">
-    			<option value="">Chức năng</option>
-				<?php echo $this->getFunctionList($data['function']) ?>
+    		<input required type="number" name="numbercompany" placeholder="<?php echo $this->__('経験社数') ?>" />
+    		
+    		<select required name="workfunction">
+    			<option value=""><?php echo $this->__('経験職種') ?></option>
+    			<?php echo $this->getFunctionList($data['workfunction']) ?>
     		</select>
     	</div>
     	
-    	<div class="row row2">
-    		<select class="first" name="location2" id="location2">
-    			<option value="">Địa điểm</option>
-    			<?php $list = Mage::getModel('job/listlocation')->getCollection() ?>
-				<?php foreach($list as $loc): ?>
-					<option <?php echo ($data['location2']==$loc->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $loc->getName() ?>"><?php echo $loc->getName() ?></option>
-				<?php endforeach; ?>
-    		</select>
-    		<select class="last" name="level" id="level">
-    			<option value="">Cấp độ công việc</option>
-    			<option value="New Graduates/Entry Level">Mới Tốt Nghiệp/Chưa Có Kinh Nghiệm</option>
-    			<option value="Experienced">Có Kinh Nghiệm</option>
-    			<option value="Team Leader/Supervisor/Assistant Manager">Trưởng Nhóm/Giám Sát/Trợ Lý</option>
-    			<option value="Manager">Quản Lý</option>
-    			<option value="Executive Management">Quản Lý Cấp Cao</option>
-    		</select>
+    	<div class="row dashed-border"></div>
+    	
+    	<div class="company">
+	    	<div class="row row2">
+	    		<input required class="first" type="text" name="companyname" placeholder="<?php echo $this->__('企業名') ?>" />
+	    		<input required class="last" type="number" name="companysalary" placeholder="<?php echo $this->__('年収') ?>" />
+	    		<?php echo $this->__('万円') ?>
+	    	</div>
+	    	
+	    	<div class="row row2">
+	    		<select required class="first" name="companycategory">
+					<option value=""><?php echo $this->__('業種') ?></option>
+					<?php echo $this->getCategoryList($data['companycategory']) ?>			
+	    		</select>
+	    		<input class="last" type="text" name="companytitle" placeholder="<?php echo $this->__('役職名') ?>" />
+	    	</div>
+	    	
+	    	<div class="row row2">
+	    		<input class="first" type="text" name="division" placeholder="<?php echo $this->__('部署名') ?>" />
+	    		<select class="last" required name="companystatus">
+	    			<option value=""><?php echo $this->__('就業形態') ?></option>
+	    			<option value="<?php echo $this->__('選択してください') ?>"><?php echo $this->__('選択してください') ?></option>
+	    			<option value="<?php echo $this->__('正社員') ?>"><?php echo $this->__('正社員') ?></option>
+	    			<option value="<?php echo $this->__('契約社員') ?>"><?php echo $this->__('契約社員') ?></option>
+	    			<option value="<?php echo $this->__('派遣社員アルバイト') ?>"><?php echo $this->__('派遣社員アルバイト') ?></option>
+	    			<option value="<?php echo $this->__('IC') ?>"><?php echo $this->__('IC') ?></option>
+	    		</select>
+	    	</div>
+	    	
+	    	<div class="row row2">
+	    		<input required class="first" type="number" name="companyemploye" placeholder="<?php echo $this->__('従業員数') ?>" />
+	    		<div class="last">
+	    			<select required name="yearfrom">
+	    				<option value=""><?php echo $this->__('年') ?></option>
+	    				<?php 
+	                	$y = (int) Date('Y');
+	                	for($i = $y; $i >= $y-60;$i--): ?>
+	                	<option <?php echo ($data['yearfrom']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+	                	<?php endfor; ?>
+	    			</select>
+	    			<select required name="monthfrom">
+	    				<option value=""><?php echo $this->__('月') ?></option>
+	    				<?php 
+		            	for($i = 1; $i <= 12;$i++): ?>
+		            	<option <?php echo ($data['monthfrom']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $this->__('Tháng') .' '. $i ?></option>
+		            	<?php endfor; ?>
+	    			</select>
+	    			<span>-</span>
+	    			<select required name="yearto">
+	    				<option value=""><?php echo $this->__('年') ?></option>
+	    				<?php 
+	                	$y = (int) Date('Y');
+	                	for($i = $y; $i >= $y-60;$i--): ?>
+	                	<option <?php echo ($data['yearto']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+	                	<?php endfor; ?>
+	    			</select>
+	    			<select required name="monthto">
+	    				<option value=""><?php echo $this->__('月') ?></option>
+	    				<?php 
+		            	for($i = 1; $i <= 12;$i++): ?>
+		            	<option <?php echo ($data['monthto']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $this->__('Tháng') .' '. $i ?></option>
+		            	<?php endfor; ?>
+	    			</select>
+	    		</div>
+	    	</div>
+	    	
+	    	<div class="row row2">
+	    		<textarea class="first" name="jobcontent" placeholder="<?php echo $this->__('事業内容') ?>"></textarea>
+	    		<textarea required class="last" name="jobdescription" placeholder="<?php echo $this->__('職務内容') ?>"></textarea>
+	    	</div>
+	    	
+	    	<div class="row row1">
+	    		<textarea required name="otherwork" placeholder="<?php echo $this->__('その他勤務歴 （これまでに在籍した会社名を全て入力してくださいない場合は「なし」とご入力ください。） ') ?>"></textarea>
+	    	</div>
     	</div>
     	
     	<div class="row heading">
-    		<span>Trình độ học vấn</span>
-    		<div class="last">
-	    		<input type="radio" name="education" value="1" /> Nước ngoài
-	    		<input type="radio" name="education" value="2" /> Việt Nam
-    		</div>
+    		<?php echo $this->__('添付ファイル（必須ではございません）') ?>
     	</div>
     	
-    	<div class="row row2">
-    		<input type="text" class="first" name="school" placeholder="Tên trường" />
-    		<input type="text" class="last" name="spec" placeholder="Chuyên ngành" />
+    	<div class="row row1">
+    		<p>
+    			<?php echo $this->__('Word, Excel, PowerPoint, PDF,Html,Textファイルがアップロード可能です。') ?>
+    		</p>
+    		<p>
+    			<?php echo $this->__('1ファイルの容量は最大500KBまでとなっております') ?>。
+    		</p>
     	</div>
     	
-    	<div class="row row2">
-    		<select name="degree" id="degree" class="first">
-    			<option value="">Bằng cấp</option>
-    			<option value="Diploma">Trung cấp</option>
-    			<option value="College">Cao đẳng</option>
-    			<option value="Bachelor">Đại học</option>
-    			<option value="Master">Thạc sĩ</option>
-    			<option value="Doctor">Tiến sĩ</option>
-    		</select>
-    		<select name="graduate" id="graduate" class="last">
-    			<option value="">Năm tốt nghiệp</option>
-    			<?php 
-            	$y = (int) Date('Y');
-            	for($i = $y; $i >= $y-40;$i--): ?>
-            	<option <?php echo ($data['graduate']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
-            	<?php endfor; ?>
-    		</select>
+    	<div class="row">
+    		<input id="fileupload" type="file" name="files[]" data-url="<?php echo Mage::getBaseUrl() ?>job/create/upload" multiple>
+			<div id="progress">
+			    <div class="bar" style="width: 0%;"></div>
+			</div>
+			<div class="files">
+				
+			</div>
     	</div>
     	
     	<div class="row heading">
-    		<span>Kinh nghiệm</span>
-    		<div class="last">
-    			<input type="checkbox" name="newgraduate" id="newgraduate" value="1"/> Tôi vừa mới ra trường, chưa có kinh nghiệm làm việc
-    		</div>
+    		<?php echo $this->__('希望条件・その他') ?>
     	</div>
     	
     	<div class="row row2">
-    		<select required class="first" name="category2" id="category2">
-    			<option value="">Ngành nghề</option>
-				<?php echo $this->getCategoryList($data['category2']) ?>
+    		<select class="first" name="category">
+    			<option value=""><?php echo $this->__('希望業種') ?></option>
+    			<?php echo $this->getCategoryList($data['category']) ?>
     		</select>
-    		<select required class="last" name="function2" id="function2">
-    			<option value="">Chức năng</option>
-				<?php echo $this->getFunctionList($data['function2']) ?>
-    		</select>
-    	</div>
-    	
-    	<div class="row row2">
-    		<select class="first" name="level2" id="level2">
-    			<option value="">Cấp độ công việc</option>
-    			<option value="New Graduates/Entry Level">Mới Tốt Nghiệp/Chưa Có Kinh Nghiệm</option>
-    			<option value="Experienced">Có Kinh Nghiệm</option>
-    			<option value="Team Leader/Supervisor/Assistant Manager">Trưởng Nhóm/Giám Sát/Trợ Lý</option>
-    			<option value="Manager">Quản Lý</option>
-    			<option value="Executive Management">Quản Lý Cấp Cao</option>
-    		</select>
-    		<select name="exp" id="exp" class="last">
-    			<option value="">Số năm kinh nghiệm</option>
-    			<?php for($i=1;$i<41;$i++): ?>
-    			<option <?php echo ($data['exp']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?> năm</option>
-    			<?php endfor; ?>
+    		<select class="last" name="function">
+    			<option value=""><?php echo $this->__('希望職種') ?></option>
+    			<?php echo $this->getCategoryList($data['function']) ?>
     		</select>
     	</div>
     	
     	<div class="row row1">
-    		<textarea placeholder="Chi tiết công việc" name="detail" id="detail"></textarea>
+    		<textarea name="requirements" placeholder="<?php echo $this->__('今後のキャリアイメージやご要望（職種、勤務地、他）等、ご自由にご入力ください。') ?>"></textarea>
     	</div>
     	
-    	<div class="row heading">
-    		<span>Ngôn ngữ</span>
-    	</div>
+    	<div class="row dashed-border"></div>
     	
-    	<div class="row lang">
-    		<div class="text">
-    			Tiếng Anh
-    		</div>
-    		<select name="en" id="en">
-    			<option value="">Cấp độ</option>
-    			<option value="Native">Bản ngữ</option>
-    			<option value="Advanced">Cao cấp</option>
-    			<option value="Intermediate">Trung cấp</option>
-    			<option value="Beginner">Sơ cấp</option>
-    			<option value="No">Không</option>
-    		</select>
-    	</div>
-    	
-    	<div class="row lang">
-    		<div class="text">
-    			Tiếng Nhật
-    		</div>
-    		<select name="jp" id="jp">
-    			<option value="">Cấp độ</option>
-    			<option value="Native">Bản ngữ</option>
-    			<option value="Advanced">Cao cấp</option>
-    			<option value="Intermediate">Trung cấp</option>
-    			<option value="Beginner">Sơ cấp</option>
-    			<option value="No">Không</option>
-    		</select>
-    	</div>
-    	
-    	<div class="row lang">
-    		<div class="text">
-    			Tiếng Việt
-    		</div>
-    		<select name="vn" id="vn">
-    			<option value="">Cấp độ</option>
-    			<option value="Native">Bản ngữ</option>
-    			<option value="Advanced">Cao cấp</option>
-    			<option value="Intermediate">Trung cấp</option>
-    			<option value="Beginner">Sơ cấp</option>
-    			<option value="No">Không</option>
-    		</select>
-    	</div>
-    	
-    	<div class="row lang">
-    		<textarea placeholder="Thêm trình độ ngoại ngữ khác" name="otherlang" id="otherlang"></textarea>
-    	</div>
-    	
-    	<div class="row heading">
-    		<span>Kỹ năng</span>
-    	</div>
-    	
-    	<div class="row lang">
-    		<textarea name="skill" id="skill"></textarea>
-    	</div>
-    	
-    	<div class="row">
-    		<input required type="radio" name="decide" value="Tôi muốn tìm việc/chuyển việc ngay bây giờ" /> Tôi muốn tìm việc/chuyển việc ngay bây giờ<br />
-    		<input required type="radio" name="decide" value="Tôi muốn chuyển nếu có công việc/công ty tốt hơn" /> Tôi muốn chuyển nếu có công việc/công ty tốt hơn<br />
-    		<input required type="radio" name="decide" value="Tôi muốn chuyển việc trong tương lai (sau 1 năm)" /> Tôi muốn chuyển việc trong tương lai (sau 1 năm)<br />
-    	</div>
-    	
-    	<div class="row">
-    		<input class="btn button-blue button" type="submit" value="Gửi" name="submit" />
+    	<div class="row submit">
+    		<button class="btn button-blue button" type="submit" name="submit"><?php echo $this->__('SEND') ?></button>
     	</div>
     </form>
 </div>
+<script src="<?php echo Mage::getBaseUrl() ?>js/fileupload/vendor/jquery.ui.widget.js"></script>
+<script src="<?php echo Mage::getBaseUrl() ?>js/fileupload/jquery.iframe-transport.js"></script>
+<script src="<?php echo Mage::getBaseUrl() ?>js/fileupload/jquery.fileupload.js"></script>
+<script>
+(function($){
+	$(function () {
+	    $('#fileupload').fileupload({
+	        dataType: 'json',
+	        progressall: function (e, data) {
+		        var progress = parseInt(data.loaded / data.total * 100, 10);
+		        $('#progress').show();
+		        $('#progress .bar').text(progress + '%');
+		        $('#progress .bar').css(
+		            'width',
+		            progress + '%'
+		        );
+		    },
+	        done: function (e, data) {
+	        	$('#progress').hide();
+	            $.each(data.result.files, function (index, file) {
+	            	if(!file.error){
+	            		var btnText = '<?php echo $this->__('DELETE') ?>';
+	            		var element = '<div class="file-uploaded clearfix"><a title="'+file.name+'" target="_blank" href="'+file.url+'" class="file-name fll">'+file.name+'</a><a href="#" class="flr delete">'+btnText+'</a>';
+		            	element += '<input type="hidden" name="filenames[]" value="'+file.name+'" /></div>';
+		            	$('.row .files').append(element);            	
+		            	
+					    $('a.delete').click(function(e){
+					    	e.preventDefault();
+					    	$(this).parent().fadeOut().remove();
+					    });
+	                }else{
+	                	alert(file.error);
+	                }
+	            });
+	        }
+	    });
+	    
+	});
+})(jQuery);
+</script>
 <script>
 (function($){
 	$(document).ready(function(){

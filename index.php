@@ -1,6 +1,7 @@
 <?php
 if(isset($_GET['___path'])){
 	$_SERVER['REQUEST_URI'] = $_GET['___path'];
+	unset($_GET['___path']);
 }
 /**
  * Magento

@@ -1,3 +1,4 @@
+var hook=true;
 (function($){
 	$(document).ready(function(){
 		$('.centerwide').each(function(){
@@ -37,9 +38,11 @@
 			if(($(this.form).find('.error').length < 1) && ($(this.form).find('input:required.after-input, select:required.after-input').length == $(this.form).find('input:required, select:required').length)){
 				$(this.form).find('button[type="submit"]').addClass('checked');
 				$(this.form).find('button[type="submit"]').text($(this.form).find('button[type="submit"]').data('checked'));
+				hook = false;
 			}else{
 				$(this.form).find('button[type="submit"]').removeClass('checked');
 				$(this.form).find('button[type="submit"]').text($(this.form).find('button[type="submit"]').data('not'));
+				hook = true;
 			}
 		});
 	});
