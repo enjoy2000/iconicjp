@@ -2,9 +2,19 @@
 	width: 100%;
 	display: block;
 	position: relative;
+	padding: 8px 0;
 }
 .row input{
-	color: #000;
+}
+.row textarea{
+	padding: 10px;
+	height: 100px;
+}
+.row.row2 textarea{
+	width: 335px;
+}
+.row.row1 textarea{
+	width: 740px;
 }
 .row:after{
 	clear: both;
@@ -15,23 +25,26 @@
 	line-height: 0;
 	visibility: hidden;
 }
+.row .first{
+	float: left;
+	width: 357px;
+}
 .row .last{
 	float: right;
+	width: 357px;
 }
 
-.row.row2 input{
-	width: 130px;
+.row.row2 > input{
+	width: 335px;
 }
-.row.row2 select{
-	width: 155px;
-	background: url('../images/select-arrow.png') 120px center transparent no-repeat;
+.row.row2 > div > select{
+	width: 100px;
 }
-.row.row3 select{
-	background: url('../images/select-arrow.png') 70px center transparent no-repeat;
+.row.row2 > div > input{
+	width: 80px;
 }
-.row.row3 input,
-.row.row3 select{
-	width: 105px;
+.row.row2 > select{
+	width: 357px;
 }
 input[type="radio"],
 input[type="checkbox"]{
@@ -72,19 +85,40 @@ textarea{
 .row #month{
 	margin-left: 15px;
 }
-input[type="submit"]{
-	width: auto;
-	margin: auto;
-	display: block;
-	margin-top: 20px;
-	border: 0;
-	font-size: 20px;
-	padding: 4px 20px;
-	color: #fff;
-}
 #year{
 	width: 80px!important;
 }
 input[readonly]{
 	background-color: #ffe6cb!important;
+}
+#main .main{
+	background-color: transparent;
+	border: none;
+}
+.create-cv{
+	width: 760px;
+	margin: auto;
+}
+.row.submit{
+	text-align: center;
+}
+.page-title h1{
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+	font-size: 22px;
+}
+.row.heading{
+	color: #000;
+	font-weight: normal;
+	font-size: 20px;
+	padding-bottom: 5px;
+	border-bottom: solid 1px #000;
+	outline-bottom: solid 1px grey;
+	margin-bottom: 20px;
+	margin-top: 50px;
+}
+.row.dashed-border{
+	border-top: dashed 2px #929496;
+	margin: 20px 0;
 }

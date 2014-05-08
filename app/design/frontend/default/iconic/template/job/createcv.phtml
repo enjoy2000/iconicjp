@@ -18,7 +18,7 @@
     		<input required class="last" name="kana" /> 
     	</div>
     	
-    	<div class="row row3">
+    	<div class="row row2">
     		<div class="first">
     			<select required id="year" name="year" class="first">
     				<option value=""><?php echo $this->__('年齢') ?></option>
@@ -35,7 +35,7 @@
 	            	<option <?php echo ($data['month']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $this->__('Tháng') .' '. $i ?></option>
 	            	<?php endfor; ?>
 	    		</select>
-	    		<select required id="day" class="first" name="day">
+	    		<select required id="day" class="last" name="day">
 	    			<option value=""><?php echo $this->__('生日') ?></option>
 	            	<?php 
 	            	for($i = 1; $i <= 31;$i++): ?>
@@ -128,12 +128,12 @@
     	</div>
     	
     	<div class="row row2">
-    		<div class="first">
+    		<div class="first div3">
     			<input type="number" name="phone1" placeholder="<?php echo $this->__('電話番号') ?>" />
     			<span>-</span>
     			<input type="number" name="phone2" />
     			<span>-</span>
-    			<input type="number" name="phone3" />
+    			<input type="number" name="phone3" class="last" />
     		</div>
     		<input readonly required type="text" class="last" name="email" id="email" placeholder="Email*" value="<?php echo $this->getCustomer()->getEmail() ?>" />
     	</div>
@@ -176,7 +176,7 @@
     	<div class="row row2">
     		<input required type="number" name="numbercompany" placeholder="<?php echo $this->__('経験社数') ?>" />
     		
-    		<select required name="workfunction">
+    		<select class="last" required name="workfunction">
     			<option value=""><?php echo $this->__('経験職種') ?></option>
     			<?php echo $this->getFunctionList($data['workfunction']) ?>
     		</select>
@@ -187,8 +187,10 @@
     	<div class="company">
 	    	<div class="row row2">
 	    		<input required class="first" type="text" name="companyname" placeholder="<?php echo $this->__('企業名') ?>" />
-	    		<input required class="last" type="number" name="companysalary" placeholder="<?php echo $this->__('年収') ?>" />
-	    		<?php echo $this->__('万円') ?>
+	    		<div class="last">
+		    		<input required type="number" name="companysalary" placeholder="<?php echo $this->__('年収') ?>" />
+		    		<?php echo $this->__('万円') ?>
+	    		</div>
 	    	</div>
 	    	
 	    	<div class="row row2">
@@ -213,7 +215,7 @@
 	    	
 	    	<div class="row row2">
 	    		<input required class="first" type="number" name="companyemploye" placeholder="<?php echo $this->__('従業員数') ?>" />
-	    		<div class="last">
+	    		<div class="last div4">
 	    			<select required name="yearfrom">
 	    				<option value=""><?php echo $this->__('年') ?></option>
 	    				<?php 
@@ -272,7 +274,7 @@
     	</div>
     	
     	<div class="row">
-    		<input id="fileupload" type="file" name="files[]" data-url="<?php echo Mage::getBaseUrl() ?>job/create/upload" multiple>
+    		<input id="fileupload" type="file" name="files[]" data-url="<?php echo Mage::getBaseUrl() ?>job/apply/upload" multiple>
 			<div id="progress">
 			    <div class="bar" style="width: 0%;"></div>
 			</div>
@@ -303,7 +305,7 @@
     	<div class="row dashed-border"></div>
     	
     	<div class="row submit">
-    		<button class="btn button-blue button" type="submit" name="submit"><?php echo $this->__('SEND') ?></button>
+    		<button data-not="<?php echo $this->__('未入力の項目があります') ?>" data-checked="<?php echo $this->__('登録') ?>" class="checkform btn button-blue button" type="submit" name="submit"><?php echo $this->__('SEND') ?></button>
     	</div>
     </form>
 </div>
@@ -350,19 +352,19 @@
 <script>
 (function($){
 	$(document).ready(function(){
-		$('#newgraduate').on('change', function(){
-			if($(this).prop('checked')==true){
-				$('#category2, #function2, #level2, #exp, #detail').prop('disabled', true);
-			}else{
-				$('#category2, #function2, #level2, #exp, #detail').prop('disabled', false);
-			}
-		});
 		$('input[type="number"]').on('keyup', function(){
 			if(!$.isNumeric($(this).val())){
-				alert('Bạn chỉ được điền số trong ô này.');
+				alert('Only input number here.');
 			}
 		});
 		//$('#category,#category2,#function,#function2').select2();
 	});
 })(jQuery);
+</script>
+<script>
+	window.onbeforeunload = function(){
+		if(hook){
+			return 'Are you sure you want to leave?';
+		}
+	};
 </script>

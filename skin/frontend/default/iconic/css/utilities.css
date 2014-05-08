@@ -89,29 +89,34 @@ select{
 	padding: 3px 15px;
 	width: 100%;
 	border: none;
-	border-radius: 3px;
 	background: url('../images/select.png') right 5px center no-repeat #e6ecfc;
 	appearance: none;
 	-webkit-appearance: none;
 	border: solid 1px #b0b2b4;
-}
-select:focus{
-	border-color: #4571eb;
+	color: #929496;
 }
 select:disabled{
 }
 input{
 	padding: 5px 10px;
 	border: solid 1px #b0b2b4;
-	border-radius: 3px;
 	background-color: #e6ecfc;
 }
+input,
+select,
+textarea{
+	background-color: #c6c7c9;
+	border-radius: 3px;
+}
 input:required,
-select:required{
+select:required,
+textarea:required{
 	background-color: #f5dbca;
 }
-input:focus{
+input:focus,
+select:focus{
 	border-color: #4571eb;
+	color: #000;
 	background-color: #fff;
 }
 input.after-input,
@@ -259,4 +264,17 @@ ol.grey > li:before{
 	content: counter(my-counter);
 	counter-increment: my-counter;
 	background: url('../images/big-grey-circle.jpg') 7px -1px no-repeat transparent;
+}
+button.checkform{
+	padding: 7px 20px;
+	background: url('../images/error-btn.png') 10px center no-repeat #E9955D;
+	padding-left: 35px;
+	font-size: 11px;
+	border-radius: 3px;
+	border-bottom: solid 2px #d76f2c;
+}
+button.checkform.checked{
+	background: none #6a8def;
+	border-color: #4571EB;
+	padding: 7px 20px;
 }

@@ -280,6 +280,7 @@ body.short #main .main{
 #search-block .search-block select{
 	width: 230px;
 	display: inline-block;
+	background-color: #e6ecfc;
 }
 #search-block .search-block select+select {
 	margin-left: 21px;
