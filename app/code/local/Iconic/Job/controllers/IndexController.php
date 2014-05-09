@@ -254,4 +254,26 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		header('Content-Type: application/json');
 		echo json_encode(array('message' => $message, 'status' => $status));
     }
+
+	public function requestAction(){
+		$this->loadLayout();
+		$helper = Mage::helper('job');
+		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
+			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム'), 'title'=>$helper->__('ホーム'), 'link'=>Mage::helper('job')->getBaseUrl()));
+			$breadcrumbs->addCrumb('create_cv', array('label'=>$helper->__('求人依頼申込'), $helper->__('求人依頼申込')));
+		}
+		$this->getLayout()->getBlock('head')->setTitle($helper->__('求人依頼申込'));
+		if($this->getRequest()->getPost()){
+			try{
+				$requestModel = Mage::getModel('job/request');
+				$requestModel->setData($this->getRequest()->getPost())->save();
+				$this->_redirect('job/success/request');
+				return;
+			}catch(Exception $e){
+				Mage::getSingleton('core/session')->addError($helper->__('Cannot send request.'));
+			}
+		}
+		
+		$this->renderLayout();
+	}
 }

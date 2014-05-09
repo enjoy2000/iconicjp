@@ -161,4 +161,31 @@
              <block type="job/search" name="job_search" template="job/search.phtml" />
         </reference>
     </job_search_index>
+    
+    <job_index_request>
+    	<reference name="root">
+            <action method="setTemplate">
+                <template>page/short.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">          	
+             <action method="addCss"><stylesheet>css/request.css</stylesheet></action>
+		</reference>
+		<reference name="content">
+             <block type="core/template" name="job_request" template="job/request.phtml"></block>
+        </reference>
+    </job_index_request>
+    <job_success_request>
+    	<reference name="root">
+            <action method="setTemplate">
+                <template>page/short.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">          	
+             <action method="addCss"><stylesheet>css/request.css</stylesheet></action>
+		</reference>
+		<reference name="content">
+             <block type="core/template" name="job_success_request" template="job/request-success.phtml"></block>
+        </reference>
+    </job_success_request>
 </layout>

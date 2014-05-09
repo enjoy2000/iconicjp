@@ -1,0 +1,24 @@
+<div class="success-page request">
+	<h1><?php echo $this->__('ご依頼、ありがとうございました!') ?></h1>
+	
+	<p><?php echo $this->__('御社からの求人依頼は確かに送信されました。') ?></p>
+	<p><?php echo $this->__('このページは<span id="countdown">5</span> 秒後自動的に戻ります。') ?></p>
+</div>
+
+<script type="text/javascript">
+	(function () {
+	    var timeLeft = 5,
+	        cinterval;
+	
+	    var timeDec = function (){
+	        timeLeft--;
+	        document.getElementById('countdown').innerHTML = timeLeft;
+	        if(timeLeft === 0){
+	        	window.location = '/';
+	            clearInterval(cinterval);
+	        }
+	    };
+	
+	    cinterval = setInterval(timeDec, 1000);
+	})();
+</script>

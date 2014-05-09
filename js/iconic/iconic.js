@@ -25,7 +25,7 @@ var hook=true;
 	    		$('#ajax-load .content').html('');
 	    	}
 	    });
-	    $('#header-landing .background').cycle({fx:'scrollHorz',next: '.ui-buttonNextSlide',prev: '.ui-buttonPrevSlide' ,delay: -4000});
+	    $('#header-landing .background').cycle({fx:'fade',next: '.ui-buttonNextSlide',prev: '.ui-buttonPrevSlide' ,delay: -4000});
 		
 		//input effect
 		$('input, select').on('change blur', function(){
@@ -127,4 +127,13 @@ function scrollToTop(){
       scrollTop: 0
     }, 1000);
 }
-
+function resetForm(){
+	jQuery(':input', this.form)
+	.not(':button, :submit, :reset, :hidden')
+	.val('')
+	.removeAttr('checked')
+	.removeAttr('selected')
+	.removeClass('after-input')
+	.removeClass('error');
+	return false;
+}

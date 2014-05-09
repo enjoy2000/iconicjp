@@ -285,3 +285,11 @@ button.checkform.checked{
 	border-color: #4571EB;
 	padding: 7px 20px;
 }
+h1{
+	color: #000;
+	font-size: 23px;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: -1px;
+	margin-bottom: 20px;
+}

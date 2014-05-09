@@ -15,6 +15,10 @@ body.short #blog-news .wrapper > *{
 }
 body.short #main .main{
 	background-color: transparent!important;
+	border: none;
+}
+body.short #blog-news{
+	padding-bottom: 0;
 }
 #header-logo{
 	background-color: #4571eb;
@@ -733,4 +737,11 @@ body.short #main .main{
 #news-scroll .item-content a:hover,
 #news-scroll .item-content a:hover .date{
 	color: #4571EB;
+}
+.success-page{
+	display: block;
+	border: 10px solid transparent;
+	border-image: url('../images/border-orange.png') 10 8 stretch;
+	-webkit-border-image: url('../images/border-orange.png') 10 8 stretch;
+	-o-border-image: url('../images/border-orange.png') 10 8 stretch;
 }

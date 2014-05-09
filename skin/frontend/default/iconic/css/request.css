@@ -1,0 +1,59 @@
+.success-page.request{
+	width: 510px;
+	height: 160px;
+	margin: auto;
+}
+.success-page h1{
+	color: #d76f2c;
+	text-align: center;
+	font-weight: bold;
+	font-size: 23px;
+	margin-top: 35px;
+	margin-bottom: 25px;
+}
+.success-page p{
+	text-align: center;
+	margin-bottom: 5px;
+}
+.success-page p span{
+	color: #d76f2c;
+}
+#request-recruitment{
+	width: 360px;
+	margin: auto;
+}
+#request-recruitment input,
+#request-recruitment textarea{
+	width: 338px;
+	margin: 8px 0;
+	padding: 5px 10px;
+}
+#request-recruitment textarea{
+	height: 100px;
+	resize: vertical;
+}
+#request-recruitment .actions{
+	text-align: center;
+	margin-top: 20px;
+}
+#request-recruitment .actions button{
+	padding: 3px 25px;
+}
+#request-recruitment .actions button + button{
+	margin-left: 10px;
+}
+#phone-number{
+	width: 960px;
+	margin-left: -60px;
+	margin-top: 30px;
+}
+#phone-number .tit{
+	color: #4571EB;
+	font-weight: bold;
+}
+#phone-number a{
+	color: #636466;
+}
+#phone-number .inline-b+.inline-b{
+	margin-left: 10px;
+}
