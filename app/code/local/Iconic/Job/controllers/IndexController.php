@@ -399,7 +399,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 									<tr>
 										<td width="15" bgcolor="#b5c6f7"></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
-										<td><a href="{$baseurl}"><img src="{$logourl}" /></a></td>
+										<td><a href="'.$baseurl.'"><img src="'.$logourl.'" /></a></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td width="15" bgcolor="#b5c6f7"></td>
 									</tr>
@@ -414,7 +414,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 										<td width="15" bgcolor="#b5c6f7"></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td>
-											{$name}様<br />
+											'.$name.'様<br />
 											<br />
 											ICONIC　JAPANにご興味頂きありがとう御座います。<br />
 											求人申込みを頂いた後すぐ、弊社のコンサルスタッフがご連絡致します。<br />
@@ -453,7 +453,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 										<td width="15" bgcolor="#b5c6f7"></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td>
-											Dear {$name},<br />
+											Dear '.$name.',<br />
 											<br />
 											Thank you very much for your interest in iconic-jp.com<br />
 											When we receive your recruitment request, our professional consulting staff will contact to you soon.<br />
@@ -490,10 +490,14 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					$mail->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
 					$mail->setSubject('Auto Reply for Request Recruitment IconicJP');
 					$checkSend = $mail->send($transport);
-					$this->_redirect('job/success/request');
-					return;
+					if($checkSend){
+						$this->_redirect('job/success/request');
+						return;
+					}else{
+						Mage::getSingleton('core/session')->addError($helper->__('Cannot send email.'));
+					}
 				}catch(Exception $e){
-					Mage::getSingleton('core/session')->addError($helper->__('Cannot send request.'));
+					Mage::getSingleton('core/session')->addError($e);
 				}
 			}else{
 				Mage::getSingleton('core/session')->addError($helper->__('Please confirm your email.'));
