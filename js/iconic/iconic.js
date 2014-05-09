@@ -15,7 +15,15 @@ var hook=true;
 	    });
 	    $('#login-button, .btn-login').click(function(event){
 	    	event.preventDefault();
-	    	showLogin();
+	    	if(!$(this).hasClass('active')){
+	    		showLogin();
+	    		$(this).addClass('active');
+	    	}else{
+	    		$(this).removeClass('active');
+	    		$('#ajax-load').removeClass('open');
+	    		$('#ajax-load').removeClass('open-1');
+	    		$('#ajax-load .content').html('');
+	    	}
 	    });
 	    $('#header-landing .background').cycle({fx:'scrollHorz',next: '.ui-buttonNextSlide',prev: '.ui-buttonPrevSlide' ,delay: -4000});
 		

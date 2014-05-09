@@ -39,4 +39,5 @@
 }
 body.customer-account-create #main .main{
 	border: none;
+	background-color: transparent;
 }
