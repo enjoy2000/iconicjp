@@ -400,8 +400,7 @@ body.short #main .main{
 	font-size: 21px;
 	color: #4571EB;
 	border-radius: 3px;
-	display: block;
-	width: 68px;
+	display: inline-block;
 	margin-bottom: 15px;
 	-webkit-transition: color 200ms,background-color 200ms;
 	-moz-transition: color 200ms,background-color 200ms;
@@ -417,9 +416,8 @@ body.short #main .main{
 	font-size: 13px;
 }
 #contact-info .yasu-info p > b{
-	text-decoration: underline;
 	line-height: 25px;
-	font-size: 17px;
+	font-size: 14px;
 }
 #contact-info .info{
 	border: solid 2px #fff;
