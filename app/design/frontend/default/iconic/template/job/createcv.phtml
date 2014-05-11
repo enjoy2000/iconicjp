@@ -176,10 +176,22 @@
     	<div class="row row2">
     		<input required type="number" name="numbercompany" placeholder="<?php echo $this->__('経験社数') ?>" />
     		
-    		<select class="last" required name="workfunction">
+    		<select id="workfunction" multiple="multiple" class="last" required name="workfunction">
     			<option value=""><?php echo $this->__('経験職種') ?></option>
     			<?php echo $this->getFunctionList($data['workfunction']) ?>
     		</select>
+    		<script>
+    			jQuery('#workfunction').multipleSelect({
+		            selectAll: false,
+		            placeholder: '<?php echo $this->__('経験職種') ?>',
+		            onClick: function(view){
+		            	if(jQuery("#workfunction :selected").length > 3){
+		            		alert('Maximum 3 choices.');
+		            		view.checked = false;
+		            	}
+		            },
+		        });
+    		</script>
     	</div>
     	
     	<div class="row dashed-border"></div>
@@ -194,10 +206,22 @@
 	    	</div>
 	    	
 	    	<div class="row row2">
-	    		<select required class="first" name="companycategory">
+	    		<select multiple="multiple" id="companycategory" required class="first" name="companycategory">
 					<option value=""><?php echo $this->__('業種') ?></option>
 					<?php echo $this->getCategoryList($data['companycategory']) ?>			
 	    		</select>
+	    		<script>
+	    			jQuery('#companycategory').multipleSelect({
+			            selectAll: false,
+			            placeholder: '<?php echo $this->__('業種') ?>',
+			            onClick: function(view){
+			            	if(jQuery("#companycategory :selected").length > 3){
+			            		alert('Maximum 3 choices.');
+			            		view.checked = false;
+			            	}
+			            },
+			        });
+	    		</script>
 	    		<input class="last" type="text" name="companytitle" placeholder="<?php echo $this->__('役職名') ?>" />
 	    	</div>
 	    	
@@ -288,14 +312,38 @@
     	</div>
     	
     	<div class="row row2">
-    		<select class="first" name="category">
+    		<select multiple="multiple" id="category" class="first" name="category">
     			<option value=""><?php echo $this->__('希望業種') ?></option>
     			<?php echo $this->getCategoryList($data['category']) ?>
     		</select>
-    		<select class="last" name="function">
+    		<script>
+    			jQuery('#category').multipleSelect({
+		            selectAll: false,
+		            placeholder: '<?php echo $this->__('希望業種') ?>',
+		            onClick: function(view){
+		            	if(jQuery("#category :selected").length > 3){
+		            		alert('Maximum 3 choices.');
+		            		view.checked = false;
+		            	}
+		            },
+		        });
+    		</script>
+    		<select multiple="multiple" class="last" id="function" name="function">
     			<option value=""><?php echo $this->__('希望職種') ?></option>
     			<?php echo $this->getCategoryList($data['function']) ?>
     		</select>
+    		<script>
+    			jQuery('#function').multipleSelect({
+		            selectAll: false,
+		            placeholder: '<?php echo $this->__('希望職種') ?>',
+		            onClick: function(view){
+		            	if(jQuery("#function :selected").length > 3){
+		            		alert('Maximum 3 choices.');
+		            		view.checked = false;
+		            	}
+		            },
+		        });
+    		</script>
     	</div>
     	
     	<div class="row row1">

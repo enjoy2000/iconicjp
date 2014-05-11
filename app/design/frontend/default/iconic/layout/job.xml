@@ -106,7 +106,7 @@
         <remove name="left"/>
         <reference name="root">
             <action method="setTemplate">
-                <template>page/1column.phtml</template>
+                <template>page/short.phtml</template>
             </action>
             <action method="setHeaderTitle">
                 <title>転職支援サービスに申し込む</title>
@@ -116,10 +116,7 @@
             <action method="setTitle">
                 <title>転職支援サービスに申し込む</title>
             </action>
-             <action method="addJs"><script>select2/select2.min.js</script></action>
              <action method="addCss"><stylesheet>css/createcv.css</stylesheet></action>
-             <action method="addCss"><stylesheet>css/select2-bootstrap.css</stylesheet></action>
-             <action method="addCss"><stylesheet>css/select2.css</stylesheet></action>
         </reference>
         <reference name="content">
              <block type="job/createcv" name="createcv" template="job/createcv.phtml" />
@@ -188,4 +185,13 @@
              <block type="core/template" name="job_success_request" template="job/request-success.phtml"></block>
         </reference>
     </job_success_request>
+    
+    <job_index_contact>
+		<reference name="head">          	
+             <action method="addCss"><stylesheet>css/contact.css</stylesheet></action>
+		</reference>
+        <reference name="content">
+             <block type="core/template" name="job_contact" template="job/contact.phtml" />
+        </reference>
+    </job_index_contact>
 </layout>

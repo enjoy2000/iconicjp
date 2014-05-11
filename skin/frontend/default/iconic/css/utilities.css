@@ -87,6 +87,8 @@ p{
 	padding-bottom: 10px;
 	font-size: 24px;
 	font-weight: bold;
+	text-align: left;
+	color: #4571EB;
 }
 .white-tit{
 	background: url('../images/white-tit.png') bottom left no-repeat transparent;
@@ -121,23 +123,24 @@ textarea:required{
 	background-color: #f5dbca;
 }
 input:focus,
-select:focus{
+select:focus,
+textarea:focus{
 	border-color: #4571eb;
 	color: #000;
 	background-color: #fff;
 }
 input.after-input,
-select.after-input{
+select.after-input,
+textarea.after-input{
 	background-color: #fff;
 	color: #000;
 }
 input.error,
-select.error{
+select.error,
+textarea.error{
 	border-color: #d76f2c;
 }
 input[readonly]{
-}
-textarea{
 }
 .btn{
 	text-transform: uppercase;

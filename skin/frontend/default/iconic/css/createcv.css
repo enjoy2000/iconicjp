@@ -39,6 +39,7 @@ div.last{
 }
 .row.row2 div.div4 > select{
 	width: 80px;
+	padding-left: 10px;
 }
 .row.row2 > input{
 	width: 335px;

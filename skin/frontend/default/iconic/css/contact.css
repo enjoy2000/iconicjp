@@ -1,0 +1,45 @@
+#main .main{
+	padding: 0;
+}
+#contact-page{
+	background: url('../images/contact-bg.png') right top repeat-y;
+}
+#contact-page > .fll{
+	padding: 40px;
+	width: 510px;
+}
+#contact-page > .fll input{
+	width: 	245px;
+}
+#contact-page > .fll .row{
+	padding: 7px 0;
+}
+#contact-page textarea{
+	width: 505px;
+	height: 100px;
+}
+#contact-page form .actions{
+	margin-top: 20px;
+}
+#contact-page form .actions button{
+	padding: 5px 30px;
+}
+#contact-page form .actions button+button{
+	margin-left: 15px;
+}
+#contact-page > .flr{
+	letter-spacing: -1px;
+	padding: 20px;
+	padding-top: 50px;
+	color: #636466;
+}
+#contact-page > .flr .tit{
+	font-weight: bold;
+	color: #4571EB;
+}
+#contact-page > .flr .row+.row{
+	margin-top: 25px;
+}
+#contact-page > .flr .row a{
+	color: #636466;
+}

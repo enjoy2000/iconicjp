@@ -4,6 +4,7 @@ var hook=true;
 		$('.centerwide').each(function(){
 			centerwide($(this));
 		});
+		$('.ms-drop li:first-child').html('Maximum 3 choices.');
 		//fixed menu
 		var nav = $('#fixed-menu');
 	    $(window).scroll(function () {
@@ -28,7 +29,7 @@ var hook=true;
 	    $('#header-landing .background').cycle({fx:'fade',next: '.ui-buttonNextSlide',prev: '.ui-buttonPrevSlide' ,delay: -4000});
 		
 		//input effect
-		$('input, select').on('change blur', function(){
+		$('input, select, textarea').on('change blur', function(){
 			if($(this).val() != ''){
 				$(this).removeClass('error');
 				$(this).addClass('after-input');
@@ -40,10 +41,10 @@ var hook=true;
 			}
 		});
 		//add class to button submit when no-error
-		$('input, select').on('change', function(){
+		$('input, select, textarea').on('change', function(){
 			//console.log($(this.form).find('input:required.after-input, select:required.after-input').length);
 			//console.log($(this.form).find('input:required, select:required').length);
-			if(($(this.form).find('.error').length < 1) && ($(this.form).find('input:required.after-input, select:required.after-input').length == $(this.form).find('input:required, select:required').length)){
+			if(($(this.form).find('.error').length < 1) && ($(this.form).find('input:required.after-input, select:required.after-input, textarea:required.after-input').length == $(this.form).find('input:required, select:required, textarea:required').length)){
 				$(this.form).find('button[type="submit"]').addClass('checked');
 				$(this.form).find('button[type="submit"]').text($(this.form).find('button[type="submit"]').data('checked'));
 				hook = false;
@@ -91,7 +92,11 @@ function loginAjax(){
 		request.done(function(msg){
 			if(msg.status == true){ //logged in
 				jQuery('#ajax-load').removeClass('open');
-				window.location.replace(msg.message);
+				if(msg.message){
+					window.location.replace(msg.message);
+				}else{
+					location.reload();
+				}
 			}else{
 				jQuery('#ajax-load #response').html(msg.message);
 				jQuery('#ajax-load #response').show();

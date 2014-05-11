@@ -26,7 +26,7 @@ body.short #blog-news{
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 999;
+	z-index: 99999;
 }
 #header-logo #logo{
 	padding-top: 15px;

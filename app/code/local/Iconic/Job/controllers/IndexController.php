@@ -14,8 +14,9 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
     }
 	
 	public function contactAction(){
+		$this->loadLayout();
 		$post = $this->getRequest()->getPost();
-		if($post['email'] && $post['subject'] && $post['message']){
+		if($post){
 			try{
 				$mail = new Zend_Mail('UTF-8');
 				$nameAdmin = Mage::getStoreConfig('trans_email/ident_general/name'); 
@@ -34,27 +35,37 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 				
 				
 				$bodyHtml = '<table><tbody>';
-				$bodyHtml .= '<tr><td align="center" colspan="2">' . Mage::helper('job')->__('Liên lạc từ IconicVN') . '</td></tr>';
+				$bodyHtml .= '<tr><td align="center" colspan="2">' . Mage::helper('job')->__('Contact from IconicJP') . '</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Name').':</td><td> '.$post['name'].'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Email').':</td><td> '.$post['email'].'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Company Name').':</td><td> '.$post['companyname'].'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Phone').':</td><td> '.$post['phone'].'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Nội dung').':</td><td> '.$post['message'].'</td></tr>';
 				$bodyHtml .= '</tbody></table>';
 				
 				$mail->setBodyHtml($bodyHtml);
-				$mail->addTo('info@iconic-intl.com', Mage::helper('job')->__('IconicVN'));
-				$mail->setFrom($post['email'], $post['email']);
-				$mail->setSubject($post['subject']);
+				$mail->addTo('info@iconic-intl.com', Mage::helper('job')->__('IconicJP'));
+				$mail->setFrom($post['email'], $post['name']);
+				$mail->setSubject(Mage::helper('job')->__('Contact from IconicJP'));
 				$checkSend = $mail->send($transport);
 				if($checkSend){
-					echo Mage::helper('job')->__('Email của bạn đã được gửi thành công. Cảm ơn.');
+					//Mage::getSingleton('core/session')->addSuccess(Mage::helper('job')->__('Your email has been sent. Thank you!'));
+					echo '
+					<script>
+					alert("'. Mage::helper('job')->__('Your email has been sent. Thank you!') .'");
+					</script>
+					';
 				}
 			}catch(Exception $e){
-				echo Mage::helper('job')->__('Đã có lỗi xảy ra. Xin vui lòng thử lại sau.');
+				//Mage::getSingleton('core/session')->addError(Mage::helper('job')->__('There is some error. Please try again later.'));
+				echo '
+					<script>
+					alert("'. Mage::helper('job')->__('There is some error. Please try again later.') .'");
+					</script>
+					';
 			}
-		}else{
-			$this->_redirect('/');
-			return;
 		}
-		
+		$this->renderLayout();
 	}
 	
 	public function afterregisterAction(){

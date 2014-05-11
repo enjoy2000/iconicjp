@@ -66,11 +66,11 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 		}
 		
 		if ($this->getLocation()){
-			$collection->addFieldToFilter('location_id', array('eq' => $this->getCategory()));
+			$collection->addFieldToFilter('location_id', array('eq' => $this->getLocation()));
 		}
 		
 		if ($this->getLanguage()){
-			$collection->addFieldToFilter('language_id', array('eq' => $this->getLocation()));
+			$collection->addFieldToFilter('language_id', array('eq' => $this->getLanguage()));
 		}
 		if ($this->getJobLevel()){
 			$collection->addFieldToFilter('job_level', array('eq' => $this->getJobLevel()));

@@ -153,12 +153,18 @@
                         </div>
                     </div>
                     
+                    <div class="field">
+                        <div class="input-box">
+                            <input placeholder="<?php echo $this->__('確認氏名カナ') ?>" type="text" name="kana" title="<?php echo $this->__('氏名カナ') ?>" />
+                        </div>
+                    </div>
+                    
                     <div class="field clearfix">
                         <div class="input-box fll width-45">
                             <select required placeholder="<?php echo $this->__('性別 ') ?>" name="sex" title="<?php echo $this->__('性別') ?>" id="sex" class="select-box required-entry">
                             	<option value=""><?php echo $this->__('性別') ?></option>
-                            	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nam')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('男性') ?>"><?php echo $this->__('男性') ?></option>
-                            	<option <?php echo ($this->getFormData()->getSex()==$this->__('Nữ')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('女性') ?>"><?php echo $this->__('女性') ?></option>
+                            	<option <?php echo ($this->getFormData()->getSex()==$this->__('男性')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('男性') ?>"><?php echo $this->__('男性') ?></option>
+                            	<option <?php echo ($this->getFormData()->getSex()==$this->__('女性')) ? 'selected="selected"' : '' ?> value="<?php echo $this->__('女性') ?>"><?php echo $this->__('女性') ?></option>
                             </select>
                         </div>
                         
@@ -176,7 +182,7 @@
                     
                     <div class="field">
                     	<div class="input-box">
-                            <select required placeholder="<?php echo $this->__('居住地域') ?>" name="location" title="<?php echo $this->__('居住地域') ?>" id="location" class="select-box required-entry">
+                            <select placeholder="<?php echo $this->__('居住地域') ?>" name="location" title="<?php echo $this->__('居住地域') ?>" id="location" class="select-box required-entry">
                             	<option value=""><?php echo $this->__('居住地域') ?></option>
 								<?php $countries = Mage::getModel('job/listlocation')->getCollection() ?>
 								<?php foreach($countries as $country): ?>
