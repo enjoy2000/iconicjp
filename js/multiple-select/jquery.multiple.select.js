@@ -256,11 +256,12 @@
         update: function() {
             var selects = this.getSelects('text'),
                 $span = this.$choice.find('>span');
+            var selected = this.getSelects().length;
             if (selects.length === this.$selectItems.length + this.$disableItems.length && this.options.allSelected) {
                 $span.removeClass('placeholder').html(this.options.allSelected);
-            } else if (selects.length > this.options.minumimCountSelected && this.options.countSelected) {
+            } else if (selects.length > this.options.minumimCountSelected) {
                 $span.removeClass('placeholder').html(this.options.countSelected
-                    .replace('#', selects.length)
+                    .replace('#', selected)
                     .replace('%', this.$selectItems.length + this.$disableItems.length));
             } else if (selects.length) {
                 $span.removeClass('placeholder').html(selects.join(', '));
@@ -456,8 +457,8 @@
         selectAll: true,
         selectAllText: 'Select all',
         allSelected: 'All selected',
-        minumimCountSelected: 3,
-        countSelected: '# of % selected',
+        minumimCountSelected: 0,
+        countSelected: 'Have # selected',
         multiple: false,
         multipleWidth: 80,
         single: false,
