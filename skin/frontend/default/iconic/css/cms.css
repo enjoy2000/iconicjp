@@ -15,6 +15,11 @@ body.cms-page-view .page-title h1{
  * About Iconic
  */
 #about-iconic .world-map{
+	background: url('../images/cms/world-map-jp.png') top left no-repeat;
+	height: 537px;
+	position: relative;
+}
+body.en #about-iconic .world-map{
 	background: url('../images/cms/world-map.png') top left no-repeat;
 	height: 537px;
 	position: relative;

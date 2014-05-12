@@ -107,14 +107,15 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             $this->_redirect('*/*');
             return;
         }
-
-        $this->loadLayout();
+		
 		$helper = Mage::helper('job');
-		$this->getLayout()->getBlock('head')->setTitle($helper->__('公開求人情報の詳細を閲覧する'));
+		
 		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
 			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム '), 'title'=>$helper->__('ホーム '), 'link'=>Mage::helper('job')->getBaseUrl()));
-			$breadcrumbs->addCrumb('job_apply', array('label'=>$helper->__('公開求人情報の詳細を閲覧する'), $helper->__('公開求人情報の詳細を閲覧する')));
+			$breadcrumbs->addCrumb('register', array('label'=>$helper->__('公開求人情報の詳細を閲覧する'), $helper->__('公開求人情報の詳細を閲覧する')));
 		}
+        $this->loadLayout();
+		$this->getLayout()->getBlock('head')->setTitle($helper->__('公開求人情報の詳細を閲覧する'));
         $this->_initLayoutMessages('customer/session');
         $this->renderLayout();
     }
@@ -182,4 +183,5 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             return;
         }
     }
+
 }

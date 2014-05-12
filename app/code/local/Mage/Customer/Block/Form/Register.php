@@ -38,9 +38,8 @@ class Mage_Customer_Block_Form_Register extends Mage_Directory_Block_Data
      */
     protected $_address;
 
-    protected function _prepareLayout()
+    public function _prepareLayout()
     {
-        $this->getLayout()->getBlock('head')->setTitle(Mage::helper('job')->__('Đăng ký thành viên mới'));
         return parent::_prepareLayout();
     }
 

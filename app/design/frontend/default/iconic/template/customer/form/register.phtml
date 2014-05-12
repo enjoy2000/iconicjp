@@ -38,32 +38,6 @@
     </div>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
-        <div class="fieldset">
-            <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
-            <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
-            <ul class="form-list">
-                <li class="fields">
-                    <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
-                </li>
-                <li>
-                    <div class="input-box field">
-                        <input required placeholder="<?php echo $this->__('ユーザー(メールアドレス)') ?>" type="email" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('ユーザー(メールアドレス)') ?>" class="input-text validate-email required-entry" />
-                    </div>
-                </li>
-            <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
-            <?php if ($_dob->isEnabled()): ?>
-                <li><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></li>
-            <?php endif ?>
-            <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
-            <?php if ($_taxvat->isEnabled()): ?>
-                <li><?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?></li>
-            <?php endif ?>
-            <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
-            <?php if ($_gender->isEnabled()): ?>
-                <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
-            <?php endif ?>
-            </ul>
-        </div>
     <?php if($this->getShowAddressFields()): ?>
         <div class="fieldset">
             <input type="hidden" name="create_address" value="1" />
@@ -141,7 +115,14 @@
     <?php endif; ?>
         <div class="fieldset">
             <ul class="form-list">
+            	<input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+           		<input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
                 <li class="fields">
+                	<div class="field">
+                		<div class="input-box">
+                			 <input required placeholder="<?php echo $this->__('ユーザー(メールアドレス)') ?>" type="email" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('ユーザー(メールアドレス)') ?>" class="input-text validate-email required-entry" />
+                		</div>
+                	</div>
                     <div class="field">
                         <div class="input-box">
                             <input required placeholder="<?php echo $this->__('パスワード') ?>" type="password" name="password" id="password" title="<?php echo $this->__('パスワード') ?>" class="input-text required-entry validate-password" />
@@ -152,6 +133,8 @@
                             <input required placeholder="<?php echo $this->__('確認（パスワード）') ?>" type="password" name="confirmation" title="<?php echo $this->__('確認（パスワード）') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
                         </div>
                     </div>
+                	
+                	<?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
                     
                     <div class="field">
                         <div class="input-box">

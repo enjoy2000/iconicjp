@@ -6,16 +6,18 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		$this->loadLayout();
        	$this->getLayout()->getBlock('head')->setTitle($this->__('Jobs Board For IconicVN')); 
 		$langs = Mage::getModel('job/location')->getCollection();
-		foreach($langs as $lang){
-			$urlkey = Mage::helper('job')->formatUrlKey($lang->getNameEn());
-			$lang->setUrlKey($urlkey)->save();
-			echo $urlkey . '<br />';
-		}
+		Mage::helper('job')->redirectToSearchPage();
     }
 	
 	public function contactAction(){
 		$this->loadLayout();
 		$post = $this->getRequest()->getPost();
+		$helper = Mage::helper('job');
+		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
+			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム'), 'title'=>$helper->__('ホーム'), 'link'=>Mage::helper('job')->getBaseUrl()));
+			$breadcrumbs->addCrumb('create_cv', array('label'=>$helper->__('問い合わせる'), $helper->__('問い合わせる')));
+		}
+		$this->getLayout()->getBlock('head')->setTitle($helper->__('問い合わせる'));
 		if($post){
 			try{
 				$mail = new Zend_Mail('UTF-8');

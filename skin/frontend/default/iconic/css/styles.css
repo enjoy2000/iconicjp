@@ -155,6 +155,7 @@ body.short #blog-news{
 	background-position: 98% center;
 	background-repeat: no-repeat;
 	background-image: url('../images/user.png');
+	background-color: #fff;
 }
 .account-login input+input{
 	margin: 15px 0;
