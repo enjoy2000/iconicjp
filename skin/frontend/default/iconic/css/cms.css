@@ -1,0 +1,65 @@
+body.cms-page-view #main .main{
+	padding: 0;
+}
+body.cms-page-view .page-title{
+	padding: 40px;
+	border-bottom: solid 2px #4571EB;
+	padding-bottom: 10px;
+}
+body.cms-page-view .page-title h1{
+	text-align: left;
+	color: #4571EB;
+	letter-spacing: 0;
+}
+/*
+ * About Iconic
+ */
+#about-iconic .world-map{
+	background: url('../images/cms/world-map.png') top left no-repeat;
+	height: 537px;
+	position: relative;
+}
+#about-iconic .world-map .text{
+	width: 320px;
+	position: absolute;
+	right: 20px;
+	top: 120px;
+}
+#about-iconic .world-map .text p{
+	text-shadow: 2px 0 0 #e8edfd, -2px 0 0 #e8edfd, 0 2px 0 #e8edfd, 0 -2px 0 #e8edfd, 1px 1px #e8edfd, -1px -1px 0 #e8edfd, 1px -1px 0 #e8edfd, -1px 1px 0 #e8edfd;
+	font-size: 15px;
+	font-weight: bold;
+	color: #000;
+	text-align: center;
+	letter-spacing: -1px;
+	line-height: 21px;
+}
+#about-iconic .world-map .text p+p{
+	margin-top: 35px;
+	margin-bottom: 70px;
+}
+#about-iconic .content{
+	background: url('../images/cms/about-left.png'), url('../images/cms/about-right.png');
+	background-position: left top, right top;
+	background-repeat: no-repeat, no-repeat;
+	padding: 25px 65px;
+	padding-bottom: 60px;
+}
+.cms-blue-tit{
+	font-weight: bold;
+	color: #4571EB;
+	margin-bottom: 20px;
+	font-size: 21px;
+}
+#about-iconic .list h4{
+	padding-left: 17px;
+	background: url('../images/cms/orange-icon.png') left center no-repeat;
+	color: #000;
+	font-weight: bold;
+}
+#about-iconic .list+.list{
+	margin-top: 20px;
+}
+#about-iconic .list+.list+.list{
+	margin-bottom: 50px;
+}

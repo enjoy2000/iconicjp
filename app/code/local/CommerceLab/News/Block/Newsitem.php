@@ -47,17 +47,11 @@ class CommerceLab_News_Block_Newsitem extends Mage_Core_Block_Template
             if ($showBreadcrumbs && ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs'))) {
                 $breadcrumbs->addCrumb('home',
                     array(
-                    'label'=>Mage::helper('job')->__('Trang chủ'),
-                    'title'=>Mage::helper('clnews')->__('Trang chủ'),
+                    'label'=>Mage::helper('job')->__('ホーム '),
+                    'title'=>Mage::helper('clnews')->__('ホーム '),
                     'link'=>Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)
                     ));
 
-                $breadcrumbs->addCrumb('news',
-                    array(
-                    'label'=>Mage::helper('clnews')->__(Mage::getStoreConfig('clnews/news/title')),
-                    'title'=>Mage::helper('clnews')->__('Return to %s', Mage::helper('clnews')->__('News')),
-                    'link'=> Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'blog'
-                    ));
 
                 if ($category = $newsitem->getCategory()) {
                     $breadcrumbs->addCrumb('category',
