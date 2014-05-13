@@ -66,7 +66,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             if ($e->getCode() === Mage_Customer_Model_Customer::EXCEPTION_EMAIL_EXISTS) {
                 $url = Mage::helper('job')->getBaseUrl();
 				Mage::getSingleton('core/session')->setShowForgotPassword(1);
-                $message = $this->__('Email này đã được dùng để đăng ký. hãy bấm vào <a href="%s">đây</a> để lấy lại mật khẩu và quyền truy cập tài khoản.', $url);
+                $message = $this->__('This email has been use for register. Please click <a href="%s">here</a> to reset password.', $url);
                 $session->setEscapeMessages(false);
             } else {
                 $message = $e->getMessage();

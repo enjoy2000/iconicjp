@@ -26,13 +26,34 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                 <!-- [ middle starts here] -->
                     <tr>
                         <td valign="top">
-                            <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 11px 0;"">Dear {{htmlescape var=$customer.name}},</h1>
-                            <p style="font-size:12px; line-height:16px; margin:0 0 16px 0;">Welcome to {{var store.getFrontendName()}}. To log in when visiting our site just click login button at the top of every page or <a href="{{store url=""}}">our homepage</a>, and then enter your e-mail address and password.</p>
-                            <p style="border:1px solid #E0E0E0; font-size:12px; line-height:16px; margin:0; padding:13px 18px; background:#f9f9f9;">
-                                Use the following values when prompted to log in:<br/>
-                                <strong>E-mail</strong>: {{var customer.email}}<br/>
-                                <strong>Password</strong>: {{htmlescape var=$customer.password}}<p>
-                            <p style="font-size:12px; line-height:16px; margin:0;">If you have any questions about your account or any other matter, please feel free to contact us at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> or by phone at {{config path='general/store_information/phone'}}.</p>
+                            {{htmlescape var=$customer.name}}様 <br />
+							<br />
+							アイコニックにご登録いただき、ありがとうございます！<br />
+							{{htmlescape var=$customer.name}}様の会員登録が完了いたしました。続いて、転職支援サービスに申し込みましょう！<br />
+							転職支援サービスに申し込むと、アジア転職のプロであるアイコニックのキャリアアドバイザーから{{htmlescape var=$customer.name}}様へ個別に連絡が届きます。<br />
+							<br />
+							・仕事面から生活面まで幅広くアジアで働き生活するってどういう感じ？<br />
+							・日本での自分の経歴を活かせる仕事って海外に本当にあるの？<br />
+							・語学力はどのくらい必要なの？<br />
+							 <br />
+							などなど、{{htmlescape var=$customer.name}}様のアジア転職に向けたお悩みやご相談にお答えすることができます。<br />
+							 <br />
+							まずはお気軽にアイコニックの転職支援サービスにお申し込みください！ <br />
+							<br />
+							<a target="_blank" href="{{store url=""}}">転職支援サービスに申し込む（無料）</a> button（約3分で完了します） <br />
+							<br />
+							少しでもご不明な点がございましたら、info@iconic-jp.comまでお気軽にご返信ください。 <br />
+							良い海外転職のご支援ができることをアイコニック社員一同願っております！ <br />
+							<br />
+							――――――――――――――――――――――――――――――――――――<br />
+							「国境を越えて働く人たちを応援する」<br />
+							□発行:　株式会社アイコニックジャパン　<br />
+							□アイコニックのウェブサイト　www.iconic-jp.com<br />
+							□Facebook 公式ページ　https://www.facebook.com/iconicvn<br />
+							□個人情報の取扱いについては個人情報保護方針をご覧下さい。<br />
+							――――――――――――――――――――――――――――――――――――<br />
+							※このメールは、送信専用メールアドレスから配信されています。<br />
+							ご返信いただいてもお答えできませんので、ご了承ください。
                         </td>
                     </tr>
                     <tr>

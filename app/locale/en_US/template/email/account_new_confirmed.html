@@ -2,9 +2,10 @@
 <!--@vars
 {"store url=\"\"":"Store Url",
 "var logo_url":"Email Logo Image Url",
-"var logo_alt":"Email Logo Image Alt",
 "htmlescape var=$customer.name":"Customer Name",
-"store url=\"customer/account/\"":"Customer Account Url"}
+"store url=\"customer/account/\"":"Customer Account Url",
+"var customer.email":"Customer Email",
+"htmlescape var=$customer.password":"Customer Password"}
 @-->
 
 <!--@styles
@@ -20,24 +21,39 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
                 <table bgcolor="FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
                     <tr>
                         <td valign="top">
-                            <a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a>
-                        </td>
+                            <a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
                     </tr>
-                    <!-- [ middle starts here] -->
+                <!-- [ middle starts here] -->
                     <tr>
                         <td valign="top">
-                            <h1 style="font-size:22px; font-weight:normal; line-height:22px; margin:0 0 11px 0;"">Dear {{htmlescape var=$customer.name}},</h1>
-                            <p style="font-size:12px; line-height:16px; margin:0 0 16px 0;">Welcome to {{var store.getFrontendName()}}. To log in when visiting our site just click <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;">Login</a> or <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;">My Account</a> at the top of every page, and then enter your e-mail address and password.</p>
-                            <p style="font-size:12px; line-height:16px; margin:0 0 8px 0;">When you log in to your account, you will be able to do the following:</p>
-                            <ul style="font-size:12px; line-height:16px; margin:0 0 16px 0; padding:0;">
-                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Proceed through checkout faster when making a purchase</li>
-                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Check the status of orders</li>
-                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; View past orders</li>
-                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Make changes to your account information</li>
-                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Change your password</li>
-                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Store alternative addresses (for shipping to multiple family members and friends!)</li>
-                            </ul>
-                            <p style="font-size:12px; line-height:16px; margin:0;">If you have any questions about your account or any other matter, please feel free to contact us at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> or by phone at {{config path='general/store_information/phone'}}.</p>
+                            {{htmlescape var=$customer.name}}様 <br />
+							<br />
+							アイコニックにご登録いただき、ありがとうございます！<br />
+							{{htmlescape var=$customer.name}}様の会員登録が完了いたしました。続いて、転職支援サービスに申し込みましょう！<br />
+							転職支援サービスに申し込むと、アジア転職のプロであるアイコニックのキャリアアドバイザーから{{htmlescape var=$customer.name}}様へ個別に連絡が届きます。<br />
+							<br />
+							・仕事面から生活面まで幅広くアジアで働き生活するってどういう感じ？<br />
+							・日本での自分の経歴を活かせる仕事って海外に本当にあるの？<br />
+							・語学力はどのくらい必要なの？<br />
+							 <br />
+							などなど、{{htmlescape var=$customer.name}}様のアジア転職に向けたお悩みやご相談にお答えすることができます。<br />
+							 <br />
+							まずはお気軽にアイコニックの転職支援サービスにお申し込みください！ <br />
+							<br />
+							<a target="_blank" href="{{store url=""}}">転職支援サービスに申し込む（無料）</a> button（約3分で完了します） <br />
+							<br />
+							少しでもご不明な点がございましたら、info@iconic-jp.comまでお気軽にご返信ください。 <br />
+							良い海外転職のご支援ができることをアイコニック社員一同願っております！ <br />
+							<br />
+							――――――――――――――――――――――――――――――――――――<br />
+							「国境を越えて働く人たちを応援する」<br />
+							□発行:　株式会社アイコニックジャパン　<br />
+							□アイコニックのウェブサイト　www.iconic-jp.com<br />
+							□Facebook 公式ページ　https://www.facebook.com/iconicvn<br />
+							□個人情報の取扱いについては個人情報保護方針をご覧下さい。<br />
+							――――――――――――――――――――――――――――――――――――<br />
+							※このメールは、送信専用メールアドレスから配信されています。<br />
+							ご返信いただいてもお答えできませんので、ご了承ください。
                         </td>
                     </tr>
                     <tr>
