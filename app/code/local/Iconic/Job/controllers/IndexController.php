@@ -6,6 +6,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		$this->loadLayout();
        	$this->getLayout()->getBlock('head')->setTitle($this->__('Jobs Board For IconicVN')); 
 		$langs = Mage::getModel('job/location')->getCollection();
+		var_dump(Mage::helper('job')->getPic());die;
 		Mage::helper('job')->redirectToSearchPage();
     }
 	
@@ -171,6 +172,180 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 				Mage::getSingleton('core/session')->addError(Mage::helper('job')->__('Cannot send email.'));
 				$this->_redirect(Mage::helper('job')->getCreateCVUrl()); return;
 			}
+			
+			//send mail to customer
+			$bodyHtml2 = '
+					<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	
+					<html xmlns="http://www.w3.org/1999/xhtml">
+					<head>
+						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+						<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+						<title>Your Message Subject or Title</title>
+						<style type="text/css">
+					
+					
+							p {margin: 1em 0;}
+					
+							/** Hotmail header color reset: Hotmail replaces your header color styles with a green color on H2, H3, H4, H5, and H6 tags. In this example, the color is reset to black for a non-linked header, blue for a linked header, red for an active header (limited support), and purple for a visited header (limited support).  Replace with your choice of color. The !important is really what is overriding Hotmail\'s styling. Hotmail also sets the H1 and H2 tags to the same size.
+					
+							Bring inline: Yes.
+							**/
+							h1, h2, h3, h4, h5, h6 {color: black !important;}
+					
+							h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {color: blue !important;}
+					
+							h1 a:active, h2 a:active,  h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+								color: red !important; /* Preferably not the same color as the normal header link color.  There is limited support for psuedo classes in email clients, this was added just for good measure. */
+							 }
+					
+							h1 a:visited, h2 a:visited,  h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
+								color: purple !important; /* Preferably not the same color as the normal header link color. There is limited support for psuedo classes in email clients, this was added just for good measure. */
+							}
+					
+							table td {border-collapse: collapse;}
+					
+							table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+							a {color: orange;}
+					
+					
+							@media only screen and (max-device-width: 480px) {
+					
+								a[href^="tel"], a[href^="sms"] {
+											text-decoration: none;
+											color: black; /* or whatever your want */
+											pointer-events: none;
+											cursor: default;
+										}
+					
+								.mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+											text-decoration: default;
+											color: orange !important; /* or whatever your want */
+											pointer-events: auto;
+											cursor: default;
+										}
+							}
+					
+							/* More Specific Targeting */
+					
+							@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+								/* You guessed it, ipad (tablets, smaller screens, etc) */
+					
+								/* Step 1a: Repeating for the iPad */
+								a[href^="tel"], a[href^="sms"] {
+											text-decoration: none;
+											color: blue; /* or whatever your want */
+											pointer-events: none;
+											cursor: default;
+										}
+					
+								.mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+											text-decoration: default;
+											color: orange !important;
+											pointer-events: auto;
+											cursor: default;
+										}
+							}
+						</style>
+					
+						<!-- Targeting Windows Mobile -->
+						<!--[if IEMobile 7]>
+						<style type="text/css">
+					
+						</style>
+						<![endif]-->
+					
+						<!-- ***********************************************
+						****************************************************
+						END MOBILE TARGETING
+						****************************************************
+						************************************************ -->
+					
+						<!--[if gte mso 9]>
+						<style>
+							/* Target Outlook 2007 and 2010 */
+						</style>
+						<![endif]-->
+					</head>
+					<body>
+						<table width="600" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
+							<tr height="15" bgcolor="#b5c6f7"><td></td></tr>
+							<tr>
+								<td>
+								<table>
+									<tr height="20">
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="500"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr>
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td><a href="'.$baseurl.'"><img src="'.$logourl.'" /></a></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr height="40">
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr>
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td>
+											'.$name.'様 <br />
+											<br />
+											'.$name.'さん、はじめまして。<br />
+											<br />
+											この度は、アイコニックの転職支援サービスにお申込みいただき、ありがとうございます！<br />
+											これから'.$name.'さんがアジアを舞台にご活躍できるよう、'.$name.'さんの転職活動をアジア転職のプロであるアイコニックのキャリアアドバイザーがサポートしてまいります。<br />
+											<br />
+											一両日中に担当のキャリアアドバイザーより、'.$name.'さんに個別に連絡を入れさせていただきます。<br />
+											転職が成功するよう、一緒にがんばりましょう！！<br />
+											<br />
+											'.$name.'さんのアジア転職が成功します様に！<br />
+											<br />  
+											――――――――――――――――――――――――――――――――――――<br />
+											「国境を越えて働く人たちを応援する」<br />
+											□発行:　株式会社アイコニックジャパン　<br />
+											□配信停止：　件名「配信停止希望」にてinfo@iconic-jp.comへご連絡下さい。<br />
+											□アイコニックのウェブサイト　www.iconic-jp.com<br />
+											□Facebook 公式ページ　https://www.facebook.com/iconicvn<br />
+											□個人情報の取扱いについては個人情報保護方針をご覧下さい。<br />
+											――――――――――――――――――――――――――――――――――――<br />
+											※このメールは、送信専用メールアドレスから配信されています。<br />
+											ご返信いただいてもお答えできませんので、ご了承ください。
+										</td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr height="40">
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+								</table>
+								</td>
+							</tr>
+							<tr height="15" bgcolor="#b5c6f7"><td></td></tr>
+						</table>
+					</body>
+					</html>
+					';
+			$customer = Mage::getSingleton('customer/session')->getCustomer();
+			$mail2 = new Zend_Mail('UTF-8');
+			$mail2->setBodyHtml($bodyHtml2);
+			$mail2->addTo($customer->getEmail(),$customer->getName());
+			$mail2->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
+			$mail2->setSubject(Mage::helper('job')->__('【アイコニック】転職支援サービスへのお申込みを受け付けました！'));
+			$mail2->send($transport);
 		}
 		$this->renderLayout();
 	}

@@ -73,6 +73,11 @@
                     <sort_order>0</sort_order>
                     <action>adminhtml/job_request</action>
                 </type>
+                <type module="job">
+                    <title>Manage PIC</title>
+                    <sort_order>0</sort_order>
+                    <action>adminhtml/job_pic</action>
+                </type>
             </children>
         </job>
         <customer translate="title" module="customer">

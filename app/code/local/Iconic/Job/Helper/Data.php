@@ -286,5 +286,38 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
         	return;
         }
 	}
+
+	public function getPic(){
+		$lastpic = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('last_pic', array('eq'=>1))->getFirstItem();
+		if(!$lastpic->getId()){
+			$pic = Mage::getModel('job/pic')->getCollection()->getFirstItem();
+			$pic->setLastPic(1)->save();
+			return $pic;
+		}else{
+			$pic = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('pic_id', array('gt'=>$lastpic->getId()))->getFirstItem();
+			if(!$pic->getId()){
+				$pic = Mage::getModel('job/pic')->getCollection()->getFirstItem();
+			}
+			$lastpic->setLastPic(0)->save();
+			$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
+			if($pic->getCurrentInterval() ==  $pic->getInterval()){
+				$pic->setLastPic(1)->save();
+				$pic->setCurrentInterval(0)->save();
+				return $pic;
+			}
+			while($pic->getCurrentInterval() !=  $pic->getInterval()){
+				$pic = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('pic_id', array('gt'=>$pic->getId()))->getFirstItem();
+				if(!$pic->getId()){
+					$pic = Mage::getModel('job/pic')->getCollection()->getFirstItem();
+				}
+				$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
+				if($pic->getCurrentInterval() ==  $pic->getInterval()){
+					$pic->setLastPic(1)->save();
+					$pic->setCurrentInterval(0)->save();
+					return $pic;
+				}
+			}
+		}
+	}
 }
 	
