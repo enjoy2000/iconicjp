@@ -108,22 +108,38 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$birthDate = explode("/", $birthday);
 			//get age from date or birthdate
 			$now = date('d/m/Y');
-			$loc = Mage::helper('job')->noAccent($data['location']);
-			$loc2 = Mage::helper('job')->noAccent($data['location2']);
-			if($data['education'] == 1){
-				$arr = array($data['ho'].' '.$data['ten'], $birthday, $data['sex'], $data['nation'], $data['address'], $loc, $data['country'], $data['phone'], $data['email'], $data['salary'], 
-							$data['currency'], $data['salarytype'], $data['salary2'], $data['currency2'], $data['salarytype2'],  
-							$data['category'], $data['function'], $loc2, $data['level'], '', $data['school'], $data['spec'], $data['degree'], $data['graduate'], 
-							$data['category2'], $data['function2'], $data['level2'], $data['exp'], $data['detail'], $data['jp'], $data['en'], $data['vn'], $data['otherlang'], $data['skill'], 
-							$data['decide'], $now);
-			}else{
-				$arr = array($data['ho'].' '.$data['ten'], $birthday, $data['sex'], $data['nation'], $data['address'], $loc, $data['country'], $data['phone'], $data['email'], $data['salary'], 
-							$data['currency'], $data['salarytype'], $data['salary2'], $data['currency2'], $data['salarytype2'],  
-							$data['category'], $data['function'], $loc2, $data['level'], $data['school'], '', $data['spec'], $data['degree'], $data['graduate'], 
-							$data['category2'], $data['function2'], $data['level2'], $data['exp'], $data['detail'], $data['jp'], $data['en'], $data['vn'], $data['otherlang'], $data['skill'], 
-							$data['decide'], $now);
-			}
-			
+			$arr = array(
+					$data['first'].$data['last'],
+					$data['kana'],
+					$birhDate,
+					$data['sex'],
+					$data['nation'],
+					$data['location'],
+					$data['province'],
+					'',
+					$data['phone1'].'-'.$data['phone2'].'-'.$data['phone3'],
+					$data['email'],
+					$data['degree'].'('.$data['graduated'].')',
+					$data['major'],
+					$data['school'],
+					$data['workstatus'],
+					$data['numbercompany'],
+					$data['workfunction'],
+					$data['companyname'],
+					$data['companysalary'],
+					$data['companycategory'],
+					$data['companytitle'],
+					$data['division'],
+					$data['companystatus'],
+					$data['companyemploye'],
+					$data['yearfrom'].'/'.$data['monthfrom'].'-'.$data['yearto'].'/'.$data['monthto'],
+					$data['jobcontent'],
+					$data['jobdescription'],
+					$data['otherwork'],
+					$data['category'],
+					$data['function'],
+					$data['requirements']
+			);
 			
 			//Write Excel File
 			/** PHPExcel */
@@ -160,10 +176,10 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$bodyHtml .= '</tbody></table>';
 			
 			$mail->setBodyHtml($bodyHtml);
-			$mail->addTo('auto_iconic_vn@iconic-intl.com',Mage::helper('job')->__('IconicVN'));
+			$mail->addTo('auto_iconic@iconic-jp.com',Mage::helper('job')->__('IconicJP'));
 			//$mail->addTo('enjoy3013@gmail.com',Mage::helper('job')->__('IconicVN'));
-			$mail->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicVN'));
-			$mail->setSubject(Mage::helper('job')->__('[IS] CV của %s %s', $data['ho'], $data['ten']));
+			$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
+			$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Candidate - %s - %s', $data['first']. ' ' .$data['last'] ,Mage::helper('job')->getPic()));
 			$checkSend = $mail->send($transport);
 			if($checkSend){
 				Mage::getSingleton('customer/session')->getCustomer()->setCreatecv(1)->save();

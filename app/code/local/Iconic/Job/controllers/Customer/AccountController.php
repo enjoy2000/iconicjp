@@ -56,6 +56,41 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 					$subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($customer->getEmail());
 					$subscriber->setStatus(1)->save();
 				}
+				//Send mail
+				$mail = new Zend_Mail('UTF-8');
+				$config = array(
+		                    'auth' => 'login',
+		                    'ssl'  => 'tls',
+						    'port' => 587,
+						    'username' => 'test',
+						    'password' => 'testing'
+							);
+		 
+				$transport = new Zend_Mail_Transport_Smtp('mail.iconicvn.com', $config);
+				//get general contact from config admin
+				/* Sender Name */
+				$nameAdmin = Mage::getStoreConfig('trans_email/ident_general/name'); 
+				/* Sender Email */
+				$emailAdmin = Mage::getStoreConfig('trans_email/ident_general/email');
+				
+				$bodyHtml = '<table><tbody>';			
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('登録日(Registration Date)').':</td><td> '.date('d-M-Y').'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('氏名(Name)').':</td><td> '.$customer->getName().'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('氏名カナ(Name in Kana)').':</td><td> '.$customer->getKana().'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('メールアドレス(E-mail)').':</td><td> '.$customer->getEmail().'</td></tr>';			
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('性別(Gender)').':</td><td> '.$customer->getSex().'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('年齢 (Age)').':</td><td> '.date('y')-$customer->getBirthYear().'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('現在住んでいる国(Resident Country)').':</td><td> '.$customer->getLocation().'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('担当(PIC)').':</td><td> '.Mage::helper('job')->getPic().'</td></tr>';
+				$bodyHtml .= '</tbody></table>';
+				
+				$mail->setBodyHtml($bodyHtml);
+				$mail->addTo('auto_iconic@iconic-jp.com',Mage::helper('job')->__('IconicJP'));
+				//$mail->addTo('enjoy3013@gmail.com',Mage::helper('job')->__('IconicVN'));
+				$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
+				$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Registration - %s - %s', $customer->getName() ,Mage::helper('job')->getPic()));
+				$checkSend = $mail->send($transport);
+				
                 $this->_redirect('job/index/afterregister');
                 return;
             } else {

@@ -132,16 +132,17 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$emailAdmin = Mage::getStoreConfig('trans_email/ident_general/email');
 			
 			$bodyHtml = '<table><tbody>';			
-			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Link').':</td><td> '.Mage::helper('job')->getJobLink($job).'</td></tr>';
-			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Name').':</td><td> '.$data['name'].'</td></tr>';
-			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Email').':</td><td> '.$data['email'].'</td></tr>';			
+			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('求人番号(Job No.)').':</td><td> '.$job->getIconicId().'</td></tr>';
+			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('求人タイトル (Job Title)').':</td><td> '.$job->getTitle().'</td></tr>';
+			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('氏名 (Name)').':</td><td> '.$data['name'].'</td></tr>';
+			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('メールアドレス(E-mail)').':</td><td> '.$data['email'].'</td></tr>';			
 			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Content').':</td><td> '.$data['message'].'</td></tr>';
 			$bodyHtml .= '</tbody></table>';
 			
 			$mail->setBodyHtml($bodyHtml);
 			$mail->addTo('auto_iconic_vn@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
 			$mail->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
-			$mail->setSubject(Mage::helper('job')->__('応募する').' "'. $job->getTitle()).'"';
+			$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Apply Job No.%s - %s - %s', $job->getIconicId(), $data['name'], Mage::helper('job')->getPic()));
 			$checkSend = $mail->send($transport);
 			if($checkSend){
 				$this->getLayout()->getBlock('head')->setTitle(Mage::helper('job')->__('申込完了致しました。 ご検討をお祈りします。'));
