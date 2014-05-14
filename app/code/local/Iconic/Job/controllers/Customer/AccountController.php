@@ -29,6 +29,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             	$customer->setSex($this->getRequest()->getParam('sex'));
             	$customer->setLocation($this->getRequest()->getParam('location'));
             	$customer->setBirthYear($this->getRequest()->getParam('birthyear'));
+				$customer->setPhone($this->getRequest()->getParam('phone'));
                 $customer->save();
                 $this->_dispatchRegisterSuccess($customer);
 				//success action
@@ -65,7 +66,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 						    'username' => 'test',
 						    'password' => 'testing'
 							);
-		 
+		 		
 				$transport = new Zend_Mail_Transport_Smtp('mail.iconicvn.com', $config);
 				//get general contact from config admin
 				/* Sender Name */
