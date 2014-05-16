@@ -1,8 +1,27 @@
-<div class="reg-success flr width-70">
-	<h3><?php echo $this->__('Xin chúc mừng !!') ?></h3>
+<div class="success-page register">
+	<h1><?php echo $this->__('おめでとうございます !!!') ?></h1>
 	
-	<p><?php echo $this->__('Bạn đã đăng ký thành công.Để kích hoạt tài khoản của bạn, vui lòng nhấn vào đường dẫn trong email ICONIC gửi đến bạn.') ?></p>
-	<p><?php echo $this->__('Nếu bạn không nhận được email kích hoạt vui lòng kiểm tra <strong>Hộp thư Bulk/Spam</strong>.') ?></p>
-	<br />
-	<p>Trở về <a title="Trang chủ" href="/">Trang chủ</a> hoặc <a href="/<?php echo $this->helper('job')->getLoginUrl() ?>" title="Đăng nhập">Đăng nhập</a> lại.</p>
+	<p><?php echo $this->__('ICONIC－JPへの登録完了致しました。メールをご確認の後、手順の通りご活用ください。') ?></p>
+	<p><?php echo $this->__('>> アクティベーションメールを拒否設定の場合は要領をご確認下さい/スパムフォルダー<br />>> 何か問題の場合はご<a href="%s">連絡下さい。</a>', Mage::helper('job')->getBaseUrl().Mage::helper('job')->getContactUrl()) ?></p>
 </div>
+<style>
+	.success-page.register{
+		width: 550px;
+		margin: auto;
+		padding: 20px;
+	}
+	#main .main{
+		background-color: transparent;
+		border: none;
+	}
+	.success-page h1{
+		color: #d76f2c;
+		text-align: center;
+		font-weight: bold;
+		font-size: 23px;
+		margin-bottom: 25px;
+	}
+	.success-page p{
+		font-size: 13px;
+	}
+</style>

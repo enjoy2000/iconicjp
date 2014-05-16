@@ -9,8 +9,8 @@
     	</div>
     	
     	<div class="row row2">
-    		<input required type="text" class="first" id="ho" name="last" placeholder="<?php echo $this->__('姓 ') ?>" value="<?php echo $this->getCustomer()->getLastname() ?>" />
-    		<input required type="text" class="last" id="ten" name="first" placeholder="<?php echo $this->__('名') ?>" value="<?php echo $this->getCustomer()->getFirstname() ?>" />
+    		<input required type="text" class="first after-input" id="ho" name="last" placeholder="<?php echo $this->__('姓 ') ?>" value="<?php echo $this->getCustomer()->getLastname() ?>" />
+    		<input required type="text" class="last after-input" id="ten" name="first" placeholder="<?php echo $this->__('名') ?>" value="<?php echo $this->getCustomer()->getFirstname() ?>" />
     	</div>
     	
     	<div class="row row2">
@@ -135,7 +135,7 @@
     			<span>-</span>
     			<input type="number" name="phone3" class="last" />
     		</div>
-    		<input readonly required type="text" class="last" name="email" id="email" placeholder="Email*" value="<?php echo $this->getCustomer()->getEmail() ?>" />
+    		<input required type="email" class="last after-input" name="email" id="email" placeholder="Email*" value="<?php echo $this->getCustomer()->getEmail() ?>" />
     	</div>
     	
     	<div class="row heading">
@@ -184,12 +184,6 @@
     			jQuery('#workfunction').multipleSelect({
 		            selectAll: false,
 		            placeholder: '<?php echo $this->__('経験職種') ?>',
-		            onClick: function(view){
-		            	if(jQuery("#workfunction :selected").length > 3){
-		            		alert('Maximum 3 choices.');
-		            		view.checked = false;
-		            	}
-		            },
 		        });
     		</script>
     	</div>
@@ -214,12 +208,6 @@
 	    			jQuery('#companycategory').multipleSelect({
 			            selectAll: false,
 			            placeholder: '<?php echo $this->__('業種') ?>',
-			            onClick: function(view){
-			            	if(jQuery("#companycategory :selected").length > 3){
-			            		alert('Maximum 3 choices.');
-			            		view.checked = false;
-			            	}
-			            },
 			        });
 	    		</script>
 	    		<input class="last" type="text" name="companytitle" placeholder="<?php echo $this->__('役職名') ?>" />
@@ -320,12 +308,6 @@
     			jQuery('#category').multipleSelect({
 		            selectAll: false,
 		            placeholder: '<?php echo $this->__('希望業種') ?>',
-		            onClick: function(view){
-		            	if(jQuery("#category :selected").length > 3){
-		            		alert('Maximum 3 choices.');
-		            		view.checked = false;
-		            	}
-		            },
 		        });
     		</script>
     		<select multiple="multiple" class="last" id="function" name="function">
@@ -336,12 +318,6 @@
     			jQuery('#function').multipleSelect({
 		            selectAll: false,
 		            placeholder: '<?php echo $this->__('希望職種') ?>',
-		            onClick: function(view){
-		            	if(jQuery("#function :selected").length > 3){
-		            		alert('Maximum 3 choices.');
-		            		view.checked = false;
-		            	}
-		            },
 		        });
     		</script>
     	</div>

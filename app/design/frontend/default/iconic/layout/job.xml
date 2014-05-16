@@ -31,23 +31,6 @@
     </job_index_afterforgot>
     
     <job_index_afterregister>
-    	<label>Create Account Successfully</label>
-        <remove name="right"/>
-        <remove name="left"/>
-
-        <reference name="head">
-            <action method="setTitle">
-                <title>Create Account Successfully</title>
-            </action>
-        </reference>
-        <reference name="root">
-            <action method="setTemplate">
-                <template>page/1column.phtml</template>
-            </action>
-            <action method="setHeaderTitle">
-                <title>Create Account Successfully</title>
-            </action>
-        </reference>
         <reference name="content">
              <block type="core/template" name="register-success" template="customer/form/register-success.phtml" />
         </reference>

@@ -257,6 +257,12 @@
             var selects = this.getSelects('text'),
                 $span = this.$choice.find('>span');
             var selected = this.getSelects().length;
+            if(selected > 3){
+            	this.$choice.addClass('error');
+            	alert('Maximum 3 choices!');
+            }else{
+            	this.$choice.removeClass('error');
+            }
             if (selects.length === this.$selectItems.length + this.$disableItems.length && this.options.allSelected) {
                 $span.removeClass('placeholder').html(this.options.allSelected);
             } else if (selects.length > this.options.minumimCountSelected) {

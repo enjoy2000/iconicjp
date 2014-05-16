@@ -19,8 +19,11 @@
 		
 		<?php if($this->hasLocation()): ?>
 		<div class="info inline-b">
-			<?php echo $this->__('Địa điểm') ?>:
-			<span><?php echo Mage::getModel('job/location')->load($this->getLocation())->getName() ?></span>
+			<?php echo $this->__('国から探す') ?>:
+			<?php $location = Mage::getModel('job/location')->load($this->getLocation());
+				$country = Mage::getModel('job/country')->load($location->getCountryId());	
+			?>
+			<span><?php echo Mage::helper('job')->getTransName($country).'/'.Mage::helper('job')->getTransName($location) ?></span>
 		</div>
 		<?php endif; ?>		
 		

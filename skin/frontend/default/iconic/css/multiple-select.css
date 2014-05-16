@@ -33,6 +33,9 @@
 	background-color: #fff;
 	color: #000;
 }
+.ms-choice.error{
+	border-color: #d76f2c;
+}
 .ms-choice.focus{
 	border-color: #4571eb;
 	color: #000;

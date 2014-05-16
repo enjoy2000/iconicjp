@@ -75,12 +75,11 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		$this->loadLayout();
 		//set breadcrumbs		
 		$helper = Mage::helper('job');
-		/*
 		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
-			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('Trang chủ'), 'title'=>$helper->__('Trang chủ'), 'link'=>Mage::getBaseUrl()));
-			$breadcrumbs->addCrumb('search_results', array('label'=>$helper->__('Đăng ký'), 'title'=>$helper->__('Đăng ký'), 'link'=>Mage::getUrl(Mage::helper('job')->getRegisterUrl())));
+			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム'), 'title'=>$helper->__('ホーム'), 'link'=>Mage::helper('job')->getBaseUrl()));
+			$breadcrumbs->addCrumb('search_results', array('label'=>$helper->__('転職支援サービスに申し込む'), 'title'=>$helper->__('転職支援サービスに申し込む')));
 		}
-		*/
+		$this->getLayout()->getBlock('head')->setTitle($helper->__('転職支援サービスに申し込む'));
 		$this->renderLayout();
 	}
 	

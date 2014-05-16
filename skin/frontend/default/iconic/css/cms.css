@@ -194,3 +194,161 @@ body.cms-page-view .world-map .text p{
 #for-candidate-in-japan .text .button a span{
 	font-size: 13px;
 }
+/*
+ * for-company-in-japan
+ */
+#for-company-in-japan .world-map .text{
+	width: 450px;
+	position: absolute;
+	right: 30px;
+	top: 160px;
+}
+#for-company-in-japan .world-map .text p{
+	margin-bottom: 20px;
+	text-align: left;
+	font-size: 14px;
+	margin-left: 20px;
+}
+#for-company-in-japan .world-map .text p+p{
+	margin-bottom: 0px;
+}
+#for-company-in-japan .world-map .text ul{
+	margin-left: 20px;
+}
+#for-company-in-japan .world-map .text ul li{
+	padding-left: 17px;
+	background: url('../images/cms/orange-icon.png') left center no-repeat;
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+#for-company-in-japan .world-map .text .button{
+	text-align: left;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+#for-company-in-japan .world-map .text .button a{
+	background-image: none;
+	padding: 10px 20px;
+	font-size: 13px;
+}
+#for-company-in-japan h2{
+	padding: 10px;
+	text-align: center;
+	background: url('../images/cms/seeker-bg.png') center top no-repeat;
+	height: 37px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 35px;
+}
+#for-company-in-japan .content ul{
+	width: 450px;
+	margin: auto;
+}
+#for-company-in-japan .content ul li{
+	border-bottom: solid 1px #a2b8f5;
+	padding: 30px;
+	padding-left: 120px;
+	padding-right: 10px;
+	position: relative;
+}
+#for-company-in-japan .content ul li:after{
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border: solid 10px transparent;
+	border-top-color: #a2b8f5;
+	bottom: -20px;
+	left: 50%;
+}
+#for-company-in-japan .content ul li h5{
+	color: #000;
+	font-weight: bold;
+}
+#for-company-in-japan .content ul li p{
+	font-size: 13px;
+	line-height: 15px;
+	letter-spacing: -0.8px;
+	margin-top: 5px;
+}
+#for-company-in-japan .content ul li:first-child{
+	background: url('../images/cms/seeker1.png') 30px center no-repeat;
+}
+#for-company-in-japan .content ul li:first-child+li{
+	background: url('../images/cms/rec2.png') 30px center no-repeat;
+}
+#for-company-in-japan .content ul li:first-child+li+li{
+	background: url('../images/cms/seeker4.png') 30px center no-repeat;
+}
+#for-company-in-japan .content ul li:first-child+li+li+li{
+	background: url('../images/cms/seeker2.png') 30px center no-repeat;
+}
+#for-company-in-japan .content ul li:first-child+li+li+li+li{
+	background: url('../images/cms/rec5.png') 30px center no-repeat;
+}
+#for-company-in-japan .content ul li:first-child+li+li+li+li+li{
+	background: url('../images/cms/seeker6.png') 30px center no-repeat;
+}
+#for-company-in-japan .content ul li:first-child+li+li+li+li+li+li{
+	background: url('../images/cms/rec7.png') 30px center no-repeat;
+}
+#for-company-in-japan .content .button{
+	text-align: center;
+	margin: 50px auto;
+}
+#for-company-in-japan .content .button a{
+	padding: 8px 20px;
+	padding-left: 50px;
+	background: url('../images/cms/submit-icon.png') 10px center no-repeat #dc8a55;
+	border-bottom: solid 3px #b85f26;
+	color: #d9dadb;
+	font-size: 21px;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 5px;
+}
+#for-company-in-japan .content .button a span{
+	font-size: 14px;
+}
+#for-company-in-japan .text .button{
+	text-align: center;
+}
+#for-company-in-japan .text .button a{
+	padding: 3px 10px;
+	padding-left: 40px;
+	background: url('../images/cms/submit-icon.png') 5px center no-repeat #dc8a55;
+	border-bottom: solid 2px #b85f26;
+	color: #d9dadb;
+	font-size: 18px;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 3px;
+}
+#for-company-in-japan .tit-content{
+	padding: 25px 65px;
+	background: url('../images/cms/tit-content.png') top left no-repeat;
+}
+#for-company-in-japan h4,
+#for-company-in-japan h5,
+#for-company-in-japan h6{
+	color: #000;
+	font-weight: bold;
+	margin-top: 20px;
+}
+#for-company-in-japan h5.icon{
+	padding-left: 17px;
+	background: url('../images/cms/orange-icon.png') left center no-repeat;
+	font-size: 13px;
+}
+/*
+ * faq
+ */
+#faq p.question{
+	color: #000;
+	font-weight: bold;
+	margin-top: 30px;
+}
+#faq span.answer{
+	color: #000;
+	font-weight: bold;
+}
