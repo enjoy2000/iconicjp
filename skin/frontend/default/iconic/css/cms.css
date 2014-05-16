@@ -343,6 +343,9 @@ body.cms-page-view .world-map .text p{
 /*
  * faq
  */
+#faq{
+	padding: 30px 70px;
+}
 #faq p.question{
 	color: #000;
 	font-weight: bold;
@@ -351,4 +354,7 @@ body.cms-page-view .world-map .text p{
 #faq span.answer{
 	color: #000;
 	font-weight: bold;
+}
+#faq h4.cms-blue-tit{
+	margin-top: 20px;
 }
