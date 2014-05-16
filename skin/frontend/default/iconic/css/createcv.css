@@ -89,9 +89,6 @@ textarea{
 	margin-top: 0;
 	margin-left: 10px;
 }
-input[readonly]{
-	background-color: #ffe6cb!important;
-}
 #main .main{
 	background-color: transparent;
 	border: none;

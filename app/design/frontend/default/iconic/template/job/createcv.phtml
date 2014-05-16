@@ -259,31 +259,8 @@
     		<p><?php echo $this->__('それ以前のご職歴がある場合は、こちらに全て入力してください。') ?></p>
 	    	
 	    	<div class="row row1">
-	    		<textarea required name="otherwork" placeholder="<?php echo $this->__('その他勤務歴 （これまでに在籍した会社名を全て入力してくださいない場合は「なし」とご入力ください。） ') ?>"></textarea>
+	    		<textarea name="otherwork" placeholder="<?php echo $this->__('その他のご職歴') ?>"></textarea>
 	    	</div>
-    	</div>
-    	
-    	<div class="row heading">
-    		<?php echo $this->__('添付ファイル') ?>
-    	</div>
-    	
-    	<div class="row row1">
-    		<p>
-    			<?php echo $this->__('Word, Excel, PowerPoint, PDF,Html,Textファイルがアップロード可能です。') ?>
-    		</p>
-    		<p>
-    			<?php echo $this->__('1ファイルの容量は最大2MBまでとなっております') ?>。
-    		</p>
-    	</div>
-    	
-    	<div class="row">
-    		<input id="fileupload" type="file" name="files[]" data-url="<?php echo Mage::getBaseUrl() ?>job/apply/upload" multiple>
-			<div id="progress">
-			    <div class="bar" style="width: 0%;"></div>
-			</div>
-			<div class="files">
-				
-			</div>
     	</div>
     	
     	<div class="row heading">
@@ -315,6 +292,29 @@
     	
     	<div class="row row1">
     		<textarea name="requirements" placeholder="<?php echo $this->__('今後のキャリアイメージやご要望（職種、勤務地、他）等、ご自由にご入力ください。') ?>"></textarea>
+    	</div>
+    	
+    	<div class="row heading">
+    		<?php echo $this->__('添付ファイル') ?>
+    	</div>
+    	
+    	<div class="row row1">
+    		<p>
+    			<?php echo $this->__('Word, Excel, PowerPoint, PDF,Html,Textファイルがアップロード可能です。') ?>
+    		</p>
+    		<p>
+    			<?php echo $this->__('1ファイルの容量は最大2MBまでとなっております') ?>。
+    		</p>
+    	</div>
+    	
+    	<div class="row">
+    		<input id="fileupload" type="file" name="files[]" data-url="<?php echo Mage::getBaseUrl() ?>job/apply/upload" multiple>
+			<div id="progress">
+			    <div class="bar" style="width: 0%;"></div>
+			</div>
+			<div class="files">
+				
+			</div>
     	</div>
     	
     	<div class="row dashed-border"></div>

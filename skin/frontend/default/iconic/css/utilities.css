@@ -141,6 +141,7 @@ textarea.error{
 	border-color: #d76f2c;
 }
 input[readonly]{
+	background-color: #fff;
 }
 .btn{
 	text-transform: uppercase;
