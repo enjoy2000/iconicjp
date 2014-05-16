@@ -264,7 +264,7 @@
     	</div>
     	
     	<div class="row heading">
-    		<?php echo $this->__('添付ファイル（必須ではございません）') ?>
+    		<?php echo $this->__('添付ファイル') ?>
     	</div>
     	
     	<div class="row row1">
@@ -272,7 +272,7 @@
     			<?php echo $this->__('Word, Excel, PowerPoint, PDF,Html,Textファイルがアップロード可能です。') ?>
     		</p>
     		<p>
-    			<?php echo $this->__('1ファイルの容量は最大500KBまでとなっております') ?>。
+    			<?php echo $this->__('1ファイルの容量は最大2MBまでとなっております') ?>。
     		</p>
     	</div>
     	
@@ -303,7 +303,7 @@
     		</script>
     		<select multiple="multiple" class="last" id="function" name="function">
     			<option value=""><?php echo $this->__('希望職種') ?></option>
-    			<?php echo $this->getCategoryList($data['function']) ?>
+    			<?php echo $this->getFunctionList($data['function']) ?>
     		</select>
     		<script>
     			jQuery('#function').multipleSelect({
