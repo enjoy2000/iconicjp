@@ -28,10 +28,10 @@
 	margin-left: 15px;
 }
 #contact-page > .flr{
-	letter-spacing: -1px;
 	padding: 20px;
 	padding-top: 50px;
 	color: #636466;
+	margin-right: 40px;
 }
 #contact-page > .flr .tit{
 	font-weight: bold;
@@ -39,6 +39,9 @@
 }
 #contact-page > .flr .row+.row{
 	margin-top: 25px;
+}
+#contact-page > .flr .row:nth-child(3){
+	margin-top: 5px;
 }
 #contact-page > .flr .row a{
 	color: #636466;

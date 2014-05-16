@@ -1,12 +1,12 @@
 <div id="contact-page" class="clearfix">
 	<div class="fll">
 		<h1 class="blue-tit"><?php echo $this->__('問い合わせる') ?></h1>
-		<p><?php echo $this->__('ご不明、ご質問等ありましたらこちらでお答え致します。') ?></p>
-		<p><?php echo $this->__('ご連絡頂けましたら早急にお答え致します。') ?></p>
+		<p><?php echo $this->__('アイコニックへのご質問は以下のフォームからお願いします。') ?></p>
+		<p><?php echo $this->__('弊社コンサルタントが速やかにお答えします。') ?></p>
 		<form action="" method="post" id="contact-form">
 			<div class="row clearfix">
-				<input class="fll" required name="name" type="text" placeholder="<?php echo $this->__('氏名') ?>" />
-				<input class="flr" required name="email" type="email" placeholder="<?php echo $this->__('電子メール') ?>" />
+				<input class="fll" required name="name" type="text" placeholder="<?php echo $this->__('お名前') ?>*" />
+				<input class="flr" required name="email" type="email" placeholder="<?php echo $this->__('メールアドレス') ?>*" />
 			</div>
 			
 			<div class="row clearfix">
@@ -15,7 +15,7 @@
 			</div>
 			
 			<div class="row">
-				<textarea required name="message" placeholder="<?php echo $this->__('メッセージ') ?>"></textarea>
+				<textarea required name="message" placeholder="<?php echo $this->__('メッセージ') ?>*"></textarea>
 			</div>
 			
 			<div class="actions">
@@ -27,26 +27,28 @@
 	
 	<div class="flr">
 		<div class="row">
-			<p class="tit"><?php echo $this->__('ウェブ') ?>:</p>
+			<p class="tit"><?php echo $this->__('メールアドレス') ?>:</p>
 			<a href="mailto:info@iconic-jp.com">info@iconic-jp.com</a>
 		</div>
 		<div class="row">
 			<p class="tit"><?php echo $this->__('電話') ?>:</p>
-			<p><?php echo $this->__('ベトナム - 南部') ?></p>
-			<p>(84) - 8 - 3821 5122 / 5123 / 5124</p>
+			<p><?php echo $this->__('ベトナム') ?></p>
+			<p><?php echo $this->__('ホーチミン本社') ?></p>
+			<p>(84) - 8 - 3821 - 5122</p>
 		</div>
 		<div class="row">
-			<p><?php echo $this->__('ベトナム - 北部') ?></p>
-			<p>84 - 4 - 3776 / 5963</p>
+			<p><?php echo $this->__('ハノイオフィス') ?></p>
+			<p>(84) - 4 - 3248 - 4446</p>
 		</div>
 		<div class="row">
-			<p><?php echo $this->__('東京 - 日本') ?></p>
+			<p><?php echo $this->__('日本') ?></p>
+			<p><?php echo $this->__('東京オフィス') ?></p>
 			<p>(81) - 3 - 6222 5520</p>
 		</div>
 		<div class="row">
 			<p><?php echo $this->__('インドネシア') ?></p>
+			<p><?php echo $this->__('ジャカルタオフィス') ?></p>
 			<p>(62) - 21 290 22273</p>
-			<p>(62) - 21 290 22274</p>
 		</div>
 	</div>
 </div>

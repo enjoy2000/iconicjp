@@ -1,16 +1,15 @@
 <div id="request-recruitment">
-	<h1><?php echo $this->__('求人依頼申込') ?></h1>
+	<h1><?php echo $this->__('人材紹介サービスに申し込む') ?></h1>
 	<form id="request-form" action="" method="POST">
-		<input required type="text" name="name" placeholder="<?php echo $this->__('氏名') ?>" />
-		<input required type="text" name="full_name" placeholder="<?php echo $this->__('氏名フリガナ') ?>" />
+		<input required type="text" name="name" placeholder="<?php echo $this->__('担当者名') ?>" />
+		<input required type="text" name="full_name" placeholder="<?php echo $this->__('担当者名（フリガナ）') ?>" />
 		<input required type="text" name="company_name" placeholder="<?php echo $this->__('会社名') ?>" />
-		<input required type="text" name="work_content" placeholder="<?php echo $this->__('事業内容') ?>" />
-		<input required type="number" name="phone" placeholder="<?php echo $this->__('電話番号') ?>" />
-		<input type="text" name="guarantee" placeholder="<?php echo $this->__('担当者名') ?>" />
+		<input type="text" name="work_content" placeholder="<?php echo $this->__('事業内容') ?>" />
+		<input type="text" name="address" placeholder="<?php echo $this->__('所在地') ?>" />
+		<input type="number" name="phone" placeholder="<?php echo $this->__('電話番号') ?>" />
 		<input required type="email" name="email" placeholder="<?php echo $this->__('メールアドレス') ?>" />
-		<input required type="email" name="confirm_email" placeholder="<?php echo $this->__('確認（メールアドレス)') ?>" />
-		<input type="text" name="address" placeholder="<?php echo $this->__('住所') ?>" />
-		<textarea name="job_content" placeholder="<?php echo $this->__('求人内容') ?>"></textarea>
+		<input required type="email" name="confirm_email" placeholder="<?php echo $this->__('メールアドレス（確認）') ?>" />
+		<textarea required name="job_content" placeholder="<?php echo $this->__('求人内容の詳細をこちらにお書きください（募集職種、募集人数、職務内容、想定給与レンジ、勤務地等）。') ?>"></textarea>
 		<div class="actions">
 			<button type="submit" class="btn button-blue"><?php echo $this->__('送信') ?></button>
 			<button onclick="resetForm();" class="btn button-grey"><?php echo $this->__('取消') ?></button>
@@ -20,23 +19,23 @@
 <div id="phone-number">
 	<div class="inline-b">
 		<p class="tit"><?php echo $this->__('電話 ') ?>:</p>
-		<p><b><?php echo $this->__('ベトナム - 南部') ?></b></p>
-		<p class="number">(84) - 8 - 3821 5122 / 5123 / 5124</p>
+		<p><b><?php echo $this->__('ホーチミン本社') ?></b></p>
+		<p class="number">(84) - 8 - 3821 5122</p>
 	</div>
 	<div class="inline-b">
-		<p><b><?php echo $this->__('ベトナム - 北部') ?></b></p>
-		<p class="number">(84) - 4 - 3776 / 5963</p>
+		<p><b><?php echo $this->__('ハノイオフィス') ?></b></p>
+		<p class="number">(84) - 4 - 3248 - 4446</p>
 	</div>
 	<div class="inline-b">
-		<p><b><?php echo $this->__('インドネシア') ?></b></p>
-		<p class="number">(62) - 21 290 22273 / 22274</p>
+		<p><b><?php echo $this->__('ジャカルタオフィス') ?></b></p>
+		<p class="number">(62) - 21 290 22273</p>
 	</div>
 	<div class="inline-b">
-		<p><b><?php echo $this->__('東京 - 日本') ?></b></p>
+		<p><b><?php echo $this->__('東京オフィス') ?></b></p>
 		<p class="number">(81) - 3 - 6222 5520</p>
 	</div>
 	<div class="inline-b">
-		<p class="tit"><b><?php echo $this->__('ウェブ ') ?>:</b></p>
+		<p class="tit"><b><?php echo $this->__('メールアドレス ') ?>:</b></p>
 		<p class="number"><a href="mailto:info@iconic-jp.com">info@iconic-jp.com</a></p>
 	</div>
 </div>

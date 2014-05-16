@@ -86,7 +86,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 				$bodyHtml .= '</tbody></table>';
 				
 				$mail->setBodyHtml($bodyHtml);
-				$mail->addTo('auto_iconic@iconic-jp.com',Mage::helper('job')->__('IconicJP'));
+				$mail->addTo('auto_iconicjp@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
 				//$mail->addTo('enjoy3013@gmail.com',Mage::helper('job')->__('IconicVN'));
 				$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
 				$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Registration - %s - %s', $customer->getName() ,Mage::helper('job')->getPic()));
