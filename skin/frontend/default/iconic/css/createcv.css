@@ -135,3 +135,6 @@ input[readonly]{
 input[type="radio"]{
 	margin-left: 20px;
 }
+.row.row2 .postcode > input{
+	width: 130px;
+}

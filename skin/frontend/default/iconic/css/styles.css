@@ -20,6 +20,7 @@ body.short #main .main{
 body.short #blog-news{
 	padding-bottom: 0;
 }
+
 #header-logo{
 	background-color: #4571eb;
 	position: fixed;
@@ -125,7 +126,7 @@ body.short #blog-news{
     transition: height 0.35s ease-out;
 }
 #header-landing #ajax-load.open{
-	height: 178px;
+	height: 447px;
 }
 #header-landing #ajax-load.open.open-1{
 	height: 88px;
@@ -160,6 +161,20 @@ body.short #blog-news{
 .account-login input+input{
 	margin: 15px 0;
 	background-image: url('../images/password.png');
+}
+.account-login a div.register-btn{
+	border-radius: 5px;
+	text-align: center;
+	color: #fff;
+	background-color: #4571eb;
+	font-size: 25px;
+	font-weight: bold;
+	padding: 30px 40px;
+	margin-top: 50px;
+}
+.account-login a div.register-btn span{
+	font-weight: normal;
+	font-size: 13px;
 }
 /*
  * Forgot Pass

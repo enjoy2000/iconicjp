@@ -1,7 +1,7 @@
 <?php $data = $this->getFormData(); ?>
 <div class="create-cv">
     <div class="page-title">
-        <h1><?php echo $this->__('転職支援サービスに申し込む') ?></h1>
+        <h1><?php echo $this->__('転職支援サービスに申し込む<br />（アイコニック求職登録）') ?></h1>
     </div>
     <form action="/<?php echo Mage::helper('job')->getCreateCVUrl() ?>" method="post" id="form-validate">
     	<div class="row heading">
@@ -9,19 +9,19 @@
     	</div>
     	
     	<div class="row row2">
-    		<input required type="text" class="first after-input" id="ho" name="last" placeholder="<?php echo $this->__('姓 ') ?>" value="<?php echo $this->getCustomer()->getLastname() ?>" />
-    		<input required type="text" class="last after-input" id="ten" name="first" placeholder="<?php echo $this->__('名') ?>" value="<?php echo $this->getCustomer()->getFirstname() ?>" />
+    		<input required type="text" class="first" id="ho" name="last" placeholder="<?php echo $this->__('姓 ') ?>" />
+    		<input required type="text" class="last" id="ten" name="first" placeholder="<?php echo $this->__('名') ?>" />
     	</div>
     	
     	<div class="row row2">
-    		<input required class="first" name="username" placeholder="<?php echo $this->__('氏名') ?>" />
-    		<input required class="last" name="kana" placeholder="<?php echo $this->__('氏名カナ') ?>" /> 
+    		<input readonly required class="first after-input" name="username" placeholder="<?php echo $this->__('性（フリガナ）') ?>" value="<?php echo $this->getCustomer()->getName() ?>" />
+    		<input required class="last" name="kana" placeholder="<?php echo $this->__('名（フリガナ）') ?>" /> 
     	</div>
     	
     	<div class="row row2">
     		<div class="first div3">
     			<select required id="year" name="year" class="first">
-    				<option value=""><?php echo $this->__('年齢') ?></option>
+    				<option value=""><?php echo $this->__('年') ?></option>
                 	<?php 
                 	$y = (int) Date('Y');
                 	for($i = $y-10; $i >= $y-60;$i--): ?>
@@ -29,14 +29,14 @@
                 	<?php endfor; ?>
     			</select>
 	    		<select required id="month" name="month" class="middle">
-	    			<option value=""><?php echo $this->__('生月') ?></option>
+	    			<option value=""><?php echo $this->__('月') ?></option>
 	            	<?php 
 	            	for($i = 1; $i <= 12;$i++): ?>
 	            	<option <?php echo ($data['month']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 	            	<?php endfor; ?>
 	    		</select>
 	    		<select required id="day" class="last" name="day">
-	    			<option value=""><?php echo $this->__('生日') ?></option>
+	    			<option value=""><?php echo $this->__('日') ?></option>
 	            	<?php 
 	            	for($i = 1; $i <= 31;$i++): ?>
 	            	<option <?php echo ($data['day']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
@@ -54,28 +54,16 @@
     	<div class="row row2 clearfix">
     		<select name="nation" id="nation" class="first">
     			<option value=""><?php echo $this->__('国籍') ?></option>
-    			<?php $list = Mage::getModel('job/listlocation')->getCollection ?>
+    			<?php $list = Mage::getModel('job/listlocation')->getCollection() ?>
     			<?php foreach($list as $loc): ?>
     			<option value="<?php echo $loc->getId() ?>"><?php echo Mage::helper('job')->getTransName($loc) ?></option>
     			<?php endforeach; ?>
     		</select>
-    		<div class="last">
-    			<input class="first" name="postcode1" type="number" placeholder="郵便番号" />
-    			<span>-</span>
-    			<input class="last" name="postcode2" type="number" />
-    		</div>
+    		<input readonly class="last after-input" name="country" value="<?php echo $this->getCustomer()->getLocation() ?>" />
     	</div>
     	
     	<div class="row row2">
-    		<select class="first" name="location">
-    			<option value=""><?php echo $this->__('<住所詳細') ?></option>
-    			<?php $countries = Mage::getModel('job/country')->getCollection() ?>
-    			<?php foreach($countries as $country): ?>
-    			<option value="<?php echo $country->getId() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></option>
-    			<?php endforeach; ?>
-    		</select>
-    		
-    		<select required class="last" name="province">
+    		<select required class="first" name="province">
     			  <option value=""><?php echo $this->__('都道府県') ?></option>
     			  <option value="<?php echo $this->__('京都府') ?>"><?php echo $this->__('京都府') ?></option>
 				  <option value="<?php echo $this->__('佐賀県') ?>"><?php echo $this->__('佐賀県') ?></option>
@@ -125,6 +113,8 @@
 				  <option value="<?php echo $this->__('鳥取県') ?>"><?php echo $this->__('鳥取県') ?></option>
 				  <option value="<?php echo $this->__('鹿児島県') ?>"><?php echo $this->__('鹿児島県') ?></option>
     		</select>
+    		
+    		<input required class="last" name="location" placeholder="<?php echo $this->__('住所詳細') ?>" />
     	</div>
     	
     	<div class="row row2">
@@ -135,7 +125,7 @@
     			<span>-</span>
     			<input type="number" name="phone3" class="last" />
     		</div>
-    		<input required type="email" class="last after-input" name="email" id="email" placeholder="Email*" value="<?php echo $this->getCustomer()->getEmail() ?>" />
+    		<input readonly required type="email" class="last after-input" name="email" id="email" placeholder="Email*" value="<?php echo $this->getCustomer()->getEmail() ?>" />
     	</div>
     	
     	<div class="row heading">
@@ -145,13 +135,12 @@
     	<div class="row degree">
     		<select id="degree" class="" required name="degree">
     			<option value=""><?php echo $this->__('最終学歴') ?></option>
-    			<option value="<?php echo $this->__('（MBA含む）') ?>"><?php echo $this->__('（MBA含む）') ?></option>
-    			<option value="<?php echo $this->__('大学') ?>"><?php echo $this->__('大学') ?></option>
+    			<option value="<?php echo $this->__('大学院') ?>"><?php echo $this->__('大学院') ?></option>
+    			<option value="<?php echo $this->__('4年制大学') ?>"><?php echo $this->__('4年制大学') ?></option>
     			<option value="<?php echo $this->__('短期大学') ?>"><?php echo $this->__('短期大学') ?></option>
     			<option value="<?php echo $this->__('高等専門学校') ?>"><?php echo $this->__('高等専門学校') ?></option>
     			<option value="<?php echo $this->__('専門学校') ?>"><?php echo $this->__('専門学校') ?></option>
     			<option value="<?php echo $this->__('高校') ?>"><?php echo $this->__('高校') ?></option>
-    			<option value="<?php echo $this->__('中学校') ?>"><?php echo $this->__('中学校') ?></option>
     			<option value="<?php echo $this->__('中学校') ?>"><?php echo $this->__('中学校') ?></option>
     		</select>
     		<input required type="radio" name=="graduated" value="卒業" /><?php echo $this->__('卒業') ?>
@@ -159,8 +148,8 @@
     	</div>
     	
     	<div class="row row2">
-    		<input class="first" type="text" name="major" placeholder="<?php echo $this->__('学部・学科名') ?>" />
-    		<input required class="last" type="text" name="school" placeholder="<?php echo $this->__('メールアドレス') ?>" />
+    		<input class="first" type="text" name="major" placeholder="<?php echo $this->__('学校名') ?>" />
+    		<input required class="last" type="text" name="school" placeholder="<?php echo $this->__('学部・学科名') ?>" />
     	</div>
     	
     	<div class="row heading">
@@ -169,8 +158,8 @@
     	
     	<div class="row work-status">
     		<?php echo $this->__(' 就業状況') ?><span class="red"></span>
-    		<input required name="workstatus" type="radio" value="卒業" /><?php echo $this->__('卒業') ?>
-    		<input name="workstatus" type="radio" value="中退" /><?php echo $this->__('中退') ?>
+    		<input required name="workstatus" type="radio" value="就業中" /><?php echo $this->__('就業中') ?>
+    		<input name="workstatus" type="radio" value="離職済み" /><?php echo $this->__('離職済み') ?>
     	</div>
     	
     	<div class="row row2">
@@ -189,7 +178,7 @@
     	</div>
     	
     	<div class="row dashed-border"></div>
-    	
+    	<p><?php echo $this->__('現在または直近の職歴について入力してください。') ?></p>
     	<div class="company">
 	    	<div class="row row2">
 	    		<input required class="first" type="text" name="companyname" placeholder="<?php echo $this->__('企業名') ?>" />
@@ -217,11 +206,10 @@
 	    		<input class="first" type="text" name="division" placeholder="<?php echo $this->__('部署名') ?>" />
 	    		<select class="last" required name="companystatus">
 	    			<option value=""><?php echo $this->__('就業形態') ?></option>
-	    			<option value="<?php echo $this->__('選択してください') ?>"><?php echo $this->__('選択してください') ?></option>
 	    			<option value="<?php echo $this->__('正社員') ?>"><?php echo $this->__('正社員') ?></option>
 	    			<option value="<?php echo $this->__('契約社員') ?>"><?php echo $this->__('契約社員') ?></option>
-	    			<option value="<?php echo $this->__('派遣社員アルバイト') ?>"><?php echo $this->__('派遣社員アルバイト') ?></option>
-	    			<option value="<?php echo $this->__('IC') ?>"><?php echo $this->__('IC') ?></option>
+	    			<option value="<?php echo $this->__('派遣社員') ?>"><?php echo $this->__('派遣社員') ?></option>
+	    			<option value="<?php echo $this->__('アルバイト') ?>"><?php echo $this->__('アルバイト') ?></option>
 	    		</select>
 	    	</div>
 	    	
@@ -266,6 +254,9 @@
 	    		<textarea class="first" name="jobcontent" placeholder="<?php echo $this->__('事業内容') ?>"></textarea>
 	    		<textarea required class="last" name="jobdescription" placeholder="<?php echo $this->__('職務内容') ?>"></textarea>
 	    	</div>
+	    	
+	    	<div class="row dashed-border"></div>
+    		<p><?php echo $this->__('それ以前のご職歴がある場合は、こちらに全て入力してください。') ?></p>
 	    	
 	    	<div class="row row1">
 	    		<textarea required name="otherwork" placeholder="<?php echo $this->__('その他勤務歴 （これまでに在籍した会社名を全て入力してくださいない場合は「なし」とご入力ください。） ') ?>"></textarea>
@@ -391,4 +382,7 @@
 			return 'Are you sure you want to leave?';
 		}
 	};
+	jQuery(document).ready(function(){
+		jQuery('.ms-drop li:first-child').html('<?php echo $this->__('最大3業種まで選択可能です。') ?>');
+	});
 </script>

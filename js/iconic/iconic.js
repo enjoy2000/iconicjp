@@ -4,7 +4,7 @@ var hook=true;
 		$('.centerwide').each(function(){
 			centerwide($(this));
 		});
-		$('.ms-drop li:first-child').html('Maximum 3 choices.');
+		
 		//fixed menu
 		var nav = $('#fixed-menu');
 	    $(window).scroll(function () {
