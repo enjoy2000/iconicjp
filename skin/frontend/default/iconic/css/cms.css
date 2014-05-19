@@ -216,7 +216,7 @@ body.cms-page-view .world-map .text .button a{
  * for-company-in-japan
  */
 #for-company-in-japan .world-map .text{
-	width: 450px;
+	width: 317px;
 	position: absolute;
 	right: 30px;
 	top: 160px;
@@ -250,6 +250,7 @@ body.cms-page-view .world-map .text .button a{
 	text-align: left;
 	margin-top: 20px;
 	margin-left: 20px;
+	text-align: center;
 }
 #for-company-in-japan h2{
 	padding: 10px;
