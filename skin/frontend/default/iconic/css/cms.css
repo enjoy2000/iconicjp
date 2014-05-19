@@ -519,11 +519,11 @@ body.cms-page-view .world-map .text .button a{
 }
 #company-profile .timeline > div.e2004{
 	width: 230px;
-	top: 45px;
+	top: 53px;
 	right: 147px;
 }
 #company-profile .timeline > div.e2004.e2004-2{
-	top: 5px;
+	top: 15px;
 }
 #company-profile .timeline > div.e2004 .tit:before{
 	left: -20px;
@@ -548,9 +548,9 @@ body.cms-page-view .world-map .text .button a{
 	border-right-color: #d76f2c;
 }
 #company-profile .timeline > div.e2010{
-	width: 171px;
+	width: 285px;
 	top: 366px;
-	left: 178px;
+	left: 90px;
 	color: #fff;
 	font-weight: bold;
 }
@@ -560,7 +560,7 @@ body.cms-page-view .world-map .text .button a{
 	position: absolute;
 	border: solid 10px transparent;
 	border-width: 5px 10px;
-	top: 20px;
+	top: 10px;
 	width: 0;
 	height: 0;
 	border-left-color: #8faaf3;
@@ -584,14 +584,13 @@ body.cms-page-view .world-map .text .button a{
 	border-left-color: #d76f2c;
 }
 #company-profile .timeline > div.e2014{
-	width: 200px;
+	width: 317px;
 	top: 758px;
-	right: 165px;
+	right: 45px;
 }
 #company-profile .timeline > div.e2014 .tit:before{
 	left: -20px;
 	border-right-color: #d76f2c;
-	top: 20px;
 }
 #company-profile .map{
 	padding: 20px;
