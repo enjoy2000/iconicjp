@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Iconic_Job>
-            <version>0.3.7</version>
+            <version>0.3.8</version>
         </Iconic_Job>
     </modules>
     <frontend>
@@ -96,6 +96,10 @@
                 <class>Iconic_Job_Model_Pic</class>
                 <resourceModel>job_pic</resourceModel>
             </pic>
+            <listcountry>
+                <class>Iconic_Job_Model_Listcountry</class>
+                <resourceModel>job_listcountry</resourceModel>
+            </listcountry>
             <job_mysql4>
                 <class>Iconic_Job_Model_Mysql4</class>
                 <entities>
@@ -132,6 +136,9 @@
                     <pic>
                         <table>job_pic</table>
                     </pic>
+                    <listcountry>
+                        <table>job_listcountry</table>
+                    </listcountry>
                 </entities>
             </job_mysql4>
         </models>
