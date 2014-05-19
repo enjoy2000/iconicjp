@@ -55,10 +55,10 @@ body.cms-page-view .world-map .text .button a{
  * about-iconic
  */
 #about-iconic .world-map .text{
-	width: 320px;
+	width: 331px;
 	position: absolute;
-	right: 20px;
-	top: 120px;
+	right: 111px;
+	top: 200px;
 }
 #about-iconic .world-map .text p{
 	text-shadow: 2px 0 0 #e8edfd, -2px 0 0 #e8edfd, 0 2px 0 #e8edfd, 0 -2px 0 #e8edfd, 1px 1px #e8edfd, -1px -1px 0 #e8edfd, 1px -1px 0 #e8edfd, -1px 1px 0 #e8edfd;
