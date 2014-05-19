@@ -123,16 +123,16 @@
                     
                     <div class="field clearfix">
                         <div class="input-box fll width-45">
-                            <input placeholder="<?php echo $this->__('性（カナ）') ?>" type="text" name="kanafirst" />
+                            <input class="<?php echo ($this->getFormData()->getKanafirst()) ? 'after-input' : '' ?>" placeholder="<?php echo $this->__('性（カナ）') ?>" type="text" name="kanafirst" value="<?php echo $this->getFormData()->getKanafirst() ?>" />
                         </div>
                         <div class="input-box flr width-45">
-                            <input placeholder="<?php echo $this->__('名（カナ）') ?>" type="text" name="kanalast" />
+                            <input class="<?php echo ($this->getFormData()->getKanalast()) ? 'after-input' : '' ?>" placeholder="<?php echo $this->__('名（カナ）') ?>" type="text" name="kanalast" value="<?php echo $this->getFormData()->getKanalast() ?>" />
                         </div>
                     </div>
                     
                 	<div class="field">
                 		<div class="input-box">
-                			 <input required placeholder="<?php echo $this->__('メールアドレス') ?>" type="email" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('ユーザー(メールアドレス)') ?>" class="input-text validate-email required-entry" />
+                			 <input required placeholder="<?php echo $this->__('メールアドレス') ?>" type="email" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" class="input-text validate-email required-entry <?php echo ($this->getFormData()->getEmail()) ? 'after-input' : '' ?>" />
                 		</div>
                 	</div>
                     <div class="field">
@@ -150,26 +150,26 @@
                     
                     <div class="field">
                     	<div class="input-box align-center clearfix">
-			    			<select required id="year" name="year" class="first fll">
+			    			<select required id="year" name="year" class="first fll <?php echo ($this->getFormData()->getYear()) ? 'after-input' : '' ?>">
 			    				<option value=""><?php echo $this->__('年') ?></option>
 			                	<?php 
 			                	$y = (int) Date('Y');
 			                	for($i = $y-10; $i >= $y-60;$i--): ?>
-			                	<option <?php echo ($data['year']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+			                	<option <?php echo ($this->getFormData()->getYear()==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 			                	<?php endfor; ?>
 			    			</select>
-				    		<select required id="month" name="month" class="middle">
+				    		<select required id="month" name="month" class="middle <?php echo ($this->getFormData()->getMonth()) ? 'after-input' : '' ?>">
 				    			<option value=""><?php echo $this->__('月') ?></option>
 				            	<?php 
 				            	for($i = 1; $i <= 12;$i++): ?>
-				            	<option <?php echo ($data['month']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+				            	<option <?php echo ($this->getFormData()->getMonth()==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 				            	<?php endfor; ?>
 				    		</select>
-				    		<select required id="day" class="last flr" name="day">
+				    		<select required id="day" class="last flr <?php echo ($this->getFormData()->getDay()) ? 'after-input' : '' ?>" name="day">
 				    			<option value=""><?php echo $this->__('日') ?></option>
 				            	<?php 
 				            	for($i = 1; $i <= 31;$i++): ?>
-				            	<option <?php echo ($data['day']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+				            	<option <?php echo ($this->getFormData()->getDay()==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 				            	<?php endfor; ?>
 				    		</select>
                     	</div>
@@ -177,7 +177,7 @@
                     
                     <div class="field clearfix">
                         <div class="input-box fll width-45">
-                            <select required placeholder="<?php echo $this->__('性別 ') ?>" name="sex" title="<?php echo $this->__('性別') ?>" id="sex" class="select-box required-entry">
+                            <select required placeholder="<?php echo $this->__('性別 ') ?>" name="sex" title="<?php echo $this->__('性別') ?>" id="sex" class="select-box required-entry <?php echo ($this->getFormData()->getSex()) ? 'after-input' : '' ?>">
                             	<option value=""><?php echo $this->__('性別') ?></option>
                             	<option <?php echo ($this->getFormData()->getSex()=='男性') ? 'selected="selected"' : '' ?> value="<?php echo '男性' ?>"><?php echo $this->__('男性') ?></option>
                             	<option <?php echo ($this->getFormData()->getSex()=='女性') ? 'selected="selected"' : '' ?> value="<?php echo '女性' ?>"><?php echo $this->__('女性') ?></option>
@@ -185,7 +185,7 @@
                         </div>
                         
                         <div class="input-box flr width-45">
-                            <select required name="location" id="location" class="select-box required-entry">
+                            <select required name="location" id="location" class="select-box required-entry <?php echo ($this->getFormData()->getPhone()) ? 'after-input' : '' ?>">
                             	<option value=""><?php echo $this->__('現在住んでいる国') ?></option>
 								<?php $countries = Mage::getModel('job/listlocation')->getCollection() ?>
 								<?php foreach($countries as $country): ?>
@@ -197,7 +197,7 @@
                 	
                     <div class="field">
                         <div class="input-box">
-                            <input placeholder="<?php echo $this->__('電話番号') ?>" type="number" name="phone" />
+                            <input class="<?php echo ($this->getFormData()->getPhone()) ? 'after-input' : '' ?>" placeholder="<?php echo $this->__('電話番号') ?>" type="number" name="phone" value="<?php echo $this->getFormData()->getPhone() ?>" />
                         </div>
                     </div>
                     

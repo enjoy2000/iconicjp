@@ -103,8 +103,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
         } catch (Mage_Core_Exception $e) {
             $session->setCustomerFormData($this->getRequest()->getPost());
             if ($e->getCode() === Mage_Customer_Model_Customer::EXCEPTION_EMAIL_EXISTS) {
-                $url = Mage::helper('job')->getBaseUrl();
-				Mage::getSingleton('core/session')->setShowForgotPassword(1);
+                $url = $this->_getUrl('job/success/forgotpass');
                 $message = $this->__('このメールアドレスは既に登録されています。パスワードをお忘れの場合は、<a href="%s">こちら</a>からパスワードの再発行をしてください。', $url);
                 $session->setEscapeMessages(false);
             } else {
@@ -234,5 +233,20 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 
         $this->_redirect('/');
     }
+	
+	/**
+     * Forgot customer password page
+     */
+    public function forgotPasswordAction()
+    {
+        $this->loadLayout();
 
+        $this->getLayout()->getBlock('forgotPassword')->setEmailValue(
+            $this->_getSession()->getForgottenEmail()
+        );
+        $this->_getSession()->unsForgottenEmail();
+
+        $this->_initLayoutMessages('customer/session');
+        $this->renderLayout();
+    }
 }

@@ -21,4 +21,10 @@ class Iconic_Job_SuccessController extends Mage_Core_Controller_Front_Action{
 		$this->getLayout()->getBlock('head')->setTitle($helper->__('求人依頼申込'));
 		$this->renderLayout();
 	}
+	
+	public function forgotpassAction(){
+		Mage::getSingleton('core/session')->setShowForgotPassword(1);
+		$this->_redirect('/');
+		return;
+	}
 }

@@ -89,6 +89,13 @@ function showForgotPass(){
 		});
 	});
 }
+function showForgotPage(){
+	jQuery('#ajax-load .content').load('/customer/account/forgotpassword', function(){
+		scrollToTop();
+    	jQuery('#ajax-load').addClass('open');
+    	forgotpassAjax();
+	});
+}
 function loginAjax(){
 	jQuery('#login-form').submit(function(ev){
 		ev.preventDefault();
