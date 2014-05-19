@@ -9,21 +9,22 @@
     	</div>
     	
     	<div class="row row2">
-    		<input required type="text" class="first" id="ho" name="last" placeholder="<?php echo $this->__('姓 ') ?>" />
-    		<input required type="text" class="last" id="ten" name="first" placeholder="<?php echo $this->__('名') ?>" />
+    		<input readonly required class="first after-input" type="text" name="first" placeholder="<?php echo $this->__('姓') ?>" value="<?php echo $this->getCustomer()->getFirstName() ?>" />
+    		<input readonly required class="last after-input" type="text" name="last" placeholder="<?php echo $this->__('名') ?>" value="<?php echo $this->getCustomer()->getLastName() ?>" />
     	</div>
     	
     	<div class="row row2">
-    		<input readonly required class="first after-input" name="username" placeholder="<?php echo $this->__('性（フリガナ）') ?>" value="<?php echo $this->getCustomer()->getName() ?>" />
-    		<input required class="last" name="kana" placeholder="<?php echo $this->__('名（フリガナ）') ?>" /> 
+    		<?php $kana = explode(' ',$this->getCustomer()->getKana()) ?>
+    		<input class="first <?php echo ($kana[0]) ? 'after-input' : '' ?>" name="kanafirst" placeholder="<?php echo $this->__('性（フリガナ）') ?>" value="<?php echo $kana[0] ?>" />
+    		<input class="last <?php echo ($kana[1]) ? 'after-input' : '' ?>" name="kanalast" placeholder="<?php echo $this->__('名（フリガナ）') ?>" value="<?php echo $kana[1] ?>" /> 
     	</div>
     	
     	<div class="row row2">
     		<div class="first div3">
     			<?php $birthday = explode('/',$this->getCustomer()->getBirthYear()); ?>
-    			<input readonly required class="first fll" type="text" name="year" placeholder="<?php echo $this->__('年') ?>" value="<?php echo $birthday[0] ?>" />
-    			<input readonly required class="middle" type="text" name="month" placeholder="<?php echo $this->__('月') ?>" value="<?php echo $birthday[1] ?>" />
-    			<input readonly required class="last flr" type="text" name="day" placeholder="<?php echo $this->__('日') ?>" value="<?php echo $birthday[2] ?>" />
+    			<input readonly required class="first fll after-input" type="text" name="year" placeholder="<?php echo $this->__('年') ?>" value="<?php echo $birthday[0] ?>" />
+    			<input readonly required class="middle after-input" type="text" name="month" placeholder="<?php echo $this->__('月') ?>" value="<?php echo $birthday[1] ?>" />
+    			<input readonly required class="last flr after-input" type="text" name="day" placeholder="<?php echo $this->__('日') ?>" value="<?php echo $birthday[2] ?>" />
     		</div>
     		
     		<input readonly required class="first after-input" name="sex" placeholder="<?php echo $this->__('性別') ?>" value="<?php echo $this->getCustomer()->getSex() ?>" />
