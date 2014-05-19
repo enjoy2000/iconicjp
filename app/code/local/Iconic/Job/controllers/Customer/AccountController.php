@@ -76,15 +76,25 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 				$nameAdmin = Mage::getStoreConfig('trans_email/ident_general/name'); 
 				/* Sender Email */
 				$emailAdmin = Mage::getStoreConfig('trans_email/ident_general/email');
-				
+				$age = (int)date('Y' ) - (int)$birth[0];
+				$birthDate = $customer->getBirthYear();
+				//explode the date to get month, day and year
+				$birthDate = explode("/", $birthDate);
+				//get age from date or birthdate
+				$age = (date("md", date("U", mktime(0, 0, 0, $birthDate[1], $birthDate[2], $birthDate[0]))) > date("md")
+				? ((date("Y") - $birthDate[0]) - 1)
+				: (date("Y") - $birthDate[0]));
+
+					$location = Mage::getModel(
+				'job/listcountry')->load($customer->getLocation)->getName();				
 				$bodyHtml = '<table><tbody>';			
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('登録日(Registration Date)').':</td><td> '.date('d-M-Y').'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('氏名(Name)').':</td><td> '.$customer->getName().'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('氏名カナ(Name in Kana)').':</td><td> '.$customer->getKana().'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('メールアドレス(E-mail)').':</td><td> '.$customer->getEmail().'</td></tr>';			
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('性別(Gender)').':</td><td> '.$customer->getSex().'</td></tr>';
-				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('年齢 (Age)').':</td><td> '.date('y')-$customer->getBirthYear().'</td></tr>';
-				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('現在住んでいる国(Resident Country)').':</td><td> '.$customer->getLocation().'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('年齢 (Age)').':</td><td> '. $age .'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('現在住んでいる国(Resident Country)').':</td><td> '.$location.'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('担当(PIC)').':</td><td> '.Mage::helper('job')->getPic().'</td></tr>';
 				$bodyHtml .= '</tbody></table>';
 				

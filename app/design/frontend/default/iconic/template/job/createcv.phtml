@@ -200,7 +200,7 @@
 	    	</div>
 	    	
 	    	<div class="row row2">
-	    		<input required class="first" type="number" name="companyemploye" placeholder="<?php echo $this->__('従業員数') ?>" />
+	    		<input class="first" type="number" name="companyemploye" placeholder="<?php echo $this->__('従業員数') ?>" />
 	    		<div class="last div4">
 	    			<select class="first" required name="yearfrom">
 	    				<option value=""><?php echo $this->__('年') ?></option>
@@ -218,7 +218,7 @@
 		            	<?php endfor; ?>
 	    			</select>
 	    			<span>-</span>
-	    			<select required name="yearto">
+	    			<select name="yearto">
 	    				<option value=""><?php echo $this->__('年') ?></option>
 	    				<?php 
 	                	$y = (int) Date('Y');
@@ -226,7 +226,7 @@
 	                	<option <?php echo ($data['yearto']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 	                	<?php endfor; ?>
 	    			</select>
-	    			<select class="last" required name="monthto">
+	    			<select class="last" name="monthto">
 	    				<option value=""><?php echo $this->__('月') ?></option>
 	    				<?php 
 		            	for($i = 1; $i <= 12;$i++): ?>
@@ -281,7 +281,7 @@
     	</div>
     	
     	<div class="row heading">
-    		<?php echo $this->__('添付ファイル') ?>
+    		<?php echo $this->__('自作の履歴書・職務経歴書のご用意がある方はこちらに添付してください。') ?>
     	</div>
     	
     	<div class="row row1">

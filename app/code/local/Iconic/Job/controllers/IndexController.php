@@ -6,8 +6,17 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		$this->loadLayout();
        	$this->getLayout()->getBlock('head')->setTitle($this->__('Jobs Board For IconicVN')); 
 		$langs = Mage::getModel('job/location')->getCollection();
-		var_dump(Mage::helper('job')->getPic());die;
-		Mage::helper('job')->redirectToSearchPage();
+		$customer = Mage::getSingleton('customer/session')->getCustomer();
+		$birth = explode('/', $customer->getBirthYear());
+		$age = (int)date('Y') - (int)$birth[0];
+		$birthDate = $customer->getBirthYear();
+		  //explode the date to get month, day and year
+		  $birthDate = explode("/", $birthDate);
+		  //get age from date or birthdate
+		  $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[1], $birthDate[2], $birthDate[0]))) > date("md")
+		    ? ((date("Y") - $birthDate[0]) - 1)
+		    : (date("Y") - $birthDate[0]));
+		  echo "Age is:" . $age;
     }
 	
 	public function contactAction(){
