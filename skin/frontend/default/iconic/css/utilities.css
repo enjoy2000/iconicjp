@@ -297,3 +297,6 @@ h1{
 	letter-spacing: -1px;
 	margin-bottom: 20px;
 }
+hr.blue{
+	border-color: #4571EB;
+}

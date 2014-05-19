@@ -9,6 +9,7 @@ body.cms-page-view #blog-news{
 }
 body.cms-page-view #main .main{
 	padding: 0;
+	color: #111C3B;
 }
 body.cms-page-view .page-title{
 	padding: 40px;
@@ -605,5 +606,485 @@ body.cms-company-profile #main .main{
 	border: none;
 }
 #company-profile .map p{
+	margin-top: 20px;
+}
+/*
+ * Country Cambodia
+ */
+.countries-tab{
+	width: 100%;
+	background-color: #dadbdc;
+}
+.countries-tab a{
+	display: inline-block;
+	width: 142px;
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	font-size: 21px;
+	background-color: #4571EB;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	text-decoration: none;
+	padding: 15px;
+}
+.countries-tab a.active{
+	background-color: #fff;
+	color: #4571EB;
+}
+.countries-tab a:hover{
+	background-color: #fff;
+	color: #4571EB;
+}
+body.cms-page-view .map{
+	height: 270px;
+}
+.map.cambodia{
+	background: url('../images/cms/cambodia.png') top left no-repeat;
+}
+.map.vietnam{
+	background: url('../images/cms/vietnam.png') top left no-repeat;
+	height: 317px;
+}
+.map .content{
+	margin-left: 220px;
+	padding-top: 90px;
+	text-align: center;
+	font-size: 17px;
+}
+.map .content .tit{
+	color: #fff;
+	font-weight: bold;
+	font-size: 25px;
+	text-shadow: 2px 0 0 #4571EB, -2px 0 0 #4571EB, 0 2px 0 #4571EB, 0 -2px 0 #4571EB, 2px 2px #4571EB, -2px -2px 0 #4571EB, 2px -2px 0 #4571EB, -2px 2px 0 #4571EB;
+	margin-bottom: 5px;
+}
+.map .content .small{
+	color: #555;
+	font-size: 14px;
+}
+.map .content .top .inline-b{
+	width: 24%;
+	color: #111c3b;
+}
+.map .content .bot{
+	margin-top: 40px;
+}
+.map .content .bot .inline-b{
+	width: 28%;
+	color: #111c3b;
+}
+.big-tit{
+	background: url('../images/cms/big-tit.png') left center no-repeat #d0dbfa;
+	color: #111c3b;
+}
+.big-tit .tit{
+	color: #fff;
+	font-weight: bold;
+	font-size: 40px;
+	text-shadow: 4px 0 0 #4571EB, -4px 0 0 #4571EB, 0 4px 0 #4571EB, 0 -4px 0 #4571EB, 4px 4px #4571EB, -4px -4px 0 #4571EB, 4px -4px 0 #4571EB, -4px 4px 0 #4571EB;
+	padding: 38px 55px;
+}
+.big-tit .sub-tit{
+	margin-right: 40px;
+	margin-top: 45px;
+}
+.big-tit .sub-tit ul li{
+	padding-left: 17px;
+	background: url('../images/cms/orange-icon.png') left 1px no-repeat;
+	color: #000;
+	font-weight: bold;
+	font-size: 17px;
+}
+.big-tit .sub-tit ul li span{
+	color: #555;
+	font-weight: normal;
+	font-size: 13px;
+}
+.info .tit{
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	text-shadow: 2px 0 0 #4571EB, -2px 0 0 #4571EB, 0 2px 0 #4571EB, 0 -2px 0 #4571EB, 2px 2px #4571EB, -2px -2px 0 #4571EB, 2px -2px 0 #4571EB, -2px 2px 0 #4571EB;
+	text-align: center;
+	padding: 25px 0;
+}
+.info table{
+	width: 100%;
+	text-align: center;
+}
+.info table thead{
+	border-bottom: solid 1px #000;
+	border-top: solid 1px #000;
+}
+.info table thead tr td{
+	font-weight: bold;
+	color: #000;
+	background-color: #d0dbfa;
+}
+.info table tbody{
+	border-bottom: solid 1px #000;
+}
+.info table tr td+td{
+	border-left: solid 1px #000;
+	padding: 5px 10px;
+}
+.info table tbody tr td{
+	text-align: right;
+}
+.info table tbody tr td:first-child{
+	text-align: left;
+	padding-left: 20px;
+}
+.diagrams{
+	margin: 30px 0;
+}
+.diagrams .tit{
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	text-shadow: 2px 0 0 #4571EB, -2px 0 0 #4571EB, 0 2px 0 #4571EB, 0 -2px 0 #4571EB, 2px 2px #4571EB, -2px -2px 0 #4571EB, 2px -2px 0 #4571EB, -2px 2px 0 #4571EB;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.diagrams p{
+	font-weight: bold;
+	text-align: center;
+	color: #000;
+	margin-top: 20px;
+}
+.diagrams .width-45{
+	text-align: center;
+}
+/*
+ * Country Vietnam
+ */
+.more-info{
+	padding: 30px;
+	background: url('../images/cms/tit-content.png') top left no-repeat;
+}
+.more-info p{
+	font-weight: bold;
+	color: #000;
+	margin-top: 20px;
+}
+body.cms-vietnam .map .content {
+	padding-top: 100px;
+}
+body.cms-vietnam .map .content .top .inline-b,
+body.cms-vietnam .map .content .bot .inline-b{
+	width: auto;
+}
+body.cms-vietnam .map .content .inline-b+.inline-b{
+	margin-left: 70px;
+}
+.map .content .inline-b span{
+	font-size: 13px;
+	color: #555;
+}
+body.cms-vietnam .big-tit{
+	background: url('../images/cms/big-tit-vn.png') left center no-repeat #d0dbfa;
+}
+body.cms-vietnam .big-tit .tit{
+	padding: 0;
+	text-align: center;
+	margin-left: 40px;
+	margin-top: 30px;
+	margin-left: 25px;
+}
+body.cms-vietnam .big-tit .sub-tit{
+	margin: 0;
+	padding: 24px;
+	margin-right: 20px;
+}
+body.cms-vietnam .big-tit .sub-tit ul li{
+	font-size: 15px;
+}
+body.cms-vietnam .big-tit .sub-tit ul li p{
+	font-size: 20px;
+}
+/*
+ * Country Myanmar
+ */
+body.cms-myanmar .map .content .fll span{
+	font-size: 13px;
+	color: #555;
+}
+body.cms-myanmar .map{
+	background: url('../images/cms/myanmar.png') top left no-repeat;
+	height: 317px;
+}
+body.cms-myanmar .map .content{
+	margin-left: 175px;
+	padding-top: 35px;
+}
+body.cms-myanmar .map .content .fll>div+div{
+	margin-top: 40px;
+}
+body.cms-myanmar .map .content .fll+.fll{
+	margin-left: 20px;
+}
+body.cms-myanmar .map .content .fll:first-child+.fll{
+	margin-top: 30px;
+}
+body.cms-myanmar .map .content .fll:first-child+.fll+.fll{
+	margin-top: 20px;
+}
+body.cms-myanmar .big-tit{
+	background: url('../images/cms/big-tit-my.png') left 20px no-repeat #d0dbfa;
+	color: #111c3b;	
+}
+body.cms-myanmar .big-tit .tit{
+	padding: 45px 25px;
+	line-height: 50px;
+	text-align: center;
+}
+body.cms-myanmar .big-tit .other{
+	margin: 25px 35px;
+	padding: 25px;
+	border: solid 1px #4571EB;
+}
+body.cms-myanmar .big-tit .other ul li{
+	padding-left: 17px;
+	background: url('../images/cms/orange-icon.png') left 1px no-repeat;
+	font-size: 14px
+}
+body.cms-myanmar .big-tit .other ul li+li{
+	margin-top: 30px;
+}
+body.cms-myanmar .big-tit .other ul li p{
+	font-weight: bold;
+	font-size: 16px;
+}
+body.cms-myanmar .big-tit .sub-tit{
+	width: 50%;
+	margin-top: 0px;
+}
+body.cms-myanmar .big-tit .sub-tit ul li{
+	font-size: 13px;
+	font-weight: bold;
+	letter-spacing: -0.5px;
+	padding: 20px;
+	background: url('../images/cms/orange-icon.png') left 21px no-repeat;
+}
+body.cms-myanmar .big-tit .sub-tit ul li+li{
+	border-top: dashed 1px #4571EB;
+}
+body.cms-myanmar .big-tit .sub-tit ul li p{
+	font-size: 16px;
+	font-weight: bold;
+}
+body.cms-myanmar .diagrams .flr.width-45{
+	text-align: left;
+	width: 38%;
+	margin-right: 80px;
+}
+body.cms-myanmar .diagrams .flr.width-45 p{
+	text-align: left;
+}
+body.cms-myanmar .more-info{
+	text-align: center;
+}
+/*
+ * Country Indonesia
+ */
+body.cms-indonesia .map{
+	background: url('../images/cms/indonesia.png') top left no-repeat;
+	height: 311px;
+}
+body.cms-indonesia .map .content{
+	margin-left: 310px;
+	padding-top: 30px;
+}
+body.cms-indonesia .map .content .inline-b{
+	width: auto;
+	line-height: 19px;
+}
+body.cms-indonesia .map .content .inline-b .tit{
+	margin-bottom: 10px;
+}
+body.cms-indonesia .map .content .inline-b+.inline-b{
+	margin-left: 30px;
+}
+body.cms-indonesia .map .content .mid{
+	margin-top: 30px;
+}
+body.cms-indonesia .map .content .bot{
+	margin-top: 30px;
+}
+body.cms-indonesia .map .content .bot .inline-b span{
+	font-size: 11px;
+}
+body.cms-indonesia .info > .fll{
+	background-color: #d0dbfa;
+}
+body.cms-indonesia .info > .fll .tit{
+	text-shadow: 4px 0 0 #4571EB, -4px 0 0 #4571EB, 0 4px 0 #4571EB, 0 -4px 0 #4571EB, 4px 4px #4571EB, -4px -4px 0 #4571EB, 4px -4px 0 #4571EB, -4px 4px 0 #4571EB;
+}
+body.cms-indonesia .info > .fll h2.tit{
+	background-color: #8faaf3;
+	margin-top: 20px;
+	padding-left: 55px;
+	text-align: left;
+	font-size: 38px;
+	margin-bottom: 30px;
+}
+body.cms-indonesia .info > .fll .text{
+	padding-left: 55px;
+	padding-right: 30px;
+}
+body.cms-indonesia .info div.img{
+	margin: 20px 0;
+	text-align: center;
+}
+body.cms-indonesia .info > .flr h2.tit{
+	margin-top: 40px;
+	padding: 0;
+	padding-left: 40px;
+	text-align: left;
+	font-size: 23px;
+	margin-bottom: 20px;
+}
+body.cms-indonesia .info > .flr .text{
+	padding: 0 40px;
+	font-size: 13px;
+	letter-spacing: -1px;
+}
+body.cms-indonesia .info > .flr .img img{
+	border: solid 1px #ddd;
+}
+body.cms-indonesia .more-info-with-toggle{
+	padding: 25px 50px;
+	padding-bottom: 50px;
+}
+body.cms-indonesia .more-info-with-toggle h3.orange-icon-tit{
+	padding-left: 25px;
+	background: url('../images/cms/orange-icon.png') left center no-repeat;
+	color: #4571EB;
+	font-weight: bold;
+	font-size: 21px;
+	margin: 30px 0;
+}
+body.cms-indonesia .more-info-with-toggle .toggle-content a.toggle{
+	display: block;
+	padding: 10px 35px;
+	background: url('../images/cms/toggle.png') 12px center no-repeat #ced9f6;
+	font-weight: bold;
+	text-decoration: none;
+	color: #111C3B;
+	border-radius: 4px;
+}
+body.cms-indonesia .more-info-with-toggle .toggle-content a.toggle.active{
+	background: url('../images/cms/toggle-active.png') 12px center no-repeat #ced9f6;
+}
+body.cms-indonesia .more-info-with-toggle .toggle-content .content{
+	display: none;
+	padding: 20px 5px;
+}
+body.cms-indonesia .more-info-with-toggle .toggle-content+.toggle-content{
+	margin-top: 10px;
+}
+/*
+ * Country India
+ */
+body.cms-india .map{
+	background: url('../images/cms/indonesia.png') top left no-repeat;
+	height: 309px;
+}
+body.cms-india .map .content{
+	margin-left: 280px;
+	padding-top: 40px;
+}
+body.cms-india .map .content .fll+.fll{
+	margin-left: 20px;
+}
+body.cms-india .map .content .fll >div+div{
+	margin-top: 30px;
+}
+body.cms-india .map .content .fll .tit{
+	line-height: 30px;
+	margin-bottom: 0;
+}
+body.cms-india .map .content .fll+.fll >div+div{
+	margin-top: 50px;
+}
+body.cms-india .map .content .fll span{
+	font-size: 13px;
+}
+body.cms-india .info > .fll{
+	background-color: #d0dbfa;
+}
+body.cms-india .info > .fll h2.tit{
+	text-align: left;
+	padding-left: 40px;
+	font-size: 36px;
+	text-shadow: 4px 0 0 #4571EB, -4px 0 0 #4571EB, 0 4px 0 #4571EB, 0 -4px 0 #4571EB, 4px 4px #4571EB, -4px -4px 0 #4571EB, 4px -4px 0 #4571EB, -4px 4px 0 #4571EB;
+	background-color: #8faaf3;
+	margin-top: 10px;
+}
+body.cms-india .info > .fll ul{
+	padding: 0 30px;
+	margin-bottom: 70px;
+}
+body.cms-india .info > .fll ul li{
+	padding-left: 18px;
+	background: url('../images/cms/orange-icon.png') left 3px no-repeat;
+	margin-top: 30px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	font-size: 13px;
+}
+body.cms-india .info > .fll ul li strong{
+	font-size: 16px;
+}
+body.cms-india .info > .flr .tit{
+	font-size: 24px;
+	text-align: left;
+	padding-left: 40px;
+}
+body.cms-india .info > .flr .text{
+	padding: 0 40px;
+}
+body.cms-india .info > .flr .text span{
+	font-size: 12px;
+	letter-spacing: -1px;
+}
+body.cms-india .more-info-india .tit{
+	color: #fff;
+	font-weight: bold;
+	font-size: 22px;
+	text-shadow: 2px 0 0 #4571EB, -2px 0 0 #4571EB, 0 2px 0 #4571EB, 0 -2px 0 #4571EB, 2px 2px #4571EB, -2px -2px 0 #4571EB, 2px -2px 0 #4571EB, -2px 2px 0 #4571EB;
+	text-align: left;
+	margin-bottom: 20px;
+	padding: 35px;
+	padding-bottom: 0;
+}
+body.cms-india .more-info-india .fll,
+body.cms-india .more-info-india .flr{
+	width: 410px;
+	font-size: 13px;
+}
+body.cms-india .more-info-india .fll{
+	padding-left: 35px;
+}
+body.cms-india .more-info-india .img{
+	text-align: center;
+	margin-bottom: 50px;
+}
+body.cms-india .more-info-india .img p{
+	font-weight: bold;
+	font-size: 15px;
+	margin: 30px 0;
+}
+/*
+ * privacy-policy
+ */
+#privacy-policy{
+	padding: 25px 65px;
+	padding-bottom: 70px;
+}
+#privacy-policy h2.cms-blue-tit{
+	font-size: 17px;
+	margin-bottom: 10px;
 	margin-top: 20px;
 }

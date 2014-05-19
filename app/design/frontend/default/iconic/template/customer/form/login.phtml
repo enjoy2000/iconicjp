@@ -36,6 +36,7 @@
     <?php /* Extensions placeholder */ ?>
     <?php echo $this->getChildHtml('customer.form.login.extra')?>
     <div id="response"></div>
+    <h2><?php echo $this->__('まずはログインして下さい。') ?></h2>
     <form action="<?php //echo $this->getPostActionUrl() ?>" method="post" id="login-form">
         <input required placeholder="<?php echo $this->__('メールアドレス') ?>" type="email" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
         <input required placeholder="<?php echo $this->__('パスワード') ?>" type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />

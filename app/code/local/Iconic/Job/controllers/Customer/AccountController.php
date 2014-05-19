@@ -19,6 +19,11 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             $this->_redirectError($errUrl);
             return;
         }
+		if($this->getRequest()->getParam('agree') != 1){
+			$errUrl = $this->_getUrl('*/*/create', array('_secure' => true));
+            $this->_redirectError($errUrl);
+            return;
+		}
 
         $customer = $this->_getCustomer();
 
@@ -28,7 +33,8 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             if (empty($errors)) {
             	$customer->setSex($this->getRequest()->getParam('sex'));
             	$customer->setLocation($this->getRequest()->getParam('location'));
-            	$customer->setBirthYear($this->getRequest()->getParam('birthyear'));
+				$birthyear = $this->getRequest()->getParam('year').'/'.$this->getRequest()->getParam('month').'/'.$this->getRequest()->getParam('day');
+            	$customer->setBirthYear($birthyear);
 				$customer->setPhone($this->getRequest()->getParam('phone'));
                 $customer->save();
                 $this->_dispatchRegisterSuccess($customer);
@@ -53,10 +59,6 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 		            $session->renewSession();
 		            $url = $this->_welcomeCustomer($customer);
 		        }
-				if($this->getRequest()->getParam('newsletter') == 1){
-					$subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($customer->getEmail());
-					$subscriber->setStatus(1)->save();
-				}
 				//Send mail
 				$mail = new Zend_Mail('UTF-8');
 				$config = array(
@@ -218,6 +220,18 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             $this->_redirectError($this->_getUrl('*/*/index', array('_secure' => true)));
             return;
         }
+    }
+
+	/**
+     * Customer logout action
+     */
+    public function logoutAction()
+    {
+        $this->_getSession()->logout()
+            ->renewSession()
+            ->setBeforeAuthUrl($this->_getRefererUrl());
+
+        $this->_redirect('/');
     }
 
 }

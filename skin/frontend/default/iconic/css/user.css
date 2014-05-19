@@ -13,11 +13,14 @@
 .account-create .field{
 	margin-bottom: 20px;
 }
+.account-create .field .input-box.align-center{
+	text-align: center;
+}
+.account-create .field .input-box.align-center > select{
+	width: 100px;
+}
 .account-create input:not([type="radio"]){
 	width: 337px;
-}
-.account-create input[type="radio"]{
-	margin-left: 35px;
 }
 .account-create .buttons-set{
 	text-align: center;
@@ -38,4 +41,18 @@
 body.customer-account-create #main .main{
 	border: none;
 	background-color: transparent;
+}
+.customer-name .input-box.width-45 input{
+	width: 139px;
+}
+.field .input-box p{
+	font-size: 13px;
+	margin-top: 5px;
+}
+.field .inline a{
+	color: #000;
+	font-weight: bold;
+}
+.field .inline a:hover{
+	color: #4571EB;
 }

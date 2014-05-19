@@ -16,15 +16,13 @@ var hook=true;
 	    });
 	    $('#login-button, .btn-login').click(function(event){
 	    	event.preventDefault();
-	    	if(!$(this).hasClass('active')){
-	    		showLogin();
-	    		$(this).addClass('active');
-	    	}else{
-	    		$(this).removeClass('active');
-	    		$('#ajax-load').removeClass('open');
-	    		$('#ajax-load').removeClass('open-1');
-	    		$('#ajax-load .content').html('');
-	    	}
+	    	showLogin();
+	    });
+	    $('a#close-button').click(function(event){
+	    	event.preventDefault();
+	    	$('#ajax-load').removeClass('open');
+    		$('#ajax-load').removeClass('open-1');
+    		$('#ajax-load .content').html('');
 	    });
 	    $('#header-landing .background').cycle({fx:'fade',next: '.ui-buttonNextSlide',prev: '.ui-buttonPrevSlide' ,delay: -4000});
 		
@@ -53,6 +51,17 @@ var hook=true;
 				$(this.form).find('button[type="submit"]').text($(this.form).find('button[type="submit"]').data('not'));
 				hook = true;
 			}
+		});
+		
+		//toggle content
+		$('.toggle-content a.toggle').click(function(e){
+			e.preventDefault();
+			if(!$(this).hasClass('active')){
+				$(this).addClass('active');
+			}else{
+				$(this).removeClass('active');
+			}
+			$(this).parent().find('.content').toggle();
 		});
 	});
 	

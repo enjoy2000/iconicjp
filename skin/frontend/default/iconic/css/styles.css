@@ -125,6 +125,26 @@ body.short #blog-news{
     -o-transition: height 0.35s ease-out;
     transition: height 0.35s ease-out;
 }
+#header-landing #ajax-load a#close-button{
+	position: absolute;
+	right: 78px;
+	border: solid 1px #fff;
+	color: #fff;
+	display: none;
+	padding: 0px 5px;
+}
+#header-landing #ajax-load.open a#close-button{
+	display: block;
+}
+#header-landing #ajax-load.open.open-1 a#close-button{
+	right: 78px;
+}
+#header-landing #ajax-load h2{
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
 #header-landing #ajax-load.open{
 	height: 447px;
 }

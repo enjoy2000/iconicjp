@@ -20,28 +20,10 @@
     	
     	<div class="row row2">
     		<div class="first div3">
-    			<select required id="year" name="year" class="first">
-    				<option value=""><?php echo $this->__('年') ?></option>
-                	<?php 
-                	$y = (int) Date('Y');
-                	for($i = $y-10; $i >= $y-60;$i--): ?>
-                	<option <?php echo ($data['year']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
-                	<?php endfor; ?>
-    			</select>
-	    		<select required id="month" name="month" class="middle">
-	    			<option value=""><?php echo $this->__('月') ?></option>
-	            	<?php 
-	            	for($i = 1; $i <= 12;$i++): ?>
-	            	<option <?php echo ($data['month']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
-	            	<?php endfor; ?>
-	    		</select>
-	    		<select required id="day" class="last" name="day">
-	    			<option value=""><?php echo $this->__('日') ?></option>
-	            	<?php 
-	            	for($i = 1; $i <= 31;$i++): ?>
-	            	<option <?php echo ($data['day']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
-	            	<?php endfor; ?>
-	    		</select>
+    			<?php $birthday = explode('/',$this->getCustomer()->getBirthYear()); ?>
+    			<input readonly required class="first fll" type="text" name="year" placeholder="<?php echo $this->__('年') ?>" value="<?php echo $birthday[0] ?>" />
+    			<input readonly required class="middle" type="text" name="month" placeholder="<?php echo $this->__('月') ?>" value="<?php echo $birthday[1] ?>" />
+    			<input readonly required class="last flr" type="text" name="day" placeholder="<?php echo $this->__('日') ?>" value="<?php echo $birthday[2] ?>" />
     		</div>
     		
     		<select required class="last" name="sex" title="<?php echo $this->__('性別') ?>" id="sex" class="select-box required-entry">
