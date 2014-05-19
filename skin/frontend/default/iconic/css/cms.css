@@ -98,6 +98,21 @@ body.cms-page-view .world-map .text .button a{
 #about-iconic .list+.list+.list{
 	margin-bottom: 50px;
 }
+#about-iconic .button{
+	text-align: center;
+}
+#about-iconic .button a{
+	padding: 10px 10px;
+	padding-left: 48px;
+	background: url('../images/cms/submit-icon.png') 17px center no-repeat #dc8a55;
+	border-bottom: solid 2px #b85f26;
+	color: #fff;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 3px;
+	margin: auto
+}
 /*
  * for-candidate-in-japan
  */
