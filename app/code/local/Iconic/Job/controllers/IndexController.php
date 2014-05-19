@@ -404,7 +404,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
                             $message = Mage::helper('customer')->__('This account is not confirmed. <a href="%s">Click here</a> to resend confirmation email.', $value);
                             break;
                         case Mage_Customer_Model_Customer::EXCEPTION_INVALID_EMAIL_OR_PASSWORD:
-                            $message = $e->getMessage();
+                            $message = Mage::helper('job')->__('メールアドレス、又は、パスワードが違います。');
                             $status = false;
                             break;
                         default:
