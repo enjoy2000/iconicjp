@@ -464,7 +464,7 @@
         selectAllText: 'Select all',
         allSelected: 'All selected',
         minumimCountSelected: 0,
-        countSelected: 'Have # selected',
+        countSelected: '#つ選択しました。',
         multiple: false,
         multipleWidth: 80,
         single: false,
