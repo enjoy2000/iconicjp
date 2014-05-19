@@ -96,10 +96,12 @@ body.cms-page-view .world-map .text .button a{
 	margin-top: 20px;
 }
 #about-iconic .list+.list+.list{
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 #about-iconic .button{
 	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 50px;
 }
 #about-iconic .button a{
 	padding: 10px 10px;
