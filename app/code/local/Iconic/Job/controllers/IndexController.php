@@ -698,7 +698,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					';
 					
 					$mail->setBodyHtml($bodyHtml);
-					$mail->addTo('info@iconic-intl.com','IconicJP');
+					$mail->addTo($email,'IconicJP');
 					$mail->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
 					$mail->setSubject('Auto Reply for Request Recruitment IconicJP');
 					$checkSend = $mail->send($transport);
