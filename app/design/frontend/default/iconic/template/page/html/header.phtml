@@ -142,12 +142,23 @@
 					<?php echo $this->__('ICONIC（アイコニック）はアジアを舞台に国境を超<br />えて働きたい方々に特化した転職エージェントです。') ?>
 				</p>
 				<div class="buttons">
+					<?php if(!$this->helper('customer')->isLoggedIn()): ?>
 					<a href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getRegisterUrl(); ?>">
 						<?php echo $this->__('公開求人情報の詳細を閲覧する<br />（会員登録）') ?>
 					</a>
 					<a href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getCreateCVUrl(); ?>">
 						<?php echo $this->__('転職支援サービスに申し込む<br />(求職登録）') ?>
 					</a>
+					<?php else: ?>
+					<div class="welcome">
+						こんにちは、 <?php echo Mage::getSingleton('customer/session')->getCustomer()->getName() ?> さん！
+					</div>
+						<?php if(Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() != 1): ?>
+						<a href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getCreateCVUrl(); ?>">
+							<?php echo $this->__('転職支援サービスに申し込む<br />(求職登録）') ?>
+						</a>
+						<?php endif; ?>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
