@@ -563,7 +563,7 @@ body.cms-page-view .world-map .text .button a{
 	top: 10px;
 	width: 0;
 	height: 0;
-	border-left-color: #8faaf3;
+	border-left-color: #d76f2c;
 }
 #company-profile .timeline > div.e2012{
 	width: 274px;
@@ -572,7 +572,7 @@ body.cms-page-view .world-map .text .button a{
 }
 #company-profile .timeline > div.e2012 .tit:before{
 	left: -20px;
-	border-right-color: #8faaf3;
+	border-right-color: #d76f2c;
 }
 #company-profile .timeline > div.e2013{
 	width: 298px;
