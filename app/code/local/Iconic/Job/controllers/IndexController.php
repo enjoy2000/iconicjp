@@ -180,13 +180,6 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
 			$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Candidate - %s - %s', $data['first']. ' ' .$data['last'] ,Mage::helper('job')->getPic()));
 			$checkSend = $mail->send($transport);
-			if($checkSend){
-				Mage::getSingleton('customer/session')->getCustomer()->setCreatecv(1)->save();
-				$this->_redirect('job/index/aftercreatecv');return;
-			}else{
-				Mage::getSingleton('core/session')->addError(Mage::helper('job')->__('Cannot send email.'));
-				$this->_redirect(Mage::helper('job')->getCreateCVUrl()); return;
-			}
 			
 			//send mail to customer
 			$bodyHtml2 = '
@@ -360,7 +353,14 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$mail2->addTo($customer->getEmail(),$customer->getName());
 			$mail2->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
 			$mail2->setSubject(Mage::helper('job')->__('【アイコニック】転職支援サービスへのお申込みを受け付けました！'));
-			$mail2->send($transport);
+			$checkSend2 = $mail2->send($transport);
+			if($checkSend && $checkSend2){
+				Mage::getSingleton('customer/session')->getCustomer()->setCreatecv(1)->save();
+				$this->_redirect('job/index/aftercreatecv');return;
+			}else{
+				Mage::getSingleton('core/session')->addError(Mage::helper('job')->__('Cannot send email.'));
+				$this->_redirect(Mage::helper('job')->getCreateCVUrl()); return;
+			}
 		}
 		$this->renderLayout();
 	}

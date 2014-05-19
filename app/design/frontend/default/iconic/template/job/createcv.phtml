@@ -26,11 +26,7 @@
     			<input readonly required class="last flr" type="text" name="day" placeholder="<?php echo $this->__('日') ?>" value="<?php echo $birthday[2] ?>" />
     		</div>
     		
-    		<select required class="last" name="sex" title="<?php echo $this->__('性別') ?>" id="sex" class="select-box required-entry">
-            	<option value=""><?php echo $this->__('性別') ?></option>
-            	<option value="<?php echo $this->__('男性') ?>"><?php echo $this->__('男性') ?></option>
-            	<option value="<?php echo $this->__('女性') ?>"><?php echo $this->__('女性') ?></option>
-            </select>
+    		<input readonly required class="first after-input" name="sex" placeholder="<?php echo $this->__('性別') ?>" value="<?php echo $this->getCustomer()->getSex() ?>" />
     	</div>
     	
     	<div class="row row2 clearfix">
@@ -41,11 +37,12 @@
     			<option value="<?php echo $loc->getId() ?>"><?php echo Mage::helper('job')->getTransName($loc) ?></option>
     			<?php endforeach; ?>
     		</select>
-    		<input readonly class="last after-input" name="country" value="<?php echo $this->getCustomer()->getLocation() ?>" />
+    		<?php $countryname = Mage::getModel('job/listcountry')->load($this->getCustomer()->getLocation()) ?>
+    		<input readonly class="last after-input" name="country" value="<?php echo Mage::helper('job')->getTransName() ?>" />
     	</div>
     	
     	<div class="row row2">
-    		<select required class="first" name="province">
+    		<select class="first" name="province">
     			  <option value=""><?php echo $this->__('都道府県') ?></option>
     			  <option value="<?php echo $this->__('京都府') ?>"><?php echo $this->__('京都府') ?></option>
 				  <option value="<?php echo $this->__('佐賀県') ?>"><?php echo $this->__('佐賀県') ?></option>
@@ -130,8 +127,8 @@
     	</div>
     	
     	<div class="row row2">
-    		<input class="first" type="text" name="major" placeholder="<?php echo $this->__('学校名') ?>" />
-    		<input required class="last" type="text" name="school" placeholder="<?php echo $this->__('学部・学科名') ?>" />
+    		<input required class="first" type="text" name="major" placeholder="<?php echo $this->__('学校名') ?>" />
+    		<input class="last" type="text" name="school" placeholder="<?php echo $this->__('学部・学科名') ?>" />
     	</div>
     	
     	<div class="row heading">
