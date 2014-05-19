@@ -135,3 +135,6 @@ input[type="radio"]{
 .row.row2 .postcode > input{
 	width: 130px;
 }
+p.after-numbercompany{
+	font-size: 11px;
+}

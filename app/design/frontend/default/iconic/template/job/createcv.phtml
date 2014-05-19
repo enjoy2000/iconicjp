@@ -143,7 +143,12 @@
     	</div>
     	
     	<div class="row row2">
-    		<input required type="number" name="numbercompany" placeholder="<?php echo $this->__('経験社数') ?>" />
+    		<select id="numbercompany" required class="first" name="numbercompany">
+    			<option value=""><?php echo $this->__('経験社数') ?></option>
+    			<?php for($i=0;$i<21;$i++): ?>
+    			<option value="<?php echo $i ?>"><?php echo $i; ?></option>
+    			<?php endfor; ?>
+    		</select>
     		
     		<select id="workfunction" multiple="multiple" class="last" required name="workfunction">
     			<option value=""><?php echo $this->__('経験職種') ?></option>
@@ -156,6 +161,7 @@
 		        });
     		</script>
     	</div>
+    	<p class="after-numbercompany">(※新卒の方、今回が初めての就職となる方は、こちらで「0」を選択してください.)</p>
     	
     	<div class="row dashed-border"></div>
     	<p><?php echo $this->__('現在または直近の職歴について入力してください。') ?></p>
@@ -352,7 +358,16 @@
 				alert('Only input number here.');
 			}
 		});
-		//$('#category,#category2,#function,#function2').select2();
+		$('#numbercompany').on('change', function(){
+			var divs = $('.company select:required, .company input:required, .company textarea:required, #workfunction');
+			if($(this).val() == 0){
+				divs.addClass('remove-required').removeAttr('required');
+				divs.parent().find('.ms-parent').removeClass('required');
+			}else{
+				$('.remove-required').attr('required','required');
+				$('.remove-required').parent().find('.ms-parent').addClass('required');
+			}
+		});
 	});
 })(jQuery);
 </script>
