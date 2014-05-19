@@ -519,8 +519,11 @@ body.cms-page-view .world-map .text .button a{
 }
 #company-profile .timeline > div.e2004{
 	width: 230px;
-	top: 37px;
+	top: 45px;
 	right: 147px;
+}
+#company-profile .timeline > div.e2004.e2004-2{
+	top: 5px;
 }
 #company-profile .timeline > div.e2004 .tit:before{
 	left: -20px;
