@@ -36,6 +36,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 				$birthyear = $this->getRequest()->getParam('year').'/'.$this->getRequest()->getParam('month').'/'.$this->getRequest()->getParam('day');
             	$customer->setBirthYear($birthyear);
 				$customer->setPhone($this->getRequest()->getParam('phone'));
+				$customer->setKana($this->getRequest()->getParam('kanafirst'). ' ' .$this->getRequest()->getParam('kanalast'));
                 $customer->save();
                 $this->_dispatchRegisterSuccess($customer);
 				//success action
