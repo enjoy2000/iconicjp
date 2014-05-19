@@ -50,6 +50,12 @@
 .info-search .amount span{
 	color: #f58220;
 }
+.info-search .inline-b + .inline-b{
+	margin-left: 20px;
+}
+.info-search .inline-b span{
+	color: #f58220;
+}
 .pager{
 	text-align: center;
 }
@@ -69,4 +75,11 @@
 }
 .no-results .fll.text{
 	margin-left: 10px;
+}
+h2.blue-tit{
+	border: none
+}
+.info-search{
+	padding-bottom: 10px;
+	border-bottom: solid 2px #4571EB;
 }

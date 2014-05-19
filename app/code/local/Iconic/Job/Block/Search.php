@@ -4,27 +4,27 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 {
 	protected function _prepareLayout(){
 		$helper = Mage::helper('job');
-		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
-			$tit = '';
+		$tit = '';
 			if($keyword = $this->getRequest()->get('q')){
 				$tit .= '【' .$keyword. '】';
 			}
 			if($langId = $this->getRequest()->get('language')){
 				$lang = Mage::getModel('job/language')->load($langId);
-				$name = Mage::helper('job')->getTransName($lang);
-				$tit .= '【' .$name. '】';
+				$langname = Mage::helper('job')->getTransName($lang);
+				$tit .= '【' .$langname. '】';
 			}
 			if($catId = $this->getRequest()->get('location')){
-				$cat = Mage::getModel('job/location')->load($catId);
-				$name = Mage::helper('job')->getTransName($cat);
-				$tit .= '【' .$name. '】';
+				$loc = Mage::getModel('job/location')->load($catId);
+				$locname = Mage::helper('job')->getTransName($loc);
+				$tit .= '【' .$locname. '】';
 			}
 			if($functioncatId = $this->getRequest()->get('category')){
 				$cat = Mage::getModel('job/category')->load($functioncatId);
-				$name = Mage::helper('job')->getTransName($cat);
-				$tit .= '【' .$name. '】';
+				$catname = Mage::helper('job')->getTransName($cat);
+				$tit .= '【' .$catname. '】';
 			}
 			$tit .= $helper->__('の求人検索結果');
+		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
 			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム'), 'title'=>$helper->__('ホーム'), 'link'=>Mage::getBaseUrl()));
 			$breadcrumbs->addCrumb('search_results', array('label'=>$tit, 'title'=>$tit, 'link'=>Mage::getUrl(Mage::helper('job')->getSearchUrl())));
 		}		

@@ -13,7 +13,7 @@
 		<?php if($this->hasCategory()): ?>
 		<div class="info inline-b">
 			<?php echo $this->__('国から探す') ?>:
-			<span><?php echo Mage::getModel('job/category')->load($this->getCategory())->getName() ?></span>
+			<span><?php echo Mage::helper('job')->getTransName(Mage::getModel('job/category')->load($this->getCategory())) ?></span>
 		</div>
 		<?php endif; ?>
 		
@@ -25,7 +25,14 @@
 			?>
 			<span><?php echo Mage::helper('job')->getTransName($country).'/'.Mage::helper('job')->getTransName($location) ?></span>
 		</div>
-		<?php endif; ?>		
+		<?php endif; ?>
+		
+		<?php if($this->hasLanguage()): ?>
+		<div class="info inline-b">
+			<?php echo $this->__('国から探す') ?>:
+			<span><?php echo Mage::helper('job')->getTransName(Mage::getModel('job/category')->load($this->getLanguage())) ?></span>
+		</div>
+		<?php endif; ?>
 		
 		<?php if($this->hasJobLevel()): ?>
 		<div class="info inline-b">
