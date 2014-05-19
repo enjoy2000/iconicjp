@@ -35,7 +35,7 @@
 <?php $data = $this->getRequest()->getPost(); ?>
 <div class="account-create">
     <div class="page-title">
-        <h1><?php echo $this->__('公開求人情報の詳細を閲覧する') ?></h1>
+        <h1><?php echo $this->__('公開求人情報の詳細を閲覧する<br />（アイコニック新規会員登録）') ?></h1>
     </div>
     <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
     <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
@@ -121,15 +121,18 @@
                 <li class="fields">
                 	<?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
                     
-                    <div class="field">
-                        <div class="input-box">
-                            <input placeholder="<?php echo $this->__('確認氏名カナ') ?>" type="text" name="kana" title="<?php echo $this->__('氏名カナ') ?>" />
+                    <div class="field clearfix">
+                        <div class="input-box fll width-45">
+                            <input placeholder="<?php echo $this->__('性（カナ）') ?>" type="text" name="kanafirst" />
+                        </div>
+                        <div class="input-box flr width-45">
+                            <input placeholder="<?php echo $this->__('名（カナ）') ?>" type="text" name="kanalast" />
                         </div>
                     </div>
                     
                 	<div class="field">
                 		<div class="input-box">
-                			 <input required placeholder="<?php echo $this->__('ユーザー(メールアドレス)') ?>" type="email" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('ユーザー(メールアドレス)') ?>" class="input-text validate-email required-entry" />
+                			 <input required placeholder="<?php echo $this->__('メールアドレス') ?>" type="email" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('ユーザー(メールアドレス)') ?>" class="input-text validate-email required-entry" />
                 		</div>
                 	</div>
                     <div class="field">
@@ -183,7 +186,7 @@
                         
                         <div class="input-box flr width-45">
                             <select required name="location" id="location" class="select-box required-entry">
-                            	<option value=""><?php echo $this->__('居住地域') ?></option>
+                            	<option value=""><?php echo $this->__('現在住んでいる国') ?></option>
 								<?php $countries = Mage::getModel('job/listlocation')->getCollection() ?>
 								<?php foreach($countries as $country): ?>
 									<option <?php echo ($this->getFormData()->getLocation()==$country->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $country->getId() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></option>
@@ -210,7 +213,7 @@
             </ul>
         </div>
         <div class="buttons-set">
-            <button type="submit" data-not="<?php echo $this->__('未入力の項目があります') ?>" data-checked="<?php echo $this->__('登録') ?>" title="<?php echo $this->__('登録') ?>" class="checkform btn button"><?php echo $this->__('未入力の項目があります') ?></button>
+            <button type="submit" data-not="<?php echo $this->__('未入力の項目があります') ?>" data-checked="<?php echo $this->__('この内容で会員登録する') ?>" title="<?php echo $this->__('登録') ?>" class="checkform btn button"><?php echo $this->__('未入力の項目があります') ?></button>
         </div>
         <?php if (Mage::helper('checkout')->isContextCheckout()): ?>
             <input name="context" type="hidden" value="checkout" />

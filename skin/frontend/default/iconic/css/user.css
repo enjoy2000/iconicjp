@@ -42,7 +42,7 @@ body.customer-account-create #main .main{
 	border: none;
 	background-color: transparent;
 }
-.customer-name .input-box.width-45 input{
+.input-box.width-45 input{
 	width: 139px;
 }
 .field .input-box p{
