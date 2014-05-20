@@ -110,6 +110,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		}
 		$this->getLayout()->getBlock('head')->setTitle($helper->__('転職支援サービスに申し込む'));
 		if($this->getRequest()->getPost()){
+			$customer = Mage::getSingleton('customer/session')->getCustomer();
 			$data = $this->getRequest()->getPost();
 			$birthday = $data['month'].'/'.$data['day'].'/'.$data['year'];
 			//explode the date to get month, day and year
@@ -117,8 +118,8 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			//get age from date or birthdate
 			$now = date('d/m/Y');
 			$arr = array(
-					$data['first'].$data['last'],
-					$data['kana'],
+					$customer->getName(),
+					$customer->getKana() ,
 					$birhDate,
 					$data['sex'],
 					$data['nation'],
@@ -164,6 +165,15 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$at->disposition = Zend_Mime::DISPOSITION_ATTACHMENT;
 			$at->encoding = Zend_Mime::ENCODING_BASE64;
 			$mail->addAttachment($at);
+			foreach($data['filenames'] as $filename){
+				$file = Mage::getBaseDir().'/files/'.$customer->getId().'/'.$filename;
+				$at = new Zend_Mime_Part(file_get_contents($file));
+				$at->filename = basename($file);
+				$at->disposition = Zend_Mime::DISPOSITION_ATTACHMENT;
+				$at->encoding = Zend_Mime::ENCODING_BASE64;
+				        
+				$mail->addAttachment($at);
+			}
 			$config = array(
 	                    'auth' => 'login',
 	                    'ssl'  => 'tls',
@@ -376,6 +386,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 
 	public function aftercreatecvAction(){
 		$this->loadLayout();
+		$this->getLayout()->getBlock('head')->setTitle(Mage::helper('job')->__('転職支援サービスに申し込む'));
 		$this->renderLayout();
 	}
 	

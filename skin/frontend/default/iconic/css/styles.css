@@ -792,3 +792,53 @@ body.short #blog-news{
 	-webkit-border-image: url('../images/border-orange.png') 10 8 stretch;
 	-o-border-image: url('../images/border-orange.png') 10 8 stretch;
 }
+.success-page-blue.register{
+	width: 690px;
+	height: 310px;
+	background: url('../images/register-success.png') top left no-repeat;
+	margin: 30px auto;
+	position: relative;
+}
+.success-page-blue.register .text{
+	position: absolute;
+	width: 212px;
+	text-align: center;
+	top: 58px;
+	right: 140px;
+	font-size: 12px;
+}
+.success-page-blue.register .button{
+	position: absolute;
+	right: 100px;
+	bottom: 40px;
+	text-align: center;
+}
+.success-page-blue.register .button a{
+	font-weight: bold;
+	text-decoration: none;
+	color: #fff;
+	padding: 8px 20px;
+	background-color: #d76f2c;
+	font-size: 14px;
+	border-radius: 5px;
+}
+.success-page-blue.register .button p{
+	font-weight: bold;
+	color: #000;
+	margin-top: 20px;
+}
+.success-page.createcv{
+	width: 600px;
+	margin: auto;
+	text-align: center;
+	padding: 30px 0;
+}
+.success-page.createcv h3{
+	color: #d76f2c;
+	font-weight: bold;
+	font-size: 22px;
+	margin-bottom: 30px;
+}
+.success-page.createcv span{
+	color: #d76f2c;
+}

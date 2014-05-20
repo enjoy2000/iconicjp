@@ -1,27 +1,31 @@
-<div class="success-page register">
-	<h1><?php echo $this->__('おめでとうございます !!!') ?></h1>
+<div class="register-top">
+	<h1><?php echo $this->__('ご登録、ありがとうございました！') ?></h1>
 	
-	<p><?php echo $this->__('ICONIC－JPへの登録完了致しました。メールをご確認の後、手順の通りご活用ください。') ?></p>
-	<p><?php echo $this->__('>> アクティベーションメールを拒否設定の場合は要領をご確認下さい/スパムフォルダー<br />>> 何か問題の場合はご<a href="%s">連絡下さい。</a>', Mage::helper('job')->getBaseUrl().Mage::helper('job')->getContactUrl()) ?></p>
+	<p><?php echo $this->__('アイコニックへの会員登録が完了しました。') ?></p>
+	<p><?php echo $this->__('弊社ホームページから、<strong>%s</strong> 様のご要望に叶う求人を検索してみてくださいね！', Mage::getSingleton('customer/session')->getCustomer()->getFirstname()) ?></p>
+</div>
+<div class="success-page-blue register blue">
+	<div class="normal text">
+		<?php echo $this->__('アジア転職のプロと直接お話しませんか？<strong>%s</strong> 様のご経歴を簡単にご登録頂ければ、アジア転職に精通したアイコニックのコンサルタントが求人情報から生活情報まで、どんなお悩みにもお答えします！',Mage::getSingleton('customer/session')->getCustomer()->getFirstname()) ?>
+	</div>
+	<div class="button">
+		<a href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getCreateCVUrl() ?>" class="btn">
+			<?php echo $this->__('転職支援サービスに申し込む （無料）') ?>
+		</a>
+		<p><?php echo $this->__('(約3分で完了します）') ?></p>
+	</div>
 </div>
 <style>
-	.success-page.register{
-		width: 550px;
-		margin: auto;
-		padding: 20px;
+	h1{
+		color: #d76f2c;
+		font-weight: bold;
+		margin-top: 20px;
 	}
 	#main .main{
-		background-color: transparent;
+		background: transparent;
 		border: none;
 	}
-	.success-page h1{
-		color: #d76f2c;
+	.register-top p{
 		text-align: center;
-		font-weight: bold;
-		font-size: 23px;
-		margin-bottom: 25px;
-	}
-	.success-page p{
-		font-size: 13px;
 	}
 </style>

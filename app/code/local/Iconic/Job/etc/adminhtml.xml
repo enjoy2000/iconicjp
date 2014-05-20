@@ -68,16 +68,16 @@
                     <sort_order>5</sort_order>
                     <action>adminhtml/job_type</action>
                 </type>
-                <type module="job">
+                <request module="job">
                     <title>Manage Requests</title>
                     <sort_order>6</sort_order>
                     <action>adminhtml/job_request</action>
-                </type>
-                <type module="job">
+                </request>
+                <pic module="job">
                     <title>Manage PIC</title>
                     <sort_order>7</sort_order>
                     <action>adminhtml/job_pic</action>
-                </type>
+                </pic>
             </children>
         </job>
         <customer translate="title" module="customer">

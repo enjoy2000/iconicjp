@@ -38,20 +38,6 @@ var hook=true;
 				$(this).removeClass('after-input');
 			}
 		});
-		//add class to button submit when no-error
-		$('input, select, textarea').on('change', function(){
-			//console.log($(this.form).find('input:required.after-input, select:required.after-input').length);
-			//console.log($(this.form).find('input:required, select:required').length);
-			if(($(this.form).find('.error').length < 1) && ($(this.form).find('input:required.after-input, select:required.after-input, textarea:required.after-input').length == $(this.form).find('input:required, select:required, textarea:required').length)){
-				$(this.form).find('button[type="submit"]').addClass('checked');
-				$(this.form).find('button[type="submit"]').text($(this.form).find('button[type="submit"]').data('checked'));
-				hook = false;
-			}else{
-				$(this.form).find('button[type="submit"]').removeClass('checked');
-				$(this.form).find('button[type="submit"]').text($(this.form).find('button[type="submit"]').data('not'));
-				hook = true;
-			}
-		});
 		
 		//toggle content
 		$('.toggle-content a.toggle').click(function(e){

@@ -144,7 +144,211 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
 			$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Apply Job No.%s - %s - %s', $job->getIconicId(), $data['name'], Mage::helper('job')->getPic()));
 			$checkSend = $mail->send($transport);
-			if($checkSend){
+			
+			$mail2 = new Zend_Mail('UTF-8');
+			$baseurl = Mage::getBaseUrl();
+			$logourl = $baseurl.'skin/frontend/default/iconic/images/mail-logo.png';
+			$name = $user->getName();
+			$bodyHtml2 = '
+					<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	
+					<html xmlns="http://www.w3.org/1999/xhtml">
+					<head>
+						<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+						<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+						<title>Your Message Subject or Title</title>
+						<style type="text/css">
+					
+					
+							p {margin: 1em 0;}
+					
+							/** Hotmail header color reset: Hotmail replaces your header color styles with a green color on H2, H3, H4, H5, and H6 tags. In this example, the color is reset to black for a non-linked header, blue for a linked header, red for an active header (limited support), and purple for a visited header (limited support).  Replace with your choice of color. The !important is really what is overriding Hotmail\'s styling. Hotmail also sets the H1 and H2 tags to the same size.
+					
+							Bring inline: Yes.
+							**/
+							h1, h2, h3, h4, h5, h6 {color: black !important;}
+					
+							h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {color: blue !important;}
+					
+							h1 a:active, h2 a:active,  h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+								color: red !important; /* Preferably not the same color as the normal header link color.  There is limited support for psuedo classes in email clients, this was added just for good measure. */
+							 }
+					
+							h1 a:visited, h2 a:visited,  h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
+								color: purple !important; /* Preferably not the same color as the normal header link color. There is limited support for psuedo classes in email clients, this was added just for good measure. */
+							}
+					
+							table td {border-collapse: collapse;}
+					
+							table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+							a {color: orange;}
+					
+					
+							@media only screen and (max-device-width: 480px) {
+					
+								a[href^="tel"], a[href^="sms"] {
+											text-decoration: none;
+											color: black; /* or whatever your want */
+											pointer-events: none;
+											cursor: default;
+										}
+					
+								.mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+											text-decoration: default;
+											color: orange !important; /* or whatever your want */
+											pointer-events: auto;
+											cursor: default;
+										}
+							}
+					
+							/* More Specific Targeting */
+					
+							@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+								/* You guessed it, ipad (tablets, smaller screens, etc) */
+					
+								/* Step 1a: Repeating for the iPad */
+								a[href^="tel"], a[href^="sms"] {
+											text-decoration: none;
+											color: blue; /* or whatever your want */
+											pointer-events: none;
+											cursor: default;
+										}
+					
+								.mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+											text-decoration: default;
+											color: orange !important;
+											pointer-events: auto;
+											cursor: default;
+										}
+							}
+						</style>
+					
+						<!-- Targeting Windows Mobile -->
+						<!--[if IEMobile 7]>
+						<style type="text/css">
+					
+						</style>
+						<![endif]-->
+					
+						<!-- ***********************************************
+						****************************************************
+						END MOBILE TARGETING
+						****************************************************
+						************************************************ -->
+					
+						<!--[if gte mso 9]>
+						<style>
+							/* Target Outlook 2007 and 2010 */
+						</style>
+						<![endif]-->
+					</head>
+					<body>
+						<table width="600" bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" border="0" id="backgroundTable">
+							<tr height="15" bgcolor="#b5c6f7"><td></td></tr>
+							<tr>
+								<td>
+								<table>
+									<tr height="20">
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="500"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr>
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td><a href="'.$baseurl.'"><img src="'.$logourl.'" /></a></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr height="40">
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr>
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td>
+											こんにちは　'.$name.'さん。
+
+											iconic-jp.comより No. '.$job->getIconicId().'   |   '.$job->getTitle().'の申込み完了しました。
+											こちらを<a href="'.$job->getUrl().'">クリックし</a>仕事情報を受け取る又は、<a href="'.$baseurl.'">ホーム</a>に戻りさらに仕事をお探し下さい。
+											ご希望のお仕事に出会えますと幸いです。
+											
+											敬具
+											<strong style="color: #4571EB;">ICONIC―カスタマーサービス部<strong>
+											東京都中央区新富1丁目7番3号阪和第2別館ビル6階
+											電話 :  03 6222 5520   |  ウェブ : iconic-jp.com
+										</td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr height="40">
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr height="1">
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td bgcolor="#457EB"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr height="40">
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr>
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td>
+											Dear '.$name.',<br />
+											<br />
+											Thank you very much for your interest in iconic-jp.com<br />
+											When we receive your recruitment request, our professional consulting staff will contact to you soon.<br />
+											<br />
+											If you have any requirements, do not hesitate to contact us for further information.<br />
+											We are willing to support you anytime: info@iconic-intl.com<br />
+											<br />
+											Thanks & Best Regards,<br />
+											<b style="color: #4571EB;">Iconic - Customer Service Dept.</b><br />
+											<span style="color: #636466">Floor 6, Building2 Hanwa,1－7－3 Shintomi Chuuou Ku, Tokyo, Japan</span><br />
+											<span style="color: #636466">TEL :  03 6222 5520   |  WEB : iconic-jp.com</span><br />
+										</td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+									<tr height="40">
+										<td width="15" bgcolor="#b5c6f7"></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td></td>
+										<td width="35" bgcolor="#FFFFFF"></td>
+										<td width="15" bgcolor="#b5c6f7"></td>
+									</tr>
+								</table>
+								</td>
+							</tr>
+							<tr height="15" bgcolor="#b5c6f7"><td></td></tr>
+						</table>
+					</body>
+					</html>
+					';
+			$mail2->setBodyHtml($bodyHtml2);
+			$mail2->addTo($user->getEmail(),$user->getName());
+			$mail2->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
+			$mail2->setSubject(Mage::helper('job')->__('ICONIC-JP Apply Job No.%s - %s', $job->getIconicId(), $data['name']));
+			$checkSend2 = $mail2->send($transport);
+			if($checkSend && $checkSend2){
 				$this->getLayout()->getBlock('head')->setTitle(Mage::helper('job')->__('申込完了致しました。 ご検討をお祈りします。'));
 			}
 			
