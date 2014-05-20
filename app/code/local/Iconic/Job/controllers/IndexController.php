@@ -702,7 +702,25 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					$mail->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
 					$mail->setSubject('Auto Reply for Request Recruitment IconicJP');
 					$checkSend = $mail->send($transport);
-					if($checkSend){
+					
+					$mail2 = new Zend_Mail('UTF-8');
+					$data = $tthis->getRequest()->getPost();
+					$bodyHtml2 = '<table><tbody>';
+					$bodyHtml2 .= '<tr><td>Name:</td><td>{$data["name"]}</td></tr>';
+					$bodyHtml2 .= '<tr><td>Full Name:</td><td>{$data["full_name"]}</td></tr>';
+					$bodyHtml2 .= '<tr><td>Company Name:</td><td>{$data["company_name"]}</td></tr>';
+					$bodyHtml2 .= '<tr><td>Work Content:</td><td>{$data["work_content"]}</td></tr>';
+					$bodyHtml2 .= '<tr><td>Address:</td><td>{$data["address"]}</td></tr>';
+					$bodyHtml2 .= '<tr><td>Phone:</td><td>{$data["phone"]}</td></tr>';
+					$bodyHtml2 .= '<tr><td>Email:</td><td>{$data["email"]}</td></tr>';
+					$bodyHtml2 .= '<tr><td>Job Content:</td><td>{$data["job_content"]}</td></tr>';
+					$bodyHtml2 .= '</tbody></table>';
+					$mail2->setBodyHtml($bodyHtml2);
+					$mail2->addTo('enjoy3013@gmail.com','IconicJP');
+					$mail2->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
+					$mail2->setSubject('Request Recruitment IconicJP');
+					$checkSend2 = $mail2->send($transport);
+					if($checkSend && $checkSend2){
 						$this->_redirect('job/success/request');
 						return;
 					}else{

@@ -140,8 +140,8 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$bodyHtml .= '</tbody></table>';
 			
 			$mail->setBodyHtml($bodyHtml);
-			$mail->addTo('auto_iconic_vn@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
-			$mail->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
+			$mail->addTo('info@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
+			$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
 			$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Apply Job No.%s - %s - %s', $job->getIconicId(), $data['name'], Mage::helper('job')->getPic()));
 			$checkSend = $mail->send($transport);
 			if($checkSend){

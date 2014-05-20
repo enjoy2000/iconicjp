@@ -3,8 +3,7 @@ class Iconic_Job_DetailsController extends Mage_Core_Controller_Front_Action{
 	
 	public function indexAction(){		
         $this->loadLayout();  
-		/*
-		 * redirect if user not login 
+		//redirect if user not login 
 		if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
             $session = Mage::getSingleton('customer/session');
 			Mage::getSingleton('core/session')->setShowLogin(1);
@@ -13,7 +12,6 @@ class Iconic_Job_DetailsController extends Mage_Core_Controller_Front_Action{
             $this->_redirect('/');
             return $this;
         }	 
-		 */
 		
 		$id = (int) $this->getRequest()->get('id');
 		if($id <=0){
