@@ -8,7 +8,7 @@ class Iconic_Job_Block_Adminhtml_Request_Edit_Tabs extends Mage_Adminhtml_Block_
         parent::__construct();
         $this->setId('job_tabs');
         $this->setDestElementId('edit_form');
-        $this->setTitle(Mage::helper('job')->__('Countries'));
+        $this->setTitle(Mage::helper('job')->__('Request'));
     }
  
     protected function _beforeToHtml()

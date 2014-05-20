@@ -704,7 +704,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					$checkSend = $mail->send($transport);
 					
 					$mail2 = new Zend_Mail('UTF-8');
-					$data = $tthis->getRequest()->getPost();
+					$data = $this->getRequest()->getPost();
 					$bodyHtml2 = '<table><tbody>';
 					$bodyHtml2 .= '<tr><td>Name:</td><td>{$data["name"]}</td></tr>';
 					$bodyHtml2 .= '<tr><td>Full Name:</td><td>{$data["full_name"]}</td></tr>';
