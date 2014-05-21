@@ -25,7 +25,7 @@
 .job-wrapper table{
 	width: 100%;
 }
-.job-wrapper .job-details > table > tr > td{
+.job-wrapper .job-details > table > tbody > tr > td{
 	padding: 5px 10px;
 	width: 25%;
 }

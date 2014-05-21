@@ -15,7 +15,7 @@ h1{
 .job-details table{
 	width: 100%;
 }
-.job-details > table > tr > td{
+.job-details > table > tbody > tr > td{
 	padding: 5px 10px;
 	width: 25%;
 }
