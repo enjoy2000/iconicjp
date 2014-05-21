@@ -780,6 +780,9 @@ body.cms-combodia .map{
 	padding: 30px;
 	background: url('../images/cms/tit-content.png') top left no-repeat;
 }
+.more-info.vietnam h2{
+	padding-left: 20px;
+}
 .more-info p{
 	font-weight: bold;
 	color: #000;
