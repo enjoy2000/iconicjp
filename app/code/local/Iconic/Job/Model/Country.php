@@ -40,4 +40,9 @@ class Iconic_Job_Model_Country extends Mage_Core_Model_Abstract
 		parent::_afterSave();
 
 	}
+	
+	public function getUrl(){
+		$url = Mage::helper('job')->getBaseUrl().Mage::helper('job')->getSearchUrl().'/'.$this->getUrlKey();
+		return $url;
+	}
 }

@@ -258,4 +258,86 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
         $this->_initLayoutMessages('customer/session');
         $this->renderLayout();
     }
+	
+	/**
+     * Reset forgotten password
+     * Used to handle data recieved from reset forgotten password form
+     */
+    public function resetPasswordPostAction()
+    {
+        $resetPasswordLinkToken = (string) $this->getRequest()->getQuery('token');
+        $customerId = (int) $this->getRequest()->getQuery('id');
+        $password = (string) $this->getRequest()->getPost('password');
+        $passwordConfirmation = (string) $this->getRequest()->getPost('confirmation');
+
+        try {
+             if (!is_int($customerId)
+	            || !is_string($resetPasswordLinkToken)
+	            || empty($resetPasswordLinkToken)
+	            || empty($customerId)
+	            || $customerId < 0
+	        ) {
+	            throw Mage::exception('Mage_Core', $this->_getHelper('customer')->__('Invalid password reset token.'));
+	        }
+	
+	        /** @var $customer Mage_Customer_Model_Customer */
+	        $customer = $this->_getModel('customer/customer')->load($customerId);
+	        if (!$customer || !$customer->getId()) {
+	            throw Mage::exception('Mage_Core', $this->_getHelper('customer')->__('Wrong customer account specified.'));
+	        }
+	
+	        $customerToken = $customer->getRpToken();
+	        if (strcmp($customerToken, $resetPasswordLinkToken) != 0 || $customer->isResetPasswordLinkTokenExpired()) {
+	            throw Mage::exception('Mage_Core', $this->_getHelper('customer')->__('Your password reset link has expired.'));
+	        }
+        } catch (Exception $exception) {
+            $this->_getSession()->addError( $this->_getHelper('customer')->__('Your password reset link has expired.'));
+            $this->_redirect('*/*/resetpassword');
+            return;
+        }
+
+        $errorMessages = array();
+        if (iconv_strlen($password) <= 0) {
+            array_push($errorMessages, $this->_getHelper('customer')->__('New password field cannot be empty.'));
+        }
+        /** @var $customer Mage_Customer_Model_Customer */
+        $customer = $this->_getModel('customer/customer')->load($customerId);
+
+        $customer->setPassword($password);
+        $customer->setConfirmation($passwordConfirmation);
+        $validationErrorMessages = $customer->validate();
+        if (is_array($validationErrorMessages)) {
+            $errorMessages = array_merge($errorMessages, $validationErrorMessages);
+        }
+
+        if (!empty($errorMessages)) {
+            $this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
+            foreach ($errorMessages as $errorMessage) {
+               Mage::getSingleton('customer/session')->addError($errorMessage);
+            }
+            $this->_redirect('*/*/resetpassword', array(
+                'id' => $customerId,
+                'token' => $resetPasswordLinkToken
+            ));
+            return;
+        }
+
+        try {
+            // Empty current reset password token i.e. invalidate it
+            $customer->setRpToken(null);
+            $customer->setRpTokenCreatedAt(null);
+            $customer->setConfirmation(null);
+            $customer->save();
+            Mage::getSingleton('customer/session')->addSuccess( $this->_getHelper('customer')->__('Your password has been updated.'));
+            Mage::getSingleton('core/session')->setShowLogin(1);
+            $this->_redirect('/');
+        } catch (Exception $exception) {
+            Mage::getSingleton('customer/session')->addException($exception, $this->__('Cannot save a new password.'));
+            $this->_redirect('*/*/resetpassword', array(
+                'id' => $customerId,
+                'token' => $resetPasswordLinkToken
+            ));
+            return;
+        }
+    }
 }

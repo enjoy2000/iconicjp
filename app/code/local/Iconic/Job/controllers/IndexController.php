@@ -329,7 +329,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 										<td width="15" bgcolor="#b5c6f7"></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td>
-											'.$name.'さん、はじめまして。<br />
+											'.$name.$customer->getLastname().'さん、はじめまして。<br />
 											<br />
 											この度は、アイコニックの転職支援サービスにお申込みいただき、ありがとうございます！<br />
 											<br />

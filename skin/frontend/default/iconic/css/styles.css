@@ -543,7 +543,7 @@ body.short #blog-news{
 }
 #footer-menu ul li{
 	display: inline;
-	margin-left: 20px
+	margin-left: 10px
 }
 #footer-menu ul li.current-menu-item > a{
 	color: #000;

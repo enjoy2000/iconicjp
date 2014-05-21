@@ -1,7 +1,7 @@
 <div class="page-title">
     <h1><?php echo $this->__('サイトマップ') ?></h1>
 </div>
-<div id="site-map" class="clearfix">
+<div id="site-map" class="clearfix site-map">
     <div class="pages fll width-45">
     	<h2><?php echo $this->__('ページ') ?></h2>
     	<ul>
@@ -42,6 +42,8 @@
     			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>india"><?php echo $this->__('インド') ?></a>
     		</li>
     	</ul>
+    </div>
+    <div class="flr width-45">
     	<h2><?php echo $this->__('投稿') ?></h2>
     	<ul>
     		<?php
@@ -67,8 +69,9 @@
     		<?php endforeach; ?>
     	</ul>
     </div>
-    
-    <div class="category flr width-45">
+</div>
+<div class="clearfix align-center site-map" id="site-map2">
+	<div class="category fll width-30">
     	<h2><?php echo $this->__('業種') ?></h2>
     	<ul>
     		<?php $functionCats = Mage::getModel('job/parentcategory')->getCollection()
@@ -88,6 +91,28 @@
 			<?php foreach($industryCats as $cat): ?>
 				<li>
 					<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>"><?php echo Mage::helper('job')->getTransName($cat) ?></a>
+				</li>
+			<?php endforeach; ?>
+    	</ul>
+    </div>
+    <div class="country fll width-30">
+    	<h2><?php echo $this->__('国') ?></h2>
+    	<ul>
+    		<?php $countries = Mage::getModel('job/country')->getCollection()?>
+			<?php foreach($countries as $country): ?>
+				<li>
+					<a href="<?php echo $country->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($country) ?>"><?php echo Mage::helper('job')->getTransName($country) ?></a>
+				</li>
+			<?php endforeach; ?>
+    	</ul>
+    </div>
+    <div class="language flr width-30">
+    	<h2><?php echo $this->__('言語') ?></h2>
+    	<ul>
+    		<?php $langs = Mage::getModel('job/language')->getCollection()?>
+			<?php foreach($langs as $lang): ?>
+				<li>
+					<a href="<?php echo $lang->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($lang) ?>"><?php echo Mage::helper('job')->getTransName($lang) ?></a>
 				</li>
 			<?php endforeach; ?>
     	</ul>

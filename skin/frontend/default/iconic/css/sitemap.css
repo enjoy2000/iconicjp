@@ -7,26 +7,30 @@ body.job-index-sitemap h1{
 	color: #4571EB;
 	padding: 20px 40px;
 }
-#site-map{
+.site-map{
 	padding: 40px;
 }
-#site-map h2{
+.site-map h2{
 	font-weight: bold;
 	margin-bottom: 20px;
+	color: #000;
 }
-#site-map ul{
+.site-map ul{
 	margin-bottom: 40px;
 }
-#site-map ul li:before{
+.site-map ul li:before{
 	content: ">";
 	color: #000;
 	font-weight: bold;
 }
-#site-map ul li a{
+.site-map ul li a{
 	text-decoration: none;
 	color: #000;
 	font-size: 13px;
 }
-#site-map ul li a:hover{
+.site-map ul li a:hover{
 	color: #4571EB;
+}
+#site-map2{
+	border-top: solid 1px #000;
 }
