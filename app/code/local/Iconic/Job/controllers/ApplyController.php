@@ -276,8 +276,12 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 										<td>
 											こんにちは　'.$name.'様。<br />
 											<br />
-											このたびは、アイコニックの求人へご応募頂きまして、有難うございました！No. '.$job->getIconicId().' | '.$job->getTitle().'へのご応募を確かに受付ました。 応募状況の進捗があり次第、弊社コンサルタントより'.$name.'様へ直接連絡を入れさせて頂きます。<br />
+											このたびは、アイコニックの求人へご応募頂きまして、有難うございました！<br />
+											<br />
+											No. '.$job->getIconicId().' | '.$job->getTitle().'へのご応募を確かに受付ました。 応募状況の進捗があり次第、弊社コンサルタントより'.$name.'様へ直接連絡を入れさせて頂きます。<br />
+											<br />
 											他にもアイコニックのウェブサイトでは各種求人を毎日アップデートしておりますので、<a target="_blank" href="'.$baseurl.'">ホーム</a>に戻り、求人検索を続けてみてくださいね！<br />
+											<br />
 											また、転職支援サービス（無料）へのお申込みをまだされていない方は、是非、<a target="_blank" href="'.$baseurl.'submit-cv">こちら</a>からお申込みください。アジア転職のプロであるアイコニックのコンサルタントが、生活面から求人面まで、'.$name.'様のどんなお悩み・ご質問にもお答えいたします！<br />
 											<br />
 											<strong style="color: #4571EB;">株式会社アイコニックジャパン</strong><br />
