@@ -3,7 +3,7 @@
 </div>
 <div id="site-map" class="clearfix">
     <div class="pages fll width-45">
-    	<h2>ページ</h2>
+    	<h2><?php echo $this->__('ページ') ?></h2>
     	<ul>
     		<li>
     			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>
@@ -42,7 +42,7 @@
     			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>india"><?php echo $this->__('インド') ?></a>
     		</li>
     	</ul>
-    	<h2>課題</h2>
+    	<h2><?php echo $this->__('投稿') ?></h2>
     	<ul>
     		<?php
     		$news = Mage::getModel('clnews/news')->getCollection()
@@ -80,7 +80,7 @@
 				</li>
 			<?php endforeach; ?>
     	</ul>
-    	<h2><?php echo $this->__('経験職種') ?></h2>
+    	<h2><?php echo $this->__('職種') ?></h2>
     	<ul>
     		<?php $industryCats = Mage::getModel('job/parentcategory')->getCollection()
 									->addFieldToFilter('group_category', array('eq'=>'industry'));

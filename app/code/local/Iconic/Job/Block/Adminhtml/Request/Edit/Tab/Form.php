@@ -30,7 +30,7 @@ class Iconic_Job_Block_Adminhtml_Request_Edit_Tab_Form extends Mage_Adminhtml_Bl
         ));
 		
 		$fieldset->addField('work_content', 'text', array(
-            'label'     => Mage::helper('job')->__('Work Content'),
+            'label'     => Mage::helper('job')->__('Business'),
             'class'     => 'required-entry',
             'required'  => true,
             'name'      => 'work_content',

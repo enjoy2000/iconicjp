@@ -34,8 +34,14 @@ class Iconic_Job_Block_Adminhtml_Request_Grid extends Mage_Adminhtml_Block_Widge
             'align'     =>'left',
             'index'     => 'email',
         ));
+		
+		$this->addColumn('name', array(
+            'header'    => Mage::helper('job')->__('Name'),
+            'align'     =>'left',
+            'index'     => 'name',
+        ));
  
-        $this->addColumn('full_name', array(
+        $this->addColumn('name', array(
             'header'    => Mage::helper('job')->__('Full Name'),
             'align'     =>'left',
             'index'     => 'name',
@@ -45,6 +51,12 @@ class Iconic_Job_Block_Adminhtml_Request_Grid extends Mage_Adminhtml_Block_Widge
             'header'    => Mage::helper('job')->__('Company Name'),
             'align'     =>'left',
             'index'     => 'company_name',
+        ));
+		
+		$this->addColumn('job_content', array(
+            'header'    => Mage::helper('job')->__('Job Content'),
+            'align'     =>'left',
+            'index'     => 'job_content',
         ));
  
  
