@@ -30,7 +30,14 @@ $items = $this->getJobsInCategory();
 				</tr>
 				<tr>
 					<td><b><?php echo $this->__('言語') ?>:</b> <?php echo $item->getLanguage() ?></td>
-					<td><b><?php echo $this->__('レベル ') ?>:</b> <?php echo $item->getLevel() ?></td>
+					<td>
+						<table>
+							<tr>
+								<td><b><?php echo $this->__('レベル ') ?>:</b></td>
+								<td><?php echo $item->getLevel() ?></td>
+							</tr>
+						</table>
+					</td>
 					<td><b><?php echo $this->__('給与') ?>:</b> <?php echo $item->getFullSalary() ?></td>
 					<td><b><?php echo $this->__('採用定数') ?>:</b> <?php echo $item->getAmount() ?></td>
 				</tr>
@@ -72,8 +79,8 @@ $items = $this->getJobsInCategory();
 		</div>
 		<!-- End share -->
 		<div class="flr">
+			<a class="btn button-grey btn-back" href="#"><?php echo $this->__('戻る') ?></a>
 			<a class="btn button-blue btn-send <?php echo ($this->helper('customer')->isLoggedIn()) ? '' : 'btn-login' ?>" href="<?php echo Mage::helper('job')->getApplyLink($item->getId()) ?>"><?php echo $this->__('応募する') ?></a>
-			<a class="btn button-grey btn-back" href="#"><?php echo $this->__('BACK') ?></a>
 		</div>
 	</div>
 </div>

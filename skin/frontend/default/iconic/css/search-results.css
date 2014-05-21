@@ -13,7 +13,7 @@
 	background-color: #c6c7c9;
 	color: #000;
 	display: inline-block;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 }
 .job-wrapper b{
 	color: #272525;
@@ -25,7 +25,7 @@
 .job-wrapper table{
 	width: 100%;
 }
-.job-wrapper table tr td{
+.job-wrapper .job-details > table > tr > td{
 	padding: 5px 10px;
 	width: 25%;
 }

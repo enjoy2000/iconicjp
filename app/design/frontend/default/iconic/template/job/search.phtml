@@ -96,7 +96,14 @@
 								</tr>
 								<tr>
 									<td><b><?php echo $this->__('言語') ?>:</b> <?php echo $job->getLanguage() ?></td>
-									<td><b><?php echo $this->__('レベル ') ?>:</b> <?php echo $job->getLevel() ?></td>
+									<td>
+										<table>
+											<tr>
+												<td><b><?php echo $this->__('レベル ') ?>:</b></td>
+												<td><?php echo $job->getLevel() ?></td>
+											</tr>
+										</table>
+									</td>
 									<td><b><?php echo $this->__('給与') ?>:</b> <?php echo $job->getFullSalary() ?></td>
 									<td><b><?php echo $this->__('採用定数') ?>:</b> <?php echo $job->getAmount() ?></td>
 								</tr>
