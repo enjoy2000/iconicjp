@@ -136,7 +136,7 @@ body.short #blog-news{
 }
 #ajax-load a#close-button{
 	position: absolute;
-	right: 78px;
+	right: 272px;
 	border: solid 1px #fff;
 	color: #fff;
 	display: none;
@@ -179,6 +179,7 @@ body.short #blog-news{
 #ajax-load .content .account-login{
 	width: 360px;
 	margin: 20px auto;
+	padding-top: 20px;
 }
 .account-login input{
 	width: 338px;
@@ -198,7 +199,7 @@ body.short #blog-news{
 	background-color: #4571eb;
 	font-size: 25px;
 	font-weight: bold;
-	padding: 30px 40px;
+	padding: 10px 40px;
 	margin-top: 50px;
 }
 .account-login a div.register-btn span{
@@ -859,7 +860,7 @@ body.short #blog-news{
 #download-cv{
 	position: fixed;
 	right: -285px;;
-	top: 50%;
+	bottom: 0;
 	z-index: 99999;
 	width: 320px;
 	height: 150px;
