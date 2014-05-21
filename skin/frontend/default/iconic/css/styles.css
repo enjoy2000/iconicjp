@@ -127,6 +127,7 @@ body.short #blog-news{
 	position: absolute;
 	z-index: 999;
 	background-color: rgba(181, 198, 247, 0.95);
+	border-top: solid 2px #dadbdc;
 	-webkit-transition: height 0.35s ease-out;
     -moz-transition: height 0.35s ease-out;
     -ms-transition: height 0.35s ease-out;
@@ -154,10 +155,10 @@ body.short #blog-news{
 	margin-bottom: 15px;
 }
 #ajax-load.open{
-	height: 449px;
+	height: 447px;
 }
 #ajax-load.open.open-1{
-	height: 90px;
+	height: 88px;
 }
 #ajax-load p.success{
 	width: 680px;
