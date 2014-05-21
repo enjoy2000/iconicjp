@@ -464,7 +464,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
                     $newResetPasswordLinkToken =  Mage::helper('customer')->generateResetPasswordLinkToken();
                     $customer->changeResetPasswordLinkToken($newResetPasswordLinkToken);
                     $customer->sendPasswordResetConfirmationEmail();
-					$message = $this->__('%sでアカウントがあるお方はパスワードリセットの為メール送信致しました。メールをご確認ください。', $email);
+					$message = $this->__('%sへパスワードを再発行するためのURLを送信しました。メールボックスをご確認ください。', $email);
 					$status = true;
                 } catch (Exception $exception) {
                     $message = $exception->getMessage();
