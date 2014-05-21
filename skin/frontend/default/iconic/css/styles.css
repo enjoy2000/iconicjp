@@ -8,7 +8,6 @@ body{
  * SHORT TEMPLATE
  */
 body.short #header-landing,
-body.short #search-block,
 body.short #banner,
 body.short #blog-news .wrapper > *{
 	display: none;
@@ -110,10 +109,9 @@ body.short #blog-news{
 #header-landing{
 	height: 447px;
 	border-top: solid 2px #dadbdc;
-	border-bottom: solid 2px #dadbdc;
 	width: 100%;
 }
-#header-landing #ajax-load{
+#ajax-load{
 	width: 100%;
 	height: 0;
 	position: absolute;
@@ -125,7 +123,7 @@ body.short #blog-news{
     -o-transition: height 0.35s ease-out;
     transition: height 0.35s ease-out;
 }
-#header-landing #ajax-load a#close-button{
+#ajax-load a#close-button{
 	position: absolute;
 	right: 78px;
 	border: solid 1px #fff;
@@ -133,25 +131,25 @@ body.short #blog-news{
 	display: none;
 	padding: 0px 5px;
 }
-#header-landing #ajax-load.open a#close-button{
+#ajax-load.open a#close-button{
 	display: block;
 }
-#header-landing #ajax-load.open.open-1 a#close-button{
+#ajax-load.open.open-1 a#close-button{
 	right: 78px;
 }
-#header-landing #ajax-load h2{
+#ajax-load h2{
 	text-align: center;
 	color: #000;
 	font-weight: bold;
 	margin-bottom: 15px;
 }
-#header-landing #ajax-load.open{
-	height: 447px;
+#ajax-load.open{
+	height: 449px;
 }
-#header-landing #ajax-load.open.open-1{
-	height: 88px;
+#ajax-load.open.open-1{
+	height: 90px;
 }
-#header-landing #ajax-load p.success{
+#ajax-load p.success{
 	width: 680px;
 	padding: 9px;
 	border: solid 1px #4571EB;
@@ -167,7 +165,7 @@ body.short #blog-news{
 /*
  * Account Login
  */
-#header-landing #ajax-load .content .account-login{
+#ajax-load .content .account-login{
 	width: 360px;
 	margin: 20px auto;
 }
@@ -307,6 +305,7 @@ body.short #blog-news{
 }
 #search-block{
 	background-color: #b5c6f7;
+	border-top: solid 2px #dadbdc
 }
 #search-block .search-block{
 	padding: 20px 40px;

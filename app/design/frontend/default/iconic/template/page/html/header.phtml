@@ -113,18 +113,17 @@
 			</div>
 		</div><!-- End Header Menu -->
 	</div>
-	
+	<div id="ajax-load">
+		<div class="wrapper">
+			<a title="<?php echo $this->__('CLOSE') ?>" id="close-button" href="#" class="close-button">X</a>
+			<div class="content">
+				
+			</div>
+		</div>
+		
+	</div>
 	<!-- Header Landing -->
 	<div id="header-landing">
-		<div id="ajax-load">
-			<div class="wrapper">
-				<a title="<?php echo $this->__('CLOSE') ?>" id="close-button" href="#" class="close-button">X</a>
-				<div class="content">
-					
-				</div>
-			</div>
-			
-		</div>
 		<div class="background">
 			<div class="bg bg1 current">
 				
@@ -184,6 +183,12 @@
 	#main .main{
 		background-color: transparent!important;
 		padding: 0!important;
+	}
+</style>
+<?php else: ?>
+<style>
+	#header-landing{
+		display: none;
 	}
 </style>
 <?php endif; ?>

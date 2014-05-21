@@ -392,6 +392,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 	
 	public function sitemapAction(){
 		$this->loadLayout();
+		$this->getLayout()->getBlock('head')->setTitle(Mage::helper('job')->__('サイトマップ'));
 		$this->renderLayout();
 	}
 	
@@ -727,7 +728,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					$bodyHtml2 .= '<tr><td>Job Content:</td><td>'.$data["job_content"].'</td></tr>';
 					$bodyHtml2 .= '</tbody></table>';
 					$mail2->setBodyHtml($bodyHtml2);
-					$mail2->addTo('enjoy3013@gmail.com','IconicJP');
+					$mail2->addTo('info@iconic-intl.com','IconicJP');
 					$mail2->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
 					$mail2->setSubject('Request Recruitment IconicJP');
 					$checkSend2 = $mail2->send($transport);
