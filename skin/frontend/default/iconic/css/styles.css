@@ -851,3 +851,66 @@ body.short #blog-news{
 .success-page.createcv span{
 	color: #d76f2c;
 }
+/*
+ * Download Sample Cv
+ */
+#download-cv{
+	position: fixed;
+	right: -285px;;
+	top: 50%;
+	z-index: 99999;
+	width: 320px;
+	height: 150px;
+	background-color: #fff;
+	-webkit-transition: right 1s ease-out;
+    -moz-transition: right 1s ease-out;
+    -ms-transition: right 1s ease-out;
+    -o-transition: right 1s ease-out;
+    transition: right 1s ease-out;
+    color: #000;
+    font-size: 11px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#download-cv > .fll{
+	width: 35px;
+	background: url('../images/download-btn.png') top left no-repeat #000;
+	height: 100%;
+	cursor: pointer;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#download-cv > .flr{
+	width: 285px;
+}
+#download-cv a{
+	width: 150px;
+	text-align: center;
+	border-radius: 3px;
+	background-color: #b5c6f7;
+	color: #4571EB;
+	display: block;
+	padding: 4px 0;
+}
+#download-cv .top{
+	border-bottom: solid 1px #000;
+	padding: 10px 0;
+}
+#download-cv table{
+	width: 100%:
+}
+#download-cv table tr td{
+	padding: 5px 10px;
+}
+#download-cv table tr td:first-child{
+	width: 30%;
+	text-align: right;
+}
+#download-cv table tr td:first-child+td{
+	text-align: center;
+}
+#download-cv table tr td >p+p{
+	margin-top: 10px;
+}
