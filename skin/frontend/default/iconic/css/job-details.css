@@ -15,6 +15,10 @@ h1{
 .job-details table{
 	width: 100%;
 }
+.job-details table tr td{
+	padding: 5px 10px;
+	width: 25%;
+}
 #job-content{
 	margin: 20px 0;
 }

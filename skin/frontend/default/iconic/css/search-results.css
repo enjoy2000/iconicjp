@@ -25,6 +25,10 @@
 .job-wrapper table{
 	width: 100%;
 }
+.job-wrapper table tr td{
+	padding: 5px 10px;
+	width: 25%;
+}
 .job-wrapper .actions{
 	margin-top: 20px;
 }
