@@ -144,3 +144,9 @@ h1,
 	font-size: 18px;
 	text-align: left;
 }
+form .align-center{
+	text-align: center;
+}
+form .align-center > .width-30{
+	width: 28%;
+}

@@ -14,9 +14,10 @@
 <div class="form-apply width-70">
 	<form id="form-apply" action="<?php echo Mage::getBaseUrl() ?>job/apply/send" method="POST" >
 		<input type="hidden" name="id" value="<?php echo $job->getId() ?>" />
-		<div class="row clearfix">
-			<input class="fll width-40" name="name" type="text" value="<?php echo $user->getName() ?>" readonly="readonly"  />
-			<input class="flr width-40" name="email" type="text" value="<?php echo $user->getEmail() ?>" readonly="readonly"  />
+		<div class="row align-center clearfix">
+			<input class="fll width-30" name="name" type="text" value="<?php echo $user->getName() ?>" readonly="readonly"  />
+			<input class="width-30" name="email" type="text" value="<?php echo $user->getEmail() ?>" readonly="readonly"  />
+			<input class="flr width-30" name="phone" type="text" value="<?php echo $user->getPhone() ?>"  />
 		</div>
 		<div class="row">
 			<textarea name="message" placeholder="<?php echo $this->__('メッセージ') ?>"></textarea>
@@ -35,7 +36,7 @@
 				<?php echo $this->__('応募する') ?>
 			</button>
 			<a class="btn button-grey back-button" href="<?php echo Mage::helper('job')->getJobLink($job) ?>">
-				<?php echo $this->__('取消') ?>
+				<?php echo $this->__('戻る') ?>
 			</a>
 		</div>
 	</form>
