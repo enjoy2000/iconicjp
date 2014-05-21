@@ -496,6 +496,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					//send auto mail
 					$baseurl = Mage::getBaseUrl();
 					$logourl = $baseurl.'skin/frontend/default/iconic/images/mail-logo.png';
+					$data = $this->getRequest()->getPost();
 					$name = $this->getRequest()->get('name');
 					$email = $this->getRequest()->get('email');
 					$mail = new Zend_Mail('UTF-8');
@@ -638,16 +639,22 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 										<td width="15" bgcolor="#b5c6f7"></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td>
-											'.$name.'様<br />
+											'.$data['company_name'].'
+										
+											長浜みぎわ様<br />
 											<br />
-											ICONIC　JAPANにご興味頂きありがとう御座います。<br />
-											求人申込みを頂いた後すぐ、弊社のコンサルスタッフがご連絡致します。<br />
-											ご要望の際は御気軽にご連絡ください/どんな事でもサポートいたします： info@iconic-intl.com<br />
+											この度はアイコニックへ御社求人のご依頼を頂戴し、誠に有難うございます。<br />
+											弊社は、アジアを舞台に活躍できる日本人材やアジア現地の人材に専門特化した人材紹介エージェントです。<br />
 											<br />
-											敬具<br />
-											<b style="color: #4571EB;">ICONIC―カスタマーサービス部</b><br />
-											<span style="color: #636466">東京都中央区新富1丁目7番3号阪和第2別館ビル6階</span><br />
-											<span style="color: #636466">電話 :  03 6222 5520   |  ウェブ : iconic-jp.com</span><br />
+											早速、'.$data['name'].'様からご相談頂きました今回の御社求人の採用支援にあたりまして、弊社コンサルタントより、'.$data['name'].'様へ個別に連絡を入れさせて頂きます。<br />
+											<br />
+											なお、弊社サービスに関し、ご不明点などございましたら、お気軽にこちらからご連絡くださいませ。<br />
+											<br />
+											御社がアジアを舞台に満足いく人材採用ができるよう、弊社一同、精一杯支援させて頂きます！<br />
+											<br />
+											<strong style="color: #4571EB;">株式会社アイコニックジャパン</strong><br />
+											東京都中央区新富1丁目7番3号阪和第2別館ビル6階<br />
+											電話 :  03 6222 5520   |  ウェブサイト : iconic-jp.com
 										</td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td width="15" bgcolor="#b5c6f7"></td>
@@ -686,8 +693,8 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 											We are willing to support you anytime: info@iconic-intl.com<br />
 											<br />
 											Thanks & Best Regards,<br />
-											<b style="color: #4571EB;">Iconic - Customer Service Dept.</b><br />
-											<span style="color: #636466">Floor 6, Building2 Hanwa,1－7－3 Shintomi Chuuou Ku, Tokyo, Japan</span><br />
+											<b style="color: #4571EB;">ICONIC JAPAN CO.,LTD.</b><br />
+											<span style="color: #636466">Floor 6, Hanwa 2nd Bldg,1－7－3 Shintomi Chuo-ku, Tokyo, Japan</span><br />
 											<span style="color: #636466">TEL :  03 6222 5520   |  WEB : iconic-jp.com</span><br />
 										</td>
 										<td width="35" bgcolor="#FFFFFF"></td>
@@ -712,7 +719,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					$mail->setBodyHtml($bodyHtml);
 					$mail->addTo($email,'IconicJP');
 					$mail->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
-					$mail->setSubject('Auto Reply for Request Recruitment IconicJP');
+					$mail->setSubject('【アイコニック】御社からの求人依頼を受付ました。');
 					$checkSend = $mail->send($transport);
 					
 					$mail2 = new Zend_Mail('UTF-8');
