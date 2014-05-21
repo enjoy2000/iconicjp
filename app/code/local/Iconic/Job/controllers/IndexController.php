@@ -639,8 +639,8 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 										<td width="15" bgcolor="#b5c6f7"></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td>
-											'.$data['company_name'].'
-										
+											'.$data['company_name'].'<br />
+											<br />
 											長浜みぎわ様<br />
 											<br />
 											この度はアイコニックへ御社求人のご依頼を頂戴し、誠に有難うございます。<br />
@@ -684,13 +684,13 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 										<td width="15" bgcolor="#b5c6f7"></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td>
-											Dear '.$name.',<br />
+											Dear Mr./Ms.'.$name.',<br />
 											<br />
-											Thank you very much for your interest in iconic-jp.com<br />
-											When we receive your recruitment request, our professional consulting staff will contact to you soon.<br />
+											Thank you very much for your interest in ICONIC JAPAN CO.,LTD<br />
+											Our professional consultants will contact you soon.<br />
 											<br />
-											If you have any requirements, do not hesitate to contact us for further information.<br />
-											We are willing to support you anytime: info@iconic-intl.com<br />
+											If you have any inquiry, please do not hesitate to contact us for further information from info@iconic-jp.com.<br />
+											We are willing to support you anytime.<br />
 											<br />
 											Thanks & Best Regards,<br />
 											<b style="color: #4571EB;">ICONIC JAPAN CO.,LTD.</b><br />
@@ -737,7 +737,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					$mail2->setBodyHtml($bodyHtml2);
 					$mail2->addTo('info@iconic-intl.com','IconicJP');
 					$mail2->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
-					$mail2->setSubject('Request Recruitment IconicJP');
+					$mail2->setSubject('ICONIC-JP Employer Request - %s', $data['company_name']);
 					$checkSend2 = $mail2->send($transport);
 					if($checkSend && $checkSend2){
 						$this->_redirect('job/success/request');

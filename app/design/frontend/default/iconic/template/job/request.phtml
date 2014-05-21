@@ -1,9 +1,9 @@
 <div id="request-recruitment">
 	<h1><?php echo $this->__('人材紹介サービスに申し込む') ?></h1>
 	<form id="request-form" action="" method="POST">
+		<input required type="text" name="company_name" placeholder="<?php echo $this->__('会社名') ?>" />
 		<input required type="text" name="name" placeholder="<?php echo $this->__('担当者名') ?>" />
 		<input required type="text" name="full_name" placeholder="<?php echo $this->__('担当者名（フリガナ）') ?>" />
-		<input required type="text" name="company_name" placeholder="<?php echo $this->__('会社名') ?>" />
 		<input type="text" name="work_content" placeholder="<?php echo $this->__('事業内容') ?>" />
 		<input type="text" name="address" placeholder="<?php echo $this->__('所在地') ?>" />
 		<input type="number" name="phone" placeholder="<?php echo $this->__('電話番号') ?>" />
