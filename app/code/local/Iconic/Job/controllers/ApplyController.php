@@ -148,7 +148,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$mail2 = new Zend_Mail('UTF-8');
 			$baseurl = Mage::getBaseUrl();
 			$logourl = $baseurl.'skin/frontend/default/iconic/images/mail-logo.png';
-			$name = $user->getName();
+			$name = $user->getFirstname();
 			$bodyHtml2 = '
 					<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	
@@ -273,16 +273,15 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 										<td width="15" bgcolor="#b5c6f7"></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td>
-											こんにちは　'.$name.'さん。<br />
+											こんにちは　'.$name.'様。<br />
 											<br />
-											iconic-jp.comより No. '.$job->getIconicId().'   |   '.$job->getTitle().'の申込み完了しました。<br />
-											こちらを<a href="'.$job->getUrl().'">クリックし</a>仕事情報を受け取る又は、<a href="'.$baseurl.'">ホーム</a>に戻りさらに仕事をお探し下さい。<br />
-											ご希望のお仕事に出会えますと幸いです。<br />
+											このたびは、アイコニックの求人へご応募頂きまして、有難うございました！No. '.$job->getIconicId().' | '.$job->getTitle().'へのご応募を確かに受付ました。 応募状況の進捗があり次第、弊社コンサルタントより'.$name.'様へ直接連絡を入れさせて頂きます。<br />
+											他にもアイコニックのウェブサイトでは各種求人を毎日アップデートしておりますので、<a target="_blank" href="'.$baseurl.'">ホーム</a>に戻り、求人検索を続けてみてくださいね！<br />
+											また、転職支援サービス（無料）へのお申込みをまだされていない方は、是非、<a target="_blank" href="'.$baseurl.'submit-cv">こちら</a>からお申込みください。アジア転職のプロであるアイコニックのコンサルタントが、生活面から求人面まで、'.$name.'様のどんなお悩み・ご質問にもお答えいたします！<br />
 											<br />
-											敬具<br />
-											<strong style="color: #4571EB;">ICONIC―カスタマーサービス部<strong><br />
+											<strong style="color: #4571EB;">株式会社アイコニックジャパン</strong><br />
 											東京都中央区新富1丁目7番3号阪和第2別館ビル6階<br />
-											電話 :  03 6222 5520   |  ウェブ : iconic-jp.com
+											電話 :  03 6222 5520   |  ウェブサイト : iconic-jp.com
 										</td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td width="15" bgcolor="#b5c6f7"></td>
@@ -312,17 +311,17 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 										<td width="15" bgcolor="#b5c6f7"></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td>
-											Dear '.$name.',<br />
+											Dear Mr./Ms.'.$name.',<br />
 											<br />
 											Thank you very much for your interest in iconic-jp.com<br />
 											When we receive your recruitment request, our professional consulting staff will contact to you soon.<br />
 											<br />
 											If you have any requirements, do not hesitate to contact us for further information.<br />
-											We are willing to support you anytime: info@iconic-intl.com<br />
+											We are willing to support you anytime: info@iconic-jp.com<br />
 											<br />
 											Thanks & Best Regards,<br />
-											<b style="color: #4571EB;">Iconic - Customer Service Dept.</b><br />
-											<span style="color: #636466">Floor 6, Building2 Hanwa,1－7－3 Shintomi Chuuou Ku, Tokyo, Japan</span><br />
+											<b style="color: #4571EB;">ICONIC JAPAN CO.,LTD.</b><br />
+											<span style="color: #636466">Floor 6, Hanwa 2nd Bldg,1－7－3 Shintomi Chuo-ku, Tokyo, Japan</span><br />
 											<span style="color: #636466">TEL :  03 6222 5520   |  WEB : iconic-jp.com</span><br />
 										</td>
 										<td width="35" bgcolor="#FFFFFF"></td>
