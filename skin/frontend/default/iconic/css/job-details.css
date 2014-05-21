@@ -22,6 +22,7 @@ h1{
 }
 .job-details td > table tr td:first-child{
 	width: 55px;
+	vertical-align: top;
 }
 #job-content{
 	margin: 20px 0;
