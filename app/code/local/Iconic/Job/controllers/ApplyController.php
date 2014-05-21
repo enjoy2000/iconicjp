@@ -273,15 +273,15 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 										<td width="15" bgcolor="#b5c6f7"></td>
 										<td width="35" bgcolor="#FFFFFF"></td>
 										<td>
-											こんにちは　'.$name.'さん。
-
-											iconic-jp.comより No. '.$job->getIconicId().'   |   '.$job->getTitle().'の申込み完了しました。
-											こちらを<a href="'.$job->getUrl().'">クリックし</a>仕事情報を受け取る又は、<a href="'.$baseurl.'">ホーム</a>に戻りさらに仕事をお探し下さい。
-											ご希望のお仕事に出会えますと幸いです。
-											
-											敬具
-											<strong style="color: #4571EB;">ICONIC―カスタマーサービス部<strong>
-											東京都中央区新富1丁目7番3号阪和第2別館ビル6階
+											こんにちは　'.$name.'さん。<br />
+											<br />
+											iconic-jp.comより No. '.$job->getIconicId().'   |   '.$job->getTitle().'の申込み完了しました。<br />
+											こちらを<a href="'.$job->getUrl().'">クリックし</a>仕事情報を受け取る又は、<a href="'.$baseurl.'">ホーム</a>に戻りさらに仕事をお探し下さい。<br />
+											ご希望のお仕事に出会えますと幸いです。<br />
+											<br />
+											敬具<br />
+											<strong style="color: #4571EB;">ICONIC―カスタマーサービス部<strong><br />
+											東京都中央区新富1丁目7番3号阪和第2別館ビル6階<br />
 											電話 :  03 6222 5520   |  ウェブ : iconic-jp.com
 										</td>
 										<td width="35" bgcolor="#FFFFFF"></td>
