@@ -345,7 +345,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$mail2->setBodyHtml($bodyHtml2);
 			$mail2->addTo($user->getEmail(),$user->getName());
 			$mail2->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
-			$mail2->setSubject(Mage::helper('job')->__('ICONIC-JP Apply Job No.%s - %s', $job->getIconicId(), $data['name']));
+			$mail2->setSubject(Mage::helper('job')->__('【アイコニック】%sへのご応募を受付ました。', $job->getIconicId()));
 			$checkSend2 = $mail2->send($transport);
 			if($checkSend && $checkSend2){
 				$this->getLayout()->getBlock('head')->setTitle(Mage::helper('job')->__('申込完了致しました。 ご検討をお祈りします。'));
