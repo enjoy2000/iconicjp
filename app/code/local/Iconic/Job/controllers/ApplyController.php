@@ -135,8 +135,9 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('求人番号(Job No.)').':</td><td> '.$job->getIconicId().'</td></tr>';
 			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('求人タイトル (Job Title)').':</td><td> '.$job->getTitle().'</td></tr>';
 			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('氏名 (Name)').':</td><td> '.$data['name'].'</td></tr>';
-			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('メールアドレス(E-mail)').':</td><td> '.$data['email'].'</td></tr>';			
-			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Content').':</td><td> '.$data['message'].'</td></tr>';
+			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('メールアドレス(E-mail)').':</td><td> '.$data['email'].'</td></tr>';
+			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('電話番号(TEL)').':</td><td> '.$data['phone'].'</td></tr>';		
+			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('メッセージ(Content)').':</td><td> '.$data['message'].'</td></tr>';
 			$bodyHtml .= '</tbody></table>';
 			
 			$mail->setBodyHtml($bodyHtml);
