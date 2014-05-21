@@ -28,6 +28,10 @@
 .job-wrapper .job-details > table > tbody > tr > td{
 	padding: 5px 10px;
 	width: 25%;
+	vertical-align: top;
+}
+.job-wrapper .job-details td > table tr td:first-child{
+	width: 55px;
 }
 .job-wrapper .actions{
 	margin-top: 20px;

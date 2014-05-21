@@ -18,6 +18,10 @@ h1{
 .job-details > table > tbody > tr > td{
 	padding: 5px 10px;
 	width: 25%;
+	vertical-align: top;
+}
+.job-details td > table tr td:first-child{
+	width: 55px;
 }
 #job-content{
 	margin: 20px 0;
