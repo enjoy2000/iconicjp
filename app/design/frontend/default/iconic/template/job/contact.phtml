@@ -20,7 +20,7 @@
 			
 			<div class="actions">
 				<button type="submit" class="button-blue btn"><?php echo $this->__('送信') ?></button>
-				<button onclick="resetForm();" class="button-grey btn"><?php echo $this->__('取消') ?></button>
+				<button class="button-grey btn btn-back"><?php echo $this->__('取消') ?></button>
 			</div>
 		</form>
 	</div>
@@ -52,3 +52,13 @@
 		</div>
 	</div>
 </div>
+<script>
+(function($){
+	$(document).ready(function(){
+	    $('a.btn-back').click(function(e){
+	    	e.preventDefault();
+	        parent.history.back();
+	    });
+	});
+})(jQuery);
+</script>
