@@ -6,8 +6,90 @@
     	<h2>ページ</h2>
     	<ul>
     		<li>
-    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('お問い合わせ') ?></a>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>
     		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>for-candidate-in-japan"><?php echo $this->__('求職者の皆様') ?></a>
+    		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>for-company-in-japan"><?php echo $this->__('企業の皆様向け') ?></a>
+    		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>faq"><?php echo $this->__('よくある質問と答え') ?></a>
+    		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>company-profile"><?php echo $this->__('会社概要') ?></a>
+    		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>faq"><?php echo $this->__('よくある質問と答え') ?></a>
+    		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>privacy-policy"><?php echo $this->__('プライバシーポリシー') ?></a>
+    		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>vietnam"><?php echo $this->__('ベトナム') ?></a>
+    		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>myanmar"><?php echo $this->__('ミャンマー') ?></a>
+    		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>cambodia"><?php echo $this->__('カンボジア') ?></a>
+    		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>indonesia"><?php echo $this->__('インドネシア') ?></a>
+    		</li>
+    		<li>
+    			<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>india"><?php echo $this->__('インド') ?></a>
+    		</li>
+    	</ul>
+    	<h2>課題</h2>
+    	<ul>
+    		<?php
+    		$news = Mage::getModel('clnews/news')->getCollection()
+            	->addStoreFilter(Mage::app()->getStore()->getId());
+	        $news->setPageSize(5);
+	        $news
+	            ->addEnableFilter(1)
+	            ->addFieldToFilter('publicate_from_time', array('or' => array(
+	                0 => array('date' => true, 'to' => date('Y-m-d H:i:s')),
+	                1 => array('is' => new Zend_Db_Expr('null'))),
+	                ), 'left')
+	            ->addFieldToFilter('publicate_to_time', array('or' => array(
+	                0 => array('date' => true, 'from' => date('Y-m-d H:i:s')),
+	                1 => array('is' => new Zend_Db_Expr('null'))),
+	                ), 'left')
+	            ->setOrder('news_time ', 'desc');
+    		?>
+    		<?php foreach($news as $new): ?>
+    			<li>
+    				<a href="<?php echo $new->getUrl() ?>" title="<?php $new->getTitle() ?>"><?php echo $new->getTitle() ?></a>
+    			</li>
+    		<?php endforeach; ?>
+    	</ul>
+    </div>
+    
+    <div class="category flr width-45">
+    	<h2><?php echo $this->__('業種') ?></h2>
+    	<ul>
+    		<?php $functionCats = Mage::getModel('job/parentcategory')->getCollection()
+									->addFieldToFilter('group_category', array('eq'=>'function'));
+			?>
+			<?php foreach($functionCats as $cat): ?>
+				<li>
+					<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>"><?php echo Mage::helper('job')->getTransName($cat) ?></a>
+				</li>
+			<?php endforeach; ?>
+    	</ul>
+    	<h2><?php echo $this->__('経験職種') ?></h2>
+    	<ul>
+    		<?php $industryCats = Mage::getModel('job/parentcategory')->getCollection()
+									->addFieldToFilter('group_category', array('eq'=>'industry'));
+			?>
+			<?php foreach($industryCats as $cat): ?>
+				<li>
+					<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>"><?php echo Mage::helper('job')->getTransName($cat) ?></a>
+				</li>
+			<?php endforeach; ?>
     	</ul>
     </div>
 </div>

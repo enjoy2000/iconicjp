@@ -69,6 +69,7 @@ body.short #blog-news{
 	padding: 10px 0px;
 	padding-bottom: 15px;
 	margin-top: 76px;
+	overflow: hidden;
 }
 #header-menu ul{
 	padding: 0 20px;
@@ -78,10 +79,19 @@ body.short #blog-news{
 	font-size: 14px;
 }
 #header-menu ul li{
-	margin: 0 25px;
+	margin: 0 20px;
 }
 #header-menu ul li > a{
 	color: #7495f0;
+	padding: 20px 5px;
+}
+#header-menu ul li > a:hover{
+	font-weight: bold;
+	color: #4571EB;
+}
+#header-menu ul li.current-menu-item > a{
+	font-weight: bold;
+	color: #4571EB;
 }
 #header-menu ul li:first-child{
 	margin-left: 0;
