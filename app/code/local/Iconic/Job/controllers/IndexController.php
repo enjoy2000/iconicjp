@@ -193,6 +193,10 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('CV for importing to IS.').':</td></tr>';
 			$bodyHtml .= '</tbody></table>';
 			
+			
+			$baseurl = Mage::getBaseUrl();
+			$logourl = $baseurl.'skin/frontend/default/iconic/images/mail-logo.png';
+			$name = $customer->getFirstname();
 			$mail->setBodyHtml($bodyHtml);
 			$mail->addTo('info@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
 			//$mail->addTo('enjoy3013@gmail.com',Mage::helper('job')->__('IconicVN'));

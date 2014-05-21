@@ -296,7 +296,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 			if(!$lastpic->getId()){
 				$pic = Mage::getModel('job/pic')->getCollection()->getFirstItem();
 				$pic->setLastPic('yes')->save();
-				$customer->setPic($pic->getName());
+				$customer->setPic($pic->getName())->save();
 				return $pic->getName();
 			}else{
 				$pic = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('pic_id', array('gt'=>$lastpic->getId()))->getFirstItem();
@@ -308,7 +308,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 				if($pic->getCurrentInterval() ==  $pic->getInterval()){
 					$pic->setLastPic('yes')->save();
 					$pic->setCurrentInterval(0)->save();
-					$customer->setPic($pic->getName());
+					$customer->setPic($pic->getName())->save();
 					return $pic->getName();
 				}
 				while($pic->getCurrentInterval() !=  $pic->getInterval()){
@@ -320,7 +320,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 					if($pic->getCurrentInterval() ==  $pic->getInterval()){
 						$pic->setLastPic('yes')->save();
 						$pic->setCurrentInterval(0)->save();
-						$customer->setPic($pic->getName());
+						$customer->setPic($pic->getName())->save();
 						return $pic->getName();
 					}
 				}

@@ -354,11 +354,6 @@
 <script>
 (function($){
 	$(document).ready(function(){
-		$('input[type="number"]').on('keyup', function(){
-			if(!$.isNumeric($(this).val())){
-				alert('Only input number here.');
-			}
-		});
 		$('#numbercompany').on('change', function(){
 			var divs = $('.company select:required, .company input:required, .company textarea:required, #workfunction');
 			if($(this).val() == 0){

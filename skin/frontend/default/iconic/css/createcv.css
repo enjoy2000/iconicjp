@@ -138,3 +138,6 @@ input[type="radio"]{
 p.after-numbercompany{
 	font-size: 11px;
 }
+#search-block{
+	display: none;
+}

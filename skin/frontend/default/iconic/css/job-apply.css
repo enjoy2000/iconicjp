@@ -151,3 +151,6 @@ form .align-center{
 form .align-center > .width-30{
 	width: 28%;
 }
+#search-block{
+	display: none;
+}
