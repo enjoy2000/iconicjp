@@ -160,7 +160,7 @@ body.job-index-createcv #search-block{
 	text-align: center;
 	color: #000;
 	font-weight: bold;
-	margin-bottom: 15px;
+	margin-bottom: 25px;
 }
 #ajax-load.open{
 	height: 447px;
@@ -209,7 +209,7 @@ body.job-index-createcv #search-block{
 	background-color: #4571eb;
 	font-size: 25px;
 	font-weight: bold;
-	padding: 10px 40px;
+	padding: 15px 40px;
 	margin-top: 50px;
 }
 .account-login a div.register-btn span{
