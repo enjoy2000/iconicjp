@@ -46,3 +46,12 @@
 #contact-page > .flr .row a{
 	color: #636466;
 }
+ul.messages{
+	padding: 10px 40px;
+}
+ul.messages .success-msg{
+	color: #4571EB;
+}
+ul.messages .error-msg{
+	color: red;
+}
