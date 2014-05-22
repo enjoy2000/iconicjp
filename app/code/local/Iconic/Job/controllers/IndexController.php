@@ -65,7 +65,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					echo '
 					<script>
 					alert("'. Mage::helper('job')->__('Your email has been sent. Thank you!') .'");
-					window.location= '/';
+					window.location = "'.Mage::helper('job')->getBaseUrl().'";
 					</script>
 					';
 				}

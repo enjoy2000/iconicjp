@@ -19,7 +19,15 @@ body.short #main .main{
 body.short #blog-news{
 	padding-bottom: 0;
 }
-
+/*
+ * remove search blog from conversation pages
+ */
+body.job-index-contact #search-block,
+body.job-index-request #search-block,
+body.customer-account-create #search-block,
+body.job-index-createcv #search-block{
+	display: none;
+}
 #header-logo{
 	background-color: #4571eb;
 	position: fixed;
@@ -172,6 +180,8 @@ body.short #blog-news{
 	text-align: center;
 	display: none;
 	color: #4571EB;
+	border: solid 1px #4571EB;
+	margin-bottom: 10px;
 }
 /*
  * Account Login
