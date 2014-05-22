@@ -61,21 +61,12 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 				$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Contact from %s-%s', $post['name'], $post['companyname']));
 				$checkSend = $mail->send($transport);
 				if($checkSend){
-					//Mage::getSingleton('core/session')->addSuccess(Mage::helper('job')->__('Your email has been sent. Thank you!'));
-					echo '
-					<script>
-					alert("'. Mage::helper('job')->__('Your email has been sent. Thank you!') .'");
-					window.location = "'.Mage::helper('job')->getBaseUrl().'";
-					</script>
-					';
+					Mage::getSingleton('core/session')->addSuccess(Mage::helper('job')->__('Your email has been sent. Thank you!'));
+					$this->_redirect('*/*');
 				}
 			}catch(Exception $e){
-				//Mage::getSingleton('core/session')->addError(Mage::helper('job')->__('There is some error. Please try again later.'));
-				echo '
-					<script>
-					alert("'. Mage::helper('job')->__('There is some error. Please try again later.') .'");
-					</script>
-					';
+				Mage::getSingleton('core/session')->addError(Mage::helper('job')->__('There is some error. Please try again later.'));
+				$this->_redirect('*/*');
 			}
 		}
 		$this->renderLayout();

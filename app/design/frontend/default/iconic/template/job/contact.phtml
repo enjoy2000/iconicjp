@@ -1,6 +1,7 @@
 <div id="contact-page" class="clearfix">
 	<div class="fll">
 		<h1 class="blue-tit"><?php echo $this->__('問い合わせる') ?></h1>
+		<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 		<p><?php echo $this->__('アイコニックへのご質問は以下のフォームからお願いします。') ?></p>
 		<p><?php echo $this->__('弊社コンサルタントが速やかにお答えします。') ?></p>
 		<form action="" method="post" id="contact-form">
