@@ -16,7 +16,6 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		  $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[1], $birthDate[2], $birthDate[0]))) > date("md")
 		    ? ((date("Y") - $birthDate[0]) - 1)
 		    : (date("Y") - $birthDate[0]));
-		  echo "Age is:" . $age;
     }
 	
 	public function contactAction(){
@@ -62,11 +61,11 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 				$checkSend = $mail->send($transport);
 				if($checkSend){
 					Mage::getSingleton('core/session')->addSuccess(Mage::helper('job')->__('Your email has been sent. Thank you!'));
-					$this->_redirect('*/*');
+					$this->_redirect('*/*/contact');
 				}
 			}catch(Exception $e){
 				Mage::getSingleton('core/session')->addError(Mage::helper('job')->__('There is some error. Please try again later.'));
-				$this->_redirect('*/*');
+				$this->_redirect('*/*/contact');
 			}
 		}
 		$this->renderLayout();
