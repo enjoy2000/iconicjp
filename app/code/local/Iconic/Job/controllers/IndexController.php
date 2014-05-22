@@ -56,15 +56,16 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 				$bodyHtml .= '</tbody></table>';
 				
 				$mail->setBodyHtml($bodyHtml);
-				$mail->addTo('info@iconic-intl.com', Mage::helper('job')->__('IconicJP'));
-				$mail->setFrom($post['email'], $post['name']);
-				$mail->setSubject(Mage::helper('job')->__('Contact from IconicJP'));
+				$mail->addTo('auto_iconicjp@iconic-intl.com', Mage::helper('job')->__('IconicJP'));
+				$mail->setFrom($post['email'], Mage::helper('job')->__('IconicJP'));
+				$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Contact from %s-%s', $post['name'], $post['companyname']));
 				$checkSend = $mail->send($transport);
 				if($checkSend){
 					//Mage::getSingleton('core/session')->addSuccess(Mage::helper('job')->__('Your email has been sent. Thank you!'));
 					echo '
 					<script>
 					alert("'. Mage::helper('job')->__('Your email has been sent. Thank you!') .'");
+					window.location= '/';
 					</script>
 					';
 				}
@@ -198,7 +199,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$logourl = $baseurl.'skin/frontend/default/iconic/images/mail-logo.png';
 			$name = $customer->getFirstname();
 			$mail->setBodyHtml($bodyHtml);
-			$mail->addTo('info@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
+			$mail->addTo('auto_iconicjp@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
 			//$mail->addTo('enjoy3013@gmail.com',Mage::helper('job')->__('IconicVN'));
 			$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
 			$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Candidate - %s - %s', $data['first']. ' ' .$data['last'] ,Mage::helper('job')->getPic()));
@@ -738,7 +739,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					$bodyHtml2 .= '<tr><td>Job Content:</td><td>'.$data["job_content"].'</td></tr>';
 					$bodyHtml2 .= '</tbody></table>';
 					$mail2->setBodyHtml($bodyHtml2);
-					$mail2->addTo('info@iconic-intl.com','IconicJP');
+					$mail2->addTo('auto_iconicjp@iconic-intl.com','IconicJP');
 					$mail2->setFrom('info@iconicvn.com', Mage::helper('job')->__('IconicJP'));
 					$mail2->setSubject('ICONIC-JP Employer Request - %s', $data['company_name']);
 					$checkSend2 = $mail2->send($transport);
