@@ -29,6 +29,7 @@ INSERT INTO {$this->getTable('job/listcountry')} (name,name_en) VALUES ('シン�
 INSERT INTO {$this->getTable('job/listcountry')} (name,name_en) VALUES ('ミャンマー','Myanmar');
 INSERT INTO {$this->getTable('job/listcountry')} (name,name_en) VALUES ('バングラデシュ','Bangradesh');
 INSERT INTO {$this->getTable('job/listcountry')} (name,name_en) VALUES ('インド','India');
+INSERT INTO {$this->getTable('job/listcountry')} (name,name_en) VALUES ('海外','Abroad');
     ");
  
 $installer->endSetup();
