@@ -332,7 +332,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		$config = array(
 	                    'auth' => 'login',
 	                    'ssl'  => 'tls',
-					    'port' => 465,
+					    'port' =>  587,
 					    'username' => 'info@iconic-jp.com',
 					    'password' => 'bsc393939'
 						);
