@@ -230,10 +230,9 @@
 </style>
 <?php endif; ?>
 
-<?php if(!$this->helper('customer')->isLoggedIn() && (Mage::getSingleton('customer/session')->getShowLogin() != null)): ?>
+<?php if((!$this->helper('customer')->isLoggedIn()) && (Mage::getSingleton('customer/session')->getShowLogin() === 1)): ?>
 	<?php 
 	Mage::getSingleton('customer/session')->unsShowLogin(); 
-	//var_dump(Mage::getSingleton('core/session')->getShowLogin());die;
 	?>
 <script>
 jQuery(document).ready(function(){
@@ -241,7 +240,9 @@ jQuery(document).ready(function(){
 });
 </script>
 <?php endif; ?>
-<?php if(!$this->helper('customer')->isLoggedIn() && (Mage::getSingleton('customer/session')->getShowForgotPassword() == 1)): ?>
+
+
+<?php if((!$this->helper('customer')->isLoggedIn()) && (Mage::getSingleton('customer/session')->getShowForgotPassword() == 1)): ?>
 	<?php Mage::getSingleton('customer/session')->unsShowForgotPassword();  ?>
 <script>
 jQuery(document).ready(function(){
