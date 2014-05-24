@@ -229,16 +229,20 @@
 	}
 </style>
 <?php endif; ?>
-<?php if(!$this->helper('customer')->isLoggedIn() && (Mage::getSingleton('core/session')->getShowLogin() == 1)): ?>
-	<?php Mage::getSingleton('core/session')->unsShowLogin();  ?>
+
+<?php if(!$this->helper('customer')->isLoggedIn() && (Mage::getSingleton('customer/session')->getShowLogin() != null)): ?>
+	<?php 
+	Mage::getSingleton('customer/session')->unsShowLogin(); 
+	//var_dump(Mage::getSingleton('core/session')->getShowLogin());die;
+	?>
 <script>
 jQuery(document).ready(function(){
-	showLogin();
+	jQuery('#login-button').click();
 });
 </script>
 <?php endif; ?>
-<?php if(!$this->helper('customer')->isLoggedIn() && (Mage::getSingleton('core/session')->getShowForgotPassword() == 1)): ?>
-	<?php Mage::getSingleton('core/session')->unsShowForgotPassword();  ?>
+<?php if(!$this->helper('customer')->isLoggedIn() && (Mage::getSingleton('customer/session')->getShowForgotPassword() == 1)): ?>
+	<?php Mage::getSingleton('customer/session')->unsShowForgotPassword();  ?>
 <script>
 jQuery(document).ready(function(){
 	showForgotPage();

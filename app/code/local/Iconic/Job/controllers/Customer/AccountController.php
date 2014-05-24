@@ -131,7 +131,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
         $this->getResponse()->setHeader('Login-Required', 'true');
         $this->loadLayout();
 		
-		Mage::getSingleton('core/session')->setShowLogin(1);
+		Mage::getSingleton('customer/session')->setShowLogin(1);
         $this->_initLayoutMessages('customer/session');
         $this->_initLayoutMessages('catalog/session');
         $this->renderLayout();
@@ -321,7 +321,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             $customer->setConfirmation(null);
             $customer->save();
             Mage::getSingleton('customer/session')->addSuccess( $this->_getHelper('customer')->__('Your password has been updated.'));
-            Mage::getSingleton('core/session')->setShowLogin(1);
+            Mage::getSingleton('customer/session')->setShowLogin(1);
             $this->_redirect('/');
         } catch (Exception $exception) {
             Mage::getSingleton('customer/session')->addException($exception, $this->__('Cannot save a new password.'));

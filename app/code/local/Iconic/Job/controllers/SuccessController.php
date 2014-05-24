@@ -23,7 +23,7 @@ class Iconic_Job_SuccessController extends Mage_Core_Controller_Front_Action{
 	}
 	
 	public function forgotpassAction(){
-		Mage::getSingleton('core/session')->setShowForgotPassword(1);
+		Mage::getSingleton('customer/session')->setShowForgotPassword(1);
 		$this->_redirect('/');
 		return;
 	}

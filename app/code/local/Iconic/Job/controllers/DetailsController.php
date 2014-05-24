@@ -6,7 +6,7 @@ class Iconic_Job_DetailsController extends Mage_Core_Controller_Front_Action{
 		//redirect if user not login 
 		if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
             $session = Mage::getSingleton('customer/session');
-			Mage::getSingleton('core/session')->setShowLogin(1);
+			Mage::getSingleton('customer/session')->setShowLogin(1);
             $session->setAfterAuthUrl( Mage::helper('core/url')->getCurrentUrl() );
             $session->setBeforeAuthUrl( Mage::helper('core/url')->getCurrentUrl() );
             $this->_redirect('/');
