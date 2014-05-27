@@ -40,7 +40,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
         return $urlKey;
     }
 
-	protected function _toSlugTransliterate($string) {
+	public function _toSlugTransliterate($string) {
 	    // Lowercase equivalents found at:
 	    // https://github.com/kohana/core/blob/3.3/master/utf8/transliterate_to_ascii.php
 	    $lower = array(

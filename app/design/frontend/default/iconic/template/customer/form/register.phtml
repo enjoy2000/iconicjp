@@ -151,7 +151,7 @@
                     <div class="field">
                     	<div class="input-box align-center clearfix">
 			    			<select required id="year" name="year" class="first fll <?php echo ($this->getFormData()->getYear()) ? 'after-input' : '' ?>">
-			    				<option value=""><?php echo $this->__('年') ?></option>
+			    				<option value=""><?php echo $this->__('生年') ?></option>
 			                	<?php 
 			                	$y = (int) Date('Y');
 			                	for($i = $y-10; $i >= $y-60;$i--): ?>
@@ -159,14 +159,14 @@
 			                	<?php endfor; ?>
 			    			</select>
 				    		<select required id="month" name="month" class="middle <?php echo ($this->getFormData()->getMonth()) ? 'after-input' : '' ?>">
-				    			<option value=""><?php echo $this->__('月') ?></option>
+				    			<option value=""><?php echo $this->__('生月') ?></option>
 				            	<?php 
 				            	for($i = 1; $i <= 12;$i++): ?>
 				            	<option <?php echo ($this->getFormData()->getMonth()==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 				            	<?php endfor; ?>
 				    		</select>
 				    		<select required id="day" class="last flr <?php echo ($this->getFormData()->getDay()) ? 'after-input' : '' ?>" name="day">
-				    			<option value=""><?php echo $this->__('日') ?></option>
+				    			<option value=""><?php echo $this->__('生日') ?></option>
 				            	<?php 
 				            	for($i = 1; $i <= 31;$i++): ?>
 				            	<option <?php echo ($this->getFormData()->getDay()==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
