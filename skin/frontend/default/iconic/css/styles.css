@@ -927,3 +927,6 @@ body.job-index-createcv #search-block{
 #download-cv table tr td >p+p{
 	margin-top: 10px;
 }
+body.cms-home .messages{
+	display: none;
+}
