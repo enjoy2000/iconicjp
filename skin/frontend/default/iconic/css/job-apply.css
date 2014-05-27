@@ -173,3 +173,15 @@ form .align-center > .width-30{
 #search-block{
 	display: none;
 }
+.job-details table{
+	width: 100%;
+}
+.job-details > table > tbody > tr > td{
+	padding: 5px 10px;
+	width: 25%;
+	vertical-align: top;
+}
+.job-details td > table tr td:first-child{
+	width: 55px;
+	vertical-align: top;
+}

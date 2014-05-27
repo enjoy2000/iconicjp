@@ -23,14 +23,15 @@ $items = $this->getJobsInCategory();
 		<div class="job-details">
 			<table>
 				<tr>
-					<td><b><?php echo $this->__('勤務地') ?>:</b> <?php echo $item->getWorkLocation() ?></td>
 					<td><b><?php echo $this->__('国') ?>:</b> <?php echo $item->getCountry() ?></td>
-					<td><b><?php echo $this->__('業種') ?>:</b> <?php echo $item->getFunctionName() ?></td>
-					<td><b><?php echo $this->__('職種') ?>:</b> <?php echo $item->getCategoryName() ?></td>
+					<td><b><?php echo $this->__('勤務地') ?>:</b> <?php echo $item->getWorkLocation() ?></td>
+					<td><b><?php echo $this->__('言語') ?>:</b> <?php echo $item->getLanguage() ?></td>
+					<td><b><?php echo $this->__('給与') ?>:</b> <?php echo $item->getFullSalary() ?></td>
+					
 				</tr>
 				<tr>
-					<td><b><?php echo $this->__('言語') ?>:</b> <?php echo $item->getLanguage() ?></td>
-					<td>
+					<td><b><?php echo $this->__('業種') ?>:</b> <?php echo $item->getFunctionName() ?></td>
+					<td><b><?php echo $this->__('職種') ?>:</b> <?php echo $item->getCategoryName() ?></td><td>
 						<table>
 							<tr>
 								<td><b><?php echo $this->__('レベル ') ?>:</b></td>
@@ -38,7 +39,6 @@ $items = $this->getJobsInCategory();
 							</tr>
 						</table>
 					</td>
-					<td><b><?php echo $this->__('給与') ?>:</b> <?php echo $item->getFullSalary() ?></td>
 					<td><b><?php echo $this->__('採用定数') ?>:</b> <?php echo $item->getAmount() ?></td>
 				</tr>
 			</table>
