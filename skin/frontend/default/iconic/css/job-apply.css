@@ -103,23 +103,24 @@ div#job-same-category a.view-more-category{
 	margin-top: 10px;
 	text-decoration: underline;
 }
-div#job-same-category .actions a{
+div#job-same-category ul.jobs-list li .actions a{
 	color: #fff;
 	padding: 3px 10px;
 	text-decoration: none;
 	background-color: #a5bbf5;
 	border-radius: 3px;
 	border-bottom: solid 2px #8faaf3;
+	display: inline-block;
 }
-div#job-same-category .actions a.apply{
+div#job-same-category ul.jobs-list li .actions a.apply{
 	background-color: #6a8def;
 	border-color: #4571eb;
 }
-div#job-same-category .actions a:hover{
+div#job-same-category ul.jobs-list li .actions a:hover{
 	background-color: #a1c5f9;
 	border-color: #79acf6;
 }
-div#job-same-category .actions a+a{
+div#job-same-category ul.jobs-list li .actions a+a{
 	margin-left: 10px;
 }
 
