@@ -54,8 +54,6 @@ class CommerceLab_News_Block_Adminhtml_News_Edit_Tab_Info extends Mage_Adminhtml
           'class'     => 'required-entry',
           'required'  => false,
           'name'      => 'url_key',
-          'class'     => 'validate-identifier',
-          'after_element_html' => '<div class="hint"><p class="note">'.$this->__('e.g. domain.com/news/url_key').'</p></div>',
         ));
 
         /**
