@@ -23,7 +23,7 @@ class CommerceLab_News_Model_Mysql4_News extends Mage_Core_Model_Mysql4_Abstract
 
     protected function _beforeSave(Mage_Core_Model_Abstract $object)
     {
-        $urlKey = trim($object->getData('url_key'));
+        $urlKey = Mage::helper('clnews')->formatUrlKey($object->getData('url_key'));
         if ($urlKey=='') {
             $urlKey = $object->getData('title');
         }
