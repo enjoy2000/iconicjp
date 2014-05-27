@@ -806,6 +806,9 @@ body.job-index-createcv #search-block{
 #news-scroll .item-content a:hover .date{
 	color: #4571EB;
 }
+#news-scroll ul li+li{
+	margin-top: 10px;
+}
 .success-page{
 	display: block;
 	border: 10px solid transparent;
