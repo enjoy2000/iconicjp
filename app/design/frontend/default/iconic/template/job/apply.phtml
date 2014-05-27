@@ -17,7 +17,7 @@
 		<div class="row align-center clearfix">
 			<input class="fll width-30" name="name" type="text" value="<?php echo $user->getName() ?>" readonly="readonly"  />
 			<input class="width-30" name="email" type="text" value="<?php echo $user->getEmail() ?>" readonly="readonly"  />
-			<input class="flr width-30" name="phone" type="text" value="<?php echo $user->getPhone() ?>"  />
+			<input class="flr width-30" placeholder="<?php echo $this->__('電話番号') ?>" name="phone" type="text" value="<?php echo $user->getPhone() ?>"  />
 		</div>
 		<div class="row">
 			<textarea name="message" placeholder="<?php echo $this->__('メッセージ') ?>"></textarea>
