@@ -73,6 +73,9 @@
 	border: solid 1px #4571EB;
 	color: #4571EB;
 }
+.pager ol li{
+	display: inline;
+}
 .pager ol li.current{
 	color: #000;
 	border: solid 1px #000;
