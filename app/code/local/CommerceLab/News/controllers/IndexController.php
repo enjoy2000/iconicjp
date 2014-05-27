@@ -19,6 +19,7 @@ class CommerceLab_News_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction()
     {
+    	$this->_redirect('/');return;
         //// check if this category is allowed to view
         if ($category = $this->getRequest()->getParam('category')) {
             $collection = Mage::getModel('clnews/category')->getCollection()
@@ -42,6 +43,7 @@ class CommerceLab_News_IndexController extends Mage_Core_Controller_Front_Action
                 $this->_redirect(Mage::helper('clnews')->getRoute());
             }
         }
+		$this->_redirect('/');return;
         $this->loadLayout();
         $this->renderLayout();
     }
