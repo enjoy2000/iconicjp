@@ -171,7 +171,7 @@ class CommerceLab_News_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getBaseUrl("media") . $imagePath . "/" . $resizePath . "/" . $imageName;
     }
 
-    public function formatUrlKey2($str)
+    public function formatUrlKeyA($str)
     {
         $trans = array(
 		'á' => 'a', 'à' => 'a', 'ả' => 'a', 'ã' => 'a', 'ạ' => 'a',

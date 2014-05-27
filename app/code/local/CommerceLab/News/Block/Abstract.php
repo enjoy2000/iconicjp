@@ -163,7 +163,7 @@ class CommerceLab_News_Block_Abstract extends Mage_Core_Block_Template
                 0 => array('date' => true, 'from' => date('Y-m-d H:i:s')),
                 1 => array('is' => new Zend_Db_Expr('null'))),
                 ), 'left')
-            ->setOrder('news_time ', 'desc');
+            ->setOrder('news_time ', 'asc');
         return $collection;
     }
 

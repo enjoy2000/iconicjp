@@ -105,7 +105,7 @@ class CommerceLab_News_Controller_Router extends Mage_Core_Controller_Varien_Rou
                 $request->setModuleName('clnews')
                     ->setControllerName('newsitem')
                     ->setActionName('view')
-                    ->setParam('key', $identifier);
+                    ->setParam('key', urldecode($identifier));
                 return true;
             }
         }
