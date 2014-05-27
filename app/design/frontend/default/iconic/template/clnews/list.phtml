@@ -1,3 +1,4 @@
+<?php header('Location: '. Mage::helper('job')->getBaseUrl());die(); ?>
 <div id="page-title">
 	<h2 class="blue-tit text-blue">
 		<?php echo $this->__(Mage::getStoreConfig('clnews/news/title')) ?>
@@ -75,4 +76,3 @@
 	<?php echo $this->getChildHtml('right.clnews.categories') ?>
 	<?php echo $this->getChildHtml('right.clnews.latest') ?>
 </div>
-<?php header('Location: '. Mage::helper('job')->getBaseUrl()) ?>
