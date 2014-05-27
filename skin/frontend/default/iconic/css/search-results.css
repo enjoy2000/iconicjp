@@ -68,16 +68,15 @@
 .pager{
 	text-align: center;
 }
-.pager ul li a{
-	padding: 3px 10px;
-	border-radius: 3px;
+.pager ol li a{
+	padding: 0px 7px;
 	border: solid 1px #4571EB;
 	color: #4571EB;
-	background-color: #fff;
 }
-.pager ul li span{
-	background-color: #4571EB;
-	color: #fff;
+.pager ol li.current{
+	color: #000;
+	border: solid 1px #000;
+	padding: 0 7px;
 }
 .no-results{
 	margin-top: 20px;
@@ -91,4 +90,16 @@ h2.blue-tit{
 .info-search{
 	padding-bottom: 10px;
 	border-bottom: solid 2px #4571EB;
+}
+.job+.job{
+	border-top: solid 1px #d7d8d9;
+	position: relative;
+}
+.job+.job:before {
+	content: "";
+	position: absolute;
+	display: block;
+	top: 0px;
+	border-top: solid 1px #c7c8c9;
+	width: 100%;
 }

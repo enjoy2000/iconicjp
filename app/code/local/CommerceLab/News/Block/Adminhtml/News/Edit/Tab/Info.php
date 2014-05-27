@@ -71,6 +71,7 @@ class CommerceLab_News_Block_Adminhtml_News_Edit_Tab_Info extends Mage_Adminhtml
             ));
         }		
 		
+		/*
         $fieldset->addField('author', 'text', array(
             'label'     => Mage::helper('clnews')->__('Author name'),
             'name'      => 'author',
@@ -87,14 +88,16 @@ class CommerceLab_News_Block_Adminhtml_News_Edit_Tab_Info extends Mage_Adminhtml
                 'value' => $cat->getCategoryId()
                 ));
         }
-            $fieldset->addField('category_id', 'multiselect', array(
-                    'name'      => 'categories[]',
-                    'label'     => Mage::helper('clnews')->__('Category'),
-                    'title'     => Mage::helper('clnews')->__('Category'),
-                    'required'  => false,
-                    'style'     => 'height:100px',
-                    'values'    => $categories,
-            ));
+        $fieldset->addField('category_id', 'multiselect', array(
+                'name'      => 'categories[]',
+                'label'     => Mage::helper('clnews')->__('Category'),
+                'title'     => Mage::helper('clnews')->__('Category'),
+                'required'  => false,
+                'style'     => 'height:100px',
+                'values'    => $categories,
+        ));
+		 * 
+		 */
 
         $newsCollection = Mage::getModel('clnews/news')->getCollection()
                             ->addFieldToFilter('news_id', $this->getRequest()->getParam('id'));
