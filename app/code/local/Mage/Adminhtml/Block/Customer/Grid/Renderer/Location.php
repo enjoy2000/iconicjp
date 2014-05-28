@@ -8,7 +8,7 @@ class Mage_Adminhtml_Block_Customer_Grid_Renderer_Location
             return "";
         }else{
         	$data = $row->getData($this->getColumn()->getIndex());
-			$html = Mage::getModel('job/listcountry')->load($data)->getName();
+			$html = Mage::getModel('job/listlocation')->load($data)->getName();
 			return $html;
         }
     }

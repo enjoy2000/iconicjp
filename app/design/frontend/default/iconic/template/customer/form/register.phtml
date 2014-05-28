@@ -187,9 +187,9 @@
                         <div class="input-box flr width-45">
                             <select required name="location" id="location" class="select-box required-entry <?php echo ($this->getFormData()->getPhone()) ? 'after-input' : '' ?>">
                             	<option value=""><?php echo $this->__('現在住んでいる国') ?></option>
-								<?php $countries = Mage::getModel('job/listcountry')->getCollection() ?>
+								<?php $countries = Mage::getModel('job/listlocation')->getCollection() ?>
 								<?php foreach($countries as $country): ?>
-									<option <?php echo ($this->getFormData()->getLocation()==$country->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $country->getId() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></option>
+									<option <?php echo ($this->getFormData()->getLocation()==$country->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $country->getId() ?>"><?php echo $country->getName() ?></option>
 								<?php endforeach; ?>
                             </select>
                         </div>

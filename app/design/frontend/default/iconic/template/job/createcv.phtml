@@ -35,10 +35,10 @@
     			<option value=""><?php echo $this->__('国籍') ?></option>
     			<?php $list = Mage::getModel('job/listlocation')->getCollection() ?>
     			<?php foreach($list as $loc): ?>
-    			<option value="<?php echo $loc->getId() ?>"><?php echo Mage::helper('job')->getTransName($loc) ?></option>
+    			<option value="<?php echo $loc->getId() ?>"><?php echo $loc->getName() ?></option>
     			<?php endforeach; ?>
     		</select>
-    		<?php $countryname = Mage::getModel('job/listcountry')->load($this->getCustomer()->getLocation()) ?>
+    		<?php $countryname = Mage::getModel('job/listlocation')->load($this->getCustomer()->getLocation()) ?>
     		<input readonly class="last after-input" name="country" value="<?php echo Mage::helper('job')->getTransName($countryname) ?>" />
     	</div>
     	
