@@ -91,10 +91,10 @@
 						<?php endforeach; ?>
 					</div>
 					
-					<?php $rightFunction = $functionsCat->clear()->setPageSize(2)->setCurPage(3)->load(); ?>
+					<?php $rightFunction = $functionsCat->clear()->load(); ?>
 					<div class="right fll">
-						<?php $i=1;foreach($functionsCat as $parent): ?>
-							<?php if($i > 4): ?>
+						<?php $j=1;foreach($this->getFunctionCollection() as $parent): ?>
+							<?php if($j > 4): ?>
 							<div class="parent">
 								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 									<?php echo Mage::helper('job')->getTransName($parent) ?>
@@ -111,7 +111,7 @@
 								</ul>
 							</div>
 							<?php endif; ?>
-						<?php $i++;endforeach; ?>
+						<?php $j++;endforeach; ?>
 					</div>
 				</div>
 			</div>
