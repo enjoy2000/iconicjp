@@ -49,7 +49,7 @@
 				<h5><?php echo $this->__('職種から探す') ?></h5>
 				<div class="list-category">
 					<?php $functionsCat = clone $this->getFunctionCollection(); ?>
-					<?php $leftFunction = $functionsCat->clear()->setPageSize(2)->setCurPage(1)->load(); ?>
+					<?php $leftFunction = $functionsCat->clear()->setPageSize(3)->setCurPage(1)->load(); ?>
 					<div class="left fll">
 						<?php foreach($leftFunction as $parent): ?>
 							<div class="parent">
@@ -70,7 +70,7 @@
 						<?php endforeach; ?>
 					</div>
 					
-					<?php $midFunction = $functionsCat->clear()->setPageSize(2)->setCurPage(2)->load(); ?>
+					<?php $midFunction = $functionsCat->clear()->setPageSize(3)->setCurPage(2)->load(); ?>
 					<div class="mid fll">
 						<?php foreach($midFunction as $parent): ?>
 							<div class="parent">
@@ -92,9 +92,10 @@
 					</div>
 					
 					<?php $rightFunction = $functionsCat->clear()->load(); ?>
-					<div class="right fll">
+					<div class="right flr">
+						<?php var_dump($this->getFunctionCollection()) ?>
 						<?php $j=1;foreach($this->getFunctionCollection() as $parent): ?>
-							<?php if($j > 4): ?>
+							<?php if($j > 6): ?>
 							<div class="parent">
 								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 									<?php echo Mage::helper('job')->getTransName($parent) ?>
