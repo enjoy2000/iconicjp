@@ -56,16 +56,6 @@
 								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 									<?php echo Mage::helper('job')->getTransName($parent) ?>
 								</a>
-								<ul>
-									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
-									<?php foreach($categories as $cat): ?>
-										<li>
-											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
-												<?php echo Mage::helper('job')->getTransName($cat) ?>
-											</a>
-										</li>
-									<?php endforeach; ?>
-								</ul>
 							</div>
 						<?php endforeach; ?>
 					</div>
@@ -77,37 +67,17 @@
 								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 									<?php echo Mage::helper('job')->getTransName($parent) ?>
 								</a>
-								<ul>
-									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
-									<?php foreach($categories as $cat): ?>
-										<li>
-											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
-												<?php echo Mage::helper('job')->getTransName($cat) ?>
-											</a>
-										</li>
-									<?php endforeach; ?>
-								</ul>
 							</div>
 						<?php endforeach; ?>
 					</div>
 					
 					<?php $rightFunction = $functionsCat->clear()->setPageSize(3)->setCurPage(3)->load(); ?>
-					<div class="right fll">
+					<div class="right flr">
 						<?php foreach($rightFunction as $parent): ?>
 							<div class="parent">
 								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 									<?php echo Mage::helper('job')->getTransName($parent) ?>
 								</a>
-								<ul>
-									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
-									<?php foreach($categories as $cat): ?>
-										<li>
-											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
-												<?php echo Mage::helper('job')->getTransName($cat) ?>
-											</a>
-										</li>
-									<?php endforeach; ?>
-								</ul>
 							</div>
 						<?php endforeach; ?>
 					</div>
@@ -126,16 +96,6 @@
 								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 									<?php echo Mage::helper('job')->getTransName($parent) ?>
 								</a>
-								<ul>
-									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
-									<?php foreach($categories as $cat): ?>
-										<li>
-											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
-												<?php echo Mage::helper('job')->getTransName($cat) ?>
-											</a>
-										</li>
-									<?php endforeach; ?>
-								</ul>
 							</div>
 							<?php endif; ?>
 						<?php $i++;endforeach; ?>
@@ -148,38 +108,18 @@
 								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 									<?php echo Mage::helper('job')->getTransName($parent) ?>
 								</a>
-								<ul>
-									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
-									<?php foreach($categories as $cat): ?>
-										<li>
-											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
-												<?php echo Mage::helper('job')->getTransName($cat) ?>
-											</a>
-										</li>
-									<?php endforeach; ?>
-								</ul>
 							</div>
 							<?php endif; ?>
 						<?php $i++;endforeach; ?>
 					</div>
 					
-					<div class="right fll">
+					<div class="right flr">
 						<?php $i=1;foreach($industry as $parent): ?>
 							<?php if($i > 7): ?>
 							<div class="parent">
 								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 									<?php echo Mage::helper('job')->getTransName($parent) ?>
 								</a>
-								<ul>
-									<?php $categories = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$parent->getId())); ?>
-									<?php foreach($categories as $cat): ?>
-										<li>
-											<a href="<?php echo $cat->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($cat) ?>">
-												<?php echo Mage::helper('job')->getTransName($cat) ?>
-											</a>
-										</li>
-									<?php endforeach; ?>
-								</ul>
 							</div>
 							<?php endif; ?>
 						<?php $i++;endforeach; ?>

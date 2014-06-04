@@ -43,7 +43,7 @@ body.job-index-createcv #search-block{
 }
 #header-logo #menu{
 	margin-right: 20px;
-	margin-top: 30px;
+	margin-top: 20px;
 }
 #header-logo #menu ul li a{
 	color: #b5c6f7;
@@ -708,12 +708,12 @@ body.job-index-createcv #search-block{
 	text-decoration: underline!important;
 }
 #tab-content-category .function .mid{
-	margin-left: 152px;
-	margin-right: 50px;
 }
 #tab-content-category .industry .mid{
-	margin-left: 50px;
-	margin-right: 30px;
+}
+#tab-content-category .function .list-category > div,
+#tab-content-category .industry .list-category > div{
+	width: 32%;
 }
 #tab-content-category .group-category+.group-category{
 	margin-top: 50px;

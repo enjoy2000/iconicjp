@@ -52,7 +52,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 				$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Contact from %s-%s', $post['name'], $post['companyname']));
 				$checkSend = $mail->send($transport);
 				if($checkSend){
-					Mage::getSingleton('core/session')->addSuccess(Mage::helper('job')->__('Your email has been sent. Thank you!'));
+					Mage::getSingleton('core/session')->addSuccess(Mage::helper('job')->__('メッセージが送信されました。'));
 					$this->_redirect('*/*/contact');
 				}
 			}catch(Exception $e){

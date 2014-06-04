@@ -141,3 +141,8 @@ p.after-numbercompany{
 #search-block{
 	display: none;
 }
+.workingtime p.small{
+	display: none;
+	float: right;
+	font-size: 12px;
+}

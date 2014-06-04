@@ -138,7 +138,7 @@
     	
     	<div class="row work-status">
     		<?php echo $this->__(' 就業状況') ?><span class="red"></span>
-    		<input required name="workstatus" type="radio" value="就業中" /><?php echo $this->__('就業中') ?>
+    		<input id="check-for-working" required name="workstatus" type="radio" value="就業中" /><?php echo $this->__('就業中') ?>
     		<input name="workstatus" type="radio" value="離職済み" /><?php echo $this->__('離職済み') ?>
     	</div>
     	
@@ -200,7 +200,7 @@
 	    		</select>
 	    	</div>
 	    	
-	    	<div class="row row2">
+	    	<div class="row row2 workingtime">
 	    		<input class="first" type="number" name="companyemploye" placeholder="<?php echo $this->__('従業員数') ?>" />
 	    		<div class="last div4">
 	    			<select class="first" required name="yearfrom">
@@ -219,7 +219,7 @@
 		            	<?php endfor; ?>
 	    			</select>
 	    			<span>-</span>
-	    			<select name="yearto">
+	    			<select name="yearto" class="need-disable">
 	    				<option value=""><?php echo $this->__('年') ?></option>
 	    				<?php 
 	                	$y = (int) Date('Y');
@@ -227,7 +227,7 @@
 	                	<option <?php echo ($data['yearto']==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
 	                	<?php endfor; ?>
 	    			</select>
-	    			<select class="last" name="monthto">
+	    			<select class="last need-disable" name="monthto">
 	    				<option value=""><?php echo $this->__('月') ?></option>
 	    				<?php 
 		            	for($i = 1; $i <= 12;$i++): ?>
@@ -391,6 +391,15 @@
 					$(this.form).find('button[type="submit"]').removeClass('checked');
 					$(this.form).find('button[type="submit"]').text($(this.form).find('button[type="submit"]').data('not'));
 					hook = true;
+				}
+			});
+			$('input[type="radio"]').on('change', function(){
+				if($('#check-for-working').is(':checked')){
+					$('.row.workingtime .need-disable').attr('disabled','disabled');
+					$('.row.workingtime p.small').css('display','inline-block');
+				}else{
+					$('.row.workingtime .need-disable').removeAttr('disabled');
+					$('.row.workingtime p.small').hide();
 				}
 			});
 		});
