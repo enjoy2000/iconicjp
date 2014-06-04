@@ -95,6 +95,8 @@ p{
 	padding-bottom: 10px;
 }
 select{
+	text-indent: 0.01px;
+	text-overflow: ' ';
 	padding: 3px 15px;
 	width: 100%;
 	border: none;
