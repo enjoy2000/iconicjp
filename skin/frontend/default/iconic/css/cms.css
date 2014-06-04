@@ -168,6 +168,12 @@ body.cms-page-view .world-map .text .button a{
 #for-candidate-in-japan .content ul li h5{
 	color: #000;
 	font-weight: bold;
+	font-size: 19px;
+}
+#for-candidate-in-japan .content ul li h5 span{
+	color: #fff;
+	padding: 2px 5px;
+	background-color: #000;
 }
 #for-candidate-in-japan .content ul li p{
 	font-size: 13px;
@@ -225,7 +231,6 @@ body.cms-page-view .world-map .text .button a{
 	font-weight: bold;
 	border-radius: 3px;
 	width: 220px;
-	margin: auto;
 }
 #for-candidate-in-japan .text .button a span{
 	font-size: 13px;

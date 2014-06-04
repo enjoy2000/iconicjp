@@ -31,12 +31,6 @@
 				<?php foreach($this->getCountryCollection() as $country): ?>
 				<div class="country <?php echo strtolower($country->getNameEn()) ?>">
 					<h3><a href="<?php echo $country->getUrl() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></a></h3>
-					<ul>
-						<?php $locations = Mage::getModel('job/location')->getCollection()->addFieldToFilter('country_id', array('eq'=>$country->getId())); ?>
-						<?php foreach($locations as $location): ?>
-						<li><a href="<?php echo $location->getUrl() ?>"><?php echo Mage::helper('job')->getTransName($location) ?></a></li>
-						<?php endforeach; ?>
-					</ul>
 				</div>
 				<?php endforeach; ?>
 			</div>
