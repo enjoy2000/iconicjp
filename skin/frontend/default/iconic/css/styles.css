@@ -37,8 +37,8 @@ body.job-index-createcv #search-block{
 	z-index: 99999;
 }
 #header-logo #logo{
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding-top: 10px;
+	padding-bottom: 5px;
 	margin-left: 20px;
 }
 #header-logo #menu{
@@ -52,7 +52,7 @@ body.job-index-createcv #search-block{
 }
 #header-logo #menu ul li.border a{
 	padding: 3px 10px;
-	border: solid 3px #B5C6F7;
+	border: solid 1px #B5C6F7;
 	margin-left: 15px;
 	border-radius: 3px;
 	-webkit-transition: color 200ms,background-color 200ms;
@@ -74,9 +74,8 @@ body.job-index-createcv #search-block{
 }
 #header-menu{
 	background-color: #b5c6f7;
-	padding: 10px 0px;
-	padding-bottom: 15px;
-	margin-top: 76px;
+	padding: 8px 0px;
+	margin-top: 61px;
 	overflow: hidden;
 }
 #header-menu ul{

@@ -164,7 +164,7 @@
     	<p class="after-numbercompany">(※新卒の方、今回が初めての就職となる方は、こちらで「0」を選択してください.)</p>
     	
     	<div class="row dashed-border"></div>
-    	<p><?php echo $this->__('（※就業中）<br />（※現在、就業中の方は、就業開始時期のみ入力してください。）') ?></p>
+    	<p><?php echo $this->__('（※就業中）') ?></p>
     	<div class="company">
 	    	<div class="row row2">
 	    		<input required class="first" type="text" name="companyname" placeholder="<?php echo $this->__('企業名') ?>" />
@@ -235,6 +235,7 @@
 		            	<?php endfor; ?>
 	    			</select>
 	    		</div>
+	    		<p class="small"><?php echo $this->__('（※現在、就業中の方は、就業開始時期のみ入力してください。）') ?></p>
 	    	</div>
 	    	
 	    	<div class="row row2">
@@ -382,7 +383,7 @@
 			$('input, select, textarea').on('change', function(){
 				//console.log($(this.form).find('input:required.after-input, select:required.after-input,textarea:required.after-input').length);
 				//console.log($(this.form).find('input:required, select:required, textarea:required').length);
-				if(($(this.form).find('.error').length < 1) && ($('#companycategory').val()!=null) && ($('#workfunction').val()!=null) && ($(this.form).find('input:required.after-input, select:required.after-input, textarea:required.after-input').length == $(this.form).find('input:required, select:required, textarea:required').length-2)){
+				if(($(this.form).find('.error').length < 1) && ($('#companycategory').val()!=null) && ($('#workfunction').val()!=null) && ($(this.form).find('input:required.after-input, select:required.after-input, textarea:required.after-input').length == $(this.form).find('input:required, select:required, textarea:required').length-3)){
 					$(this.form).find('button[type="submit"]').addClass('checked');
 					$(this.form).find('button[type="submit"]').text($(this.form).find('button[type="submit"]').data('checked'));
 					hook = false;

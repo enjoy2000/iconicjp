@@ -6,22 +6,22 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 		$helper = Mage::helper('job');
 		$tit = '';
 			if($keyword = $this->getRequest()->get('q')){
-				$tit .= '【' .$keyword. '】';
+				$tit .= $keyword;
 			}
 			if($langId = $this->getRequest()->get('language')){
 				$lang = Mage::getModel('job/language')->load($langId);
 				$langname = Mage::helper('job')->getTransName($lang);
-				$tit .= '【' .$langname. '】';
+				$tit .= $langname;
 			}
 			if($catId = $this->getRequest()->get('location')){
 				$loc = Mage::getModel('job/location')->load($catId);
 				$locname = Mage::helper('job')->getTransName($loc);
-				$tit .= '【' .$locname. '】';
+				$tit .= $locname;
 			}
 			if($functioncatId = $this->getRequest()->get('category')){
 				$cat = Mage::getModel('job/category')->load($functioncatId);
 				$catname = Mage::helper('job')->getTransName($cat);
-				$tit .= '【' .$catname. '】';
+				$tit .= $catname;
 			}
 			$tit .= $helper->__('の求人検索結果');
 		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
