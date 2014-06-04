@@ -51,9 +51,10 @@ ul.messages{
 ul.messages .success-msg{
 	color: #f58220;
 	background: url('../images/mail-success.png') left center no-repeat transparent;
-	padding-left: 40px;
 	font-weight: bold;
 	padding: 10px 40px;
+	padding-left: 60px;
+	margin-left: 40px;
 }
 ul.messages .error-msg{
 	color: red;
