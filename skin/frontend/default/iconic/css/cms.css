@@ -59,7 +59,6 @@ body.cms-page-view .world-map .text .button a{
 	top: 200px;
 }
 #about-iconic .world-map .text p{
-	text-shadow: 2px 0 0 #e8edfd, -2px 0 0 #e8edfd, 0 2px 0 #e8edfd, 0 -2px 0 #e8edfd, 1px 1px #e8edfd, -1px -1px 0 #e8edfd, 1px -1px 0 #e8edfd, -1px 1px 0 #e8edfd;
 	font-size: 15px;
 	font-weight: bold;
 	color: #000;
@@ -68,15 +67,17 @@ body.cms-page-view .world-map .text .button a{
 	line-height: 21px;
 }
 #about-iconic .world-map .text p+p{
-	margin-top: 35px;
+	margin-top: 20px;
 	margin-bottom: 70px;
 }
 #about-iconic .content{
-	background: url('../images/cms/about-left.png'), url('../images/cms/about-right.png');
-	background-position: left top, right top;
-	background-repeat: no-repeat, no-repeat;
 	padding: 25px 65px;
 	padding-bottom: 60px;
+}
+#about-iconic .text p.about-tit{
+	color: #4571EB;
+	font-weight: bold;
+	font-size: 19px;
 }
 .cms-blue-tit{
 	font-weight: bold;
