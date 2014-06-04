@@ -12,13 +12,15 @@ body.cms-page-view #main .main{
 }
 body.cms-page-view .page-title{
 	padding: 40px;
-	border-bottom: solid 2px #4571EB;
+	border-bottom: solid 1px #4571EB;
 	padding-bottom: 10px;
+	padding-top: 15px;
 }
 body.cms-page-view .page-title h1{
 	text-align: left;
 	color: #4571EB;
 	letter-spacing: 0;
+	margin-bottom: 5px;
 }
 body.cms-page-view .std .world-map{
 	background: url('../images/cms/world-map-jp.jpg') top left no-repeat;
@@ -67,7 +69,7 @@ body.cms-page-view .world-map .text .button a{
 	line-height: 21px;
 }
 #about-iconic .world-map .text p+p{
-	margin-top: 20px;
+	margin-top: 8px;
 	margin-bottom: 70px;
 }
 #about-iconic .content{
