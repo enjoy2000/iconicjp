@@ -53,9 +53,9 @@ body.cms-page-view .world-map .text .button a{
  * about-iconic
  */
 #about-iconic .world-map .text{
-	width: 331px;
+	width: 380px;
 	position: absolute;
-	right: 111px;
+	right: 64px;
 	top: 200px;
 }
 #about-iconic .world-map .text p{
@@ -77,7 +77,7 @@ body.cms-page-view .world-map .text .button a{
 #about-iconic .text p.about-tit{
 	color: #4571EB;
 	font-weight: bold;
-	font-size: 19px;
+	font-size: 24px;
 }
 .cms-blue-tit{
 	font-weight: bold;
