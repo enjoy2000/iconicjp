@@ -168,9 +168,21 @@ body.cms-page-view .world-map .text .button a{
 #for-candidate-in-japan .content ul li h5{
 	color: #000;
 	font-weight: bold;
-	font-size: 19px;
+	font-size: 17px;
+	line-height: 25px;
 }
 #for-candidate-in-japan .content ul li h5 span{
+	color: #fff;
+	padding: 0px 7px;
+	background-color: #000;
+}
+#for-company-in-japan .content ul li h5{
+	color: #000;
+	font-weight: bold;
+	font-size: 17px;
+	line-height: 25px;
+}
+#for-company-in-japan .content ul li h5 span{
 	color: #fff;
 	padding: 0px 7px;
 	background-color: #000;
