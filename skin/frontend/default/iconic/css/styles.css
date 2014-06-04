@@ -2,7 +2,7 @@
 	Styles for IconicJP
 */
 body{
-	background-color: #dadbdc;
+	background-color: #f8f8f8;
 }
 /*
  * SHORT TEMPLATE
@@ -371,7 +371,7 @@ body.job-index-createcv #search-block{
 	margin: 20px 40px;
 	background-color: #f8f8f8;
 	padding: 30px;
-	border-bottom: solid 5px #bababb;
+	/*border-bottom: solid 5px #bababb;*/
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
