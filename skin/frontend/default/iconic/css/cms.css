@@ -496,6 +496,8 @@ body.cms-page-view .world-map .text .button a{
 	color: #fff;
 	font-weight: bold;
 	padding: 5px 15px;
+	letter-spacing: -1px;
+	font-size: 13px;
 }
 #company-profile .timeline > div > p{
 	padding: 5px 15px;
@@ -542,7 +544,7 @@ body.cms-page-view .world-map .text .button a{
 #company-profile .timeline > div.e2004{
 	width: 230px;
 	top: 53px;
-	right: 147px;
+	right: 100px;
 }
 #company-profile .timeline > div.e2004.e2004-2{
 	top: 15px;
@@ -554,7 +556,7 @@ body.cms-page-view .world-map .text .button a{
 #company-profile .timeline > div.e2007{
 	width: 268px;
 	top: 133px;
-	left: 111px;
+	left: 100px;
 }
 #company-profile .timeline > div.e2007 .tit:before{
 	right: -20px;
@@ -563,7 +565,7 @@ body.cms-page-view .world-map .text .button a{
 #company-profile .timeline > div.e2008{
 	width: 230px;
 	top: 248px;
-	right: 147px;
+	right: 100px;
 }
 #company-profile .timeline > div.e2008 .tit:before{
 	left: -20px;
@@ -572,7 +574,7 @@ body.cms-page-view .world-map .text .button a{
 #company-profile .timeline > div.e2010{
 	width: 285px;
 	top: 366px;
-	left: 90px;
+	left: 100px;
 	color: #fff;
 	font-weight: bold;
 }
@@ -590,7 +592,7 @@ body.cms-page-view .world-map .text .button a{
 #company-profile .timeline > div.e2012{
 	width: 274px;
 	top: 501px;
-	right: 102px;
+	right: 100px;
 }
 #company-profile .timeline > div.e2012 .tit:before{
 	left: -20px;
@@ -599,7 +601,7 @@ body.cms-page-view .world-map .text .button a{
 #company-profile .timeline > div.e2013{
 	width: 298px;
 	top: 630px;
-	left: 82px;
+	left: 100px;
 }
 #company-profile .timeline > div.e2013 .tit:before{
 	right: -20px;
@@ -608,7 +610,7 @@ body.cms-page-view .world-map .text .button a{
 #company-profile .timeline > div.e2014{
 	width: 317px;
 	top: 758px;
-	right: 45px;
+	right: 100px;
 }
 #company-profile .timeline > div.e2014 .tit:before{
 	left: -20px;
@@ -620,7 +622,8 @@ body.cms-page-view .world-map .text .button a{
 #company-profile .map{
 	padding: 20px;
 	border: dashed 2px #8faaf3;
-	background-color: #dadbdc;
+	background-color: #f8f8f8;
+	margin-top: -20px;
 }
 #company-profile .map .tit{
 	text-align: center;
@@ -629,6 +632,9 @@ body.cms-page-view .world-map .text .button a{
 }
 body.cms-company-profile #main .main{
 	border: none;
+}
+body.cms-page-view.cms-company-profile .page-title{
+	border-width: 2px;
 }
 #company-profile .map p{
 	margin-bottom: 20px;
