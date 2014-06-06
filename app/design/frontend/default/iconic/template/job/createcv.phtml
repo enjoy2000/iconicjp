@@ -9,8 +9,8 @@
     	</div>
     	
     	<div class="row row2">
-    		<input readonly required class="first after-input" type="text" name="first" placeholder="<?php echo $this->__('姓') ?>" value="<?php echo $this->getCustomer()->getFirstname() ?>" />
-    		<input readonly required class="last after-input" type="text" name="last" placeholder="<?php echo $this->__('名') ?>" value="<?php echo $this->getCustomer()->getLastname() ?>" />
+    		<input required class="first after-input" type="text" name="first" placeholder="<?php echo $this->__('姓') ?>" value="<?php echo $this->getCustomer()->getFirstname() ?>" />
+    		<input required class="last after-input" type="text" name="last" placeholder="<?php echo $this->__('名') ?>" value="<?php echo $this->getCustomer()->getLastname() ?>" />
     	</div>
     	
     	<div class="row row2">
@@ -27,7 +27,11 @@
     			<input readonly required class="last flr after-input" type="text" name="day" placeholder="<?php echo $this->__('日') ?>" value="<?php echo $birthday[2] ?>" />
     		</div>
     		
-    		<input readonly required class="last after-input" name="sex" placeholder="<?php echo $this->__('性別') ?>" value="<?php echo $this->getCustomer()->getSex() ?>" />
+    		<select required class="last after-input" name="sex" placeholder="<?php echo $this->__('性別') ?>" value="<?php echo $this->getCustomer()->getSex() ?>">
+    			<option value=""><?php echo $this->__('性別') ?></option>
+            	<option <?php echo ($this->getCustomer()->getSex()=='男性') ? 'selected="selected"' : '' ?> value="<?php echo '男性' ?>"><?php echo $this->__('男性') ?></option>
+            	<option <?php echo ($this->getCustomer()->getSex()=='女性') ? 'selected="selected"' : '' ?> value="<?php echo '女性' ?>"><?php echo $this->__('女性') ?></option>
+    		</select>
     	</div>
     	
     	<div class="row row2 clearfix">
@@ -39,7 +43,7 @@
     			<?php endforeach; ?>
     		</select>
     		<?php $countryname = Mage::getModel('job/listlocation')->load($this->getCustomer()->getLocation()) ?>
-    		<input readonly class="last after-input" name="country" value="<?php echo Mage::helper('job')->getTransName($countryname) ?>" />
+    		<input class="last after-input" name="country" value="<?php echo Mage::helper('job')->getTransName($countryname) ?>" />
     	</div>
     	
     	<div class="row row2">

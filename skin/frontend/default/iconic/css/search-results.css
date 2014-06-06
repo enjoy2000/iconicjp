@@ -1,6 +1,10 @@
 /*
 	SEARCH RESULTS
 */
+#main .main{
+	border: solid 1px #4571EB;
+	border-radius: 8px;
+}
 .job-wrapper{
 	color: #636466;
 	padding: 25px 0;
@@ -10,29 +14,40 @@
 }
 .job-wrapper .iconic-id{
 	padding: 3px 10px;
-	background-color: #c6c7c9;
 	color: #000;
 	display: inline-block;
-	margin-bottom: 10px;
 }
 .job-wrapper b{
 	color: #272525;
 }
 .job-wrapper .title{
-	color: #272525;
+	color: #fff;
 	font-weight: bold;
+	padding: 10px;
+	background-color: #919294;
+	font-size: 17px;
 }
 .job-wrapper table{
 	width: 100%;
+	border: solid 1px #999b9d;
+	border-top: none;
 }
-.job-wrapper .job-details > table > tbody > tr > td{
-	padding: 5px 10px;
-	width: 25%;
+.job-wrapper table tr td{
+	width: 115px;
 	vertical-align: top;
+	padding: 10px;
+	font-size: 13px;
+	letter-spacing: -1px;
 }
-.job-wrapper .job-details td > table tr td:first-child{
-	width: 55px;
-	vertical-align: top;
+.job-wrapper table tr+tr{
+	border-top: solid 1px #999b9d;
+}
+.job-wrapper table tr td.tit{
+	width: 70px;
+	font-weight: bold;
+	color: #000;
+	background-color: #dbdcdd;
+	text-align: right;
 }
 .job-wrapper .actions{
 	margin-top: 20px;

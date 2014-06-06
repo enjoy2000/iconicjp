@@ -697,6 +697,10 @@ body.job-index-createcv #search-block{
 	font-size: 15px;
 	text-decoration: none;
 }
+#tab-content-category div.parent a.parent span{
+	font-weight: normal;
+	color: #f58220;
+}
 #tab-content-category div.parent ul li a{
 	color: #636466;
 	text-decoration: none;

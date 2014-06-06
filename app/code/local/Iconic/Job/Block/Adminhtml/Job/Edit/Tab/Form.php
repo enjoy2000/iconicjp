@@ -80,18 +80,9 @@ class Iconic_Job_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_Block_
 		//get location values
 		$countries = Mage::getModel('job/country')->getCollection();
 		foreach($countries as $country){
-			$locations = Mage::getModel('job/location')->getCollection()
-							->addFieldToFilter('country_id', $country->getId());
-			$arrayLoc = array();
-			foreach($locations as $loc){
-				$arrayLoc[] = array(
-								'label'	=> $loc->getName(),
-								'value' => $loc->getId(),
-				);
-			}
 			$arrayLocation[] = array(
 								'label' => $country->getName(),
-								'value' => $arrayLoc,
+								'value' => $country->getId(),
 			);
 		}
 		
@@ -101,6 +92,12 @@ class Iconic_Job_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_Block_
             'required'  => true,
             'name'      => 'location_id',
             'values'	=> $arrayLocation,
+        ));
+		$fieldset->addField('location_text', 'text', array(
+            'label'     => Mage::helper('job')->__('Area'),
+            'class'     => 'required-entry',
+            'required'  => true,
+            'name'      => 'location_text',
         ));
 		
 		//get level values
@@ -184,12 +181,13 @@ class Iconic_Job_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_Block_
 							'value' => $lang->getId(),
 			);
 		}
-		$fieldset->addField('language_id', 'select', array(
+		$fieldset->addField('language_id', 'multiselect', array(
             'label'     => Mage::helper('job')->__('Job Language'),
             'class'     => 'required-entry',
             'required'  => true,
             'name'      => 'language_id',
             'values'    => $arrayLang,
+            'value'		=> $arrayLangValues,
         ));
 		//get type values
 		$typeModel = Mage::getModel('job/type')->getCollection();

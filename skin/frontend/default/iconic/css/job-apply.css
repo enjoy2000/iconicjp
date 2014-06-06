@@ -151,17 +151,23 @@ div#job-same-category ul.jobs-list li .actions a+a{
 }
 .iconic-id{
 	padding: 3px 10px;
-	background-color: #c6c7c9;
 	color: #000;
 	display: inline-block;
-	margin-bottom: 10px;
-	margin-top: 20px;
 }
 h1,
 .jobs-list p.title{
 	color: #272525;
 	font-weight: bold;
 	font-size: 18px;
+	text-align: left;
+}
+.job-list p.title{
+	color: #fff;
+	font-weight: bold;
+	padding: 10px;
+	background-color: #919294;
+	font-size: 17px;
+	margin-bottom: 0;
 	text-align: left;
 }
 form .align-center{
@@ -175,13 +181,23 @@ form .align-center > .width-30{
 }
 .job-details table{
 	width: 100%;
+	border: solid 1px #999b9d;
+	border-top: none;
 }
-.job-details > table > tbody > tr > td{
-	padding: 5px 10px;
-	width: 25%;
+.job-details table tr td{
+	width: 115px;
 	vertical-align: top;
+	padding: 10px;
+	font-size: 13px;
+	letter-spacing: -1px;
 }
-.job-details td > table tr td:first-child{
-	width: 55px;
-	vertical-align: top;
+.job-details table tr+tr{
+	border-top: solid 1px #999b9d;
+}
+.job-details table tr td.tit{
+	width: 70px;
+	font-weight: bold;
+	color: #000;
+	background-color: #dbdcdd;
+	text-align: right;
 }

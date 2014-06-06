@@ -51,11 +51,6 @@
                                 <sort_order>1</sort_order>
                                 <action>adminhtml/job_country</action>
                             </sub>
-                            <parent module="job">
-                                <title>Location</title>
-                                <sort_order>2</sort_order>
-                                <action>adminhtml/job_location</action>
-                            </parent>
                         </children>
                 </locations>
                 <level module="job">

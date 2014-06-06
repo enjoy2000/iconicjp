@@ -89,23 +89,16 @@
 						<div class="job-details">
 							<table>
 								<tr>
-									<td><b><?php echo $this->__('国') ?>:</b> <?php echo $job->getCountry() ?></td>
-									<td><b><?php echo $this->__('勤務地') ?>:</b> <?php echo $job->getWorkLocation() ?></td>
-									<td><b><?php echo $this->__('言語') ?>:</b> <?php echo $job->getLanguage() ?></td>
-									<td><b><?php echo $this->__('給与') ?>:</b> <?php echo $job->getFullSalary() ?></td>
-									
+									<td class="tit"><?php echo $this->__('国') ?>:</td><td><?php echo $job->getCountry() ?></td>
+									<td class="tit"><?php echo $this->__('勤務地') ?>:</td><td><?php echo $job->getWorkLocation() ?></td>
+									<td class="tit"><?php echo $this->__('言語') ?>:</td><td><?php echo $job->getLanguage() ?></td>
+									<td class="tit"><?php echo $this->__('給与') ?>:</td><td><?php echo $job->getFullSalary() ?></td>
 								</tr>
 								<tr>
-									<td><b><?php echo $this->__('業種') ?>:</b> <?php echo $job->getCategoryName() ?></td>
-									<td><b><?php echo $this->__('職種') ?>:</b> <?php echo $job->getFunctionName() ?></td><td>
-										<table>
-											<tr>
-												<td><b><?php echo $this->__('レベル ') ?>:</b></td>
-												<td><?php echo $job->getLevel() ?></td>
-											</tr>
-										</table>
-									</td>
-									<td><b><?php echo $this->__('採用定数') ?>:</b> <?php echo $job->getAmount() ?></td>
+									<td class="tit"><?php echo $this->__('業種') ?>:</td><td><?php echo $job->getCategoryName() ?></td>
+									<td class="tit"><?php echo $this->__('職種') ?>:</td><td><?php echo $job->getFunctionName() ?></td>
+									<td class="tit"><?php echo $this->__('レベル ') ?>:</td><td><?php echo $job->getLevel() ?></td>
+									<td class="tit"><?php echo $this->__('採用定数') ?>:</td><td><?php echo $job->getAmount() ?></td>
 								</tr>
 							</table>
 						</div>

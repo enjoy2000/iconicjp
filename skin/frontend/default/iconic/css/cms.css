@@ -471,7 +471,6 @@ body.cms-page-view .world-map .text .button a{
 	background-image: url('../images/cms/quote-left.png'), url('../images/cms/quote-right.png');
 	background-repeat: no-repeat, no-repeat;
 	background-position: 90px 30px, right 90px bottom 30px;
-	border-bottom: 2px solid #9eb3ee;
 	position: relative;
 }
 #company-profile .quote p+p{
@@ -543,7 +542,7 @@ body.cms-page-view .world-map .text .button a{
 }
 #company-profile .timeline > div.e2004{
 	width: 230px;
-	top: 53px;
+	top: 80px;
 	right: 100px;
 }
 #company-profile .timeline > div.e2004.e2004-2{

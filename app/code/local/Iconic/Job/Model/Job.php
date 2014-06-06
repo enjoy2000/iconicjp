@@ -44,12 +44,7 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 	}
 	
 	public function getWorkLocation(){
-		$location = Mage::getModel('job/location')->load($this->getLocationId());
-		if(Mage::app()->getStore()->getCode() == 'jp'){
-			return $location->getName();
-		}else{
-			return $location->getNameEn();
-		}
+		return $this->getLocationText();
 	}
 	
 	public function getCountry(){
@@ -81,11 +76,17 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 	}
 	
 	public function getLanguage(){
-		$language = Mage::getModel('job/language')->load($this->getLanguageId());
+		$langs = explode(',', substr($this->getLanguageId(),1,-1));
 		if(Mage::app()->getStore()->getCode() == 'jp'){
-			return $language->getName();
+			foreach($langs as $lang){
+				$langName[] = Mage::getModel('job/language')->load((int)$lang)->getName();
+			}
+			return implode(',', $langName);
 		}else{
-			return $language->getNameEn();
+			foreach($langs as $lang){
+				$langName[] = Mage::getModel('job/language')->load((int)$lang)->getNameEn();
+			}
+			return implode(',', $langName);
 		}
 	}
 	
