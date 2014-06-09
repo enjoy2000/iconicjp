@@ -48,12 +48,11 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 	}
 	
 	public function getCountry(){
-		$location = Mage::getModel('job/location')->load($this->getLocationId());
-		$country = Mage::getModel('job/country')->load($location->getCountryId());
+		$location = Mage::getModel('job/country')->load($this->getLocationId());
 		if(Mage::app()->getStore()->getCode() == 'jp'){
-			return $country->getName();
+			return $location->getName();
 		}else{
-			return $country->getNameEn();
+			return $location->getNameEn();
 		}
 	}
 	
