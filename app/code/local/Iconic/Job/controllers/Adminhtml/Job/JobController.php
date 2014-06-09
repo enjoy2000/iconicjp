@@ -62,11 +62,15 @@ class Iconic_Job_Adminhtml_Job_JobController extends Mage_Adminhtml_Controller_A
 						 
                 if(!$this->getRequest()->getParam('id')){
                 	$jobModel->setCreatedTime($currentDate);
+                }
+				$jobModel->save();
+				
+				if(!$this->getRequest()->getParam('id')){
+                	$jobModel->setCreatedTime($currentDate);
 					$newjob = Mage::getModel('job/job')->getCollection()->getLastItem();
                 }else{
                 	$newjob = Mage::getModel('job/job')->load($this->getRequest()->getParam('id'));
                 }
-				$jobModel->save();
 				$newjob->setLanguageId(','.implode(',', $this->getRequest()->getParam('language_id')).',')->save();
 				//set url key
 				//if($postData['url_key']){
