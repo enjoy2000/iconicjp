@@ -44,4 +44,11 @@ class Iconic_Job_Model_Language extends Mage_Core_Model_Abstract
 	public function getUrl(){
 		return Mage::helper('job')->getBaseUrl() . Mage::helper('job')->getSearchUrl() . '/' . $this->getUrlKey();
 	}
+	
+	public function getCount(){
+		$count = Mage::getModel('job/job')->getCollection()
+					->addFieldToFilter('language_id', array('eq'=>$this->getId()))
+					->count();
+		return $count;
+	}
 }

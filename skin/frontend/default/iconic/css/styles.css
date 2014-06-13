@@ -629,6 +629,10 @@ body.job-index-createcv #search-block{
 	font-weight: bold;
 	text-decoration: underline;
 }
+#tab-content-location .location h3 a span{
+	color: #f58220;
+	font-weight: normal;
+}
 #tab-content-location .location h3{
 	padding-left: 25px;
 }
@@ -780,6 +784,9 @@ body.job-index-createcv #search-block{
 #tab-content-language ul li a{
 	color: #636466;
 	text-decoration: none;
+}
+#tab-content-language ul li a span{
+	color: #f58220;
 }
 #tab-content-language ul li a:hover{
 	color: #000;

@@ -45,4 +45,11 @@ class Iconic_Job_Model_Country extends Mage_Core_Model_Abstract
 		$url = Mage::helper('job')->getBaseUrl().Mage::helper('job')->getSearchUrl().'/'.$this->getUrlKey();
 		return $url;
 	}
+	
+	public function getCount(){
+		$count = Mage::getModel('job/job')->getCollection()
+					->addFieldToFilter('location_id', array('eq'=>$this->getId()))
+					->count();
+		return $count;
+	}
 }

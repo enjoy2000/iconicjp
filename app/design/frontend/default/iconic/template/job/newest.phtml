@@ -30,7 +30,7 @@
 			<div class="location">
 				<?php foreach($this->getCountryCollection() as $country): ?>
 				<div class="country <?php echo strtolower($country->getNameEn()) ?>">
-					<h3><a href="<?php echo $country->getUrl() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></a></h3>
+					<h3><a href="<?php echo $country->getUrl() ?>"><?php echo Mage::helper('job')->getTransName($country) ?> <span>(<?php echo $country->getCount() ?>)</span></a></h3>
 				</div>
 				<?php endforeach; ?>
 			</div>
@@ -130,6 +130,7 @@
 					<li class="<?php echo strtolower($lang->getNameEn()) ?>">
 						<a href="<?php echo $lang->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($lang) ?>">
 							<?php echo Mage::helper('job')->getTransName($lang) ?>
+							<span>(<?php echo $lang->getCount() ?>)</span>
 						</a>
 					</li>
 				<?php endforeach; ?>

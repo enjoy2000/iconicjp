@@ -22,9 +22,27 @@
     	<div class="row row2">
     		<div class="first div3">
     			<?php $birthday = explode('/',$this->getCustomer()->getBirthYear()); ?>
-    			<input readonly required class="first fll after-input" type="text" name="year" placeholder="<?php echo $this->__('年') ?>" value="<?php echo $birthday[0] ?>" />
-    			<input readonly required class="middle after-input" type="text" name="month" placeholder="<?php echo $this->__('月') ?>" value="<?php echo $birthday[1] ?>" />
-    			<input readonly required class="last flr after-input" type="text" name="day" placeholder="<?php echo $this->__('日') ?>" value="<?php echo $birthday[2] ?>" />
+    			<select name="year" class="first fll after-input">
+    				<?php 
+                	$y = (int) Date('Y');
+                	for($i = $y-10; $i >= $y-60;$i--): ?>
+                	<option <?php echo ($birthday[0]==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+                	<?php endfor; ?>
+    			</select>
+    			<select name="month" class="middle after-input">
+    					<option value=""><?php echo $this->__('生月') ?></option>
+		            	<?php 
+		            	for($i = 1; $i <= 12;$i++): ?>
+		            	<option <?php echo ($birthday[1]==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+		            	<?php endfor; ?>
+    			</select>
+    			<select name="day" class="last flr after-input">
+    				<option value=""><?php echo $this->__('生日') ?></option>
+	            	<?php 
+	            	for($i = 1; $i <= 31;$i++): ?>
+	            	<option <?php echo ($birthday[2]==$i) ? 'selected="selected"' : '' ?> value="<?php echo $i ?>"><?php echo $i ?></option>
+	            	<?php endfor; ?>
+    			</select>
     		</div>
     		
     		<select required class="last after-input" name="sex" placeholder="<?php echo $this->__('性別') ?>" value="<?php echo $this->getCustomer()->getSex() ?>">
@@ -42,8 +60,13 @@
     			<option value="<?php echo $loc->getId() ?>"><?php echo $loc->getName() ?></option>
     			<?php endforeach; ?>
     		</select>
-    		<?php $countryname = Mage::getModel('job/listlocation')->load($this->getCustomer()->getLocation()) ?>
-    		<input class="last after-input" name="country" value="<?php echo Mage::helper('job')->getTransName($countryname) ?>" />
+		    <select name="country" class="last after-input">	
+	    		<option value=""><?php echo $this->__('現在住んでいる国') ?></option>
+				<?php $countries = Mage::getModel('job/listlocation')->getCollection() ?>
+				<?php foreach($countries as $country): ?>
+					<option <?php echo ($this->getCustomer()->getLocation()==$country->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $country->getId() ?>"><?php echo $country->getName() ?></option>
+				<?php endforeach; ?>
+    		</select>
     	</div>
     	
     	<div class="row row2">
