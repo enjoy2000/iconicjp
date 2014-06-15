@@ -50,9 +50,15 @@ class Iconic_Job_Model_Parentcategory extends Mage_Core_Model_Abstract
 		foreach($cats as $cat){
 			$catIds[] = $cat->getId();
 		}
-		$count = Mage::getModel('job/job')->getCollection()
-						->addFieldToFilter('category_id', array('in'=>$catIds))
-						->count();
+		if($this->getGroupCategory == 'industry'){
+			$count = Mage::getModel('job/job')->getCollection()
+							->addFieldToFilter('category_id', array('in'=>$catIds))
+							->count();
+		}else{
+			$count = Mage::getModel('job/job')->getCollection()
+							->addFieldToFilter('function_category_id', array('in'=>$catIds))
+							->count();
+		}
 		return $count;
 	}
 }
