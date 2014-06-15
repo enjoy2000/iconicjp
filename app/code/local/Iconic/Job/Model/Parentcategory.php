@@ -50,7 +50,7 @@ class Iconic_Job_Model_Parentcategory extends Mage_Core_Model_Abstract
 		foreach($cats as $cat){
 			$catIds[] = $cat->getId();
 		}
-		if($this->getGroupCategory == 'industry'){
+		if($this->getGroupCategory() == 'industry'){
 			$count = Mage::getModel('job/job')->getCollection()
 							->addFieldToFilter('category_id', array('in'=>$catIds))
 							->count();
