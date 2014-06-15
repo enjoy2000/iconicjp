@@ -5,10 +5,10 @@
  * http://wenzhixin.net.cn/p/multiple-select/
  */
 
+var newcheck = 'abc';
 (function($) {
 
     'use strict';
-
     function MultipleSelect($el, options) {
         var that = this,
             name = $el.attr('name') || options.name || '',
@@ -205,6 +205,8 @@
                     value: $(this).val(),
                     checked: $(this).prop('checked')
                 });
+                
+                newcheck = $(this);
 
                 if (that.options.single && that.options.isOpen && !that.options.keepOpen) {
                     that.close();
@@ -259,6 +261,7 @@
             var selected = this.getSelects().length;
             if(selected > 3){
             	this.$choice.addClass('error');
+            	newcheck.prop('checked', false);
             	alert('Maximum 3 choices!');
             }else{
             	this.$choice.removeClass('error');
