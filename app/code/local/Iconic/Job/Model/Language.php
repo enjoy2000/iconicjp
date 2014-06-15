@@ -47,7 +47,7 @@ class Iconic_Job_Model_Language extends Mage_Core_Model_Abstract
 	
 	public function getCount(){
 		$count = Mage::getModel('job/job')->getCollection()
-					->addFieldToFilter('language_id', array('eq'=>$this->getId()))
+					->addFieldToFilter('language_id', array('like'=>'%,'.$this->getId().',%'))
 					->count();
 		return $count;
 	}

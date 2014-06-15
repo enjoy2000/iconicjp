@@ -46,11 +46,13 @@ class Iconic_Job_Model_Parentcategory extends Mage_Core_Model_Abstract
 	
 	public function getCount(){
 		$cats = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id',$this->getId());
-		$count = 0;
+		$catIds = array();
 		foreach($cats as $cat){
-			$jobcount = Mage::getModel('job/job')->getCollection()->addFieldToFilter('category_id',$cat->getId())->count();
-			$count = $count + $jobcount;
+			$catIds[] = $cat->getId();
 		}
+		$count = Mage::getModel('job/job')->getCollection()
+						->addFieldToFilter('category_id', array('in'=>$catIds))
+						->count();
 		return $count;
 	}
 }
