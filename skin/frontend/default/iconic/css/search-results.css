@@ -88,6 +88,10 @@
 	padding: 0px 7px;
 	border: solid 1px #4571EB;
 	color: #4571EB;
+	text-decoration: none;
+}
+.pager ol li a:hover{
+	border-color: #000;
 }
 .pager ol li{
 	display: inline;
