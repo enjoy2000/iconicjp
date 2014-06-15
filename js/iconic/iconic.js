@@ -61,7 +61,11 @@ var hook=true;
 				$(this).addClass('active');
 			}
 		});
+		
+		//multi select description
+		jQuery('.ms-drop li:first-child').html('最大3業種まで選択可能です。');
 	});
+	
 	
 })(jQuery);
 

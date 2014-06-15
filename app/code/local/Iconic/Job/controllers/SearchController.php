@@ -43,37 +43,66 @@ class Iconic_Job_SearchController extends Mage_Core_Controller_Front_Action{
 			$searchBlock->setFunction((int)$function);
 		}
 		
+		$multilocation = $this->getRequest()->get("multilocation");
+		if($multilocation){
+			$searchBlock->setMultiLocation($multilocation);
+		}
+		
+		$multilanguage = $this->getRequest()->get("multilanguage");
+		if($multilanguage){
+			$searchBlock->setMultiLanguage($multilanguage);
+		}
+		
+		$multicategory = $this->getRequest()->get("multicategory");
+		if($multicategory){
+			$searchBlock->setMultiCategory($multicategory);
+		}
+		
+		$multifunction = $this->getRequest()->get("multifunction");
+		if($multifunction){
+			$searchBlock->setMultiFunction($multifunction);
+		}
+		
 		$this->renderLayout();
 	}
 	
 	public function searchformAction(){
-		$request = $this->getRequest();
+		$data = $this->getRequest()->getPost();
 		$url = Mage::helper('job')->getSearchUrl();
-		
-		if($request->get('location')){
-			$url .= '/' . Mage::getModel('job/location')->load($request->get('location'))->getUrlKey();
-		}
-		if($request->get('language')){
-			$url .= '/' . Mage::getModel('job/language')->load($request->get('language'))->getUrlKey();
-		}
-		if($request->get('category')){
-			$url .= '/' . Mage::getModel('job/category')->load($request->get('category'))->getUrlKey();
-		}
-		if($request->get('q')){
-			$url .= '/' . Mage::helper('job')->formatUrlKeyJp($request->get('q'));
-			Mage::getSingleton('core/session')->setKeywordSearch($request->get('q'));
+		if((count($data['multilocation']) < 2) && (count($data['multilanguage']) < 2) && (count($data['multicategory']) < 2) && (count($data['multifunction']) < 2)){
+			if($data['multilocation']){
+				$url .= '/' . Mage::getModel('job/location')->load($data['multilocation'])->getUrlKey();
+			}
+			if($data['multilanguage']){
+				$url .= '/' . Mage::getModel('job/language')->load($data['multilanguage'])->getUrlKey();
+			}
+			if($data['multicategory']){
+				$url .= '/' . Mage::getModel('job/parentcategory')->load($data['multicategory'])->getUrlKey();
+			}
+			if($data['multifunction']){
+				$url .= '/' . Mage::getModel('job/parentcategory')->load($data['multifunction'])->getUrlKey();
+			}
+			if($data['q']){
+				$url .= '/' . Mage::helper('job')->formatUrlKeyJp($data['q']);
+				Mage::getSingleton('core/session')->setKeywordSearch($data['q']);
+			}else{
+				Mage::getSingleton('core/session')->unsKeywordSearch();
+			}
+			$url .= '/';
+			if(Mage::app()->getStore()->getCode() == 'jp'){
+				$base = Mage::getBaseUrl();
+			}else{
+				$base = Mage::getBaseUrl().'en/';
+			}
+			
+			$newurl = $base.$url;
+			header("Location: {$newurl}");
+			die();
 		}else{
-			Mage::getSingleton('core/session')->unsKeywordSearch();
+			//var_dump($data);die;
+			$newurl = Mage::getUrl('job/search/index', array('_query'=> $data));
+			header("Location: {$newurl}");
+			die;
 		}
-		$url .= '/';
-		if(Mage::app()->getStore()->getCode() == 'jp'){
-			$base = Mage::getBaseUrl();
-		}else{
-			$base = Mage::getBaseUrl().'en/';
-		}
-		
-		$url = $base.$url;
-		header("Location: {$url}");
-		die();
 	}
 }

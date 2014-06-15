@@ -1,24 +1,29 @@
 <div id="search-block">
 	<div class="wrapper">
 		<div class="search-block clearfix">
-			<form action="/job/search/searchform" method="get">
+			<form action="/job/search/searchform" method="POST">
 				<input name="q" class="width-80" id="keyword"
 					value="<?php echo $this->getKeyword();?>"
 					placeholder="<?php echo $this->__('検索キーワードはこちらに入力してください。') ?>" />
+				<select multiple="multiple" id="multicategory" name="multicategory[]" class="inline multicategory">
+					<option value=""><?php echo $this->__('業界から探す') ?></option>
+					<?php echo $this->getCategoryList() ?>
+				</select>
+	    		
 				<br class="clear"/>
-				<select name="location" class="inline">
+				<select multiple="multiple" id="multilocation" name="multilocation[]" class="inline multilocation">
 					<option value=""><?php echo $this->__('国から探す') ?></option>
 					<?php echo $this->getLocationList() ?>
 				</select>
 				
-				<select name="category" class="inline">
-					<option value=""><?php echo $this->__('業界・職種から探す') ?></option>
-					<?php echo $this->getCategoryList() ?>
-				</select>
-				
-				<select name="language" class="inline">
+				<select multiple="multiple" id="multilanguage" name="multilanguage[]" class="inline multilanguage">
 					<option value=""><?php echo $this->__('言語から探す') ?></option>
-					<?php echo $this->getLanguageList() ?>			
+					<?php echo $this->getLanguageList() ?>	
+				</select>
+	    		
+				<select multiple="multiple" id="multifunction" name="multifunction[]" class="inline multifunction">
+					<option value=""><?php echo $this->__('職種から探す') ?></option>
+					<?php echo $this->getFunctionList() ?>
 				</select>
 				
 				<button id="search-btn" name"submit" type="submit" class="flr inline btn btn-orange"><?php echo $this->__('検索する') ?></button>		
@@ -26,3 +31,24 @@
 		</div>
 	</div>
 </div>
+<script>
+		jQuery('#multifunction').multipleSelect({
+            selectAll: false,
+            placeholder: '<?php echo $this->__('職種から探す') ?>',
+        });
+        
+        jQuery('#multilanguage').multipleSelect({
+            selectAll: false,
+            placeholder: '<?php echo $this->__('言語から探す') ?>',
+        });
+			        
+		jQuery('#multilocation').multipleSelect({
+            selectAll: false,
+            placeholder: '<?php echo $this->__('国から探す') ?>',
+        });
+        
+		jQuery('#multicategory').multipleSelect({
+            selectAll: false,
+            placeholder: '<?php echo $this->__('業界から探す') ?>',
+        });
+</script>

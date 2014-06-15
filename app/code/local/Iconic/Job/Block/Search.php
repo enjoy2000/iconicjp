@@ -14,14 +14,19 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 				$tit .= $langname;
 			}
 			if($catId = $this->getRequest()->get('location')){
-				$loc = Mage::getModel('job/location')->load($catId);
+				$loc = Mage::getModel('job/country')->load($catId);
 				$locname = Mage::helper('job')->getTransName($loc);
 				$tit .= $locname;
 			}
-			if($functioncatId = $this->getRequest()->get('category')){
-				$cat = Mage::getModel('job/category')->load($functioncatId);
-				$catname = Mage::helper('job')->getTransName($cat);
-				$tit .= $catname;
+			if($industryId = $this->getRequest()->get('industry')){
+				$cat = Mage::getModel('job/parentcategory')->load($industryId);
+				$industryname = Mage::helper('job')->getTransName($cat);
+				$tit .= $industryname;
+			}
+			if($functionId = $this->getRequest()->get('industry')){
+				$cat = Mage::getModel('job/parentcategory')->load($functionId);
+				$functionname = Mage::helper('job')->getTransName($cat);
+				$tit .= $functionname;
 			}
 			$tit .= $helper->__('の求人検索結果');
 		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
@@ -70,7 +75,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 		}
 		
 		if ($this->getLanguage()){
-			$collection->addFieldToFilter('language_id', array('eq' => $this->getLanguage()));
+			$collection->addFieldToFilter('language_id', array('like' => '%,'.$this->getLanguage().',%'));
 		}
 		if ($this->getJobLevel()){
 			$collection->addFieldToFilter('job_level', array('eq' => $this->getJobLevel()));
@@ -96,6 +101,37 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 				$catIds2[] = $cat->getCategoryId();
 			}
 			$collection->addFieldToFilter('category_id', array('in' => $catIds2));
+		}
+		
+		if($this->getMultiLocation()){
+			$collection->addFieldToFilter('location_id', array('in' => $this->getMultiLocation()));
+		}
+		if($this->getMultiCategory()){
+			$multicat = array();
+			foreach($this->getMultiCategory() as $catId){
+				$cats = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$catId));
+				foreach($cats as $cat){
+					$multicat[] = $cat->getCategoryId();
+				}
+			}
+			$collection->addFieldToFilter('category_id', array('in' => $multicat));
+		}
+		if($this->getMultiFunction()){
+			$multifunction = array();
+			foreach($this->getMultiFunction() as $catId){
+				$cats = Mage::getModel('job/category')->getCollection()->addFieldToFilter('parentcategory_id', array('eq'=>$catId));
+				foreach($cats as $cat){
+					$multifunction[] = $cat->getCategoryId();
+				}
+			}
+			$collection->addFieldToFilter('category_id', array('in' => $multifunction));
+		}
+		if($this->getMultiLanguage()){
+			$condition = array();
+			foreach($this->getMultiLanguage() as $lang){
+				$condition[] = array('like' => '%,'.$lang.',%');
+			}
+			$collection->addFieldToFilter('language_id', $condition);
 		}
 		
 		$collection->setOrder('created_time','DESC');

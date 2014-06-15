@@ -331,21 +331,47 @@ body.job-index-createcv #search-block{
 #search-block .search-block{
 	padding: 20px 40px;
 }
-#search-block .search-block input{
+#search-block .search-block form > input{
 	background-color: #e1e8fc;
 	padding-left: 30px;
-	background: url('../images/search.png') 10px 10px #e1e8fc no-repeat;
+	background: url('../images/search.png') 10px 10px #fff no-repeat;
 	margin-bottom: 15px;
 	color: #4571eb;
-	width: 700px;
+	width: 463px;
 }
 #search-block .search-block input:focus{
 	background-color: #dbdcdd;
 }
 #search-block .search-block select{
-	width: 230px;
+	width: 242px;
 	display: inline-block;
 	background-color: #e6ecfc;
+}
+#search-block .search-block .ms-parent{
+	margin-left: 15px;
+}
+#search-block .search-block .ms-parent.multilocation{
+	margin-left: 0;
+}
+#search-block .search-block .ms-parent > button{
+	background-color: #fff;
+	background-position: 5px center, right 5px center;
+	background-repeat: no-repeat;
+}
+#search-block .search-block .ms-parent > button > span{
+	left: 20px;
+}
+#search-block .search-block .ms-parent.multilocation > button{
+	background-image: url('../images/location.png'), url('../images/select.png');
+}
+#search-block .search-block .ms-parent.multilanguage > button{
+	background-image: url('../images/language.png'), url('../images/select.png');
+}
+#search-block .search-block .ms-parent.multicategory > button{
+	background-image: url('../images/industry.png'), url('../images/select.png');
+}
+#search-block .search-block .ms-parent.multifunction > button{
+	background-image: url('../images/function.png'), url('../images/select.png');
 }
 #search-block .search-block select+select {
 	margin-left: 21px;
