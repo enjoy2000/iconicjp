@@ -1,6 +1,9 @@
 /*
 	Styles for IconicJP
 */
+#svg-image-blur{
+	display: none;
+}
 body{
 	background-color: #f8f8f8;
 }
