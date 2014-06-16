@@ -38,6 +38,7 @@ Default layout, loads most of the pages
                 <action method="addJs"><script>iconic/jquery.min.js</script></action>
                 <action method="addJs"><script>iconic/jquery.cycle.all.js</script></action>
                 <action method="addJs"><script>multiple-select/jquery.multiple.select.js</script></action>
+                <action method="addJs"><script>iconic/jcarousellite_1.0.1.min.js</script></action>
                 <action method="addJs"><script>iconic/iconic.js</script></action>
 		
 				<action method="addCss"><stylesheet>css/reset.css</stylesheet></action>

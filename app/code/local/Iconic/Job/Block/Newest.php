@@ -8,7 +8,7 @@ class Iconic_Job_Block_Newest extends Mage_Core_Block_Template
 		
 		//set collection to view
 		$jobs = Mage::getModel('job/job')->getCollection()->setOrder('created_time','DESC');
-		$jobs->setPageSize(30);
+		$jobs->setPageSize(10);
 		$jobs->setCurPage(1);
 		$this->setJobCollection($jobs);
 		

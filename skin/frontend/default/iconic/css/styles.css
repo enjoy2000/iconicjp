@@ -612,8 +612,60 @@ body.job-index-createcv #search-block{
 /*
  * HOMEPAGE BLOCK
  */
+#newest-jobs{
+	margin-bottom: 35px;
+}
+#newest-jobs h2{
+	margin-bottom: 20px;
+}
+#newest-jobs ul li{
+	width: 260px;
+	border: solid 1px #d5d6d7;
+	margin: 5px;
+	padding: 0 10px;
+	position: relative;
+	height: 120px;
+}
+#newest-jobs ul li img{
+	margin-top: 5px;
+}
+#newest-jobs ul li span.location-name{
+	padding: 3px 10px;
+	background-color: #d35400;
+	color: #fff;
+	margin-left: 10px;
+}
+#newest-jobs ul li .date{
+	font-size: 11px;
+	margin-top: 15px;
+	color: #000;
+}
+#newest-jobs ul li h3.tit{
+	color: #000;
+	font-weight: bold;
+	font-size: 13px;
+	margin-top: 15px;
+}
+#newest-jobs ul li p{
+	font-size: 13px;
+}
+#newest-jobs ul li a.view{
+	color: #636466;
+	font-size: 12px;
+	text-decoration: none;
+	position: absolute;
+	bottom: 5px;
+	right: 10px;
+}
+#newest-jobs ul li a.view:hover{
+	color: #4571EB;
+}
 #tab-content{
 	overflow: hidden;
+	border: solid 1px #86a3f2;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
 }
 #tab-content-location{
 	position: relative;
@@ -692,15 +744,18 @@ body.job-index-createcv #search-block{
 	color: #fff;
 	font-weight: bold;
 	background-color: #4571EB;
-	padding: 15px 40px;
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
+	padding: 5px 25px;
+	border: solid 1px transparent;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 	font-size: 19px;
 }
 #tab-control .tab:hover{
 	cursor: pointer;
 	color: #fff;
 	background-color: #86a3f2;
+	border-color: #86a3f2;
+	border-bottom: none;
 }
 #tab-control .tab+.tab{
 	margin-left: 8px;
@@ -708,12 +763,16 @@ body.job-index-createcv #search-block{
 #tab-control .tab.active{
 	color: #636466;
 	background-color: #F8F8F8;
+	border-color: #86a3f2;
+	border-bottom-color: #fff;
+	position: relative;
+	top: 1px;
 }
-#tab-content-category{
+.category-function{
 	padding: 30px;
 	background-color: #fff;
 }
-#tab-content-category h5{
+.category-function h5{
 	font-weight: bold;
 	font-size: 21px;
 	padding-bottom: 5px;
@@ -721,41 +780,41 @@ body.job-index-createcv #search-block{
 	padding-left: 10px;
 	margin-bottom: 15px;
 }
-#tab-content-category .left{
+.category-function .left{
 	margin-left: 10px;
 }
-#tab-content-category div.parent a.parent{
+.category-function div.parent a.parent{
 	color: #272525;
 	font-weight: bold;
 	font-size: 15px;
 	text-decoration: none;
 }
-#tab-content-category div.parent a.parent span{
+.category-function div.parent a.parent span{
 	font-weight: normal;
 	color: #f58220;
 }
-#tab-content-category div.parent ul li a{
+.category-function div.parent ul li a{
 	color: #636466;
 	text-decoration: none;
 	font-size: 13px;
 	letter-spacing: -1px;
 }
-#tab-content-category a:hover{
+.category-function a:hover{
 	color: #4571EB!important;
 	text-decoration: underline!important;
 }
-#tab-content-category .function .mid{
+.category-function .function .mid{
 }
-#tab-content-category .industry .mid{
+.category-function .industry .mid{
 }
-#tab-content-category .function .list-category > div,
-#tab-content-category .industry .list-category > div{
+.category-function .function .list-category > div,
+.category-function .industry .list-category > div{
 	width: 32%;
 }
-#tab-content-category .group-category+.group-category{
+.category-function .group-category+.group-category{
 	margin-top: 50px;
 }
-#tab-content-category div.parent+div.parent{
+.category-function div.parent+div.parent{
 	margin-top: 20px;
 }
 #tab-content-language{

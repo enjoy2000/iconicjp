@@ -1,3 +1,36 @@
+<div id="newest-jobs">
+	<h2 class="blue-tit">
+		<?php echo $this->__('最新求人情報') ?>
+	</h2>
+	
+	<div class="jobs-carousel">
+		<ul>
+			<?php foreach($this->getJobCollection() as $job): ?>
+			<?php $locname = Mage::helper('job')->getTransName(Mage::getModel('job/country')->load($job->getLocationId())); ?>
+			<?php $locnameen = strtolower(Mage::getModel('job/country')->load($job->getLocationId())->getNameEn()) ?>
+			<li>
+				<div class="top clearfix">
+					<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.$locnameen.'.png') ?>" />
+					<span class="fll location-name"><?php echo $locname ?></span>
+					<div class="date flr">
+						<?php echo Mage::helper('job')->formatDate($job->getCreatedTime()) ?>
+					</div>
+				</div>
+				<div class="bottom">
+					<h3 class="tit"><?php echo $job->getTitle() ?></h3>
+					<p>
+						<?php echo $this->__('勤務地: %s | 給与: %s', $job->getLocationText(), $job->getFullSalary()) ?>
+					</p>
+				</div>
+				<a class="view" href="<?php echo $job->getUrl() ?>" title="<?php echo $this->__('詳細') ?>">
+					>>  <?php echo $this->__('詳細') ?>
+				</a>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</div>
+
 <div id="newest-block">
 	<!-- Tab Control -->
 	<div id="tab-control" class="clearfix">
@@ -5,7 +38,10 @@
 			<span><?php echo $this->__('国から探す') ?></span>
 		</div>
 		<div data-tab="category" class="tab fll mid catgory">
-			<span><?php echo $this->__('業界・職種から探す') ?></span>
+			<span><?php echo $this->__('業界から探す') ?></span>
+		</div>
+		<div data-tab="function" class="tab fll mid function">
+			<span><?php echo $this->__('職種から探す') ?></span>
 		</div>
 		<div data-tab="language" class="tab fll last language">
 			<span><?php echo $this->__('言語から探す') ?></span>
@@ -37,47 +73,7 @@
 		</div>
 		
 		<!-- Content for category -->
-		<div style="display: none;" id="tab-content-category" class="tab-content category">
-			<!-- Function Category -->
-			<div class="group-category clearfix function">
-				<h5><?php echo $this->__('職種から探す') ?></h5>
-				<div class="list-category">
-					<?php $functionsCat = clone $this->getFunctionCollection(); ?>
-					<?php $leftFunction = $functionsCat->clear()->setPageSize(3)->setCurPage(1)->load(); ?>
-					<div class="left fll">
-						<?php foreach($leftFunction as $parent): ?>
-							<div class="parent">
-								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
-									<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
-								</a>
-							</div>
-						<?php endforeach; ?>
-					</div>
-					
-					<?php $midFunction = $functionsCat->clear()->setPageSize(3)->setCurPage(2)->load(); ?>
-					<div class="mid fll">
-						<?php foreach($midFunction as $parent): ?>
-							<div class="parent">
-								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
-									<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
-								</a>
-							</div>
-						<?php endforeach; ?>
-					</div>
-					
-					<?php $rightFunction = $functionsCat->clear()->setPageSize(3)->setCurPage(3)->load(); ?>
-					<div class="right flr">
-						<?php foreach($rightFunction as $parent): ?>
-							<div class="parent">
-								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
-									<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
-								</a>
-							</div>
-						<?php endforeach; ?>
-					</div>
-				</div>
-			</div>
-			
+		<div style="display: none;" id="tab-content-category" class="tab-content category category-function">
 			<!-- Industry Category -->
 			<div class="group-category clearfix industry">
 				<h5><?php echo $this->__('業界から探す') ?></h5>
@@ -119,6 +115,49 @@
 						<?php $i++;endforeach; ?>
 					</div>
 				</div>
+				</div>
+			</div>
+			
+			<!-- Content for Function Tab -->
+			<div style="display: none;" id="tab-content-function" class="tab-content function category-function">
+				<!-- Function Category -->
+				<div class="group-category clearfix function">
+					<h5><?php echo $this->__('職種から探す') ?></h5>
+					<div class="list-category">
+						<?php $functionsCat = clone $this->getFunctionCollection(); ?>
+						<?php $leftFunction = $functionsCat->clear()->setPageSize(3)->setCurPage(1)->load(); ?>
+						<div class="left fll">
+							<?php foreach($leftFunction as $parent): ?>
+								<div class="parent">
+									<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
+										<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
+									</a>
+								</div>
+							<?php endforeach; ?>
+						</div>
+						
+						<?php $midFunction = $functionsCat->clear()->setPageSize(3)->setCurPage(2)->load(); ?>
+						<div class="mid fll">
+							<?php foreach($midFunction as $parent): ?>
+								<div class="parent">
+									<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
+										<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
+									</a>
+								</div>
+							<?php endforeach; ?>
+						</div>
+						
+						<?php $rightFunction = $functionsCat->clear()->setPageSize(3)->setCurPage(3)->load(); ?>
+						<div class="right flr">
+							<?php foreach($rightFunction as $parent): ?>
+								<div class="parent">
+									<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
+										<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
+									</a>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</div>
 				</div>
 			</div>
 			
@@ -167,6 +206,11 @@
 			$('.tab-content').fadeOut(200);
 			$('.tab-content.'+$(this).data('tab')).fadeIn(200);
 		});
+		
+		$('.jobs-carousel').jCarouselLite({
+			auto: 5000,
+			speed: 1000
+		})
 	});
 })(jQuery)
 </script>

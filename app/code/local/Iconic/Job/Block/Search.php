@@ -100,7 +100,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 			foreach($cats2 as $cat){
 				$catIds2[] = $cat->getCategoryId();
 			}
-			$collection->addFieldToFilter('category_id', array('in' => $catIds2));
+			$collection->addFieldToFilter('function_category_id', array('in' => $catIds2));
 		}
 		
 		if($this->getMultiLocation()){
@@ -124,7 +124,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 					$multifunction[] = $cat->getCategoryId();
 				}
 			}
-			$collection->addFieldToFilter('category_id', array('in' => $multifunction));
+			$collection->addFieldToFilter('function_category_id', array('in' => $multifunction));
 		}
 		if($this->getMultiLanguage()){
 			$condition = array();
