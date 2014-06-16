@@ -77,7 +77,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 				? ((date("Y") - $birthDate[0]) - 1)
 				: (date("Y") - $birthDate[0]));
 
-				$location = Mage::getModel('job/listcountry')->load($customer->getLocation())->getName();				
+				$location = Mage::getModel('job/listlocation')->load($customer->getLocation())->getName();				
 				$bodyHtml = '<table><tbody>';			
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('登録日(Registration Date)').':</td><td> '.date('d-M-Y').'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('氏名(Name)').':</td><td> '.$customer->getName().'</td></tr>';
