@@ -71,7 +71,7 @@ class Iconic_Job_SearchController extends Mage_Core_Controller_Front_Action{
 		$url = Mage::helper('job')->getSearchUrl();
 		if((count($data['multilocation']) < 2) && (count($data['multilanguage']) < 2) && (count($data['multicategory']) < 2) && (count($data['multifunction']) < 2)){
 			if($data['multilocation']){
-				$url .= '/' . Mage::getModel('job/location')->load($data['multilocation'])->getUrlKey();
+				$url .= '/' . Mage::getModel('job/country')->load($data['multilocation'])->getUrlKey();
 			}
 			if($data['multilanguage']){
 				$url .= '/' . Mage::getModel('job/language')->load($data['multilanguage'])->getUrlKey();

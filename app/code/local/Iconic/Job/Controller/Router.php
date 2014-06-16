@@ -55,7 +55,7 @@ class Iconic_Job_Controller_Router extends Mage_Core_Controller_Varien_Router_Ab
 			foreach($parts as $part){
 				$loc = Mage::getModel('job/language')->load($part, 'url_key');
 				$cat = Mage::getModel('job/parentcategory')->load($part, 'url_key');
-				$location = Mage::getModel('job/location')->load($part, 'url_key');
+				$location = Mage::getModel('job/country')->load($part, 'url_key');
 				if($loc->getId()){
 					$request
 						->setParam('language', $loc->getId());
