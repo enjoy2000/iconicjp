@@ -652,7 +652,7 @@ body.job-index-createcv #search-block{
 #newest-jobs ul li a.view{
 	color: #636466;
 	font-size: 12px;
-	text-decoration: none;
+	text-decoration: underline;
 	position: absolute;
 	bottom: 5px;
 	right: 10px;
