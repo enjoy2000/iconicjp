@@ -58,20 +58,14 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 	
 	public function getCategoryName(){
 		$category = Mage::getModel('job/category')->load($this->getCategoryId());
-		if(Mage::app()->getStore()->getCode() == 'jp'){
-			return $category->getName();
-		}else{
-			return $category->getNameEn();
-		}
+		$parent = Mage::getModel('job/parentcategory')->load($category->getParentcategoryId());
+		return Mage::helper('job')->getTransName($parent);
 	}
 	
 	public function getFunctionName(){
 		$function = Mage::getModel('job/category')->load($this->getFunctionCategoryId());
-		if(Mage::app()->getStore()->getCode() == 'jp'){
-			return $function->getName();
-		}else{
-			return $function->getNameEn();
-		}
+		$parent = Mage::getModel('job/parentcategory')->load($function->getParentcategoryId());
+		return Mage::helper('job')->getTransName($parent);
 	}
 	
 	public function getLanguage(){
