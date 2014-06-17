@@ -54,7 +54,7 @@
 		<div id="tab-content-location" class="tab-content map">
 			<img id="world-map" src="<?php echo $this->getSkinUrl('images/map2.png') ?>" border="0" width="763" height="588" orgWidth="763" orgHeight="588" usemap="#image-map" alt="" />
 			<map name="image-map" id="world-map">
-			    <area data-search="map" shape="rect" coords="761,586,763,588" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
+			    <area id="map" shape="rect" coords="761,586,763,588" alt="Image Map" style="outline:none;" title="World Map" href="" />
 			    <area data-search="japan" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/japan" shape="poly" coords="536,183,554,172,567,162,586,161,595,154,600,146,617,145,624,125,624,102,636,88,640,73,655,77,677,87,682,100,655,114,648,117,650,133,639,143,641,157,617,174,581,185,561,189,552,206,540,196,544,190" style="outline:none;" target="_self"     />
 			    <area data-search="taiwan" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/taiwan" shape="poly" coords="459,282,453,273,461,259,467,251,477,254,471,269,464,283" style="outline:none;" target="_self"     />
 			    <area data-search="hong-kong" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/hong-kong" shape="poly" coords="403,287,402,282,406,280,421,284,410,299" style="outline:none;" target="_self"     />
@@ -79,29 +79,6 @@
 			<p data-search="<?php echo $country->getUrlKey() ?>" class="<?php echo $country->getUrlKey() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></p>
 			<?php endforeach; ?>
 			
-			<script>
-				jQuery('map area, #tab-content-location p').not('#map').hover(function(){
-						jQuery('img.'+jQuery(this).data('search')).show();
-						jQuery('p.'+jQuery(this).data('search')).addClass('active');
-					},
-					function(){
-						jQuery('img.'+jQuery(this).data('search')).hide();
-						jQuery('p.'+jQuery(this).data('search')).removeClass('active');
-					}
-				);
-				jQuery('#tab-content-location img.country').hover(function(){
-						jQuery(this).show();
-						jQuery(this).next().addClass('active');
-					},
-					function(){
-						jQuery(this).hide();
-						jQuery(this).next().removeClass('active');
-				});
-				jQuery('#tab-content-location img.country, #tab-content-location p').click(function(e){
-					e.preventDefault();
-					window.location = "<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getSearchUrl() ?>/"+jQuery(this).data('search');
-				});
-			</script>
 			<div class="location">
 				<?php foreach($this->getCountryCollection() as $country): ?>
 				<div class="country <?php echo str_replace(' ', '', strtolower($country->getNameEn())) ?>">
@@ -231,10 +208,35 @@
 			$('.tab-content.'+$(this).data('tab')).fadeIn(200);
 		});
 		
+		
+		//job carousel
 		$('.jobs-carousel').jCarouselLite({
 			auto: 5000,
 			speed: 1000
-		})
+		});
+		
+		//search by country map area
+		$('map area, #tab-content-location p').not('#map').hover(function(){
+				$('img.'+$(this).data('search')).show();
+				$('p.'+$(this).data('search')).addClass('active');
+			},
+			function(){
+				$('img.'+$(this).data('search')).hide();
+				$('p.'+$(this).data('search')).removeClass('active');
+			}
+		);
+		$('#tab-content-location img.country').hover(function(){
+				$(this).show();
+				$(this).next().addClass('active');
+			},
+			function(){
+				$(this).hide();
+				$(this).next().removeClass('active');
+		});
+		$('#tab-content-location img.country, #tab-content-location p').click(function(e){
+			e.preventDefault();
+			window.location = "<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getSearchUrl() ?>/"+$(this).data('search');
+		});
 	});
 })(jQuery)
 </script>
