@@ -25,11 +25,35 @@
 			<span><?php echo Mage::helper('job')->getTransName($location) ?></span>
 		</div>
 		<?php endif; ?>
+		<?php if($this->hasMultiLocation()): ?>
+		<div class="info inline-b">
+			<?php echo $this->__('国から探す') ?>:
+			<?php 
+			$multiloc = array();
+			foreach($this->getMultiLocation() as $locId){
+				$multiloc[] = Mage::helper('job')->getTransName(Mage::getModel('job/country')->load($locId));
+			}
+			?>
+			<span><?php echo implode('、', $multiloc) ?></span>
+		</div>
+		<?php endif; ?>
 		
 		<?php if($this->hasLanguage()): ?>
 		<div class="info inline-b">
 			<?php echo $this->__('言語から探す') ?>:
 			<span><?php echo Mage::helper('job')->getTransName(Mage::getModel('job/language')->load($this->getLanguage())) ?></span>
+		</div>
+		<?php endif; ?>
+		<?php if($this->hasMultiLanguage()): ?>
+		<div class="info inline-b">
+			<?php echo $this->__('言語から探す') ?>:
+			<?php 
+			$multilang = array();
+			foreach($this->getMultiLanguage() as $langId){
+				$multilang[] = Mage::helper('job')->getTransName(Mage::getModel('job/language')->load($langId));
+			}
+			?>
+			<span><?php echo implode('、', $multilang) ?></span>
 		</div>
 		<?php endif; ?>
 		
@@ -46,11 +70,35 @@
 			<span><?php echo Mage::getModel('job/parentcategory')->load($this->getIndustry())->getName() ?></span>
 		</div>
 		<?php endif; ?>
+		<?php if($this->hasMultiCategory()): ?>
+		<div class="info inline-b">
+			<?php echo $this->__('業種') ?>:
+			<?php 
+			$multilang = array();
+			foreach($this->getMultiCategory() as $langId){
+				$multilang[] = Mage::helper('job')->getTransName(Mage::getModel('job/parentcategory')->load($langId));
+			}
+			?>
+			<span><?php echo implode('、', $multilang) ?></span>
+		</div>
+		<?php endif; ?>
 		
 		<?php if($this->hasFunction()): ?>
 		<div class="info inline-b">
 			<?php echo $this->__('職種から探す') ?>:
 			<span><?php echo Mage::getModel('job/parentcategory')->load($this->getFunction())->getName() ?></span>
+		</div>
+		<?php endif; ?>
+		<?php if($this->hasMultiFunction()): ?>
+		<div class="info inline-b">
+			<?php echo $this->__('職種から探す') ?>:
+			<?php 
+			$multilang = array();
+			foreach($this->getMultiFunction() as $langId){
+				$multilang[] = Mage::helper('job')->getTransName(Mage::getModel('job/parentcategory')->load($langId));
+			}
+			?>
+			<span><?php echo implode('、', $multilang) ?></span>
 		</div>
 		<?php endif; ?>
 		
