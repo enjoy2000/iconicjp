@@ -52,21 +52,63 @@
 	<div id="tab-content">
 		<!-- Content for newest-jobs -->
 		<div id="tab-content-location" class="tab-content map">
-			<img id="world-map" src="<?php echo $this->getSkinUrl('images/map.png') ?>" border="0" width="749" height="754" orgWidth="749" orgHeight="754" usemap="#image-maps" alt="" />
-			<map name="image-maps" id="world-map">
-			<area shape="rect" coords="747,752,749,754" alt="Image Map" style="outline:none;" title="Image Map" href="#" />
-			<area onmouseover="jQuery('img.vn').show();" onmouseout="jQuery('img.vn').hide();" alt="" title="VN" href="#" shape="poly" coords="103,328,107,326,115,327,119,323,128,324,139,316,150,321,162,324,164,333,175,336,172,351,159,361,153,373,161,385,173,402,191,426,197,470,169,489,139,511,133,494,134,490,144,479,154,478,149,470,165,462,164,429,159,410,136,381,124,374,125,362,108,351" style="outline:none;" target="_self"  />
-			<area onmouseover="jQuery('img.jp').show();" onmouseout="jQuery('img.jp').hide();"  alt="" title="JP" href="#" shape="poly" coords="427,240,432,208,451,198,485,192,502,191,521,169,532,153,548,145,553,123,552,97,566,75,567,52,572,39,602,51,609,65,632,65,645,80,602,105,577,102,587,121,589,159,580,171,574,184,572,202,531,222,500,241,479,241,469,251,456,267,447,272,438,255,438,243" style="outline:none;" target="_self"  />
-			<area onmouseover="jQuery('img.id').show();" onmouseout="jQuery('img.id').hide();"  alt="" title="ID" href="#" shape="poly" coords="9,539,31,538,55,550,77,573,115,595,133,620,134,634,154,621,175,616,180,591,191,588,210,596,231,586,247,592,265,566,268,555,295,557,302,578,313,594,338,591,366,591,392,588,423,578,437,580,437,597,460,601,492,614,529,617,553,629,584,640,584,725,534,727,522,706,486,712,415,730,359,756,309,746,263,726,189,714,136,703,91,657,61,641,26,590,18,565" style="outline:none;" target="_self"  />
+			<img id="world-map" src="<?php echo $this->getSkinUrl('images/map2.png') ?>" border="0" width="763" height="588" orgWidth="763" orgHeight="588" usemap="#image-map" alt="" />
+			<map name="image-map" id="world-map">
+			    <area data-search="map" shape="rect" coords="761,586,763,588" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
+			    <area data-search="japan" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/japan" shape="poly" coords="536,183,554,172,567,162,586,161,595,154,600,146,617,145,624,125,624,102,636,88,640,73,655,77,677,87,682,100,655,114,648,117,650,133,639,143,641,157,617,174,581,185,561,189,552,206,540,196,544,190" style="outline:none;" target="_self"     />
+			    <area data-search="taiwan" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/taiwan" shape="poly" coords="459,282,453,273,461,259,467,251,477,254,471,269,464,283" style="outline:none;" target="_self"     />
+			    <area data-search="hong-kong" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/hong-kong" shape="poly" coords="403,287,402,282,406,280,421,284,410,299" style="outline:none;" target="_self"     />
+			    <area data-search="korea" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/korea" shape="poly" coords="501,170,510,189,532,177,550,158,535,135,527,132,525,130,520,119,498,129,508,152,512,163" style="outline:none;" target="_self"     />
+			    <area data-search="china" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/china" shape="poly" coords="349,275,379,279,405,272,432,264,444,247,455,232,464,215,460,199,451,174,453,157,448,139,435,136,452,124,481,117,502,116,512,111,529,106,541,97,549,93,550,82,558,74,569,74,577,57,551,62,538,57,481,11,492,14,423,50,437,62,450,64,399,86,380,85,382,96,332,113,256,102,210,84,199,60,162,52,128,72,56,125,85,164,111,194,132,212,179,225,206,226,224,226,242,219,249,215,268,222,279,241,272,256,290,269,289,282,309,271,327,268,344,269" style="outline:none;" target="_self"     />
+			    <area data-search="philippines" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/philippines" shape="poly" coords="477,422,491,416,507,428,519,417,513,395,509,360,478,350,483,333,478,311,456,313,449,338,464,360" style="outline:none;" target="_self"     />
+			    <area data-search="indonesia" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/indonesia" shape="poly" coords="239,431,263,436,284,453,301,467,326,487,355,486,364,477,363,465,376,464,404,444,439,443,448,461,485,470,523,463,574,470,637,493,644,558,504,573,445,571,332,547,290,508,256,462,248,447" style="outline:none;" target="_self"     />
+			    <area data-search="india" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/india" shape="poly" coords="184,280,177,257,169,246,120,235,112,222,110,211,92,197,94,180,87,172,62,177,68,195,44,234,24,238,36,258,20,267,26,281,33,295,50,313,85,402,94,402,117,356,111,340" style="outline:none;" target="_self"     />
+			    <area data-search="bangladesh" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/bangladesh" shape="poly" coords="181,245,184,256,191,284,204,272,215,259,212,257,196,253" style="outline:none;" target="_self"     />
+			    <area data-search="myanmar" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/myanmar" shape="poly" coords="216,291,230,263,249,239,264,228,269,250,261,263,274,270,283,285,283,293,269,304,261,319,271,333,266,342,256,335,238,336,233,336,232,309" style="outline:none;" target="_self"     />
+			    <area data-search="singapore" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/singapore" shape="poly" coords="325,475,322,462,317,453,306,461" style="outline:none;" target="_self"     />
+			    <area data-search="malaysia" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/malaysia" shape="poly" coords="276,406,307,421,313,440,314,451,298,458" style="outline:none;" target="_self"     />
+			    <area data-search="vietnam" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/vietnam" shape="poly" coords="324,391,326,386,332,380,339,372,348,370,349,351,349,341,319,307,325,301,316,292,310,289,307,286,303,276,326,272,335,270,344,275,348,287,339,302,342,316,355,330,367,353,370,372,360,391,343,392,334,403,325,406" style="outline:none;" target="_self"     />
+			    <area data-search="cambodia" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/cambodia" shape="poly" coords="312,379,306,364,309,355,325,354,336,354,348,355,347,369,334,382,323,390,314,398" style="outline:none;" target="_self"     />
+			    <area data-search="laos" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/laos" shape="poly" coords="298,289,289,291,287,301,297,308,295,321,310,318,321,319,332,340,333,350,344,349,342,340,335,327,325,318,314,308,317,304,323,300,315,297,304,289,303,284,300,284" style="outline:none;" target="_self"     />
+			    <area data-search="thailand" alt="" title="" href="<?php echo Mage::helper('job')->getBaseUrl() ?>search-job/thailand" shape="poly" coords="270,346,280,369,293,367,302,369,305,356,316,351,329,352,327,342,323,333,322,322,312,319,293,327,291,318,293,310,282,300,267,305,264,319" style="outline:none;" target="_self"     />
 			</map>
-			<img data-class="vietnam" onmouseover="jQuery('img.vn').show();" onmouseout="jQuery('img.vn').hide();" title="<?php echo $this->__('ベトナム') ?>" class="map vn" src="<?php echo $this->getSkinUrl('images/vn-map.png') ?>" alt="Vietnam Map" />
-			<img data-class="japan" onmouseover="jQuery('img.jp').show();" onmouseout="jQuery('img.jp').hide();" title="<?php echo $this->__('日本') ?>" class="map jp" src="<?php echo $this->getSkinUrl('images/jp-map.png') ?>" alt="Japan Map" />
-			<img data-class="indonesia" onmouseover="jQuery('img.id').show();" onmouseout="jQuery('img.id').hide();" title="<?php echo $this->__('インドネシア') ?>" class="map id" src="<?php echo $this->getSkinUrl('images/id-map.png') ?>" alt="Indonesia Map" />
+			<?php 
+			$countries = Mage::getModel('job/country')->getCollection();
+			foreach($countries as $country): ?>
+			<img data-search="<?php echo $country->getUrlKey() ?>" class="<?php echo $country->getUrlKey() ?> country" src="<?php echo $this->getSkinUrl('images/map/'.$country->getUrlKey().'.png') ?>" />
+			<p data-search="<?php echo $country->getUrlKey() ?>" class="<?php echo $country->getUrlKey() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></p>
+			<?php endforeach; ?>
 			
+			<script>
+				jQuery('map area, #tab-content-location p').not('#map').hover(function(){
+						jQuery('img.'+jQuery(this).data('search')).show();
+						jQuery('p.'+jQuery(this).data('search')).addClass('active');
+					},
+					function(){
+						jQuery('img.'+jQuery(this).data('search')).hide();
+						jQuery('p.'+jQuery(this).data('search')).removeClass('active');
+					}
+				);
+				jQuery('#tab-content-location img.country').hover(function(){
+						jQuery(this).show();
+						jQuery(this).next().addClass('active');
+					},
+					function(){
+						jQuery(this).hide();
+						jQuery(this).next().removeClass('active');
+				});
+				jQuery('#tab-content-location img.country, #tab-content-location p').click(function(e){
+					e.preventDefault();
+					window.location = "<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getSearchUrl() ?>/"+jQuery(this).data('search');
+				});
+			</script>
 			<div class="location">
 				<?php foreach($this->getCountryCollection() as $country): ?>
-				<div class="country <?php echo strtolower($country->getNameEn()) ?>">
-					<h3><a href="<?php echo $country->getUrl() ?>"><?php echo Mage::helper('job')->getTransName($country) ?> <span>(<?php echo $country->getCount() ?>)</span></a></h3>
+				<div class="country <?php echo str_replace(' ', '', strtolower($country->getNameEn())) ?>">
+					<h3 class="clearfix">
+						<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.$country->getUrlKey().'.png') ?>" />
+						<a class="fll" href="<?php echo $country->getUrl() ?>"><?php echo Mage::helper('job')->getTransName($country) ?> <span>(<?php echo $country->getCount() ?>)</span></a>
+					</h3>
 				</div>
 				<?php endforeach; ?>
 			</div>
@@ -181,24 +223,6 @@
 <script>
 (function($){
 	$(document).ready(function(){
-		$('img.map').click(function(e){
-			e.preventDefault();
-			$('img.map').removeClass('show');
-			$(this).addClass('show');
-			$('.location > div').hide();
-			$('.location .'+$(this).data('class')).show();
-			$('.location').css('right', -160);
-			$('.location').stop().animate({right: 0}, 1000);
-			event.stopPropagation();
-		});
-		
-		$('#world-map').click(function() {
-			$('.location > div').show();
-			$('img.map').removeClass('show');
-			$('.location').css('right', -160);
-			$('.location').stop().animate({right: 0}, 1000);
-		});
-		
 		$('#tab-control .tab').click(function(e){
 			e.preventDefault();
 			$('.tab').removeClass('active');

@@ -631,7 +631,7 @@ body.job-index-createcv #search-block{
 }
 #newest-jobs ul li span.location-name{
 	padding: 3px 10px;
-	background-color: #d35400;
+	background-color: #E67E22;
 	color: #fff;
 	margin-left: 10px;
 }
@@ -669,62 +669,183 @@ body.job-index-createcv #search-block{
 }
 #tab-content-location{
 	position: relative;
-	background-color: #dae0e6;
+	background-color: #fff;
 }
-#tab-content-location img.map{
+#tab-content-location img.country{
 	display: none;
 	position: absolute;
 }
-#tab-content-location img.map.show{
-	display: block!important;
-}
-#tab-content-location img.map:hover{
+#tab-content-location p{
+	display: inline;
+	padding-bottom: 7px;
+	background: url('../images/country-bg.png') center bottom transparent no-repeat;
+	font-size: 12px;
+	position: absolute;
 	cursor: pointer;
 }
-#tab-content-location img.vn{
-	top: 317px;
-	left: 102px;
+#tab-content-location p.active{
+	font-weight: bold;
+	background: none;
 }
-#tab-content-location img.jp{
-	top: 47px;
-	left: 430px;
+#tab-content-location p.vietnam{
+	top: 325px;
+	left: 334px;
 }
-#tab-content-location img.id{
-	top: 539px;
+#tab-content-location img.vietnam{
+	top: 272px;
+	left: 304px;
+}
+#tab-content-location p.bangladesh{
+	top: 238px;
+	left: 150px;
+}
+#tab-content-location img.bangladesh{
+	top: 246px;
+	left: 182px;
+}
+#tab-content-location p.cambodia{
+	top: 354px;
+	left: 294px;
+}
+#tab-content-location img.cambodia{
+	top: 352px;
+	left: 305px;
+}
+#tab-content-location p.china{
+	top: 150px;
+	left: 300px;
+}
+#tab-content-location img.china{
+	top: 13px;
+	left: 59px;
+}
+#tab-content-location p.hong-kong{
+	top: 261px;
+	left: 397px;
+}
+#tab-content-location img.hong-kong{
+	top: 284px;
+	left: 406px;
+}
+#tab-content-location p.india{
+	top: 263px;
+	left: 70px;
+}
+#tab-content-location img.india{
+	top: 170px;
 	left: 12px;
 }
+#tab-content-location p.indonesia{
+	bottom: 50px;
+	right: 493px;
+}
+#tab-content-location img.indonesia{
+	bottom: 17px;
+	right: 235px;
+}
+#tab-content-location p.japan{
+	top: 135px;
+	right: 244px;
+}
+#tab-content-location img.japan{
+	top: 78px;
+	right: 198px;
+}
+#tab-content-location p.korea{
+	top: 139px;
+	right: 340px;
+}
+#tab-content-location img.korea{
+	top: 139px;
+	right: 320px;
+}
+#tab-content-location p.laos{
+	top: 283px;
+	right: 555px;
+}
+#tab-content-location img.laos{
+	top: 281px;
+	right: 529px;
+}
+#tab-content-location p.malaysia{
+	top: 417px;
+	right: 546px;
+}
+#tab-content-location img.malaysia{
+	top: 420px;
+	right: 426px;
+}
+#tab-content-location p.myanmar{
+	top: 269px;
+	right: 594px;
+}
+#tab-content-location img.myanmar{
+	top: 229px;
+	right: 587px;
+}
+#tab-content-location p.philippines{
+	top: 371px;
+	right: 364px;
+}
+#tab-content-location img.philippines{
+	top: 292px;
+	right: 359px;
+}
+#tab-content-location p.singapore{
+	top: 443px;
+	left: 310px;
+	background-position: left bottom;
+}
+#tab-content-location img.singapore{
+	top: 466px;
+	left: 315px;
+}
+#tab-content-location p.taiwan{
+	top: 245px;
+	left: 453px;
+}
+#tab-content-location img.taiwan{
+	top: 254px;
+	left: 451px;
+}
+#tab-content-location p.thailand{
+	top: 321px;
+	left: 283px;
+}
+#tab-content-location img.thailand{
+	top: 298px;
+	left: 262px;
+}
+#tab-content-location img.country:hover{
+	cursor: pointer;
+}
+
 #tab-content-location .location{
 	position: absolute;
 	height: 100%;
-	width: 160px;
+	width: 175px;
 	top: 0;
 	right: 0;
 	padding: 0 10px;
-	background-color: #fff;
+	background-color: #dae0e6;
 }
 #tab-content-location .location >div{
-	margin-top: 20px;
+	margin-top: 15px;
 }
 #tab-content-location .location h3 a{
 	color: #000;
+	font-size: 14px;
 	font-weight: bold;
+	text-decoration: none;
+	margin-left: 5px;
+}
+#tab-content-location .location h3 a:hover{
+	color: #f58220;
 	text-decoration: underline;
 }
 #tab-content-location .location h3 a span{
 	color: #f58220;
 	font-weight: normal;
-}
-#tab-content-location .location h3{
-	padding-left: 25px;
-}
-#tab-content-location .location .vietnam h3{
-	background: url('../images/country/vietnam.png') left center no-repeat;
-}
-#tab-content-location .location .japan h3{
-	background: url('../images/country/japan.png') left center no-repeat;
-}
-#tab-content-location .location .indonesia h3{
-	background: url('../images/country/indonesia.png') left center no-repeat;
 }
 #tab-content-location .location ul li:before{
 	content: ">";
@@ -737,12 +858,8 @@ body.job-index-createcv #search-block{
 	color: #636466;
 	text-decoration: underline;
 }
-#tab-content-location .location a:hover{
-	color: #4571EB;
-}
 #tab-control .tab{
 	color: #fff;
-	font-weight: bold;
 	background-color: #4571EB;
 	padding: 5px 25px;
 	border: solid 1px transparent;
