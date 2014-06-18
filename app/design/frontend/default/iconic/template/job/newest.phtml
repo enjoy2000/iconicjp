@@ -143,6 +143,24 @@
 				<div class="group-category clearfix function">
 					<h5><?php echo $this->__('職種から探す') ?></h5>
 					<div class="list-category">
+						<table>
+							<tr>
+							<?php $i=1;foreach($this->getFunctionCollection() as $parent): ?>
+								<td>
+									<div class="parent">
+										<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
+											<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
+										</a>
+									</div>
+								</td>
+								<?php if($i%3==0 && $i != $this->getFunctionCollection()->count()): ?>
+								</tr><tr>
+								<?php elseif($i == $this->getFunctionCollection()->count()): ?>
+								</tr>
+								<?php endif; ?>
+							<?php $i++;endforeach; ?>
+						</table>
+						<!-- old function style
 						<?php $functionsCat = clone $this->getFunctionCollection(); ?>
 						<?php $leftFunction = $functionsCat->clear()->setPageSize(3)->setCurPage(1)->load(); ?>
 						<div class="left fll">
@@ -175,7 +193,7 @@
 									</a>
 								</div>
 							<?php endforeach; ?>
-						</div>
+						</div>-->
 					</div>
 				</div>
 			</div>

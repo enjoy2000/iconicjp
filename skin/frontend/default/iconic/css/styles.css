@@ -900,6 +900,12 @@ body.job-index-createcv #search-block{
 .category-function .left{
 	margin-left: 10px;
 }
+.category-function table{
+	width: 100%
+}
+.category-function table tr td{
+	padding: 5px 10px;
+}
 .category-function div.parent a.parent{
 	color: #272525;
 	font-weight: bold;
