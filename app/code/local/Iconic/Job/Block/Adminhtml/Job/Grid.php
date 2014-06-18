@@ -61,7 +61,7 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
             'index'     => 'category_id',
             'filter'	=> false,
             'sortable'  => true,
-            //'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Category',
+            'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Category',
         ));
 		
 		$this->addColumn('function_category_id', array(
@@ -69,7 +69,7 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
             'index'     => 'function_category_id',
             'filter'	=> false,
             'sortable'  => true,
-            //'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Category',
+            'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Category',
         ));
                 
         $this->addColumn('location_id', array(

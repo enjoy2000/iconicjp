@@ -146,7 +146,7 @@ class Mage_Adminhtml_Block_Customer_Grid extends Mage_Adminhtml_Block_Widget_Gri
             'header'    => Mage::helper('customer')->__('Địa điểm'),
             'index'     => 'location',
             'filter'	=> false,
-            'sortable'  => false,
+            'sortable'  => true,
             'renderer'  => 'Mage_Adminhtml_Block_Customer_Grid_Renderer_Location',
         ));
 		
