@@ -31,6 +31,9 @@ Default layout, loads most of the pages
 -->
 
     <default>
+    	<reference name="head">
+        	<action method="addCss"><stylesheet>css/cms.css</stylesheet></action>
+        </reference>
         <reference name="footer">
             <block type="cms/block" name="cms_footer_links" before="footer_links">
                 <!--
