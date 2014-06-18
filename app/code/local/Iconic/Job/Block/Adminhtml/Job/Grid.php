@@ -18,10 +18,6 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
         $collection = Mage::getModel('job/job')->getCollection();
 		
 		//JOIN TABLES TO SHOW ON NAME ON GRID
-		/* @var $collection Iconic_Job_Model_Mysql4_Category_Collection */
-		
-		$collection->getSelect()->join(array("c" => $collection->getTable('job/category')), 
-			"main_table.category_id = c.category_id", "c.name as c_name");
 		/* @var $collection Iconic_Job_Model_Mysql4_Type_Collection */
 		
 		$collection->getSelect()->join(array("t" => $collection->getTable('job/type')), 
@@ -32,8 +28,8 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
 			"main_table.job_level = l.level_id", "l.name as l_name");
 		/* @var $collection Iconic_Job_Model_Mysql4_Location_Collection */
 		
-		$collection->getSelect()->join(array("la" => $collection->getTable('job/location')), 
-			"main_table.location_id = la.location_id", "la.name as la_name");
+		$collection->getSelect()->join(array("la" => $collection->getTable('job/country')), 
+			"main_table.location_id = la.country_id", "la.name as la_name");
 		
 		
         $this->setCollection($collection);
@@ -61,9 +57,19 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
         ));
         
         $this->addColumn('category_id', array(
-            'header'    => Mage::helper('job')->__('Category'),
-            'index'     => 'c_name',
-            'filter_index'=>'c.name',
+            'header'    => Mage::helper('customer')->__('Industry'),
+            'index'     => 'category_id',
+            'filter'	=> false,
+            'sortable'  => true,
+            'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Category',
+        ));
+		
+		$this->addColumn('function_category_id', array(
+            'header'    => Mage::helper('customer')->__('Function'),
+            'index'     => 'function_category_id',
+            'filter'	=> false,
+            'sortable'  => true,
+            'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Category',
         ));
                 
         $this->addColumn('location_id', array(
