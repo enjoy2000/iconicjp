@@ -3,6 +3,7 @@ app/code/community/Find/
 app/code/community/Phoenix/
 app/code/core/
 app/design/adminhtml/default/default/
+!app/design/adminhtml/default/default/template/dashboard/index.phtml
 app/design/adminhtml/default/find/
 app/design/frontend/base/
 app/design/frontend/default/blank/
