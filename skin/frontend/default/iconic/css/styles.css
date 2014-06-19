@@ -736,10 +736,12 @@ body.cms-home #ajax-load{
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
+	width: 100%;
 }
 #tab-content-location{
 	position: relative;
 	background-color: #fff;
+	width: 100%;
 }
 #tab-content-location img.country{
 	display: none;

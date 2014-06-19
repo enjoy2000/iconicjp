@@ -51,3 +51,41 @@
   ga('create', 'UA-33255746-1', 'iconic-jp.com');
   ga('send', 'pageview');
 </script>
+<?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
+<?php if(strpos($bodyclass, 'cms-index-index')): ?>
+<style>
+	#main .main{
+		background-color: transparent!important;
+		padding: 0!important;
+	}
+</style>
+<?php else: ?>
+<style>
+	#header-landing,
+	#banner,
+	#blog-news .wrapper > *{
+		display: none;
+	}
+</style>
+<?php endif; ?>
+
+<?php if((!$this->helper('customer')->isLoggedIn()) && (Mage::getSingleton('customer/session')->getShowLogin() === 1)): ?>
+	<?php 
+	Mage::getSingleton('customer/session')->unsShowLogin(); 
+	?>
+<script>
+jQuery(document).ready(function(){
+	jQuery('#login-button').click();
+});
+</script>
+<?php endif; ?>
+
+
+<?php if((!$this->helper('customer')->isLoggedIn()) && (Mage::getSingleton('customer/session')->getShowForgotPassword() == 1)): ?>
+	<?php Mage::getSingleton('customer/session')->unsShowForgotPassword();  ?>
+<script>
+jQuery(document).ready(function(){
+	showForgotPage();
+});
+</script>
+<?php endif; ?>
