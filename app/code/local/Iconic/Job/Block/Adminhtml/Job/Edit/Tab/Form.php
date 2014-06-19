@@ -212,8 +212,8 @@ class Iconic_Job_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_Block_
 							'value'		=> $type->getId(),
 			);
 		}
-		$fieldset->addField('feature_id', 'select', array(
-            'label'     => Mage::helper('job')->__('Feature Tag'),
+		$fieldset->addField('feature_id', 'multiselect', array(
+            'label'     => Mage::helper('job')->__('Feature Tags'),
             'name'     => 'feature_id',
             'required'  => true,
             'values'    => $arrayFeature,

@@ -75,4 +75,8 @@ class Iconic_Job_Block_Search_Form extends Mage_Core_Block_Template
 		}
 		return $this->getData('functionList');
 	}
+	
+	public function getFeatureCollection(){
+		return Mage::getModel('job/feature')->getCollection();
+	}
 }

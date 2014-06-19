@@ -58,7 +58,9 @@ class Iconic_Job_Adminhtml_Job_JobController extends Mage_Adminhtml_Controller_A
                 $currentDate = Date('Y-m-d H:i:s');
                 $jobModel->setData($postData)
 	                     ->setId($this->getRequest()->getParam('id'))
-						 ->setUpdateTime($currentDate);
+						 ->setUpdateTime($currentDate)
+						 ->setLanguageId(','.implode(',', $this->getRequest()->getParam('language_id')).',')
+					     ->setFeatureId(','.implode(',', $this->getRequest()->getParam('feature_id')).',');
 						 
                 if(!$this->getRequest()->getParam('id')){
                 	$jobModel->setCreatedTime($currentDate);
@@ -71,7 +73,9 @@ class Iconic_Job_Adminhtml_Job_JobController extends Mage_Adminhtml_Controller_A
                 }else{
                 	$newjob = Mage::getModel('job/job')->load($this->getRequest()->getParam('id'));
                 }
-				$newjob->setLanguageId(','.implode(',', $this->getRequest()->getParam('language_id')).',')->save();
+				//$newjob->setLanguageId(','.implode(',', $this->getRequest()->getParam('language_id')).',')
+				//	   ->setFeatureId(','.implode(',', $this->getRequest()->getParam('feature_id')).',')
+				//	   ->save();
 				//set url key
 				//if($postData['url_key']){
 					//$urlkey = Mage::helper('job')->formatUrlKey($postData['url_key']);
