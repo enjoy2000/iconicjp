@@ -114,7 +114,15 @@
 					</ul>
 				</div>
 			</div><!-- End Header Menu -->
-			
+			<div id="ajax-load">
+				<div class="wrapper">
+					<a title="<?php echo $this->__('CLOSE') ?>" id="close-button" href="#" class="close-button">X</a>
+					<div class="content">
+						
+					</div>
+				</div>
+				
+			</div>
 			<!-- create-->
 				<div class="create-cv centerwide">
 					<p class="slogan">
@@ -140,7 +148,7 @@
 						</div>
 						<?php else: ?>
 						<div class="welcome">
-							こんにちは、 <?php echo Mage::getSingleton('customer/session')->getCustomer()->getName() ?> さん！
+							<?php echo $this->__('こんにちは、 %s さん！', Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>
 						</div>
 							<?php if(Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() != 1): ?>
 							<a href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getCreateCVUrl(); ?>">

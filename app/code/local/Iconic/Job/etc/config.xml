@@ -100,6 +100,10 @@
                 <class>Iconic_Job_Model_Listcountry</class>
                 <resourceModel>job_listcountry</resourceModel>
             </listcountry>
+            <feature>
+                <class>Iconic_Job_Model_Feature</class>
+                <resourceModel>job_feature</resourceModel>
+            </feature>
             <job_mysql4>
                 <class>Iconic_Job_Model_Mysql4</class>
                 <entities>
@@ -139,6 +143,9 @@
                     <listcountry>
                         <table>job_listcountry</table>
                     </listcountry>
+                    <feature>
+                        <table>job_feature</table>
+                    </feature>
                 </entities>
             </job_mysql4>
         </models>
