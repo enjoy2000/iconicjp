@@ -268,10 +268,18 @@ body.cms-home #ajax-load{
 #header-landing .wrapper{
 	position: relative;
 }
-#slider .create-cv{
+#slider{
+	height: 625px;
+}
+#slider #home-message{
 	position: absolute;
-	z-index: 21;
+	background-color: transparent;
 	top: 45%;
+	width: 100%;
+	z-index: 21;
+}
+#slider .create-cv{
+	margin: auto;
 	width: 480px;
 	background-color: transparent;
 }
@@ -293,8 +301,10 @@ body.cms-home #ajax-load{
 	text-align: center;
 	padding: 20px;
 	border-radius: 5px;
-	background: rgba(255, 255, 255, 0.30);
-	color: #000;
+	background: ;
+}
+#slider .buttons.not-login{
+	background: url('../images/white-line.png') top center repeat-y rgba(255, 255, 255, 0.30);
 }
 #slider .buttons p{
 	color: #000;
@@ -305,6 +315,7 @@ body.cms-home #ajax-load{
 #slider .buttons span{
 	font-size: 12px;
 	display: block;
+	color: #000;
 }
 #slider .buttons .welcome{
 	text-align: center;
