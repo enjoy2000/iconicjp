@@ -134,7 +134,7 @@
 					<p>
 						<?php echo $this->__('ICONIC（アイコニック）はアジアを舞台に国境を超<br />えて働きたい方々に特化した転職エージェントです。') ?>
 					</p>
-					<div class="buttons clearfix <?php echo (!$this->helper('customer')->isLoggedIn()) ? 'not-login' : 'logged' ?> <?php echo (Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() != 1) ? 'not-createcv' : '' ?>">
+					<div class="buttons clearfix <?php echo ($this->helper('customer')->isLoggedIn() && (Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() != 1)) ? 'not-createcv' : 'not-login' ?>">
 						<?php if(!$this->helper('customer')->isLoggedIn()): ?>
 						<div class="fll width-40">
 							<p><?php echo $this->__('新規登録はこちら') ?></p>
