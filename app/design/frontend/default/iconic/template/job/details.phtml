@@ -11,7 +11,7 @@ $items = $this->getJobsInCategory();
 </div>
 
 <div class="job-wrapper">
-	<?php if(count(explode(',', substr($item->getFeatureId(),1,-1))) > 0): ?>
+	<?php if($item->getFeatureId()): ?>
 	<div class="feature-tags clearfix">
 		<img class="fll" alt="" src="<?php echo Mage::getBaseUrl() ?>skin/frontend/default/iconic/images/tag-icon.png" />
 		<div class="fll">

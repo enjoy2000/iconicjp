@@ -155,7 +155,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		?>
 		<div class="job clearfix">
 			<div class="job-wrapper">
-				<?php if(count(explode(',', substr($job->getFeatureId(),1,-1))) > 0): ?>
+				<?php if($job->getFeatureId()): ?>
 				<div class="feature-tags clearfix">
 					<img class="fll" alt="" src="<?php echo Mage::getBaseUrl() ?>skin/frontend/default/iconic/images/tag-icon.png" />
 					<div class="fll">
