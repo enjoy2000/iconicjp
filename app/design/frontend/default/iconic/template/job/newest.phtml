@@ -10,7 +10,7 @@
 			<?php $locnameen = strtolower(Mage::getModel('job/country')->load($job->getLocationId())->getNameEn()) ?>
 			<li>
 				<div class="top clearfix">
-					<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.$locnameen.'.png') ?>" />
+					<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.$locnameen.'.png') ?>" alt="" />
 					<span class="fll location-name"><?php echo $locname ?></span>
 					<div class="date flr">
 						<?php echo Mage::helper('job')->formatDate($job->getCreatedTime()) ?>
@@ -75,7 +75,7 @@
 			<?php 
 			$countries = Mage::getModel('job/country')->getCollection();
 			foreach($countries as $country): ?>
-			<img data-search="<?php echo $country->getUrlKey() ?>" class="<?php echo $country->getUrlKey() ?> country" src="<?php echo $this->getSkinUrl('images/map/'.$country->getUrlKey().'.png') ?>" />
+			<img alt="" data-search="<?php echo $country->getUrlKey() ?>" class="<?php echo $country->getUrlKey() ?> country" src="<?php echo $this->getSkinUrl('images/map/'.$country->getUrlKey().'.png') ?>" />
 			<p data-search="<?php echo $country->getUrlKey() ?>" class="<?php echo $country->getUrlKey() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></p>
 			<?php endforeach; ?>
 			
@@ -83,7 +83,7 @@
 				<?php foreach($this->getCountryCollection() as $country): ?>
 				<div class="country <?php echo str_replace(' ', '', strtolower($country->getNameEn())) ?>">
 					<h3 class="clearfix">
-						<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.$country->getUrlKey().'.png') ?>" />
+						<img alt="" class="fll" src="<?php echo $this->getSkinUrl('images/country/'.$country->getUrlKey().'.png') ?>" />
 						<a class="fll" href="<?php echo $country->getUrl() ?>"><?php echo Mage::helper('job')->getTransName($country) ?> <span>(<?php echo $country->getCount() ?>)</span></a>
 					</h3>
 				</div>

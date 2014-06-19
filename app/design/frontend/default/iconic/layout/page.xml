@@ -35,8 +35,7 @@ Default layout, loads most of the pages
         <block type="page/html" name="root" output="toHtml" template="page/1column.phtml">
 
             <block type="page/html_head" name="head" as="head">
-                <action method="addJs"><script>iconic/jquery.min.js</script></action>
-                <action method="addJs"><script>iconic/jquery.cycle.all.js</script></action>
+                <action method="addJs"><script>iconic/jquery1.9.0.min.js</script></action>
                 <action method="addJs"><script>multiple-select/jquery.multiple.select.js</script></action>
                 <action method="addJs"><script>iconic/jcarousellite_1.0.1.min.js</script></action>
                 <action method="addJs"><script>iconic/jquery.hoverIntent.minified.js</script></action>

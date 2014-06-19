@@ -24,7 +24,7 @@ var hook=true;
     		$('#ajax-load').removeClass('open-1');
     		$('#ajax-load .content').html('');
 	    });
-	    $('#header-landing .background').cycle({fx:'fade',next: '.ui-buttonNextSlide',prev: '.ui-buttonPrevSlide' ,delay: -4000});
+	    //$('#header-landing .background').cycle({fx:'fadeZoom',next: '.ui-buttonNextSlide',prev: '.ui-buttonPrevSlide' ,delay: -4000});
 		
 		//input effect
 		$('input, select, textarea').on('change blur', function(){

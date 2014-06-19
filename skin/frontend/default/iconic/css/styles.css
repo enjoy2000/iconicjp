@@ -32,12 +32,13 @@ body.job-index-createcv #search-block{
 	display: none;
 }
 #header-logo{
-	background-color: #4571eb;
+	background-color: #fff;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 99999;
+	border-bottom: solid 1px #bbbcbf;
 }
 #header-logo #logo{
 	padding-top: 10px;
@@ -49,13 +50,13 @@ body.job-index-createcv #search-block{
 	margin-top: 20px;
 }
 #header-logo #menu ul li a{
-	color: #b5c6f7;
+	color: #bbbcbf;
 	font-weight: bold;
 	margin-left: 50px;
 }
 #header-logo #menu ul li.border a{
 	padding: 3px 10px;
-	border: solid 1px #B5C6F7;
+	border: solid 1px #bbbcbf;
 	margin-left: 15px;
 	border-radius: 3px;
 	-webkit-transition: color 200ms,background-color 200ms;
@@ -89,11 +90,11 @@ body.job-index-createcv #search-block{
 	font-size: 14px;
 }
 #header-menu ul li{
-	margin: 0 20px;
+	margin: 0 5px;
 }
 #header-menu ul li > a{
 	color: #7495f0;
-	padding: 20px 5px;
+	padding: 20px;
 }
 #header-menu ul li > a:hover{
 	font-weight: bold;
@@ -263,35 +264,45 @@ body.job-index-createcv #search-block{
 #header-landing .wrapper{
 	position: relative;
 }
-#header-landing .create-cv{
+#slider .create-cv{
 	position: absolute;
-	z-index: 9;
-	width: 470px;
-	bottom: 0;
-	left: 216px;
-	background-color: #fff;
-	padding: 0 28px;
-	padding-top: 30px;
-	padding-bottom: 42px;
+	z-index: 21;
+	top: 45%;
+	width: 480px;
+	background-color: transparent;
 }
-#header-landing .create-cv p{
+#slider .create-cv p{
 	text-align: center;
-	color: #000;
-	font-size: 18px;
+	color: #fff;
+	font-size: 15px;
 	line-height: 26px;
 }
-#header-landing .create-cv p.slogan{
+#slider .create-cv p.slogan{
 	text-align: center;
-	color: #4571eb;
+	color: #fff;
 	font-size: 31px;
 	font-weight: bold;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
-#header-landing .buttons{
-	margin-top: 30px;
+#slider .buttons{
+	margin-top: 10px;
 	text-align: center;
+	padding: 20px;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.30);
+	color: #000;
 }
-#header-landing .buttons .welcome{
+#slider .buttons p{
+	color: #000;
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 20px;
+}
+#slider .buttons span{
+	font-size: 12px;
+	display: block;
+}
+#slider .buttons .welcome{
 	display: inline-block;
 	width: 190px;
 	padding: 24px 5px;
@@ -301,30 +312,35 @@ body.job-index-createcv #search-block{
 	text-align: center;
 	font-size: 12px;
 }
-#header-landing .buttons a{
-	display: inline-block;
-	background: url('../images/left-button.png') top center no-repeat transparent;
-	width: 198px;
-	color: #4571EB;
+#slider .buttons a{
 	text-align: center;
 	letter-spacing: -0.5px;
 	line-height: 18px;
-	height: 32px;
-	padding: 17px 10px;
+	padding: 5px 10px;
 	font-size: 13px;
+	border-radius: 5px;
+	display: inline-block;
+	margin-top: 20px;
+	margin-bottom: 5px;
 }
-#header-landing .buttons a+a{
-	background: url('../images/right-button.png') top center no-repeat transparent;
+#slider .buttons .fll a{
+	background-color: #E67E22;
 	color: #fff;
 }
-#header-landing .buttons a:hover{
+#slider .buttons .flr a{
+	background-color: #fff;
+	color: #4571EB;
+	margin-top: 18px;
+	padding: 5px 20px;
+}
+#slider .buttons a:hover{
 	opacity: 0.7;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
 	filter: alpha(opacity=70);
 	-moz-opacity: 0.7;
 	-khtml-opacity: 0.7;
 }
-#header-landing .buttons a+a{
+#slider .buttons a+a{
 	margin-left: 20px;
 }
 #search-block{
@@ -337,13 +353,11 @@ body.job-index-createcv #search-block{
 #search-block .search-block form > input{
 	background-color: #e1e8fc;
 	padding-left: 30px;
-	background: url('../images/search.png') 10px 10px #fff no-repeat;
-	margin-bottom: 15px;
+	background: url('../images/search.png') 10px center #fff no-repeat;
+	margin-bottom: 11px;
 	color: #4571eb;
 	width: 463px;
-}
-#search-block .search-block input:focus{
-	background-color: #dbdcdd;
+	vertical-align: top;
 }
 #search-block .search-block select{
 	width: 242px;
@@ -380,14 +394,14 @@ body.job-index-createcv #search-block{
 	margin-left: 21px;
 }
 #search-block #search-btn{
-	background-color: #df8c56;
-	color: white;
+	background-color: #E67E22;
+	color: #fff;
 	font-weight: bold;
 	border: none;
 	border-radius: 3px;
-	padding: 3px 10px;
+	padding: 2px 10px;
 	font-size: 15px;
-	border-bottom: solid 2px #d7712e;
+	border-bottom: solid 2px #AF611D;
 }
 /*
  * Main
