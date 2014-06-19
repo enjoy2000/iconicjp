@@ -432,6 +432,33 @@ body.cms-home #ajax-load{
 	font-size: 15px;
 	border-bottom: solid 2px #AF611D;
 }
+#feature-tags{
+	background-color: #e6e6e7;
+	border-bottom: solid 1px #989a9c;
+}
+#feature-tags .feature-tags{
+	padding: 10px 40px;
+	color: #929496;
+}
+#feature-tags .feature-tags .fll{
+	color: #000;
+	font-size: 15px;
+}
+#feature-tags .feature-tags .flr{
+	width: 89%;
+	border-left: solid 1px #000;
+	padding-left: 10px;
+	color: #929496;
+}
+#feature-tags a{
+	color: #929496;
+	display: inline-block;
+	font-size: 13px;
+}
+#feature-tags a:hover{
+	color: #4571EB;
+	text-decoration: underline;
+}
 /*
  * Main
  */

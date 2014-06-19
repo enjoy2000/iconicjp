@@ -28,6 +28,11 @@ class Iconic_Job_SearchController extends Mage_Core_Controller_Front_Action{
 			$searchBlock->setJobLevel((int)$level);
 		}
 		
+		$feature = $this->getRequest()->get("feature");
+		if($feature){
+			$searchBlock->setFeature((int)$feature);
+		}
+		
 		$functionCategory = $this->getRequest()->get("function_category");
 		if($functionCategory){
 			$searchBlock->setFunctionCategory((int)$functionCategory);

@@ -28,6 +28,11 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 				$functionname = Mage::helper('job')->getTransName($cat);
 				$tit .= $functionname;
 			}
+			if($featureId = $this->getRequest()->get('feature')){
+				$feature = Mage::getModel('job/feature')->load($featureId);
+				$featurename = Mage::helper('job')->getTransName($feature);
+				$tit .= $featurename;
+			}
 			$tit .= $helper->__('の求人検索結果');
 		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
 			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム'), 'title'=>$helper->__('ホーム'), 'link'=>Mage::getBaseUrl()));
@@ -77,6 +82,11 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 		if ($this->getLanguage()){
 			$collection->addFieldToFilter('language_id', array('like' => '%,'.$this->getLanguage().',%'));
 		}
+		
+		if ($this->getFeature()){
+			$collection->addFieldToFilter('feature_id', array('like' => '%,'.$this->getFeature().',%'));
+		}
+		
 		if ($this->getJobLevel()){
 			$collection->addFieldToFilter('job_level', array('eq' => $this->getJobLevel()));
 		}
