@@ -21,19 +21,6 @@
 -->
 <layout version="0.1.0">
     <default>
-        <reference name="head">
-        	<!--
-            <action method="addItem"><type>skin_css</type><name>css/clnews/style.css</name></action> 
-            <action method="addJs"><script>jquery/jquery-1.4.4.js</script></action>
-           -->
-            <action method="addJs"><script>commercelab/noconflict.js</script></action>
-            <action method="addJs"><script>commercelab/treeview/jquery.treeview.pack.js</script></action>
-            <action method="addJs"><script>commercelab/category_tree.js</script></action>
-			
-			<!--
-            <action method="addCss"><stylesheet>css/commercelab/treeview/jquery.treeview.css</stylesheet></action>
-           -->
-        </reference>
         <reference name="right">
             <block type="clnews/settings" name="right.clnews.menu" before="-">
                 <action method="setTemplate" ifconfig="clnews/news/showrightblock">
@@ -83,6 +70,9 @@
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="head">
+            <action method="addJs"><script>commercelab/noconflict.js</script></action>
+            <action method="addJs"><script>commercelab/treeview/jquery.treeview.pack.js</script></action>
+            <action method="addJs"><script>commercelab/category_tree.js</script></action>
         	<action method="addCss"><stylesheet>css/blog.css</stylesheet></action>
             <action method="addJs"><script>commercelab/clnews/news.js</script></action>
         </reference>
