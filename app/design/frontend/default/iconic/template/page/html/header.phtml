@@ -134,7 +134,7 @@
 					<p>
 						<?php echo $this->__('ICONIC（アイコニック）はアジアを舞台に国境を超<br />えて働きたい方々に特化した転職エージェントです。') ?>
 					</p>
-					<div class="buttons clearfix <?php echo ($this->helper('customer')->isLoggedIn() && (Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() != 1)) ? 'not-createcv' : 'not-login' ?>">
+					<div class="buttons clearfix <?php if($this->helper('customer')->isLoggedIn() && (Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() != 1)){echo 'not-login';}elseif(Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() == 1){echo 'logged';}else{echo 'not-login';} ?>">
 						<?php if(!$this->helper('customer')->isLoggedIn()): ?>
 						<div class="fll width-40">
 							<p><?php echo $this->__('新規登録はこちら') ?></p>
@@ -152,7 +152,7 @@
 						<?php else: ?>
 							<?php if(Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() != 1): ?>
 							<div class="fll not-createcv">
-								<p><?php echo $this->__('こんにちは、 %s さん！', Mage::getSingleton('customer/session')->getCustomer()->getName()) ?></p>
+								<p><?php echo $this->__('こんにちは、 %s さん！', Mage::getSingleton('customer/session')->getCustomer()->getFirstname()) ?></p>
 								<p><small><?php echo $this->__('アジア転職事情に精通したキャリア') ?></small></p>
 								<p><small><?php echo $this->__('アドバイザーと直接お話ししませんか？') ?></small></p>
 							</div>
@@ -164,7 +164,7 @@
 							</div>
 							<?php else: ?>
 							<div class="welcome">
-								<?php echo $this->__('こんにちは、 %s さん！', Mage::getSingleton('customer/session')->getCustomer()->getName()) ?>
+								<?php echo $this->__('こんにちは、 %s さん！', Mage::getSingleton('customer/session')->getCustomer()->getFirstname()) ?>
 							</div>
 							<?php endif; ?>
 						<?php endif; ?>
