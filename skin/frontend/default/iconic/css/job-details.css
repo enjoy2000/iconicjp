@@ -1,4 +1,4 @@
-.job-content{
+.job-wrapper{
 	margin-top: 30px;
 }
 .iconic-id{
@@ -66,6 +66,6 @@ h1{
 #job-actions .fll a+a{
 	margin-left: 18px;
 }
-.job-content{
+.job-wrapper{
 	color: #58595b;
 }

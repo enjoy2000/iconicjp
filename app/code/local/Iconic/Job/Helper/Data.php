@@ -152,13 +152,51 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 	
 	public function renderJob($job){
-		$location = Mage::getModel('job/location')->load($job->getLocationId())->getName();
-		
-		$render = '<a href="'.$this->getJobLink($job).'" title="' . $job->getTitle().'">' . $this->string_limit_words($job->getTitle()).'</a>';
-		$render .= '<span class="inline created-time">'.$this->formatDate($job->getCreatedTime()).'</span>';
-		$render .= '<span class="inline location">'.$location.'</span>';
-		
-		return $render;
+		?>
+		<div class="job clearfix">
+			<div class="job-wrapper">
+				<?php if(count(explode(',', substr($job->getFeatureId(),1,-1))) > 0): ?>
+				<div class="feature-tags clearfix">
+					<img class="fll" alt="" src="<?php echo Mage::getBaseUrl() ?>skin/frontend/default/iconic/images/tag-icon.png" />
+					<div class="fll">
+						<?php foreach(explode(',', substr($job->getFeatureId(),1,-1)) as $featureId): ?>
+							<?php $feature = Mage::getModel('job/feature')->load($featureId) ?>
+							<a class="tag" href="<?php echo $feature->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($feature) ?>">
+								<?php echo Mage::helper('job')->getTransName($feature) ?>
+							</a>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				<?php endif; ?>
+				<p class="iconic-id">
+					<?php echo $this->__('<b>No. %s</b>   |   登録日: %s', $job->getIconicId(), Mage::helper('job')->formatDate($job->getCreatedTime())) ?>
+				</p>
+				<p class="title">
+						<?php echo $job->getTitle() ?>
+				</p>
+				<div class="job-details">
+					<table>
+						<tr>
+							<td class="tit"><?php echo $this->__('国') ?>:</td><td><?php echo $job->getCountry() ?></td>
+							<td class="tit"><?php echo $this->__('勤務地') ?>:</td><td><?php echo $job->getWorkLocation() ?></td>
+							<td class="tit"><?php echo $this->__('言語') ?>:</td><td><?php echo $job->getLanguage() ?></td>
+							<td class="tit"><?php echo $this->__('給与') ?>:</td><td><?php echo $job->getFullSalary() ?></td>
+						</tr>
+						<tr>
+							<td class="tit"><?php echo $this->__('業種') ?>:</td><td><?php echo $job->getCategoryName() ?></td>
+							<td class="tit"><?php echo $this->__('職種') ?>:</td><td><?php echo $job->getFunctionName() ?></td>
+							<td class="tit"><?php echo $this->__('レベル ') ?>:</td><td><?php echo $job->getLevel() ?></td>
+							<td class="tit"><?php echo $this->__('採用定数') ?>:</td><td><?php echo $job->getAmount() ?></td>
+						</tr>
+					</table>
+				</div>
+				<div class="actions">
+					<a class="view" href="<?php echo $job->getUrl() ?>"><?php echo $this->__('詳細を見る') ?></a>
+					<a class="apply" href="<?php echo $job->getApplyUrl() ?>"><?php echo $this->__('応募する') ?></a>
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 
 	public function highlight($inp, $words){

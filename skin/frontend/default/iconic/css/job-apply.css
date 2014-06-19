@@ -80,6 +80,15 @@ div#job-same-category fieldset legend{
 	padding-right: 10px;
 	color: #4571EB;
 }
+div#job-same-category ul.jobs-list li .title{
+	color: #fff;
+	font-weight: bold;
+	padding: 10px;
+	background-color: #919294;
+	font-size: 17px;
+	margin-bottom: 0;
+	text-align: left;
+}
 div#job-same-category ul.jobs-list{
 	list-style: none;
 	margin: 10px 0;
@@ -90,11 +99,8 @@ div#job-same-category ul.jobs-list li{
 div#job-same-category ul.jobs-list li + li{
 	border-top: solid 1px #dcddde;
 }
-div#job-same-category ul.jobs-list li a{
-	display: block;
-	color: #000;
-	text-decoration: underline;
-	font-weight: bold;
+div#job-same-category ul.jobs-list li .job-details{
+	margin-bottom: 15px;
 }
 div#job-same-category ul.jobs-list li span.created-time{
 	margin-right: 8px;

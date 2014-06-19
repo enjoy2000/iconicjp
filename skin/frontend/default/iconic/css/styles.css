@@ -1224,3 +1224,26 @@ body.cms-home #ajax-load{
 body.cms-home .messages{
 	display: none;
 }
+
+/*
+ * Job wrapper
+ */
+.job-wrapper .feature-tags{
+	margin-bottom: 10px;
+}
+.job-wrapper .feature-tags img{
+	margin-right: 10px;
+}
+.job-wrapper .feature-tags a{
+	text-decoration: none;
+	padding: 0px 10px;
+	border: solid 2px #c6c7c9;
+	color: #a6a8aa;
+	border-radius: 4px;
+	display: inline-block;
+}
+.job-wrapper .feature-tags a:hover{
+	color: #fff;
+	border-color: #4571EB;
+	background-color: #4571EB;
+}

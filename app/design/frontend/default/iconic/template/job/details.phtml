@@ -10,7 +10,20 @@ $items = $this->getJobsInCategory();
 	</h2>
 </div>
 
-<div class="job-content">
+<div class="job-wrapper">
+	<?php if(count(explode(',', substr($item->getFeatureId(),1,-1))) > 0): ?>
+	<div class="feature-tags clearfix">
+		<img class="fll" alt="" src="<?php echo Mage::getBaseUrl() ?>skin/frontend/default/iconic/images/tag-icon.png" />
+		<div class="fll">
+			<?php foreach(explode(',', substr($item->getFeatureId(),1,-1)) as $featureId): ?>
+				<?php $feature = Mage::getModel('job/feature')->load($featureId) ?>
+				<a class="tag" href="<?php echo $feature->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($feature) ?>">
+					<?php echo Mage::helper('job')->getTransName($feature) ?>
+				</a>
+			<?php endforeach; ?>
+		</div>
+	</div>
+	<?php endif; ?>
 	<h3 class="iconic-id">
 		<?php echo $this->__('<b>No. %s</b>   |   登録日: %s', $item->getIconicId(), Mage::helper('job')->formatDate($item->getCreatedTime())) ?>
 	</h3>

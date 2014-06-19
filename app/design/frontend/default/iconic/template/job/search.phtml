@@ -121,40 +121,7 @@
 			<div class="content">
 				<?php $col = $this->getResults()->setPageSize(12)->load(); ?>
 			<?php foreach($col as $job): ?>
-				<div class="job clearfix">
-					<div class="job-wrapper">
-						<p class="iconic-id">
-							<?php echo $this->__('<b>No. %s</b>   |   登録日: %s', $job->getIconicId(), Mage::helper('job')->formatDate($job->getCreatedTime())) ?>
-						</p>
-						<p class="title">
-							<?php if($this->getKeyword()): ?>
-								<?php echo Mage::helper('job')->highlight($job->getTitle(), explode(' ',$this->getKeyword())) ?>
-							<?php else: ?>
-								<?php echo $job->getTitle() ?>
-							<?php endif; ?>
-						</p>
-						<div class="job-details">
-							<table>
-								<tr>
-									<td class="tit"><?php echo $this->__('国') ?>:</td><td><?php echo $job->getCountry() ?></td>
-									<td class="tit"><?php echo $this->__('勤務地') ?>:</td><td><?php echo $job->getWorkLocation() ?></td>
-									<td class="tit"><?php echo $this->__('言語') ?>:</td><td><?php echo $job->getLanguage() ?></td>
-									<td class="tit"><?php echo $this->__('給与') ?>:</td><td><?php echo $job->getFullSalary() ?></td>
-								</tr>
-								<tr>
-									<td class="tit"><?php echo $this->__('業種') ?>:</td><td><?php echo $job->getCategoryName() ?></td>
-									<td class="tit"><?php echo $this->__('職種') ?>:</td><td><?php echo $job->getFunctionName() ?></td>
-									<td class="tit"><?php echo $this->__('レベル ') ?>:</td><td><?php echo $job->getLevel() ?></td>
-									<td class="tit"><?php echo $this->__('採用定数') ?>:</td><td><?php echo $job->getAmount() ?></td>
-								</tr>
-							</table>
-						</div>
-						<div class="actions">
-							<a class="view" href="<?php echo $job->getUrl() ?>"><?php echo $this->__('詳細を見る') ?></a>
-							<a class="apply" href="<?php echo $job->getApplyUrl() ?>"><?php echo $this->__('応募する') ?></a>
-						</div>
-					</div>
-				</div>
+				<?php echo Mage::helper('job')->renderJob($job) ?>
 			<?php endforeach; ?>
 			</div>
 			<?php
