@@ -73,6 +73,11 @@
                     <sort_order>7</sort_order>
                     <action>adminhtml/job_pic</action>
                 </pic>
+                <feature module="job">
+                    <title>Manage Feature Tags</title>
+                    <sort_order>8</sort_order>
+                    <action>adminhtml/job_feature</action>
+                </feature>
             </children>
         </job>
         <customer translate="title" module="customer">
