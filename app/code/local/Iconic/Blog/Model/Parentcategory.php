@@ -11,7 +11,7 @@ class Iconic_Blog_Model_Parentcategory extends Mage_Core_Model_Abstract
     protected function _beforeSave()
     {
         if(!$this->getUrlKey()){
-            $urlKey = Mage::helper('blog')->formatUrlKey($this->getNameEn());
+            $urlKey = Mage::helper('job')->formatUrlKey($this->getNameEn());
             if(!Mage::getModel('blog/parentcategory')->load($urlKey, 'url_key')->getId()){
                 $this->setUrlKey($urlKey);
             } else {

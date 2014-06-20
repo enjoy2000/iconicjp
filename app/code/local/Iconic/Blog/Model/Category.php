@@ -12,7 +12,7 @@ class Iconic_Blog_Model_Category extends Mage_Core_Model_Abstract
     protected function _beforeSave()
     {
         if(!$this->getUrlKey()){
-            $urlKey = Mage::helper('blog')->formatUrlKey($this->getNameEn());
+            $urlKey = Mage::helper('job')->formatUrlKey($this->getNameEn());
             if(!Mage::getModel('blog/category')->load($urlKey, 'url_key')->getId()){
                 $this->setUrlKey($urlKey);
             } else {
