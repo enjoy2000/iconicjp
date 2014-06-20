@@ -384,7 +384,7 @@ body.cms-home #ajax-load{
 	padding-left: 30px;
 	background: url('../images/search.png') 10px center #fff no-repeat;
 	margin-bottom: 11px;
-	color: #4571eb;
+	color: #000;
 	width: 463px;
 	vertical-align: top;
 }
