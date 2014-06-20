@@ -65,8 +65,8 @@ body.job-index-createcv #search-block{
 	transition: color 200ms,background-color 200ms;
 }
 #header-logo #menu ul li.border a:hover{
-	background-color: #b5c6f7;
-	color: #4571EB;
+	background-color: #bbbcbf;
+	color: #fff;
 }
 #header-logo #switch-languages{
 	float: right;
