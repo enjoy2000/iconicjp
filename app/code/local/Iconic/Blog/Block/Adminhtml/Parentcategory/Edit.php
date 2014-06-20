@@ -1,6 +1,6 @@
 <?php
  
-class Iconic_Blog_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
+class Iconic_Blog_Block_Adminhtml_Parentcategory_Edit extends Mage_Adminhtml_Block_Widget_Form_Container
 {
     public function __construct()
     {
@@ -8,7 +8,7 @@ class Iconic_Blog_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Wid
                
         $this->_objectId = 'id';
         $this->_blockGroup = 'blog';
-        $this->_controller = 'adminhtml_category';
+        $this->_controller = 'adminhtml_parentcategory';
  
         $this->_updateButton('save', 'label', Mage::helper('blog')->__('Save Category'));
         $this->_updateButton('delete', 'label', Mage::helper('blog')->__('Delete Category'));

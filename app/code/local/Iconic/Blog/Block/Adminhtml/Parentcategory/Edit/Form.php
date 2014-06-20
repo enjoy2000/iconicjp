@@ -1,6 +1,6 @@
 <?php
  
-class Iconic_Blog_Block_Adminhtml_Category_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
+class Iconic_Blog_Block_Adminhtml_Parentcategory_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
     protected function _prepareForm()
     {

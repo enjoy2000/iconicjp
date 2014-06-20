@@ -1,37 +1,58 @@
 <?php
-/**
- * ICONIC Co., LTD
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the ICONIC License Agreement
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * 
- *
- * @category   ICONIC
- * @package    Iconic_Blog
- * @copyright  Copyright (c) 2012 ICONIC Co., LTD (http://iconic-jp.com)
- * @license    
- */
-
+ 
 class Iconic_Blog_Model_Category extends Mage_Core_Model_Abstract
 {
-    protected function _construct(){
+    public function _construct()
+    {
         parent::_construct();
         $this->_init('blog/category');
     }
 
-    public function getCategoryByBlogId($id)
-    {
-        $db = Mage::getSingleton('core/resource')->getConnection('core_read');
-        $select = $db->select()
-             ->from(array(Mage::getSingleton('core/resource')->getTableName('blog_blog_category')),
-                    array('category_id'))
-             ->where('blog_id = ?', $id);
-        $stmt = $db->query($select);
-        $result = $stmt->fetchAll();
-        return $result;
-    }
 
+    protected function _beforeSave()
+    {
+        if(!$this->getUrlKey()){
+            $urlKey = Mage::helper('blog')->formatUrlKey($this->getNameEn());
+            if(!Mage::getModel('blog/category')->load($urlKey, 'url_key')->getId()){
+                $this->setUrlKey($urlKey);
+            } else {
+                $urlKey .= '-' . $this->getId();
+            	$this->setUrlKey($urlKey);
+            }
+        }
+        parent::_beforeSave();
+    }
+	
+	protected function _afterSave(){
+		/*
+		if($this->getUrlKey()){
+			//check url key
+			$count = Mage::getModel('blog/category')->getCollection()->addFieldToFilter('category_id',array('neq'=>$this->getId()));
+			$count->addFieldToFilter('url_key',array('eq'=>$this->getUrlKey()));
+			$count->getCollection()->count();
+			if($count > 0){
+				$urlkey = $this->getUrlKey() . '-' . $this->getId();
+				$this->setUrlKey($urlkey)->save();
+			}
+		}
+		 * 
+		 */						
+		parent::_afterSave();
+
+	}
+
+    public function getParentCategory(){
+    	return Mage::getModel('blog/parentcategory')->load($this->getParentcategoryId());
+    }
+	
+	public function getUrl(){
+		$parent = Mage::getModel('blog/parentcategory')->load($this->getParentcategoryId());
+		$url = Mage::getBaseUrl().$parent->getUrlKey().'/'.$this->getUrlKey();
+		return $url;
+	}
+	
+	public function getCount(){
+		$count = Mage::getModel('blog/blog')->getCollection()->addFieldToFilter('category_id',$this->getId())->count();
+		return $count;
+	}
 }
