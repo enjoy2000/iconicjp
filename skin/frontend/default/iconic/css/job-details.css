@@ -53,6 +53,9 @@ h1{
 	font-weight: bold;
 	font-size: 17px;
 }
+#job-content .fll+.fll{
+	width: 600px;
+}
 #job-actions .flr a{
 	color: #fff;
 	text-decoration: none;

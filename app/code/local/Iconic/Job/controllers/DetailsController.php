@@ -22,12 +22,14 @@ class Iconic_Job_DetailsController extends Mage_Core_Controller_Front_Action{
 		if(!$item->getId()){
 			Mage::helper('job')->redirectToSearchPage();
 		}
+		$cat = Mage::getModel('job/category')->load($item->getCategoryId());
+		$parent = Mage::getModel('job/parentcategory')->load($cat->getParentcategoryId());
 		
 		//set breadcrumbs		
 		$helper = Mage::helper('job');
 		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
 			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム'), 'title'=>$helper->__('ホーム'), 'link'=>Mage::helper('job')->getBaseUrl()));
-			$breadcrumbs->addCrumb('search_results', array('label'=>$helper->__('コミュニケーション・メディ '), 'title'=>$helper->__('コミュニケーション・メディ '), 'link'=>Mage::getUrl(Mage::helper('job')->getSearchUrl())));
+			$breadcrumbs->addCrumb('search_results', array('label'=>$helper->getTransName($parent), 'title'=>$helper->getTransName($parent), 'link'=>$parent->getUrl()));
 			$breadcrumbs->addCrumb('job_details', array('label'=>$item->getTitle(), $item->getTitle()));
 		}	
 		//set title by job title
