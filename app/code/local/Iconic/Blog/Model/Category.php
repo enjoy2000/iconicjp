@@ -46,13 +46,13 @@ class Iconic_Blog_Model_Category extends Mage_Core_Model_Abstract
     }
 	
 	public function getUrl(){
-		$parent = Mage::getModel('blog/parentcategory')->load($this->getParentcategoryId());
-		$url = Mage::getBaseUrl().$parent->getUrlKey().'/'.$this->getUrlKey();
+		$parent = $this->getParentCategory();
+		$url = Mage::getBaseUrl() . Mage::helper('blog')->getRoute() . DS . $parent->getUrlKey() . DS . $this->getUrlKey();
 		return $url;
 	}
 	
 	public function getCount(){
-		$count = Mage::getModel('blog/blog')->getCollection()->addFieldToFilter('category_id',$this->getId())->count();
+		$count = Mage::getModel('blog/blog')->getCollection()->addFieldToFilter('category_id',array('like'=>'%,'.(int)$this->getId().',%'))->count();
 		return $count;
 	}
 }

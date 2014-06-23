@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Iconic_Blog>
-            <version>0.0.1</version>
+            <version>0.0.4</version>
         </Iconic_Blog>
     </modules>
     <frontend>
@@ -103,11 +103,11 @@
         <events>
             <controller_front_init_routers>
                 <observers>
-                    <job>
+                    <blog>
                         <type>singleton</type>
-                        <class>Iconic_Job_Controller_Router</class>
+                        <class>Iconic_Blog_Controller_Router</class>
                         <method>initControllerRouters</method>
-                    </job>
+                    </blog>
                 </observers>
             </controller_front_init_routers>
         </events>

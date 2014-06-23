@@ -51,12 +51,61 @@ class Iconic_Blog_Adminhtml_Blog_AuthorController extends Mage_Adminhtml_Control
    
     public function saveAction()
     {
-        if ( $this->getRequest()->getPost() ) {
+        if ($data = $this->getRequest()->getPost() ) {
             try {
-                $postData = $this->getRequest()->getPost();
                 $blogModel = Mage::getModel('blog/author');
+				if (isset($_FILES['image']['name']) && ($_FILES['image']['name'] != '')
+                    && ($_FILES['image']['size'] != 0) ) {
+                    try {
+                        $uploader = new Varien_File_Uploader('image');
+                        $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
+                        $uploader->setAllowRenameFiles(false);
+
+                        // Set the file upload mode
+                        // false -> get the file directly in the specified folder
+                        // true -> get the file in folders like /media/a/b/
+                        $uploader->setFilesDispersion(false);
+
+                        $path = Mage::getBaseDir('media') . DS . 'blog' . DS;
+
+                        //saved the name in DB
+                        $prefix = time().rand();
+                        $fileName = $prefix.'.'.pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+                        $uploader->save($path, $fileName);
+                        $filepath = 'blog' . DS .$fileName;
+						
+						//$basePath - origin file location
+						$imgurl = Mage::getBaseDir('media') . DS . 'blog' . DS .$fileName;
+						$imageObj = new Varien_Image($imgurl);
+						$imageObj->constrainOnly(TRUE);
+						$imageObj->keepAspectRatio(FALSE);
+						$imageObj->keepFrame(FALSE);
+						//$width, $height - sizes you need (Note: when keepAspectRatio(TRUE), height would be ignored)
+						$imageObj->resize(25,25);
+						//$newPath - name of resized image
+						$imageObj->save($imgurl);
+                        /*
+                        if (!getimagesize($filepath)) {
+                            Mage::throwException($this->__('Disallowed file type.'));
+                        }*/
+                        $data['image'] = $filepath;
+                        $data['image'] = str_replace('\\', '/', $data['image']);
+                    } catch (Exception $e) {
+                        Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                        $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+                        return;
+                    }
+                }elseif (isset($data['image']['delete'])) {
+                    $path = Mage::getBaseDir('media') . DS;
+                    $result = unlink($path . $data['image']['value']);
+                    $data['image'] = '';
+                } else {
+                    if (isset($data['image']['value'])) {
+                        $data['image'] = $data['image']['value'];
+                    }
+                }
                
-                $blogModel->setData($postData)
+                $blogModel->setData($data)
                 	->setId($this->getRequest()->getParam('id'))
                     ->save();
                

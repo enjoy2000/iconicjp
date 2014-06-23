@@ -1,0 +1,324 @@
+#main .main{
+	padding: 30px 0px;
+	padding-top: 10px;
+}
+#blog-category{
+	width: 250px;
+	border: solid 1px #989a9c;
+	border-right-width: 0;
+	border-top-left-radius: 5px;
+}
+#blog-category ul.parent > li+li > a{
+	border-top: solid 1px #e3e3e4;
+}
+#blog-category ul li a{
+	display: block;
+}
+#blog-category ul.parent > li a{
+	text-decoration: none;
+	color: #6d6e70;
+	padding: 8px 20px;
+	border-left: solid 2px transparent;
+}
+#blog-category ul li a:hover{
+	background-color: #dbdcdd;
+	color: #000;
+	font-weight: bold;
+}
+#blog-category ul li a:hover > span{
+	background-color: #fff;
+	color: #000;
+	font-weight: bold;
+}
+#blog-category ul.parent > li a span{
+	float: right;
+	padding: 1px 7px;
+	border-radius: 3px;
+}
+#blog-category ul.parent > li.active > a{
+	font-weight: bold;
+	color: #000;
+}
+#blog-category ul.parent > li.active > a span{
+	color: #fff;
+	background-color: #000;
+	display: none;
+}
+#blog-category ul.parent > li.active a{
+	background-color: #dbdcdd;
+}
+#blog-category ul.parent > li.active a.country-information-in-asia {
+	border-left-color: #16a085;
+}
+#blog-category ul.parent > li.active a.work-in-asia-2 {
+	border-left-color: #3498db;
+}
+#blog-category ul.parent > li.active a.live-in-asia {
+	border-left-color: #8e44ad;
+}
+#blog-category ul.parent > li.active a.recruit-in-asia {
+	border-left-color: #f39c12;
+}
+#blog-category ul.parent > li.active a.manage-employees-in-asia {
+	border-left-color: #d35400;
+}
+
+#blog-category ul.parent > li a.country-information-in-asia:hover {
+	border-left-color: #16a085;
+}
+#blog-category ul.parent > li a.work-in-asia-2:hover {
+	border-left-color: #3498db;
+}
+#blog-category ul.parent > li a.live-in-asia:hover {
+	border-left-color: #8e44ad;
+}
+#blog-category ul.parent > li a.recruit-in-asia:hover {
+	border-left-color: #f39c12;
+}
+#blog-category ul.parent > li a.manage-employees-in-asia:hover {
+	border-left-color: #d35400;
+}
+#blog-category h2{
+	padding: 10px;
+	text-align: center;
+	border-bottom: solid 1px #989a9c;
+}
+#blog-category ul.sub{
+	display: none;
+}
+#blog-category li.active ul.sub{
+	display: block;
+}
+#blog-category ul li ul.sub li > a{
+	padding-left: 30px;
+	font-size: 13px;
+}
+#blog-category li.active ul.sub li.active a{
+	font-weight: bold;
+	color: #000;
+}
+#blog-category li.active ul.sub li.active a span{
+	color: #fff;
+	background-color: #000;
+}
+#blogs-content{
+	width: 625px;
+	border: solid 1px #989a9c;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#blogs-content .blog-wrapper{
+	padding: 30px;
+}
+#blogs-content .blog-wrapper+.blog-wrapper{
+	border-top: solid 1px #d7d8da;
+}
+#blogs-content .blog-wrapper .blog-info{
+	margin-left: 30px;
+	width: 355px;
+}
+#blogs-content .blog-wrapper .blog-info h4{
+}
+#blogs-content .blog-wrapper .blog-info h4 a{
+	color: #000;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 18px;
+	text-decoration: none;
+}
+#blogs-content .blog-wrapper .blog-info h4 a:hover{
+	color: #4571EB;
+}
+#blogs-content .blog-wrapper .blog-info .social > span{
+	padding: 3px;
+	padding-left: 22px;
+	color: #000;
+	font-size: 16px;
+}
+#blogs-content .blog-wrapper .blog-info .social{
+	padding-top: 7px;
+	margin-top: 10px;
+	overflow: hidden;
+	position: relative;
+}
+#blogs-content .blog-wrapper .blog-info .social:before{
+	content: "..................................................................";
+	position: absolute;
+	top: -14px;
+}
+#blogs-content .blog-wrapper .blog-info .social > span+span{
+	margin-left: 15px;
+}
+#blogs-content .blog-wrapper .blog-info .social > span.fb{
+	background: url('../images/socials/fb-blog.png') left center no-repeat transparent;
+}
+#blogs-content .blog-wrapper .blog-info .social > span.in{
+	background: url('../images/socials/in-blog.png') left center no-repeat transparent;
+}
+#blogs-content .blog-wrapper .blog-info .social > span.twitter{
+	background: url('../images/socials/twitter-blog.png') left center no-repeat transparent;
+}
+#blogs-content .blog-wrapper .blog-info .social > span.google{
+	background: url('../images/socials/google-blog.png') left center no-repeat transparent;
+}
+#blogs-content .blog-wrapper .blog-info .cat{
+	padding: 1px 15px;
+	color: #fff;
+}
+#blogs-content .blog-wrapper .blog-info .cat+.cat{
+	margin-left: 5px;
+}
+#blogs-content .blog-wrapper .country-information-in-asia {
+	background-color: #16a085;
+}
+#blogs-content .blog-wrapper .work-in-asia-2 {
+	background-color: #3498db;
+}
+#blogs-content .blog-wrapper .live-in-asia {
+	background-color: #8e44ad;
+}
+#blogs-content .blog-wrapper .recruit-in-asia {
+	background-color: #f39c12;
+}
+#blogs-content .blog-wrapper .manage-employees-in-asia {
+	background-color: #d35400;
+}
+#blogs-content .blog-wrapper .blog-info .author{
+	margin-left: 10px;
+}
+#blogs-content .blog-wrapper .blog-info .author img{
+	margin-right: 5px;
+}
+#blogs-content .blog-wrapper .blog-info .author a{
+	color: #272525;
+	text-decoration: underline;
+}
+#blogs-content .blog-wrapper .blog-info .author a:hover{
+	color: #4571EB;
+}
+.load-more{
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 20px;
+}
+.load-more a{
+	padding: 3px 20px;
+	background-color: #6a8def;
+	border-bottom: solid 2px #4571EB;
+	color: #d7d8da;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: 3px;
+}
+
+#blog-details{
+	width: 625px;
+	border: solid 1px #989a9c;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+#blog-details h1{
+	text-align: left;
+	margin: 20px 0;
+}
+#blog-details .blog-details-content{
+	padding: 30px;
+}
+#blog-details .blog-parents{
+	padding-bottom: 15px;
+	border-bottom: solid 1px #d7d8da;
+	margin-bottom: 20px;
+}
+#blog-details .inline.parent{
+	padding: 5px 15px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+}
+#blog-details .inline.parent+.inline.parent{
+	margin-left: 10px;
+}
+#blog-details .country-information-in-asia {
+	background-color: #16a085;
+}
+#blog-details .work-in-asia-2 {
+	background-color: #3498db;
+}
+#blog-details .live-in-asia {
+	background-color: #8e44ad;
+}
+#blog-details .recruit-in-asia {
+	background-color: #f39c12;
+}
+#blog-details .manage-employees-in-asia {
+	background-color: #d35400;
+}
+#blog-details #facebook-comments{
+	width: 100%;
+	text-align: center;
+}
+#blog-details .blog-cats .cat{
+	color: #fff;
+	padding: 2px 10px;
+	background-color: #000;
+}
+#blog-details .full-content{
+	margin-top: 30px;
+}
+#blog-details .full-content p{
+	line-height: 20px;
+	font-size: 13px;
+}
+#blog-details .author a{
+	color: #636466;
+}
+
+#newest-blog{
+	width: 230px;
+	margin-top: 30px;
+	border: solid 1px #cccdce;
+}
+#newest-blog ul li{
+	padding: 15px 10px;
+	font-size: 12px;
+	letter-spacing: -0.5px;
+}
+#newest-blog #blog-control .tab{
+	width: 49.5%;
+	text-align: center;
+	padding: 10px 0;
+	font-weight: bold;
+	background-color: #bcc2c8;
+	color: #fff;
+	font-size: 17px;
+	cursor: pointer;
+}
+#newest-blog #blog-control .tab.active{
+	background-color: #fff;
+	color: #000;
+}
+#newest-blog ul li img{
+	margin-right: 10px;
+}
+#newest-blog ul li h6 a{
+	font-weight: bold;
+	color: #000;
+	font-size: 13px;
+	letter-spacing: 0;
+	text-decoration: none;
+}
+#newest-blog ul li:hover{
+	background-color: #dae1e6;
+}
+#newest-blog ul li h6 a:hover{
+	color: #4571EB;
+}
+#newest-blog ul li .fll+.fll{
+	width: 147px;
+}
+#newest-blog ul li .author a{
+	color: #636466;
+}
+#newest-blog ul li .fll > a{
+	color: #E67E22;
+}

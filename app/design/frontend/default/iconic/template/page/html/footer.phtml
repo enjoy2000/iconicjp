@@ -24,12 +24,14 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
 <footer id="footer">
+	<?php if(strpos($bodyclass, 'cms-index-index')): ?>
 	<!-- SLOGAN -->
 	<div id="banner">
 		<div class="heading">
 			<h2 class="centerwide">
-				お取引先
+    			<?php echo $this->__('お取引先') ?>
 			</h2>
 		</div>
 		<div class="wrapper">
@@ -44,7 +46,7 @@
     	<div class="wrapper clearfix">
     		<div class="fll width-45 news">
     			<h3 class="blue-tit">
-    				新着情報
+    				<?php echo $this->__('新着情報') ?>
     			</h3>
     			<div class="content" id="news-scroll">
     				<div class="inside">
@@ -52,66 +54,156 @@
     				</div>
     			</div>
     		</div>
-    		<div class="flr width-45 countries">
+    		<div class="flr width-45 blog">
     			<h3 class="blue-tit">
-    				各国の概要の紹介
+    				<?php echo $this->__('ブログ') ?>
     			</h3>
-    			<div class="content">
-    				<a class="vn" href="<?php echo Mage::helper('job')->getBaseUrl() ?>vietnam" title="<?php echo $this->__('ベトナム') ?>">
-    					<?php echo $this->__('ベトナム') ?>
-    				</a>
-    				<a class="myan" href="<?php echo Mage::helper('job')->getBaseUrl() ?>myanmar" title="<?php echo $this->__('ミャンマー') ?>">
-    					<?php echo $this->__('ミャンマー') ?>
-    				</a>
-    				<a class="cambodia" href="<?php echo Mage::helper('job')->getBaseUrl() ?>cambodia" title="<?php echo $this->__('カンボジア') ?>">
-    					<?php echo $this->__('カンボジア') ?>
-    				</a>
-    				<a class="indo" href="<?php echo Mage::helper('job')->getBaseUrl() ?>indonesia" title="<?php echo $this->__('インドネシア') ?>">
-    					<?php echo $this->__('インドネシア') ?>
-    				</a>
-    				<a class="india" href="<?php echo Mage::helper('job')->getBaseUrl() ?>india" title="<?php echo $this->__('インド') ?>">
-    					<?php echo $this->__('インド') ?>
+    			<ul>
+    				<?php $homeblogs = Mage::getModel('blog/blog')->getCollection()->setOrder('create_time', 'DESC') 
+    									->setPageSize(3)
+										->setCurPage(1)
+    				?>
+    				<?php foreach($homeblogs as $blog): ?>
+    					<?php $author = Mage::getModel('blog/author')->load($blog->getAuthorId()) ?>
+						<li class="clearfix">
+							<img class="fll" alt="" src="/media/resized/<?php echo $blog->getImage() ?>" />
+							<div class="fll">
+								<h6>
+									<a href="<?php echo $blog->getUrl() ?>" title="<?php echo $blog->getTitle() ?>">
+										<?php echo $blog->getTitle() ?>
+									</a>
+								</h6>
+								<div class="inline date"><?php echo $blog->getDate() ?></div>
+								|
+								<div class="inline author"><a href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a></div>
+								<br class="clear" />
+								<?php 
+								//get parent category list
+								$parents = substr($blog->getCategoryId(), 1, -1);
+								$parents = explode(',', $parents);
+								$parentArr = array();
+								foreach($parents as $catId){
+									$catModel = Mage::getModel('blog/category')->load($catId);
+									$parent = Mage::getModel('blog/parentcategory')->load($catModel->getParentcategoryId());
+									if(!in_array($parent->getId(), $parentArr)){
+										$parentArr[] = $parent->getId();
+									}
+								}
+								?>
+								<?php $i=1;foreach($parentArr as $parent): ?>
+									<?php $parent = Mage::getModel('blog/parentcategory')->load($parent) ?>
+									<a href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
+										<?php echo Mage::helper('job')->getTransName($parent) ?>
+									</a>
+									<?php echo ($i != count($parentArr)) ? '|' : '' ?>
+								<?php $i++;endforeach; ?>
+							</div>
+						</li>
+    				<?php endforeach; ?>
+    			</ul>
+    			<div class="view-more">
+    				<a href="/<?php echo Mage::helper('blog')->getRoute() ?>" title="<?php echo $this->__('See more articles here') ?>">
+    					<?php echo $this->__('See more articles here') ?>
     				</a>
     			</div>
     		</div>
     	</div>
     	
-	    <!-- Contact Info -->
-	    <div id="contact-info" class="centerwide">
-	    	<div class="fll yasu-info clearfix width-45">
-				<div class="fll yasu-photo">
-					
-				</div>
-				<div class="fll">
-					<a target="_blank" href="http://ameblo.jp/skhiroaki" class="yasu-blog" title="<?php echo $this->__('ブログ') ?>">
-						<?php echo $this->__('社長ブログ') ?>
+    	<!-- Countries -->
+    	<div id="countries-link">
+	    	<div class="home-countries wrapper">
+				<h3 class="blue-tit">
+	    			<?php echo $this->__('各国の概要の紹介') ?>
+				</h3>
+				<div class="content">
+					<a class="vn" href="<?php echo Mage::helper('job')->getBaseUrl() ?>vietnam" title="<?php echo $this->__('ベトナム') ?>">
+						<?php echo $this->__('ベトナム') ?>
 					</a>
-					<p>
-						<b><?php echo $this->__('ベトナムでビジネスを立ち上げている人の話') ?></b>
-					</p>
-				</div>    		
-	    	</div>
-	    	<div class="flr info">
-	    		<div class="content">
-	    			<p>ICONICに関するお問い合わせは、以下の連絡先からお願いします。
-						弊社コンサタントが速やかに対応させて頂きます!</p>
-					<div class="address clearfix">
-		    			<div class="fll">
-		    				<img src="<?php echo $this->getSkinUrl('images/phone.png') ?>" />
-		    				<b>03 6222 5520</b>
-		    			</div>
-		    			<div class="fll">
-		    				<img src="<?php echo $this->getSkinUrl('images/mail.png') ?>" />
-		    				<b>info@iconic-jp.com</b>
-		    			</div>
-		    			<a class="flr btn contact-btn" href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getContactUrl() ?>">
-		    				<?php echo $this->__('お問い合わせ') ?>
-		    			</a>
-	    			</div>
-	    		</div>
-	    	</div>
-	    </div><!-- End Contact Info -->
+					<a class="myan" href="<?php echo Mage::helper('job')->getBaseUrl() ?>myanmar" title="<?php echo $this->__('ミャンマー') ?>">
+						<?php echo $this->__('ミャンマー') ?>
+					</a>
+					<a class="cambodia" href="<?php echo Mage::helper('job')->getBaseUrl() ?>cambodia" title="<?php echo $this->__('カンボジア') ?>">
+						<?php echo $this->__('カンボジア') ?>
+					</a>
+					<a class="indo" href="<?php echo Mage::helper('job')->getBaseUrl() ?>indonesia" title="<?php echo $this->__('インドネシア') ?>">
+						<?php echo $this->__('インドネシア') ?>
+					</a>
+					<a class="india" href="<?php echo Mage::helper('job')->getBaseUrl() ?>india" title="<?php echo $this->__('インド') ?>">
+						<?php echo $this->__('インド') ?>
+					</a>
+				</div>
+			</div>
+		</div>
     </div><!-- End Blog News -->
+    <?php endif; ?>
+    
+    <!-- COPYRIGHT -->
+    <div id="footer-menu">
+    	<div class="wrapper">
+    		<div class="menu">
+    			<?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
+    			<ul>
+					<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
+						<a href="/"><?php echo $this->__('ホーム') ?></a>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'cms-for-candidate-in-japan') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>for-candidate-in-japan"><?php echo $this->__('求職者の皆様') ?></a>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'cms-for-company-in-japan') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>for-company-in-japan"><?php echo $this->__('採用担当者の皆様') ?></a>
+					</li> 
+					<li class="<?php echo strpos($bodyclass, 'cms-faq') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>faq"><?php echo $this->__('よくある質問と答え') ?></a>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'cms-company-profile') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>company-profile"><?php echo $this->__('会社概要') ?></a>
+					</li>
+					<li class="">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>site-map"><?php echo $this->__('プライバシーポリシ ') ?></a>
+					</li>
+				</ul>
+    		</div>
+    		
+		    <!-- Contact Info -->
+		    <div id="contact-info" class="wrapper clearfix">
+		    	<div class="fll yasu-info clearfix width-45">
+					<div class="fll yasu-photo">
+						
+					</div>
+					<div class="fll">
+						<a target="_blank" href="http://ameblo.jp/skhiroaki" class="yasu-blog" title="<?php echo $this->__('ブログ') ?>">
+							<?php echo $this->__('社長ブログ') ?>
+						</a>
+						<p>
+							<b><?php echo $this->__('ベトナムでビジネスを立ち上げている人の話') ?></b>
+						</p>
+					</div>    		
+		    	</div>
+		    	<div class="flr info">
+		    		<div class="content">
+		    			<p>ICONICに関するお問い合わせは、以下の連絡先からお願いします。
+							弊社コンサタントが速やかに対応させて頂きます!</p>
+						<div class="address clearfix">
+			    			<div class="fll">
+			    				<img src="<?php echo $this->getSkinUrl('images/phone.png') ?>" />
+			    				<b>03 6222 5520</b>
+			    			</div>
+			    			<div class="fll">
+			    				<img src="<?php echo $this->getSkinUrl('images/mail.png') ?>" />
+			    				<b>info@iconic-jp.com</b>
+			    			</div>
+			    			<a class="flr btn contact-btn" href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getContactUrl() ?>">
+			    				<?php echo $this->__('お問い合わせ') ?>
+			    			</a>
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div><!-- End Contact Info -->
+    	</div>
+    </div>
     
     <!-- Other websites -->
     <div id="other-web">
@@ -140,38 +232,6 @@
 	    		</a>
 	    		<?php echo $this->__('(インドネシアでの求人情報サイト)') ?>
 	    	</div>
-    	</div>
-    </div>
-    
-    <!-- COPYRIGHT -->
-    <div id="footer-menu">
-    	<div class="wrapper clearfix">
-    		<div class="fll">
-    			<?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
-    			<ul>
-					<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
-						<a href="/"><?php echo $this->__('ホーム') ?></a>
-					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>
-					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-for-candidate-in-japan') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>for-candidate-in-japan"><?php echo $this->__('求職者の皆様') ?></a>
-					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-for-company-in-japan') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>for-company-in-japan"><?php echo $this->__('採用担当者の皆様') ?></a>
-					</li> 
-					<li class="<?php echo strpos($bodyclass, 'cms-faq') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>faq"><?php echo $this->__('よくある質問と答え') ?></a>
-					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-company-profile') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>company-profile"><?php echo $this->__('会社概要') ?></a>
-					</li>
-					<li class="">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>site-map"><?php echo $this->__('プライバシーポリシ ') ?></a>
-					</li>
-				</ul>
-    		</div>
 			<div class="social-links flr">   				
 				<a target="_blank" title="Twitter" class="twitter" href="https://twitter.com/iconicvn">&nbsp;</a>   	
 				<a target="_blank" title="Facebook" class="fb" href="https://www.facebook.com/iconic.jp">&nbsp;</a>
@@ -181,3 +241,4 @@
     	</div>
     </div>
 </footer>
+<div style="display: none;" id="ajax-loading">&nbsp;</div>

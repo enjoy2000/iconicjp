@@ -34,7 +34,58 @@ class Iconic_Blog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
                 ->setControllerName('index')
                 ->setActionName('index');
 			$parts = array_slice($parts, 1);
+			$blog = Mage::getModel('blog/blog')->load($parts[0], 'url_key');
+			if($blog->getId()){
+				//get parent category list
+				$parents = substr($blog->getCategoryId(), 1, -1);
+				$parents = explode(',', $parents);
+				$parentArr = array();
+				foreach($parents as $catId){
+					$catModel = Mage::getModel('blog/category')->load($catId);
+					$parent = Mage::getModel('blog/parentcategory')->load($catModel->getParentcategoryId());
+					if(!in_array($parent->getId(), $parentArr)){
+						$parentArr[] = $parent->getId();
+					}
+				}
+				$request
+					->setModuleName('blog')
+	                ->setControllerName('detail')
+	                ->setActionName('index')
+					->setParam('id', $blog->getId())
+					->setParam('cat', $parents)
+					->setParam('parent', $parentArr);
+					return true;
+			}
 			//var_dump($parts);die;
+			switch(count($parts)){
+				case 1: //parent category
+					$parent = Mage::getModel('blog/parentcategory')->load($parts[0], 'url_key');
+						if($parent->getId()){
+							$request
+								->setParam('parent', $parent->getId());
+		                }else{
+		                	return false;
+		                }
+					break;
+				
+				case 2: //sub category
+					$parent = Mage::getModel('blog/parentcategory')->load($parts[0], 'url_key');
+						if($parent->getId()){
+							$request
+								->setParam('parent', $parent->getId());
+		                }else{
+		                	return false;
+		                }
+					$cat = Mage::getModel('blog/category')->load($parts[1], 'url_key');
+					if($cat->getId()){
+						$request
+							->setParam('cat', $cat->getId());
+					}else{
+	                	return false;
+	                }
+					break;
+			}
+					
 			return true;
 		}
         return false;

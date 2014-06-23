@@ -6,6 +6,7 @@ class Iconic_Blog_Block_Adminhtml_Blog_Edit extends Mage_Adminhtml_Block_Widget_
 	    parent::_prepareLayout();
 	    if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
 	        $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
+	        $this->getLayout()->getBlock('head')->setCanLoadExtJs(true);
 	    }
 	}
 	

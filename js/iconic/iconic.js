@@ -160,3 +160,10 @@ function resetForm(){
 	.removeClass('error');
 	return false;
 }
+function showLoading(){
+	jQuery('#ajax-loading').css('height', jQuery(window).height()).css('width', jQuery(window).width());
+	jQuery('#ajax-loading').show();
+}
+function hideLoading(){
+	jQuery('#ajax-loading').hide();
+}

@@ -18,6 +18,12 @@ class Iconic_Blog_Block_Adminhtml_Blog_Edit_Tabs extends Mage_Adminhtml_Block_Wi
             'title'     => Mage::helper('blog')->__('Blog Details'),
             'content'   => $this->getLayout()->createBlock('blog/adminhtml_blog_edit_tab_form')->toHtml(),
         ));
+		
+		$this->addTab('additional', array(
+            'label'     => Mage::helper('blog')->__('Additional Options'),
+            'content'   => $this->getLayout()
+                ->createBlock('blog/adminhtml_blog_edit_tab_additional')->initForm()->toHtml(),
+        ));
        
         return parent::_beforeToHtml();
     }

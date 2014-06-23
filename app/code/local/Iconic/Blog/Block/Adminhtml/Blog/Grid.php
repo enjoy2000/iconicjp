@@ -17,21 +17,6 @@ class Iconic_Blog_Block_Adminhtml_Blog_Grid extends Mage_Adminhtml_Block_Widget_
     {
         $collection = Mage::getModel('blog/blog')->getCollection();
 		
-		//JOIN TABLES TO SHOW ON NAME ON GRID
-		/* @var $collection Iconic_Blog_Model_Mysql4_Type_Collection */
-		
-		$collection->getSelect()->join(array("t" => $collection->getTable('blog/type')), 
-			"main_table.blog_type = t.type_id", "t.name as t_name");
-		/* @var $collection Iconic_Blog_Model_Mysql4_Level_Collection */
-		
-		$collection->getSelect()->join(array("l" => $collection->getTable('blog/level')), 
-			"main_table.blog_level = l.level_id", "l.name as l_name");
-		/* @var $collection Iconic_Blog_Model_Mysql4_Location_Collection */
-		
-		$collection->getSelect()->join(array("la" => $collection->getTable('blog/country')), 
-			"main_table.location_id = la.country_id", "la.name as la_name");
-		
-		
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -44,11 +29,6 @@ class Iconic_Blog_Block_Adminhtml_Blog_Grid extends Mage_Adminhtml_Block_Widget_
             'width'     => '50px',
             'index'     => 'blog_id',
         ));
-		
-		$this->addColumn('iconic_id', array(
-            'header'    => Mage::helper('blog')->__('IconicId'),
-            'index'     => 'iconic_id',
-        ));
  
         $this->addColumn('title', array(
             'header'    => Mage::helper('blog')->__('Title'),
@@ -56,6 +36,7 @@ class Iconic_Blog_Block_Adminhtml_Blog_Grid extends Mage_Adminhtml_Block_Widget_
             'index'     => 'title',
         ));
         
+		/*
         $this->addColumn('category_id', array(
             'header'    => Mage::helper('customer')->__('Industry'),
             'index'     => 'category_id',
@@ -63,40 +44,15 @@ class Iconic_Blog_Block_Adminhtml_Blog_Grid extends Mage_Adminhtml_Block_Widget_
             'sortable'  => true,
             'renderer'  => 'Iconic_Blog_Block_Adminhtml_Blog_Grid_Renderer_Category',
         ));
-		
-		$this->addColumn('function_category_id', array(
-            'header'    => Mage::helper('customer')->__('Function'),
-            'index'     => 'function_category_id',
-            'filter'	=> false,
-            'sortable'  => true,
-            'renderer'  => 'Iconic_Blog_Block_Adminhtml_Blog_Grid_Renderer_Category',
-        ));
-                
-        $this->addColumn('location_id', array(
-            'header'    => Mage::helper('blog')->__('Location'),
-            'index'     => 'la_name',
-            'filter_index'=>'la.name'            
-        ));
-                
-        $this->addColumn('blog_level', array(
-            'header'    => Mage::helper('blog')->__('Level'),
-            'index'     => 'l_name',
-            'filter_index'=>'l.name'
-        ));
-                
-        $this->addColumn('t_name', array(
-            'header'    => Mage::helper('blog')->__('Type'),
-            'index'     => 't_name',
-            'filter_index'=>'t.name'
-        ));
+		*/
  
-        $this->addColumn('created_time', array(
+        $this->addColumn('create_time', array(
             'header'    => Mage::helper('blog')->__('Creation Time'),
             'align'     => 'left',
             'width'     => '80px',
             'type'      => 'date',
             'default'   => '--',
-            'index'     => 'created_time',
+            'index'     => 'create_time',
         ));
  
         return parent::_prepareColumns();

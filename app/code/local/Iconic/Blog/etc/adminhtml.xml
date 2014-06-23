@@ -42,6 +42,11 @@
                             </parent>
                         </children>
                 </categories>
+                <author module="blog">
+                    <title>Manage Authors</title>
+                    <sort_order>3</sort_order>
+                    <action>adminhtml/blog_author</action>
+                </author>
             </children>
         </blog>
     </menu>

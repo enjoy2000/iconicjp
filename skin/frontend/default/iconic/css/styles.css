@@ -503,7 +503,7 @@ body.cms-home #ajax-load{
 }
 #blog-news{
 	margin-top: 60px;
-	padding-bottom: 120px;
+	padding-bottom: 45px;
 	position: relative;
 }
 #blog-news .news .content{
@@ -511,53 +511,90 @@ body.cms-home #ajax-load{
 	margin-top: 20px;
 	overflow-y: auto;
 }
-#blog-news .countries .content{
-	margin-top: 10px;
+
+#blog-news .blog ul li{
+	padding: 10px 20px;
 }
-#blog-news .countries .content a{
-	display: block;
-	margin-top: 20px;
-	padding: 8px 0;
-	background-position: 30px center;
-	background-color: #c0c1c3;
-	border-bottom: solid 2px #b0b2b4;
-	width: 225px;
-	border-radius: 3px;
-	padding-left: 95px;
-	color: #919395;
-	font-size: 17px;
-	background-repeat: no-repeat;
+#blog-news .blog ul li img{
+	margin-right: 10px;
+}
+#blog-news .blog ul li h6 a{
 	font-weight: bold;
+	color: #000;
+	font-size: 13px;
+	letter-spacing: 0;
+	text-decoration: none;
 }
-#blog-news .countries .content a.vn{
+#blog-news .blog ul li:hover{
+	background-color: #dae1e6;
+}
+#blog-news .blog ul li h6 a:hover{
+	color: #4571EB;
+}
+#blog-news .blog ul li .fll+.fll{
+	width: 330px;
+}
+#blog-news .blog ul li .author a{
+	color: #636466;
+}
+#blog-news .blog ul li .fll > a{
+	color: #E67E22;
+	text-decoration: underline;
+}
+#blog-news .blog .view-more{
+	margin-top: 30px;
+	text-align: center;
+}
+#blog-news .blog .view-more a{
+	padding-left: 30px;
+	background: url('../images/view-more.png') left center no-repeat transparent;
+	color: #E67E22;
+	font-weight: bold;
+	text-decoration: underline;
+}
+#countries-link .home-countries .content{
+	margin-top: 20px;
+}
+#countries-link .home-countries a{
+	padding: 7px 15px;
+	padding-left: 70px;
+	border: solid 1px #d0d4d8;
+	background-color: #fff;
+	color: #71757a;
+	background-repeat: no-repeat;
+	background-position: 15px center;
+	border-radius: 3px;
+	font-size: 16px;
+}
+#countries-link .home-countries a:hover{
+	background-color: #bcc2c8;
+}
+#countries-link .home-countries a+a{
+	margin-left: 34px;
+}
+#countries-link .home-countries .content a.vn{
 	background-image: url('../images/vn.png')
 }
-#blog-news .countries .content a.myan{
+#countries-link .home-countries .content a.myan{
 	background-image: url('../images/myan.png')
 }
-#blog-news .countries .content a.cambodia{
+#countries-link .home-countries .content a.cambodia{
 	background-image: url('../images/cambodia.png')
 }
-#blog-news .countries .content a.indo{
+#countries-link .home-countries .content a.indo{
 	background-image: url('../images/indo.png')
 }
-#blog-news .countries .content a.india{
+#countries-link .home-countries .content a.india{
 	background-image: url('../images/india.png')
 }
 #contact-info{
-	padding: 20px;
-	background-color: #b5c6f7;
-	position: absolute;
-	min-height: 100px;
-	width: 920px;
-	bottom: -100px;
+	margin-top: 40px;
 }
 #contact-info .yasu-info .yasu-photo{
 	width: 115px;
 	height: 115px;
-	border: solid 2px #4571EB;
 	border-radius: 5px;
-	background: url('../images/yasu.png') center bottom no-repeat white;
+	background: url('../images/yasu.png') center bottom no-repeat #fff;
 }
 #contact-info .yasu-info .fll+.fll{
 	margin-left: 15px;
@@ -568,7 +605,7 @@ body.cms-home #ajax-load{
 	background-color: #fff;
 	font-weight: bold;
 	font-size: 21px;
-	color: #4571EB;
+	color: #000;
 	border-radius: 3px;
 	display: inline-block;
 	margin-bottom: 15px;
@@ -578,11 +615,11 @@ body.cms-home #ajax-load{
 	transition: color 200ms,background-color 200ms;
 }
 #contact-info .yasu-info .yasu-blog:hover{
-	background-color: #4571EB;
+	background-color: #000;
 	color: #fff;
 }
 #contact-info .yasu-info p{
-	color: #4571eb;
+	color: #000;
 	font-size: 13px;
 }
 #contact-info .yasu-info p > b{
@@ -593,6 +630,7 @@ body.cms-home #ajax-load{
 	border: solid 2px #fff;
 	padding: 10px;
 	width: 450px;
+	background-color: #fff;
 }
 #contact-info .info .content{
 	background-color: #fff;
@@ -620,44 +658,51 @@ body.cms-home #ajax-load{
 	vertical-align: middle;
 }
 #contact-info .info a.contact-btn{
-	background-color: #df8c56;
-	padding: 3px 10px;
-	border-bottom: solid 2px #d7712e;
+	background-color: #E67E22;
+	padding: 5px 20px;
 	color: #fff;
 	font-weight: bold;
 	border-radius: 3px;
+	display: block;
+	margin-top: 7px;
 }
 #other-web{
-	background-color: #fff;
-	padding-top: 115px;
-	padding-bottom: 16px;
-	letter-spacing: -2.3px;
-	border-bottom: solid 1px #4571EB;
+	background-color: #4571EB;
+	font-size: 12px;
+	padding: 20px 0px;
+	letter-spacing: -1.3px;
+	color: #fff;
 }
 #other-web .inline-b{
 	width: 20%;
-	margin-left: 35px;
 }
 #other-web a{
-	color: #4571EB;
+	color: #fff;
 	letter-spacing: -1px;
 	display: block;
 }
 #footer-menu{
-	background-color: #fff;
+	background-color: #d3d3d3;
 	padding: 16px;
+	padding-bottom: 35px;
 }
 #footer-menu .fll{
 	margin-top: 10px;
 }
 #footer-menu ul li{
 	display: inline;
-	margin-left: 10px
+}
+#footer-menu ul li:first-child > a{
+	border-left: solid 1px #7f8081;
+}
+#footer-menu ul li > a{
+	padding: 3px 19px;
+	border-right: solid 1px #7f8081;
 }
 #footer-menu ul li.current-menu-item > a{
 	color: #000;
 }
-#footer-menu .social-links a{
+#other-web .social-links a{
 	width: 30px;
 	height: 30px;
 	background-color: transparent;
@@ -666,16 +711,16 @@ body.cms-home #ajax-load{
 	display: inline-block;
 	margin-right: 10px;
 }
-#footer-menu .social-links a.fb{
+#other-web .social-links a.fb{
 	background-image: url('../images/socials/fb.png');
 }
-#footer-menu .social-links a.in{
+#other-web .social-links a.in{
 	background-image: url('../images/socials/in.png');
 }
-#footer-menu .social-links a.google{
+#other-web .social-links a.google{
 	background-image: url('../images/socials/google.png');
 }
-#footer-menu .social-links a.twitter{
+#other-web .social-links a.twitter{
 	background-image: url('../images/socials/twitter.png');
 }
 
@@ -1248,4 +1293,15 @@ body.cms-home .messages{
 	color: #fff;
 	border-color: #4571EB;
 	background-color: #4571EB;
+}
+
+/*
+ * Ajax loading
+ */
+#ajax-loading{
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: url('../images/loading.gif') center no-repeat rgba(0,0,0,0.4);
+	z-index: 99;
 }

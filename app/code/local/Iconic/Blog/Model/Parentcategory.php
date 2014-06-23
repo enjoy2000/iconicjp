@@ -40,25 +40,30 @@ class Iconic_Blog_Model_Parentcategory extends Mage_Core_Model_Abstract
 	}
 
 	public function getUrl(){
-		$url = Mage::getUrl($this->getUrlKey());
+		$url = Mage::getUrl(Mage::helper('blog')->getRoute().DS.$this->getUrlKey());
 		return $url;
 	}
 	
 	public function getCount(){
 		$cats = Mage::getModel('blog/category')->getCollection()->addFieldToFilter('parentcategory_id',$this->getId());
-		$catIds = array();
-		foreach($cats as $cat){
-			$catIds[] = $cat->getId();
-		}
-		if($this->getGroupCategory() == 'industry'){
+		
+		if($cats->count() > 0){
+			$condition = array();
+			foreach($cats as $cat){
+				$condition[] = array('like' => '%,'.(int)$cat->getId().',%');
+			}
+			//var_dump($condition);die;
 			$count = Mage::getModel('blog/blog')->getCollection()
-							->addFieldToFilter('category_id', array('in'=>$catIds))
-							->count();
+						->addFieldToFilter('category_id', $condition)
+						->count();
+			return $count;
 		}else{
-			$count = Mage::getModel('blog/blog')->getCollection()
-							->addFieldToFilter('function_category_id', array('in'=>$catIds))
-							->count();
+			return 0;
 		}
-		return $count;
+	}
+	
+	public function getCats(){
+		$cats = Mage::getModel('blog/category')->getCollection()->addFieldToFilter('parentcategory_id',array('eq'=>$this->getId()));
+		return $cats;
 	}
 }
