@@ -131,7 +131,7 @@
 }
 #blogs-content .blog-wrapper .blog-info{
 	margin-left: 30px;
-	width: 355px;
+	width: 370px;
 }
 #blogs-content .blog-wrapper .blog-info h4{
 }
@@ -180,9 +180,10 @@
 #blogs-content .blog-wrapper .blog-info .cat{
 	padding: 1px 15px;
 	color: #fff;
+	margin-right: 5px;
+	display: inline-block;
 }
 #blogs-content .blog-wrapper .blog-info .cat+.cat{
-	margin-left: 5px;
 }
 #blogs-content .blog-wrapper .country-information-in-asia {
 	background-color: #16a085;
