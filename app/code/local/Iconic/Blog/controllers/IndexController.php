@@ -69,6 +69,7 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 			$collection->setCurPage($page);
 		}else if(($collection->count()%8 == 0) && ($page == $collection->count()/8 + 1)){
 			$collection =  new Varien_Data_Collection(); //empty collection
+			$json['nomore'] = 1;
 		}else{
 			$collection->setCurPage(1);
 		}

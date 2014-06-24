@@ -43,7 +43,7 @@
 					$('#ajax-form .page').val(parseInt($('#ajax-form .page').val()) + 1);
 					hideLoading();
 				}
-				if(data.count == 8){
+				if(data.count == 8 && data.nomore != 1){
 					var loadmore = '<div class="load-more"><a class="btn" href="#">CLICK HERE TO SEE MORE ARTICLES</a></div>';
 					$('#blogs-content').append(loadmore);
 				}
