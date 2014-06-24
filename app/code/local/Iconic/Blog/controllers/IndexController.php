@@ -14,7 +14,7 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 		
 		$head = $this->getLayout()->getBlock('head');
 		$catBlock = $this->getLayout()->getBlock('category');
-		$tit = 'BLOG';
+		$tit = $helper->__('アジアで働くWEBメディア');
 		if($parent = $this->getRequest()->getParam('parent')){
 			$parentArr = array($parent);
 			$catBlock->setParent($parentArr);
