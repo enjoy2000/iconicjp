@@ -7,7 +7,7 @@ class Iconic_Job_PayloadController extends Mage_Core_Controller_Front_Action
 			echo 'success';die;
 		}else{
 			$this->_redirect('/');
-			return; //test payload
+			return; //test payload again
 		}
 	}
 }
