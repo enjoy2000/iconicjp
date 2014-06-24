@@ -62,7 +62,9 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 							array('title', 'full_content'),
 							array($likeStm, $likeStm));
 		}
-		if(($collection->count()%8 == 0) && ($page == $collection->count()/8)){
+		
+		$json = array();
+		if(($collection->count()%8 == 0) && ($this->getRequest()->getParam('page') == $collection->count()/8)){
 			$json['nomore'] = 1;
 		}
 		//set page for ajax load
@@ -75,7 +77,6 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 		$collection->setOrder('create_time','DESC');
 		
 		//convert to json
-		$json = array();
 		$json['page'] = $page;
 		$json['count'] = $collection->count();
 		foreach($collection as $blog){
