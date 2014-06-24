@@ -14,7 +14,7 @@
 	<?php $author = Mage::getModel('blog/author')->load($blog->getAuthorId()) ?>
 	<div class="inline author">
 		<img src="/media/<?php echo $author->getImage() ?>" alt="" width="25" height="25" />
-		<a href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a>
+		<a target="_blank" href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a>
 	</div>
 	<h1><?php echo $blog->getTitle() ?></h1>
 	<div class="blog-cats">
