@@ -117,6 +117,7 @@
 	margin-left: -6px;
 }
 #blogs-content{
+	min-height: 345px;
 	width: 625px;
 	border: solid 1px #989a9c;
 	border-top-right-radius: 5px;
