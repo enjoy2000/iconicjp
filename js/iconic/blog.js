@@ -8,7 +8,7 @@
 				'method': 'post',
 				'data': $('#ajax-form').serialize()
 			}).success(function(data){
-				console.log(data);
+				//console.log(data);
 				$('.load-more').remove();
 				if(data.page == 1 && data.count ==0){
 					alert('no result');
@@ -43,7 +43,7 @@
 					$('#ajax-form .page').val(parseInt($('#ajax-form .page').val()) + 1);
 					hideLoading();
 				}
-				if(data.count == 8 && data.nomore != 1){
+				if(data.count == 8 && data.lastpage != data.page){
 					var loadmore = '<div class="load-more"><a class="btn" href="#">CLICK HERE TO SEE MORE ARTICLES</a></div>';
 					$('#blogs-content').append(loadmore);
 				}

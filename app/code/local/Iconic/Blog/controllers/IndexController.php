@@ -75,6 +75,7 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 		
 		//convert to json
 		$json = array();
+		$json['lastpage'] = $collection->getLastPageNumber();
 		$json['page'] = $page;
 		$json['count'] = $collection->count();
 		foreach($collection as $blog){
