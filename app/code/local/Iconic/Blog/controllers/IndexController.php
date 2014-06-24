@@ -67,10 +67,11 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 		$collection->setPageSize(8);
 		if(($page = $this->getRequest()->getParam('page')) && ($collection->count() > 8)){
 			$collection->setCurPage($page);
-		}else if(($collection->count()%8 == 0) && ($page == $collection->count()/8)){
-			$json['nomore'] = 1;
 		}else{
 			$collection->setCurPage(1);
+		}
+		if(($collection->count()%8 == 0) && ($page == $collection->count()/8)){
+			$json['nomore'] = 1;
 		}
 		$collection->setOrder('create_time','DESC');
 		
