@@ -62,19 +62,16 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 							array('title', 'full_content'),
 							array($likeStm, $likeStm));
 		}
-		
 		$json = array();
-		if(($collection->count()%8 == 0) && ($this->getRequest()->getParam('page') == $collection->count()/8)){
-			$json['nomore'] = 1;
-		}
-		//set page for ajax load
-		$collection->setPageSize(8);
-		if($page = $this->getRequest()->getParam('page')){
-			$collection->setCurPage($page);
-		}else{
-			$collection->setCurPage(1);
-		}
+		$json['full'] = $collection->count();
 		$collection->setOrder('create_time','DESC');
+		
+		//set page for ajax load
+		$pagesize = 8;
+		$collection->setPageSize($pagesize);
+		if($page = intval($this->getRequest()->getParam('page'))){
+			$collection->setCurPage($page);
+		}
 		
 		//convert to json
 		$json['page'] = $page;
