@@ -65,7 +65,7 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 		
 		//set page for ajax load
 		$collection->setPageSize(8);
-		if($page = $this->getRequest()->getParam('p')){
+		if($page = $this->getRequest()->getParam('page')){
 			$collection->setCurPage($page);
 		}else{
 			$collection->setCurPage(1);
