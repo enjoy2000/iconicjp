@@ -32,10 +32,22 @@ class Iconic_Blog_Helper_Data extends Mage_Core_Helper_Abstract
 		$count = array();
 		$url = rawurldecode($url);
 		//google
+		/*
 	    $html =  file_get_contents( "https://plusone.google.com/_/+1/fastbutton?url=".$url);
 	    $doc = new DOMDocument();   $doc->loadHTML($html);
 	    $counter=$doc->getElementById('aggregateCount');
 	    $count['google'] = $counter->nodeValue;
+		*/
+		$curl = curl_init();
+	    curl_setopt($curl, CURLOPT_URL, "https://clients6.google.com/rpc");
+	    curl_setopt($curl, CURLOPT_POST, 1);
+	    curl_setopt($curl, CURLOPT_POSTFIELDS, '[{"method":"pos.plusones.get","id":"p","params":{"nolog":true,"id":"' . $url . '","source":"widget","userId":"@viewer","groupId":"@self"},"jsonrpc":"2.0","key":"p","apiVersion":"v1"}]');
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+	    $curl_results = curl_exec ($curl);
+	    curl_close ($curl);
+	    $json = json_decode($curl_results, true);
+	    $count['google'] = intval( $json[0]['result']['metadata']['globalCounts']['count'] );
 		//facebook
 		$xml = file_get_contents("http://api.facebook.com/restserver.php?method=links.getStats&urls=".$url);
 	    $xml = simplexml_load_string($xml);
