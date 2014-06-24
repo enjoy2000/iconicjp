@@ -71,6 +71,8 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 		$collection->setPageSize($pagesize);
 		if($page = intval($this->getRequest()->getParam('page'))){
 			$collection->setCurPage($page);
+		}else{
+			$collection->setCurPage(1);
 		}
 		
 		//convert to json
