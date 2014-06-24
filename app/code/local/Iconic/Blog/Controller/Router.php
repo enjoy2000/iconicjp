@@ -64,13 +64,6 @@ class Iconic_Blog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
 						->setParam('q', Mage::getSingleton('core/session')->getBlogSearch());
 					//Mage::getSingleton('core/session')->unsBlogSearch();
 					return true;
-				}else{
-					$request
-						->setModuleName('blog')
-		                ->setControllerName('index')
-		                ->setActionName('index');
-					//Mage::getSingleton('core/session')->unsBlogSearch();
-					return true;
 				}
 			}
 			//var_dump($parts);die;

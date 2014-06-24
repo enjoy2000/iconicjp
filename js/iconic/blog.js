@@ -8,7 +8,7 @@
 				'method': 'post',
 				'data': $('#ajax-form').serialize()
 			}).success(function(data){
-				console.log(data);
+				//console.log(data);
 				$('.load-more').remove();
 				if(data.page == 1 && data.count ==0){
 					alert('no result');
