@@ -34,7 +34,7 @@ class Iconic_Blog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
                 ->setControllerName('index')
                 ->setActionName('index');
 			$parts = array_slice($parts, 1);
-			$blog = Mage::getModel('blog/blog')->load($parts[0], 'url_key');
+			$blog = Mage::getModel('blog/blog')->load(urldecode($parts[0]), 'url_key');
 			if($blog->getId()){
 				//get parent category list
 				$parents = substr($blog->getCategoryId(), 1, -1);

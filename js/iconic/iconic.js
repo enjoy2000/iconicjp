@@ -163,6 +163,9 @@ function resetForm(){
 function showLoading(){
 	jQuery('#ajax-loading').css('height', jQuery(window).height()).css('width', jQuery(window).width());
 	jQuery('#ajax-loading').show();
+	jQuery('#ajax-loading').click(function(e){
+		jQuery(this).hide();
+	});
 }
 function hideLoading(){
 	jQuery('#ajax-loading').hide();
