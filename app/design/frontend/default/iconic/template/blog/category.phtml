@@ -28,3 +28,7 @@
 		</li>
 		<?php endforeach; ?>
 	</ul>
+	<form id="keyword-search" method="post" action="/blog/index/search">
+		<input class="inline" placeholder="<?php echo $this->__('タイトル') ?>" name="q" type="text" value="<?php $this->getRequest()->getParam('q') ?>" />
+		<button class="btn inline" type="submit">&nbsp;</button>
+	</form>

@@ -56,8 +56,11 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 			$collection->addFieldToFilter('category_id',array('like'=>'%,'.$cat.',%'));
 		}
 		
-		if($keyword = $this->getRequest()->getParam('keyword')){
-			
+		if($keyword = $this->getRequest()->getParam('q')){
+			$likeStm = array('like'=> "%{$keyword}%");
+			$collection->addFieldToFilter(
+							array('title', 'full_content'),
+							array($likeStm, $likeStm));
 		}
 		
 		//set page for ajax load
@@ -94,10 +97,12 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 			}
 			
 			//social counter
+			//$url = $blog->getUrl();
+			//$apikey = "915d5146714fd0c40e73cfc5b898ae7ed2105b11";
+			//$count = file_get_contents("http://free.sharedcount.com/?url=" . rawurlencode($url) . "&apikey=" . $apikey);
+			//$counts = json_decode($count, true);
 			$url = $blog->getUrl();
-			$apikey = "915d5146714fd0c40e73cfc5b898ae7ed2105b11";
-			$count = file_get_contents("http://free.sharedcount.com/?url=" . rawurlencode($url) . "&apikey=" . $apikey);
-			$counts = json_decode($count, true);
+			$counts = Mage::helper('blog')->getShareCount($url);
 			
 			$item['social'] = $counts;
 			$item['url'] = $blog->getUrl();
@@ -110,7 +115,19 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 			$json['items'][] = $item;
 			//array_push($json, $item);
 		}
+		Mage::getSingleton('core/session')->unsBlogSearch();
 		$this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
         $this->getResponse()->setBody(json_encode($json));
 	}
+
+	public function searchAction(){
+		if($keyword = $this->getRequest()->getParam('q')){
+			Mage::getSingleton('core/session')->setBlogSearch($keyword);
+			$this->_redirect(Mage::helper('blog')->getRoute() . DS . Mage::helper('job')->formatUrlKeyJp($keyword));
+			return;
+		}else{
+			Mage::getSingleton('core/session')->unsBlogSearch();
+		}
+	}
+	
 }

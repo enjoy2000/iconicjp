@@ -101,6 +101,21 @@
 	color: #fff;
 	background-color: #000;
 }
+#blog-category form#keyword-search{
+	padding: 25px;
+}
+#blog-category form#keyword-search > input{
+	width: 150px;
+	padding: 2px 10px;
+	border: solid 1px #d6d9dc;
+	background-color: #fff;
+	color: #000;
+	border-radius: 0;
+}
+#blog-category form#keyword-search > button{
+	background: url('../images/search-btn.png') center no-repeat #000;
+	margin-left: -6px;
+}
 #blogs-content{
 	width: 625px;
 	border: solid 1px #989a9c;
