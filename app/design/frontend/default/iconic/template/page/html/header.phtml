@@ -4251,11 +4251,11 @@
 			
 				jQuery(function() {
 					jQuery(document).ready(function(){
-						jQuery('li.home img').hover(function(){
-							jQuery(this).attr('src', '<?php echo $this->getSkinUrl('images/home.png') ?>')
+						jQuery('li.home a').hover(function(){
+							jQuery('img', this).attr('src', '<?php echo $this->getSkinUrl('images/home.png') ?>')
 						},
 						function(){
-							jQuery(this).attr('src', '<?php echo $this->getSkinUrl('images/home-white.png') ?>')
+							jQuery('img', this).attr('src', '<?php echo $this->getSkinUrl('images/home-white.png') ?>')
 						}
 						);
 					});
