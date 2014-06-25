@@ -11,21 +11,25 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 			if($langId = $this->getRequest()->get('language')){
 				$lang = Mage::getModel('job/language')->load($langId);
 				$langname = Mage::helper('job')->getTransName($lang);
+				$tit .= $helper->__('[言語]');
 				$tit .= $langname;
 			}
 			if($catId = $this->getRequest()->get('location')){
 				$loc = Mage::getModel('job/country')->load($catId);
 				$locname = Mage::helper('job')->getTransName($loc);
+				$tit .= $helper->__('[国]');
 				$tit .= $locname;
 			}
 			if($industryId = $this->getRequest()->get('industry')){
 				$cat = Mage::getModel('job/parentcategory')->load($industryId);
 				$industryname = Mage::helper('job')->getTransName($cat);
+				$tit .= $helper->__('[業界]');
 				$tit .= $industryname;
 			}
 			if($functionId = $this->getRequest()->get('industry')){
 				$cat = Mage::getModel('job/parentcategory')->load($functionId);
 				$functionname = Mage::helper('job')->getTransName($cat);
+				$tit .= $helper->__('[職種]');
 				$tit .= $functionname;
 			}
 			if($featureId = $this->getRequest()->get('feature')){

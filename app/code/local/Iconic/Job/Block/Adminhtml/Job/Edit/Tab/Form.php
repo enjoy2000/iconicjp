@@ -137,6 +137,10 @@ class Iconic_Job_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_Block_
             'required'  => true,
             'name'      => 'job_salary_currency',
             'values'    => array(
+            			array(
+							'label' => 'JPY',
+							'value' => 'JPY'
+						),
 						array(
 							'label' => 'VND',
 							'value' => 'VND'
@@ -146,7 +150,7 @@ class Iconic_Job_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_Block_
 							'value' => 'USD'
 						),
 			),
-            'value'		=> 'VND',
+            'value'		=> 'JPY',
         ));
 		
 		$fieldset->addField('job_salary_type', 'select', array(

@@ -94,9 +94,9 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 	
 	public function getFullSalary(){
 		if($this->getJobSalary() && $this->getJobSalaryTo()){
-			$salary = $this->getJobSalary() . ' - ' . $this->getJobSalaryTo() . '(' .$this->getJobSalaryType() . ')'; 
+			$salary = $this->getJobSalary() . ' - ' . $this->getJobSalaryTo() . $this->getJobSalaryCurrency() . '(' .$this->getJobSalaryType() . ')'; 
 		}else if($this->getJobSalary() && !$this->getJobSalaryTo()){
-			$salary = $this->getJobSalary() . '(' .$this->getJobSalaryType() . ')'; 
+			$salary = $this->getJobSalary() . $this->getJobSalaryCurrency() . '(' .$this->getJobSalaryType() . ')'; 
 		}else{
 			$salary = Mage::helper('job')->__('Negotiable');
 		}
