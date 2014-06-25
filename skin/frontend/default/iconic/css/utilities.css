@@ -90,6 +90,9 @@ p{
 	text-align: left;
 	color: #4571EB;
 }
+.blue-tit > a{
+	color: #4571EB;
+}
 .white-tit{
 	background: url('../images/white-tit.png') bottom left no-repeat transparent;
 	padding-bottom: 10px;

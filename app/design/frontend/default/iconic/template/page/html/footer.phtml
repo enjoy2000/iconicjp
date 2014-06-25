@@ -56,7 +56,9 @@
     		</div>
     		<div class="flr width-45 blog">
     			<h3 class="blue-tit">
-    				<?php echo $this->__('ブログ') ?>
+    				<a href="<?php echo Mage::helper('job')->getBaseUrl() . Mage::helper('blog')->getRoute() ?>" title="<?php echo $this->__('ブログ') ?>">
+    					<?php echo $this->__('ブログ') ?>
+    				</a>
     			</h3>
     			<ul>
     				<?php $homeblogs = Mage::getModel('blog/blog')->getCollection()->setOrder('create_time', 'DESC') 
@@ -113,7 +115,7 @@
     	<div id="countries-link">
 	    	<div class="home-countries wrapper">
 				<h3 class="blue-tit">
-	    			<?php echo $this->__('各国の概要の紹介') ?>
+	    			<?php echo $this->__('各国ビジネス環境の紹介') ?>
 				</h3>
 				<div class="content">
 					<a class="vn" href="<?php echo Mage::helper('job')->getBaseUrl() ?>vietnam" title="<?php echo $this->__('ベトナム') ?>">
