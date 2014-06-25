@@ -19,14 +19,14 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 			$parentArr = array($parent);
 			$catBlock->setParent($parentArr);
 			$parent = Mage::getModel('blog/parentcategory')->load($parent);
-			$tit .= Mage::helper('job')->getTransName($parent);
+			$tit .= '|'.Mage::helper('job')->getTransName($parent);
 			$breadcrumbs->addCrumb('parent', array('label'=>Mage::helper('job')->getTransName($parent), 'title'=>Mage::helper('job')->getTransName($parent), 'link'=>$parent->getUrl()));
 		}
 		if($cat = $this->getRequest()->getParam('cat')){
 			$catArr = array($cat);
 			$catBlock->setCat($catArr);
 			$cat = Mage::getModel('blog/category')->load($cat);
-			$tit .= Mage::helper('job')->getTransName($cat);
+			$tit .= '|'.Mage::helper('job')->getTransName($cat);
 			$breadcrumbs->addCrumb('cat', array('label'=>Mage::helper('job')->getTransName($cat)));
 		}
 		$head->setTitle($tit);
