@@ -75,7 +75,7 @@ class Iconic_Blog_Block_Adminhtml_Blog_Edit_Tab_Form extends Mage_Adminhtml_Bloc
             'label'     => Mage::helper('blog')->__('Content'),
             'title'     => Mage::helper('blog')->__('Content'),
             'style'     => 'width:100%; height:400px;',
-			'config' 	=> Mage::getSingleton('cms/wysiwyg_config')->getConfig(), 
+			'config' 	=> Mage::getSingleton('blog/wysiwyg_config')->getConfig(), 
 			'wysiwyg' 	=> true, 
             'required'  => true,
         ));

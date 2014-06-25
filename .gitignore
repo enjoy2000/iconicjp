@@ -83,6 +83,9 @@ media/downloadable/
 media/.htaccess
 media/import/
 media/xmlconnect/
+media/wysiwyg/
+media/blog/
+media/resized/blog/
 nbproject/
 pear
 pear/
