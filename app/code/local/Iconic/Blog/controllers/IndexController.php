@@ -108,7 +108,7 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 			
 			$item['social'] = $counts;
 			$item['url'] = $blog->getUrl();
-			$item['image'] = $blog->getImage();
+			$item['image'] = $blog->getPhoto();
 			$item['title'] = $blog->getTitle();
 			$item['date'] = $blog->getDate();
 			$item['author']['name'] = $author->getName();

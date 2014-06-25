@@ -17,7 +17,7 @@
 				<?php foreach($this->getNewest() as $blog): ?>
 					<?php $author = Mage::getModel('blog/author')->load($blog->getAuthorId()) ?>
 				<li class="clearfix">
-					<img class="fll" alt="" src="/media/resized/<?php echo $blog->getImage() ?>" />
+					<img class="fll" alt="" src="/media/resized/<?php echo $blog->getPhoto() ?>" />
 					<div class="fll">
 						<h6>
 							<a href="<?php echo $blog->getUrl() ?>" title="<?php echo $blog->getTitle() ?>">
@@ -60,7 +60,7 @@
 				<?php foreach($this->getPopular() as $blog): ?>
 					<?php $author = Mage::getModel('blog/author')->load($blog->getAuthorId()) ?>
 				<li class="clearfix">
-					<img class="fll" alt="" src="/media/resized/<?php echo $blog->getImage() ?>" />
+					<img class="fll" alt="" src="/media/resized/<?php echo $blog->getPhoto() ?>" />
 					<div class="fll">
 						<h6>
 							<a href="<?php echo $blog->getUrl() ?>" title="<?php echo $blog->getTitle() ?>">

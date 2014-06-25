@@ -31,5 +31,13 @@ class Iconic_Blog_Model_Blog extends Mage_Core_Model_Abstract
 		$date = Mage::helper('blog')->formatDate($this->getCreateTime());
 		return $date;
 	}
+	
+	public function getPhoto(){
+		if($this->getImage()){
+			return $this->getImage();
+		}else{
+			return Mage::helper('blog')->getRoute() . DS . 'default.jpg';
+		}
+	}
 
 }

@@ -32,12 +32,6 @@ class Iconic_Blog_Helper_Data extends Mage_Core_Helper_Abstract
 		$count = array();
 		$url = rawurldecode($url);
 		//google
-		/*
-	    $html =  file_get_contents( "https://plusone.google.com/_/+1/fastbutton?url=".$url);
-	    $doc = new DOMDocument();   $doc->loadHTML($html);
-	    $counter=$doc->getElementById('aggregateCount');
-	    $count['google'] = $counter->nodeValue;
-		*/
 		$curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, "https://clients6.google.com/rpc");
 	    curl_setopt($curl, CURLOPT_POST, 1);
