@@ -58,6 +58,7 @@ js/jscolor/
 js/lib/
 js/mage/
 js/prototype/
+!js/prototype/windows/themes/commercelab/
 js/scriptaculous/
 js/spacer.gif
 js/tiny_mce/
