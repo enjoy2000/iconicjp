@@ -74,8 +74,11 @@
 .info-search .amount span{
 	color: #f58220;
 }
-.info-search .inline-b + .inline-b{
-	margin-left: 20px;
+.info-search .inline-b{
+	margin-right: 20px;
+}
+.info-search .inline-b:last-child{
+	margin-right: 0;
 }
 .info-search .inline-b span{
 	color: #f58220;

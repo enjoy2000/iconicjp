@@ -1128,7 +1128,7 @@ body.cms-home #ajax-load{
 	margin-top: 10px;
 }
 #breadcrumbs ul li{
-	display: inline-block;
+	display: inline;
 }
 #breadcrumbs ul li a{
 	text-decoration: underline;

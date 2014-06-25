@@ -26,7 +26,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 				$tit .= $helper->__('[業界]');
 				$tit .= $industryname;
 			}
-			if($functionId = $this->getRequest()->get('industry')){
+			if($functionId = $this->getRequest()->get('function')){
 				$cat = Mage::getModel('job/parentcategory')->load($functionId);
 				$functionname = Mage::helper('job')->getTransName($cat);
 				$tit .= $helper->__('[職種]');
@@ -37,6 +37,39 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 				$featurename = Mage::helper('job')->getTransName($feature);
 				$tit .= $featurename;
 			}
+			if($multiLocation = $this->getRequest()->get('multilocation')){
+				$multiloc = array();
+				foreach($multiLocation as $locId){
+					$multiloc[] = Mage::helper('job')->getTransName(Mage::getModel('job/country')->load($locId));
+				}
+				$tit .= $helper->__('[国]');
+				$tit .= implode('、', $multiloc);
+			}
+			if($multiLanguage = $this->getRequest()->get('multilanguage')){
+				$multilang = array();
+				foreach($multiLanguage as $langId){
+					$multilang[] = Mage::helper('job')->getTransName(Mage::getModel('job/language')->load($langId));
+				}
+				$tit .= $helper->__('[言語]');
+				$tit .= implode('、', $multilang);
+			}
+			if($multiCategory = $this->getRequest()->get('multicategory')){
+				$multicat = array();
+				foreach($multiCategory as $catId){
+					$multicat[] = Mage::helper('job')->getTransName(Mage::getModel('job/parentcategory')->load($catId));
+				}
+				$tit .= $helper->__('[業界]');
+				$tit .= implode('、', $multicat);
+			}
+			if($multiFunction = $this->getRequest()->get('multifunction')){
+				$multifunc = array();
+				foreach($multiFunction as $catId){
+					$multifunc[] = Mage::helper('job')->getTransName(Mage::getModel('job/country')->load($catId));
+				}
+				$tit .= $helper->__('[職種]');
+				$tit .= implode('、', $multifunc);
+			}
+			
 			$tit .= $helper->__('の求人検索結果');
 		if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
 			$breadcrumbs->addCrumb('home', array('label'=>$helper->__('ホーム'), 'title'=>$helper->__('ホーム'), 'link'=>Mage::getBaseUrl()));
