@@ -33,7 +33,7 @@
 							 + '<div class="social">'
 							 + '<span class="inline twitter">'+ blog.social.twitter +'</span>'
 							 + '<span class="inline fb">'+ blog.social.facebook +'</span>'
-							 + '<span class="inline google">'+ blog.social.google +'</span>'
+							 //+ '<span class="inline google">'+ blog.social.google +'</span>'
 							 + '</div>'
 							 + '</div>'
 							 + '</div>'

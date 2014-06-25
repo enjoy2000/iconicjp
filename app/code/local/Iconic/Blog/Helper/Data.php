@@ -32,6 +32,7 @@ class Iconic_Blog_Helper_Data extends Mage_Core_Helper_Abstract
 		$count = array();
 		$url = rawurldecode($url);
 		//google
+		/*
 		$curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, "https://clients6.google.com/rpc");
 	    curl_setopt($curl, CURLOPT_POST, 1);
@@ -42,6 +43,7 @@ class Iconic_Blog_Helper_Data extends Mage_Core_Helper_Abstract
 	    curl_close ($curl);
 	    $json = json_decode($curl_results, true);
 	    $count['google'] = intval( $json[0]['result']['metadata']['globalCounts']['count'] );
+		*/
 		//facebook
 		$xml = file_get_contents("http://api.facebook.com/restserver.php?method=links.getStats&urls=".$url);
 	    $xml = simplexml_load_string($xml);
