@@ -2,6 +2,8 @@
 class Iconic_Job_PayloadController extends Mage_Core_Controller_Front_Action
 {
 	public function indexAction(){
+		shell_exec( 'cd /var/www/iconicjp/ && git reset --hard HEAD && git pull' );
+		die;
 		if ( $_POST['payload'] ) {
 		  	shell_exec( 'cd /var/www/iconicjp/ && git reset --hard HEAD && git pull' );
 			echo 'success';die;
