@@ -108,14 +108,70 @@
     </menu>
     <acl>
         <resources>
-            <all>
-                <title>Allow Everything</title>
-            </all>
             <admin>
                 <children>
-                    <job>
+                    <job module="job">
                         <title>Job Module</title>
                         <sort_order>200</sort_order>
+                        <children>
+			                <jobs module="job">
+			                    <title>Manage Jobs</title>
+			                    <sort_order>1</sort_order>
+			                    <action>adminhtml/job_job</action>
+			                </jobs>
+			                <categories module="job">
+			                    <title>Manage Categories</title>
+			                    <sort_order>2</sort_order>
+			                        <children>
+			                            <sub module="job">
+			                                <title>Sub Categories</title>
+			                                <sort_order>0</sort_order>
+			                                <action>adminhtml/job_category</action>
+			                            </sub>
+			                            <parent module="job">
+			                                <title>Parent Categories</title>
+			                                <sort_order>0</sort_order>
+			                                <action>adminhtml/job_parentcategory</action>
+			                            </parent>
+			                        </children>
+			                </categories>
+			                <locations module="job">
+			                    <title>Manage Location</title>
+			                    <sort_order>3</sort_order>
+			                        <children>
+			                            <sub module="job">
+			                                <title>Country</title>
+			                                <sort_order>1</sort_order>
+			                                <action>adminhtml/job_country</action>
+			                            </sub>
+			                        </children>
+			                </locations>
+			                <level module="job">
+			                    <title>Manage Job Level</title>
+			                    <sort_order>4</sort_order>
+			                    <action>adminhtml/job_level</action>
+			                </level>
+			                <type module="job">
+			                    <title>Manage Job Type</title>
+			                    <sort_order>5</sort_order>
+			                    <action>adminhtml/job_type</action>
+			                </type>
+			                <request module="job">
+			                    <title>Manage Requests</title>
+			                    <sort_order>6</sort_order>
+			                    <action>adminhtml/job_request</action>
+			                </request>
+			                <pic module="job">
+			                    <title>Manage PIC</title>
+			                    <sort_order>7</sort_order>
+			                    <action>adminhtml/job_pic</action>
+			                </pic>
+			                <feature module="job">
+			                    <title>Manage Feature Tags</title>
+			                    <sort_order>8</sort_order>
+			                    <action>adminhtml/job_feature</action>
+			                </feature>
+			            </children>
                     </job>
                 </children>
             </admin>

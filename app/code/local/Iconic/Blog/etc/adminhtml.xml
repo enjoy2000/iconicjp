@@ -52,14 +52,39 @@
     </menu>
     <acl>
         <resources>
-            <all>
-                <title>Allow Everything</title>
-            </all>
             <admin>
                 <children>
-                    <blog>
+                    <blog module="blog">
                         <title>Blog Module</title>
                         <sort_order>200</sort_order>
+                        <children>
+			                <blogs module="blog">
+			                    <title>Manage Blogs</title>
+			                    <sort_order>1</sort_order>
+			                    <action>adminhtml/blog_blog</action>
+			                </blogs>
+			                <categories module="blog">
+			                    <title>Manage Categories</title>
+			                    <sort_order>2</sort_order>
+			                        <children>
+			                            <sub module="blog">
+			                                <title>Sub Categories</title>
+			                                <sort_order>0</sort_order>
+			                                <action>adminhtml/blog_category</action>
+			                            </sub>
+			                            <parent module="blog">
+			                                <title>Parent Categories</title>
+			                                <sort_order>0</sort_order>
+			                                <action>adminhtml/blog_parentcategory</action>
+			                            </parent>
+			                        </children>
+			                </categories>
+			                <author module="blog">
+			                    <title>Manage Authors</title>
+			                    <sort_order>3</sort_order>
+			                    <action>adminhtml/blog_author</action>
+			                </author>
+			            </children>
                     </blog>
                 </children>
             </admin>
