@@ -234,21 +234,6 @@
 	color: #000;
 	border-color: #000;
 }
-.load-more{
-	text-align: center;
-	margin-bottom: 30px;
-	margin-top: 20px;
-}
-.load-more a{
-	padding: 3px 20px;
-	background-color: #6a8def;
-	border-bottom: solid 2px #4571EB;
-	color: #d7d8da;
-	font-weight: bold;
-	text-decoration: none;
-	border-radius: 3px;
-}
-
 #blog-details{
 	width: 625px;
 	border: solid 1px #989a9c;
