@@ -39,16 +39,23 @@
 							 + '</div>'
 							 + '</div>';
 					});
-					$('#blogs-content').append(html);
-					$('#ajax-form .page').val(parseInt($('#ajax-form .page').val()) + 1);
+					$('#blogs-content').html(html);
 					hideLoading();
 				}
-				if(data.count == 8 && data.lastpage != data.page){
-					var loadmore = '<div class="load-more"><a class="btn" href="#">CLICK HERE TO SEE MORE ARTICLES</a></div>';
-					$('#blogs-content').append(loadmore);
+				pager = '<div class="pager">';
+				for(i = 1; i <= data.lastpage; i++){
+					if(data.page == i){
+						active = 'active';
+					}else{
+						active = '';
+					}
+					pager += '<a href="#" class="inline '+ active +'" data-page="'+ i +'">'+ i +'</a>';
 				}
-				$('.load-more a').on('click', function(e){
+				pager += '</div>';
+				$('#pager').html(pager);
+				$('.pager a').on('click', function(e){
 					e.preventDefault();
+					$('#ajax-form .page').val($(this).data('page'));
 					loadBlogs();
 				});
 			});
