@@ -291,6 +291,9 @@
 #blog-details .full-content > table{
 	/*width: 100%!important; style blog table 100*/
 }
+#blog-details .full-content > table tr td{
+	padding: 3px 10px;
+}
 #blog-details .full-content p{
 	line-height: 20px;
 	font-size: 13px;
