@@ -95,7 +95,8 @@ SetOutputFilter DEFLATE
  
     <IfModule mod_headers.c>
         # Make sure proxies don't deliver the wrong content
-        Header append Vary User-Agent env=!dont-vary
+		Header set Connection keep-alive
+        #Header append Vary User-Agent env=!dont-vary
     </IfModule>
 
 </IfModule>
@@ -208,7 +209,8 @@ SetOutputFilter DEFLATE
 ############################################
 ## Add default Expires header
 ## http://developer.yahoo.com/performance/rules.html#expires
-
+	
+	ExpiresActive On
     ExpiresDefault "access plus 1 year"
 
 </IfModule>
