@@ -289,7 +289,7 @@
 	margin-top: 30px;
 }
 #blog-details .full-content > table{
-	width: 100%!important;
+	/*width: 100%!important; style blog table 100*/
 }
 #blog-details .full-content p{
 	line-height: 20px;

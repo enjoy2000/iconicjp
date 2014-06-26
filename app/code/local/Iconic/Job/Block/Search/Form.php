@@ -21,7 +21,7 @@ class Iconic_Job_Block_Search_Form extends Mage_Core_Block_Template
 				foreach ($language as $loc){
 					$name = Mage::helper('job')->getTransName($loc);
 					$selected = "";
-					if($loc->getId() == $this->getLanguage()){
+					if($loc->getId().'-1' == $this->getLanguage()){
 						$selected = " selected=\"selected\"";
 					}
 					$listLocation .= "<option value=\"{$loc->getId()}\"{$selected}>{$name}</option>";
@@ -29,7 +29,7 @@ class Iconic_Job_Block_Search_Form extends Mage_Core_Block_Template
 			} else {
 				foreach ($language as $loc){
 					$name = Mage::helper('job')->getTransName($loc);
-					$listLanguage .= '<option value="' . $loc->getId() . '">' . $name . '</option>';
+					$listLanguage .= '<option value="' . $loc->getId() . '-1">' . $name . '</option>';
 				}				
 			}
 			$this->setData('languageList', $listLanguage);
