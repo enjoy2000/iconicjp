@@ -223,6 +223,9 @@
 	border: solid 1px #4571EB;
 	padding: 0 7px;
 }
+#pager a+a{
+	margin-left: 5px;
+}
 #pager a.active{
 	color: #000;
 	border-color: #000;
