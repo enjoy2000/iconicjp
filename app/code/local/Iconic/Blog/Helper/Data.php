@@ -5,6 +5,10 @@ class Iconic_Blog_Helper_Data extends Mage_Core_Helper_Abstract
 		return 'blog';
 	}
 	
+	public function getAuthorLink(){
+		return 'author';
+	}
+	
 	public function getTransName($obj){
 		$storeCode = Mage::app()->getStore()->getCode();
 		if($storeCode == 'jp'){

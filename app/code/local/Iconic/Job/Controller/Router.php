@@ -59,7 +59,7 @@ class Iconic_Job_Controller_Router extends Mage_Core_Controller_Varien_Router_Ab
 				$feature = Mage::getModel('job/feature')->load($part, 'url_key');
 				if($loc->getId()){
 					$request
-						->setParam('language', $loc->getId());
+						->setParam('language', (string)$loc->getId().'-1');
 				}
 				if($cat->getId()){
 					if($cat->getGroupCategory() == 'industry'){

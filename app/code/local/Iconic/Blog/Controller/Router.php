@@ -79,20 +79,29 @@ class Iconic_Blog_Controller_Router extends Mage_Core_Controller_Varien_Router_A
 					break;
 				
 				case 2: //sub category
-					$parent = Mage::getModel('blog/parentcategory')->load($parts[0], 'url_key');
-						if($parent->getId()){
+					
+					if($parts[0] == Mage::helper('blog')->getAuthorLink()){ //author link
+						$author = Mage::getModel('blog/author')->load($parts[1], 'url_key');
+						if($author->getId()){
 							$request
-								->setParam('parent', $parent->getId());
-		                }else{
+								->setParam('author', $author->getId());
+						}
+					}else{
+						$parent = Mage::getModel('blog/parentcategory')->load($parts[0], 'url_key');
+							if($parent->getId()){
+								$request
+									->setParam('parent', $parent->getId());
+			                }else{
+			                	return false;
+			                }
+						$cat = Mage::getModel('blog/category')->load($parts[1], 'url_key');
+						if($cat->getId()){
+							$request
+								->setParam('cat', $cat->getId());
+						}else{
 		                	return false;
 		                }
-					$cat = Mage::getModel('blog/category')->load($parts[1], 'url_key');
-					if($cat->getId()){
-						$request
-							->setParam('cat', $cat->getId());
-					}else{
-	                	return false;
-	                }
+					}
 					break;
 			}
 					

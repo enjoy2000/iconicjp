@@ -184,7 +184,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 		$collection->setOrder('created_time','DESC');
 		//var_dump($collection->getSelect()->__toString());
 		
-		
+		//var_dump($collection->getSelect()->__toString());die;
 		$this->setResults($collection);
 	}
 	

@@ -360,4 +360,12 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$this->_redirect('*/apply', array('id'=> $data['id']));
 		}
 	}
+
+	public function urlAction(){
+		$authors  = Mage::getModel('blog/author')->getCollection();
+		foreach($authors as $au){
+			$au->setUrlKey(Mage::helper('job')->formatUrlKeyJp($au->getName()))->save();
+			echo $au->getName() . '<br />';
+		}
+	}
 }

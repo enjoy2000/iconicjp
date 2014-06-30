@@ -15,14 +15,6 @@ class Iconic_Blog_Block_Adminhtml_Author_Edit_Tab_Form extends Mage_Adminhtml_Bl
             'name'      => 'name',
         ));
 		
-		$fieldset->addField('link', 'text', array(
-            'label'     => Mage::helper('blog')->__('Link'),
-            'class'     => 'required-entry',
-            'required'  => true,
-            'name'      => 'link',
-        ));
-		
-		
 		$fieldset->addField('image', 'image', array(
             'label'     => Mage::helper('blog')->__('Thumbnail'),
             'required'  => false,

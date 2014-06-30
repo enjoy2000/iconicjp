@@ -70,17 +70,33 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 	
 	public function getLanguage(){
 		$langs = explode(',', substr($this->getLanguageId(),1,-1));
-		if(Mage::app()->getStore()->getCode() == 'jp'){
-			foreach($langs as $lang){
-				$langName[] = Mage::getModel('job/language')->load((int)$lang)->getName();
+		$names = array();
+		foreach($langs as $lang){
+			$lang = explode('-', $lang);
+			$langModel = Mage::getModel('job/language')->load(intval($lang[0]));
+			$name = Mage::helper('job')->getTransName($langModel);
+			$name .= ': ';
+			if($lang[1] == '1'){
+				$level = Mage::helper('job')->__('ネイティブレベル');
+			}else if($lang[1] == '2'){
+				$level = Mage::helper('job')->__('ビジネス上級レベル');
+			}else if($lang[1] == '3'){
+				$level = Mage::helper('job')->__('ビジネス中級レベル');
+			}else if($lang[1] == '4'){
+				$level = Mage::helper('job')->__('日常会話レベル');
+			}else if($lang[1] == '5'){
+				$level = Mage::helper('job')->__('旅行会話レベル');
+			}else if($lang[1] == '6'){
+				$level = Mage::helper('job')->__('挨拶レベル');
+			}else if($lang[1] == '7'){
+				$level = Mage::helper('job')->__('話せない');
+			}else{
+				$level = Mage::helper('job')->__('話せない');
 			}
-			return implode(',', $langName);
-		}else{
-			foreach($langs as $lang){
-				$langName[] = Mage::getModel('job/language')->load((int)$lang)->getNameEn();
-			}
-			return implode(',', $langName);
+			$name .= $level;
+			$names[] = $name;
 		}
+		return implode(',', $names);
 	}
 	
 	public function getLevel(){

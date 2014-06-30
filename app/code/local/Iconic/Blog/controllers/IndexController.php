@@ -22,6 +22,12 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 			$tit .= '|'.Mage::helper('job')->getTransName($parent);
 			$breadcrumbs->addCrumb('parent', array('label'=>Mage::helper('job')->getTransName($parent), 'title'=>Mage::helper('job')->getTransName($parent), 'link'=>$parent->getUrl()));
 		}
+		
+		if($authorId = $this->getRequest()->getParam('author')){
+			$author = Mage::getModel('blog/author')->load($authorId);
+			$tit .= '|'.Mage::helper('job')->getTransName($author);
+			$breadcrumbs->addCrumb('author', array('label'=>Mage::helper('job')->getTransName($author), 'title'=>Mage::helper('job')->getTransName($author), 'link'=>$author->getUrl()));
+		}
 		if($cat = $this->getRequest()->getParam('cat')){
 			$catArr = array($cat);
 			$catBlock->setCat($catArr);
@@ -61,6 +67,9 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 			$collection->addFieldToFilter(
 							array('title', 'full_content'),
 							array($likeStm, $likeStm));
+		}
+		if($authorId = $this->getRequest()->getParam('author')){
+			$collection->addFieldToFilter('author_id', array('eq'=>$authorId));
 		}
 		$collection->setOrder('create_time','DESC');
 		

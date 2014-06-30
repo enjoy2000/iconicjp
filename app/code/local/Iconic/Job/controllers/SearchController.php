@@ -15,7 +15,7 @@ class Iconic_Job_SearchController extends Mage_Core_Controller_Front_Action{
 		
 		$language = $this->getRequest()->get("language");
 		if($language){
-			$searchBlock->setLanguage((int)$language);
+			$searchBlock->setLanguage($language);
 		}
 		
 		$location = $this->getRequest()->get("location");
