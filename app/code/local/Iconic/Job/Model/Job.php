@@ -96,7 +96,7 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 			$name .= $level;
 			$names[] = $name;
 		}
-		return implode(',', $names);
+		return implode('<br />', $names);
 	}
 	
 	public function getLevel(){
