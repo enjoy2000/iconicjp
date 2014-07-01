@@ -107,3 +107,6 @@ jQuery(document).ready(function(){
   });
 </script>
 <?php endif; ?>
+<?php if(strpos($bodyclass, 'blog-index-index')): ?>
+<link rel="image_src" href="<?php echo $this->getUrl('media/blog/default.png') ?>" />
+<?php endif; ?>

@@ -31,6 +31,9 @@ class Iconic_Blog_DetailController extends Mage_Core_Controller_Front_Action
 			if($blog->getKeywords()){
 				$head->setKeywords($blog->getKeywords());
 			}
+			
+			$detailBlock = $this->getLayout()->getBlock('detail');
+			$detailBlock->setBlog($blog);
 			$blog->setViews($blog->getViews() + 1)->save();
 		}
         $this->renderLayout();
