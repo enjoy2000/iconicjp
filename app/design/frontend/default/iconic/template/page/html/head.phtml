@@ -94,6 +94,7 @@ jQuery(document).ready(function(){
 <script type="text/javascript">stLight.options({publisher: "7712df75-e749-40b3-b8c3-c356493d7ae9", doNotHash: true, doNotCopy: false, hashAddressBar: false});</script>
 <?php endif; ?>
 <?php if(Mage::getSingleton('cms/page')->getIdentifier() == 'home'): ?>
+<meta property="og:image" content="<?php echo $this->getSkinUrl('images/logo.png') ?>" />
 <link rel="image_src" href="<?php echo $this->getSkinUrl('images/logo.png') ?>" />
 <!-- Slider by google swiffy -->
 <script src="/js/iconic/runtime.js"></script>
@@ -108,5 +109,6 @@ jQuery(document).ready(function(){
 </script>
 <?php endif; ?>
 <?php if(strpos($bodyclass, 'blog-index-index')): ?>
+<meta property="og:image" content="<?php echo $this->getUrl('media') ?>blog/default.jpg" />
 <link rel="image_src" href="<?php echo $this->getUrl('media') ?>blog/default.jpg" />
 <?php endif; ?>
