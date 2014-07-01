@@ -49,9 +49,9 @@ class Iconic_Blog_Helper_Data extends Mage_Core_Helper_Abstract
 	    $count['google'] = intval( $json[0]['result']['metadata']['globalCounts']['count'] );
 		*/
 		//facebook
-		$xml = file_get_contents("http://api.facebook.com/restserver.php?method=links.getStats&urls=".$url);
-	    $xml = simplexml_load_string($xml);
-	    $count['facebook'] = json_decode($xml->link_stat->like_count);
+		$fb = file_get_contents("http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls=".$url);
+	    $fb = json_decode($fb, true);
+		$count['facebook'] = $fb[0]['like_count'];
 		//twitter
 		$json = file_get_contents( "http://urls.api.twitter.com/1/urls/count.json?url=".$url );
 	    $ajsn = json_decode($json, true);
