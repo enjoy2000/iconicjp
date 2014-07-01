@@ -82,6 +82,7 @@ class Iconic_Blog_Adminhtml_Blog_AuthorController extends Mage_Adminhtml_Control
 						$imageObj->keepFrame(FALSE);
 						//$width, $height - sizes you need (Note: when keepAspectRatio(TRUE), height would be ignored)
 						$imageObj->resize(25,25);
+						$imageObj->quality(60);
 						//$newPath - name of resized image
 						$imageObj->save($imgurl);
                         /*

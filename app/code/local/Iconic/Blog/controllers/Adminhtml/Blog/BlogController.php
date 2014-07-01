@@ -83,6 +83,7 @@ class Iconic_Blog_Adminhtml_Blog_BlogController extends Mage_Adminhtml_Controlle
 						//$width, $height - sizes you need (Note: when keepAspectRatio(TRUE), height would be ignored)
 						$imageObj->resize(Mage::helper('blog')->imgWidth(), Mage::helper('blog')->imgHeight());
 						//$newPath - name of resized image
+						$imageObj->quality(60);
 						$imageObj->save($imgurl);
 						$resizeurl = Mage::getBaseDir('media') . DS . 'resized' . DS . 'blog' . DS .$fileName;
 						$imageObj->resize(52, 52);
