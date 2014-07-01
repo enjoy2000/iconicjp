@@ -4,8 +4,8 @@
 		<?php 
 		$author = Mage::getModel('blog/author')->load($blog->getAuthorId());
 		?>
-		<input type="hidden" name="url[]" value="<?php echo $blog->getUrlKey() ?>" />
 		<div class="blog-wrapper clearfix">
+			<input type="hidden" name="url[]" value="<?php echo $blog->getUrlKey() ?>" />
 			<img class="fll" src="/media/<?php echo $blog->getPhoto() ?>" alt="" width="162" height="125">
 		    <div class="blog-info fll">
 		        <h4><a href="<?php echo $blog->getUrl() ?>" title="<?php echo $blog->getTitle() ?>"><?php echo $blog->getTitle() ?></a></h4>
