@@ -26,28 +26,14 @@
 						</h6>
 						<div class="inline date"><?php echo $blog->getDate() ?></div>
 						|
-						<div class="inline author"><a target="_blank" href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a></div>
+						<div class="inline author"><a  href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a></div>
 						<br class="clear" />
-						<?php 
-						//get parent category list
-						$parents = substr($blog->getCategoryId(), 1, -1);
-						$parents = explode(',', $parents);
-						$parentArr = array();
-						foreach($parents as $catId){
-							$catModel = Mage::getModel('blog/category')->load($catId);
-							$parent = Mage::getModel('blog/parentcategory')->load($catModel->getParentcategoryId());
-							if(!in_array($parent->getId(), $parentArr)){
-								$parentArr[] = $parent->getId();
-							}
-						}
-						?>
-						<?php $i=1;foreach($parentArr as $parent): ?>
-							<?php $parent = Mage::getModel('blog/parentcategory')->load($parent) ?>
+						<?php foreach($blog->getParentCats() as $parent): ?>
 							<a href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 								<?php echo Mage::helper('job')->getTransName($parent) ?>
 							</a>
-							<?php echo ($i != count($parentArr)) ? '|' : '' ?>
-						<?php $i++;endforeach; ?>
+							<?php echo ($parent->getId() != $blog->getParentCats()->getLastItem()->getId()) ? '|' : '' ?>
+						<?php endforeach; ?>
 					</div>
 				</li>
 				<?php endforeach; ?>
@@ -69,28 +55,14 @@
 						</h6>
 						<div class="inline date"><?php echo $blog->getDate() ?></div>
 						|
-						<div class="inline author"><a target="_blank" href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a></div>
+						<div class="inline author"><a  href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a></div>
 						<br class="clear" />
-						<?php 
-						//get parent category list
-						$parents = substr($blog->getCategoryId(), 1, -1);
-						$parents = explode(',', $parents);
-						$parentArr = array();
-						foreach($parents as $catId){
-							$catModel = Mage::getModel('blog/category')->load($catId);
-							$parent = Mage::getModel('blog/parentcategory')->load($catModel->getParentcategoryId());
-							if(!in_array($parent->getId(), $parentArr)){
-								$parentArr[] = $parent->getId();
-							}
-						}
-						?>
-						<?php $i=1;foreach($parentArr as $parent): ?>
-							<?php $parent = Mage::getModel('blog/parentcategory')->load($parent) ?>
+						<?php foreach($blog->getParentCats() as $parent): ?>
 							<a href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 								<?php echo Mage::helper('job')->getTransName($parent) ?>
 							</a>
-							<?php echo ($i != count($parentArr)) ? '|' : '' ?>
-						<?php $i++;endforeach; ?>
+							<?php echo ($parent->getId() != $blog->getParentCats()->getLastItem()->getId()) ? '|' : '' ?>
+						<?php endforeach; ?>
 					</div>
 				</li>
 				<?php endforeach; ?>

@@ -23,7 +23,7 @@
 							 + '<div class="blog-info fll">'
 							 + '<h4><a href="'+ blog.url +'" title="'+ blog.title +'">'+ blog.title +'</a></h4>'
 							 + '<div class="inline date">'+ blog.date +'</div>'
-							 + '<div class="inline author"><img class="author-img" alt="" src="/media/'+ blog.author.image +'" /><a target="_blank" href="'+ blog.author.link +'">'+ blog.author.name +'</a></div>'
+							 + '<div class="inline author"><img class="author-img" alt="" src="/media/'+ blog.author.image +'" /><a href="'+ blog.author.link +'">'+ blog.author.name +'</a></div>'
 							 + '<br class="clear" />';
 						$.each(blog.category, function(){
 							html += '<div class="inline cat '+ this.class +'">'+ this.name +'</div>';

@@ -31,27 +31,6 @@ class Iconic_Blog_DetailController extends Mage_Core_Controller_Front_Action
 			if($blog->getKeywords()){
 				$head->setKeywords($blog->getKeywords());
 			}
-			
-			$detailBlock = $this->getLayout()->getBlock('detail');
-			$detailBlock->setBlog($blog);
-			
-			//get parent category list
-			$parents = substr($blog->getCategoryId(), 1, -1);
-			$parents = explode(',', $parents);
-			$detailBlock->setCatIds($parents);
-			$parentArr = array();
-			foreach($parents as $catId){
-				$catModel = Mage::getModel('blog/category')->load($catId);
-				$parent = Mage::getModel('blog/parentcategory')->load($catModel->getParentcategoryId());
-				if(!in_array($parent->getId(), $parentArr)){
-					$cat = array();
-					$cat['name'] = Mage::helper('job')->getTransName($parent);
-					$cat['class'] = $parent->getUrlKey();
-					$item['category'][] = $cat;
-					$parentArr[] = $parent->getId();
-				}
-			}
-			$detailBlock->setParentIds($parentArr);
 			$blog->setViews($blog->getViews() + 1)->save();
 		}
         $this->renderLayout();

@@ -93,7 +93,8 @@ jQuery(document).ready(function(){
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "7712df75-e749-40b3-b8c3-c356493d7ae9", doNotHash: true, doNotCopy: false, hashAddressBar: false});</script>
 <?php endif; ?>
-<?php if(strpos($bodyclass, 'cms-index-index')): ?>
+<?php if(Mage::getSingleton('cms/page')->getIdentifier() == 'home'): ?>
+<link rel="image_src" href="<?php echo $this->getSkinUrl('images/logo.png') ?>" />
 <!-- Slider by google swiffy -->
 <script src="/js/iconic/runtime.js"></script>
 <script src="/js/iconic/slider.js"></script>

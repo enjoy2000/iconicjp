@@ -214,26 +214,29 @@
 #blogs-content .blog-wrapper .blog-info .author a:hover{
 	color: #4571EB;
 }
-#pager{
-	text-align: center;
-	margin: 20px 0;
+#blogs-content h2.no-result{
+	padding: 30px 20px;
 }
-#pager a{
+.pager{
+	text-align: center;
+	margin: 30px 0;
+}
+.pager ol li a{
+	padding: 0px 7px;
+	border: solid 1px #4571EB;
 	color: #4571EB;
 	text-decoration: none;
-	border: solid 1px #4571EB;
+}
+.pager ol li a:hover{
+	border-color: #000;
+}
+.pager ol li{
+	display: inline;
+}
+.pager ol li.current{
+	color: #000;
+	border: solid 1px #000;
 	padding: 0 7px;
-}
-#pager a+a{
-	margin-left: 5px;
-}
-#pager a.active{
-	color: #000;
-	border-color: #000;
-	font-weight: bold;
-}#pager a:hover{
-	color: #000;
-	border-color: #000;
 }
 #blog-details{
 	width: 625px;

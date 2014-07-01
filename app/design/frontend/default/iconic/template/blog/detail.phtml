@@ -1,8 +1,7 @@
 <?php $blog = $this->getBlog() ?>
 <div class="blog-details-content">
 	<div class="blog-parents">
-		<?php foreach($this->getParentIds() as $parent): ?>
-			<?php $parent = Mage::getModel('blog/parentcategory')->load($parent) ?>
+		<?php foreach($blog->getParentCats() as $parent): ?>
 			<div class="inline parent <?php echo $parent->getUrlKey() ?>"><?php echo Mage::helper('job')->getTransName($parent) ?></div>
 		<?php endforeach; ?>
 	</div>
@@ -14,12 +13,11 @@
 	<?php $author = Mage::getModel('blog/author')->load($blog->getAuthorId()) ?>
 	<div class="inline author">
 		<img src="/media/<?php echo $author->getImage() ?>" alt="" width="25" height="25" />
-		<a target="_blank" href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a>
+		<a  href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a>
 	</div>
 	<h1><?php echo $blog->getTitle() ?></h1>
 	<div class="blog-cats">
-		<?php foreach($this->getCatIds() as $cat): ?>
-			<?php $cat = Mage::getModel('blog/category')->load($cat) ?>
+		<?php foreach($blog->getSubCats() as $cat): ?>
 			<div class="inline cat"><?php echo Mage::helper('job')->getTransName($cat) ?></div>
 		<?php endforeach; ?>
 	</div>

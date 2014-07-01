@@ -39,5 +39,20 @@ class Iconic_Blog_Model_Blog extends Mage_Core_Model_Abstract
 			return Mage::helper('blog')->getRoute() . DS . 'default.jpg';
 		}
 	}
+	
+	public function getSubCats(){
+		$catIds = substr($this->getCategoryId(), 1, -1);
+		$catIds = explode(',', $catIds);
+		$cats = Mage::getModel('blog/category')->getCollection()->addFieldToFilter('category_id', array('in'=>$catIds));
+		return $cats;
+	}
+	
+	public function getParentCats(){
+		$cats = $this->getSubCats();
+		$parentArr = array();
+		$parentIds = $cats->getColumnValues('parentcategory_id');
+		$parentCats = Mage::getModel('blog/parentcategory')->getCollection()->addFieldToFilter('parentcategory_id', array('in'=>$parentIds));
+		return $parentCats;		
+	}
 
 }
