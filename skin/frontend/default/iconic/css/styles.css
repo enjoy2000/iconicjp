@@ -543,7 +543,7 @@ body.cms-home #ajax-load{
 }
 #blog-news .blog .view-more{
 	margin-top: 30px;
-	text-align: center;
+	padding-left: 83px;
 }
 #blog-news .blog .view-more a{
 	padding-left: 30px;
