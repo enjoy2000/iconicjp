@@ -47,8 +47,8 @@
     		
     		<select required class="last after-input" name="sex" placeholder="<?php echo $this->__('性別') ?>" value="<?php echo $this->getCustomer()->getSex() ?>">
     			<option value=""><?php echo $this->__('性別') ?></option>
-            	<option <?php echo ($this->getCustomer()->getSex()=='男性') ? 'selected="selected"' : '' ?> value="<?php echo '男性' ?>"><?php echo $this->__('男性') ?></option>
-            	<option <?php echo ($this->getCustomer()->getSex()=='女性') ? 'selected="selected"' : '' ?> value="<?php echo '女性' ?>"><?php echo $this->__('女性') ?></option>
+            	<option <?php echo ($this->getCustomer()->getSex()=='男性') ? 'selected="selected"' : '' ?> value="<?php echo 1 ?>"><?php echo $this->__('男性') ?></option>
+            	<option <?php echo ($this->getCustomer()->getSex()=='女性') ? 'selected="selected"' : '' ?> value="<?php echo 2 ?>"><?php echo $this->__('女性') ?></option>
     		</select>
     	</div>
     	
@@ -195,7 +195,7 @@
 	    	<div class="row row2">
 	    		<input required class="first" type="text" name="companyname" placeholder="<?php echo $this->__('企業名') ?>" />
 	    		<div class="last income">
-		    		<input required type="number" name="companysalary" placeholder="<?php echo $this->__('年収') ?>" />
+		    		<input required type="number" name="companysalary" placeholder="<?php echo $this->__('月収') ?>" />
 		    		<?php echo $this->__('万円') ?>
 	    		</div>
 	    	</div>
