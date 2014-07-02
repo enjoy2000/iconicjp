@@ -83,16 +83,16 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
     }
 	
 	public function ajaxAction(){
-		$urls = $this->getRequest()->getParam('url');
-		foreach($urls as $urlkey){
-			$blog = Mage::getModel('blog/blog')->load($urlkey, 'url_key');
+		$ids = $this->getRequest()->getParam('ids');
+		$blogs = Mage::getModel('blog/blog')->getCollection()->addFieldToFilter('blog_id', array('in'=>$ids));
+		foreach($blogs as $blog){
 			$count = Mage::helper('blog')->getShareCount($blog->getUrl());
 			$blog->setFacebook((int)$count['facebook'])
 					->setTwitter((int)$count['twitter'])
 					->save();
 		}
-		$this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
-        $this->getResponse()->setBody(json_encode($json));
+		//$this->getResponse()->clearHeaders()->setHeader('Content-type','application/json',true);
+        //$this->getResponse()->setBody(json_encode($json));
 	}
 
 	public function searchAction(){
