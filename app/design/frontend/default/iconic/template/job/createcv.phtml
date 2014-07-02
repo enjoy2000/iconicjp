@@ -57,7 +57,7 @@
     			<option value=""><?php echo $this->__('国籍') ?></option>
     			<?php $list = Mage::getModel('job/listlocation')->getCollection() ?>
     			<?php foreach($list as $loc): ?>
-    			<option value="<?php echo $loc->getId() ?>"><?php echo $loc->getName() ?></option>
+    			<option value="<?php echo $loc->getName() ?>"><?php echo Mage::helper('job')->getTransName($loc) ?></option>
     			<?php endforeach; ?>
     		</select>
 		    <select name="country" class="last after-input">	

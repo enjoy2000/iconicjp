@@ -103,7 +103,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$arr = array(
 					$customer->getName(),
 					$customer->getKana() ,
-					$birhDate,
+					$birthday,
 					$data['sex'],
 					$data['nation'],
 					$data['location'],
