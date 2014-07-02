@@ -58,14 +58,15 @@ input[type="checkbox"]{
 	width: auto;
 	display: inline;
 }
-.row.lang > *{
+.row.lang > div > *{
 	display: inline-block;
 }
-.row.lang > .text{
+.row.lang label{
 	width: 80px;
+	text-align: left;
 }
-.row.lang > select{
-	width: 120px;
+.row.lang > div > select{
+	width: 272px;
 }
 textarea{
 	width: 324px;

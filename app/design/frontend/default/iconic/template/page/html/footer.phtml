@@ -27,19 +27,6 @@
 <?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
 <footer id="footer">
 	<?php if(strpos($bodyclass, 'cms-index-index')): ?>
-	<!-- SLOGAN -->
-	<div id="banner">
-		<div class="heading">
-			<h2 class="centerwide">
-    			<?php echo $this->__('お取引先') ?>
-			</h2>
-		</div>
-		<div class="wrapper">
-			<div class="banners">
-				<?php echo $this->getChildHtml('footer_banners') ?>
-			</div>
-		</div>
-	</div>
 	
 	<!-- Blog News -->
     <div id="blog-news">
@@ -137,6 +124,20 @@
 			</div>
 		</div>
     </div><!-- End Blog News -->
+    
+	<!-- SLOGAN -->
+	<div id="banner">
+		<div class="heading">
+			<h2 class="centerwide">
+    			<?php echo $this->__('お取引先') ?>
+			</h2>
+		</div>
+		<div class="wrapper">
+			<div class="banners">
+				<?php echo $this->getChildHtml('footer_banners') ?>
+			</div>
+		</div>
+	</div>
     <?php endif; ?>
     
     <!-- COPYRIGHT -->

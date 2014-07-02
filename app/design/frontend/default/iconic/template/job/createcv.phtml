@@ -278,6 +278,36 @@
     	</div>
     	
     	<div class="row heading">
+    		<?php echo $this->__('言語能力') ?>
+    	</div>
+    	
+    	<div class="row row2 lang">
+    		<?php $langlevels = Mage::getModel('job/langlevel')->getCollection() ?>
+    		<div class="first">
+    			<label for="english"><?php echo $this->__('英語') ?></label>
+	    		<select required id="english" name="english">
+	    			<option value=""><?php echo $this->__('使用可能レベルを選択') ?></option>
+	    			<?php foreach($langlevels as $level): ?>
+	    			<option <?php echo ($data['english']== $level->getNameEn()) ? 'selected="selected"' : '' ?> value="<?php echo $level->getNameEn() ?>"><?php echo Mage::helper('job')->getTransName($level) ?></option>
+	    			<?php endforeach; ?>
+	    		</select>
+    		</div>
+    		<div class="last">
+    			<label for="japanese"><?php echo $this->__('日本語') ?></label>
+	    		<select required id="japanese" name="japanese">
+	    			<option value=""><?php echo $this->__('使用可能レベルを選択') ?></option>
+	    			<?php foreach($langlevels as $level): ?>
+	    			<option <?php echo ($data['japanese']== $level->getNameEn()) ? 'selected="selected"' : '' ?> value="<?php echo $level->getNameEn() ?>"><?php echo Mage::helper('job')->getTransName($level) ?></option>
+	    			<?php endforeach; ?>
+	    		</select>
+    		</div>
+    	</div>
+    	
+    	<div class="row row1">
+    		<textarea name="otherlang" placeholder="<?php echo $this->__('その他の言語能力がある場合は、こちらに言語の種類と使用可能レベルを記入してください。') ?>"></textarea>
+    	</div>
+    	
+    	<div class="row heading">
     		<?php echo $this->__('希望条件・その他') ?>
     	</div>
     	
@@ -302,6 +332,42 @@
 		            placeholder: '<?php echo $this->__('希望職種') ?>',
 		        });
     		</script>
+    	</div>
+    	
+    	<div class="row row2">
+    		<select multiple="multiple" id="expectedlevel" class="first" name="expectedlevel">
+    			<option value=""><?php echo $this->__('希望職務レベル') ?></option>
+    			<?php $joblevels = Mage::getModel('job/level')->getCollection() ?>
+    			<?php foreach($joblevels as $level): ?>
+    			<option <?php echo ($data['expectedlevel']== $level->getNameEn()) ? 'selected="selected"' : '' ?> value="<?php echo $level->getNameEn() ?>"><?php echo Mage::helper('job')->getTransName($level) ?></option>
+    			<?php endforeach; ?>
+    		</select>
+    		<script>
+    			jQuery('#expectedlevel').multipleSelect({
+		            selectAll: false,
+		            placeholder: '<?php echo $this->__('希望職務レベル') ?>',
+		        });
+    		</script>
+    		<select multiple="multiple" class="last" id="expectedcountry" name="expectedcountry">
+    			<option value=""><?php echo $this->__('希望勤務地') ?></option>
+    			<?php $countrylist = Mage::getModel('job/country')->getCollection() ?>
+    			<?php foreach($countrylist as $country): ?>
+    			<option <?php echo ($data['expectedcountry']== $country->getNameEn()) ? 'selected="selected"' : '' ?> value="<?php echo $country->getNameEn() ?>"><?php echo Mage::helper('job')->getTransName($country) ?></option>
+    			<?php endforeach; ?>
+    		</select>
+    		<script>
+    			jQuery('#expectedcountry').multipleSelect({
+		            selectAll: false,
+		            placeholder: '<?php echo $this->__('希望勤務地') ?>',
+		        });
+    		</script>
+    	</div>
+    	
+    	<div class="row row2">
+    		<div class="first income">
+	    		<input type="number" name="expectedsalary" placeholder="<?php echo $this->__('最低希望月収') ?>" />
+	    		<?php echo $this->__('万円') ?>
+    		</div>
     	</div>
     	
     	<div class="row row1">

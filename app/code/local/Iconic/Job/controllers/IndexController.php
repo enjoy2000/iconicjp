@@ -127,8 +127,14 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					$data['jobcontent'],
 					$data['jobdescription'],
 					$data['otherwork'],
+					$data['english'],
+					$data['japanese'],
+					$data['otherlang'],
 					$data['category'],
 					$data['function'],
+					$data['expectedlevel'],
+					$data['expectedcountry'],
+					$data['expectedsalary'],
 					$data['requirements']
 			);
 			

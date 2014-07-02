@@ -76,24 +76,9 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 			$langModel = Mage::getModel('job/language')->load(intval($lang[0]));
 			$name = Mage::helper('job')->getTransName($langModel);
 			$name .= ': ';
-			if($lang[1] == '1'){
-				$level = Mage::helper('job')->__('ネイティブレベル');
-			}else if($lang[1] == '2'){
-				$level = Mage::helper('job')->__('ビジネス上級レベル');
-			}else if($lang[1] == '3'){
-				$level = Mage::helper('job')->__('ビジネス中級レベル');
-			}else if($lang[1] == '4'){
-				$level = Mage::helper('job')->__('日常会話レベル');
-			}else if($lang[1] == '5'){
-				$level = Mage::helper('job')->__('旅行会話レベル');
-			}else if($lang[1] == '6'){
-				$level = Mage::helper('job')->__('挨拶レベル');
-			}else if($lang[1] == '7'){
-				$level = Mage::helper('job')->__('話せない');
-			}else{
-				$level = Mage::helper('job')->__('話せない');
-			}
-			$name .= $level;
+			$level = Mage::getModel('job/langlevel')->load($lang[1]);
+			$levelname = Mage::helper('job')->getTransName($level);
+			$name .= $levelname;
 			$names[] = $name;
 		}
 		return implode('<br />', $names);

@@ -179,40 +179,18 @@ class Iconic_Job_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_Block_
         ));
 		//job language
 		$languages = Mage::getModel('job/language')->getCollection();
+		$langlevels = Mage::getModel('job/langlevel')->getCollection();
 		foreach($languages as $lang){
-			$langlevel = array(
-					array(
-						'label' => Mage::helper('job')->__('ネイティブレベル'),
-						'value' => $lang->getId() . '-1'
-					),
-					array(
-						'label' => Mage::helper('job')->__('ビジネス上級レベル'),
-						'value' => $lang->getId() . '-2'
-					),
-					array(
-						'label' => Mage::helper('job')->__('ビジネス中級レベル'),
-						'value' => $lang->getId() . '-3'
-					),
-					array(
-						'label' => Mage::helper('job')->__('日常会話レベル'),
-						'value' => $lang->getId() . '-4'
-					),
-					array(
-						'label' => Mage::helper('job')->__('旅行会話レベル'),
-						'value' => $lang->getId() . '-5'
-					),
-					array(
-						'label' => Mage::helper('job')->__('挨拶レベル'),
-						'value' => $lang->getId() . '-6'
-					),
-					array(
-						'label' => Mage::helper('job')->__('話せない'),
-						'value' => $lang->getId() . '-7'
-					),
-			);
+			$levelarray = array();
+			foreach($langlevels as $langlevel){
+				$levelarray[] = array(
+						'label' => $langlevel->getName(),
+						'value' => $lang->getId() . '-' . $langlevel->getId()
+					);
+			}
 			$arrayLang[] = array(
 							'label' => $lang->getName(),
-							'value' => $langlevel,
+							'value' => $levelarray,
 			);
 		}
 		$fieldset->addField('language_id', 'multiselect', array(
