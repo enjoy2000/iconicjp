@@ -76,7 +76,7 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 			$langModel = Mage::getModel('job/language')->load(intval($lang[0]));
 			$name = Mage::helper('job')->getTransName($langModel);
 			$name .= ': ';
-			$level = Mage::getModel('job/langlevel')->load($lang[1]);
+			$level = Mage::getModel('job/langlevel')->load(intval($lang[1]));
 			$levelname = Mage::helper('job')->getTransName($level);
 			$name .= $levelname;
 			$names[] = $name;
