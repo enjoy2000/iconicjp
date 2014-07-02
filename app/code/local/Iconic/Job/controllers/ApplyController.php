@@ -60,7 +60,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 		$user = Mage::getSingleton('customer/session')->getCustomer();
 		$upload_handler->options['upload_dir'] = Mage::getBaseDir().'/files/'.$user->getId().'/';
 		$upload_handler->options['upload_url'] = Mage::getBaseUrl().'files/'.$user->getId().'/';
-		$upload_handler->options['accept_file_types'] = '/\.(gif|jpe?g|png|docx?|xlsx?|pptx?|pdf)$/i';
+		$upload_handler->options['accept_file_types'] = '/\.(gif|jpe?g|png|docx?|xlsx?|pptx?|pdf|html|txt)$/i';
 		$upload_handler->initialize();
 	}
 	
