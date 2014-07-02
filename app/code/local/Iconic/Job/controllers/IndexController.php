@@ -108,12 +108,12 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 					$data['nation'],
 					$data['location'],
 					$data['province'],
-					'',
+					$data['country'],
 					$data['phone1'].'-'.$data['phone2'].'-'.$data['phone3'],
 					$data['email'],
 					$data['degree'].'('.$data['graduated'].')',
-					$data['major'],
 					$data['school'],
+					$data['major'],
 					$data['workstatus'],
 					$data['numbercompany'],
 					$data['workfunction'],
@@ -165,7 +165,9 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$emailAdmin = Mage::getStoreConfig('trans_email/ident_general/email');
 			
 			$bodyHtml = '<table><tbody>';			
-			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('CV for importing to IS.').':</td></tr>';
+			$bodyHtml .= '<tr><td><h1>'.Mage::helper('job')->__('CV for importing to IS.').'</h1></td></tr>';			
+			$bodyHtml .= '<tr><td>Name:</td><td>'.$customer->getName().'</td></tr>';		
+			$bodyHtml .= '<tr><td>Email:</td><td>'.$data['email'].'</td></tr>';	
 			$bodyHtml .= '</tbody></table>';
 			
 			

@@ -64,7 +64,7 @@
 	    		<option value=""><?php echo $this->__('現在住んでいる国') ?></option>
 				<?php $countries = Mage::getModel('job/listlocation')->getCollection() ?>
 				<?php foreach($countries as $country): ?>
-					<option <?php echo ($this->getCustomer()->getLocation()==$country->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $country->getId() ?>"><?php echo $country->getName() ?></option>
+					<option <?php echo ($this->getCustomer()->getLocation()==$country->getId()) ? 'selected="selected"' : '' ?> value="<?php echo $country->getName() ?>"><?php echo $country->getName() ?></option>
 				<?php endforeach; ?>
     		</select>
     	</div>
