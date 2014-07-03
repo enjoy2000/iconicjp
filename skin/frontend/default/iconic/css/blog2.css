@@ -62,6 +62,9 @@
 #blog-category ul.parent > li.active a.manage-employees-in-asia {
 	border-left-color: #d35400;
 }
+#blog-category ul.parent > li.active a.business-in-asia {
+	border-left-color: #27AE60;
+}
 
 #blog-category ul.parent > li a.country-information-in-asia:hover {
 	border-left-color: #16a085;
@@ -77,6 +80,9 @@
 }
 #blog-category ul.parent > li a.manage-employees-in-asia:hover {
 	border-left-color: #d35400;
+}
+#blog-category ul.parent > li a.business-in-asia:hover {
+	border-left-color: #27AE60;
 }
 #blog-category h2{
 	padding: 10px;
@@ -200,6 +206,9 @@
 }
 #blogs-content .blog-wrapper .manage-employees-in-asia {
 	background-color: #d35400;
+}
+#blogs-content .blog-wrapper .business-in-asia {
+	background-color: #27AE60;
 }
 #blogs-content .blog-wrapper .blog-info .author{
 	margin-left: 10px;
