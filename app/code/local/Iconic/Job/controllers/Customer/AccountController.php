@@ -56,12 +56,12 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 		                $customerHelper->getEmailConfirmationUrl($customer->getEmail())));
 		            $url = $this->_getUrl('*/*/index', array('_secure' => true));
 		        } else {
+					//set new pic
+					$customer->setNewPic();
 		            $session->setCustomerAsLoggedIn($customer);
 		            $session->renewSession();
 		            $url = $this->_welcomeCustomer($customer);
 		        }
-				//set new pic
-				$customer->setNewPic();
 				//Send mail
 				$mail = new Zend_Mail('UTF-8');
 				$transport = Mage::helper('job')->getMailConfig();
