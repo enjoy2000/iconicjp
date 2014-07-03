@@ -15,6 +15,27 @@ class Iconic_Job_Block_Adminhtml_Pic_Edit_Tab_Form extends Mage_Adminhtml_Block_
             'name'      => 'name',
         ));
 		
+        $fieldset->addField('location', 'select', array(
+            'label'     => Mage::helper('job')->__('Name'),
+            'class'     => 'required-entry',
+            'required'  => true,
+            'name'      => 'location',
+            'values'	=> array(
+						array(
+							'label' => 'Vietnam',
+							'value' => '1'
+						),
+						array(
+							'label' => 'Indonesia',
+							'value' => '2'
+						),
+						array(
+							'label' => 'Others',
+							'value' => '3'
+						),
+			)
+        ));
+		
 		$fieldset->addField('interval', 'text', array(
             'label'     => Mage::helper('job')->__('Interval'),
             'class'     => 'required-entry',

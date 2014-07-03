@@ -60,6 +60,8 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 		            $session->renewSession();
 		            $url = $this->_welcomeCustomer($customer);
 		        }
+				//set new pic
+				$customer->setNewPic();
 				//Send mail
 				$mail = new Zend_Mail('UTF-8');
 				$transport = Mage::helper('job')->getMailConfig();
@@ -86,14 +88,14 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('性別(Gender)').':</td><td> '.$customer->getSex().'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('年齢 (Age)').':</td><td> '. $age .'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('現在住んでいる国(Resident Country)').':</td><td> '.$location.'</td></tr>';
-				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('担当(PIC)').':</td><td> '.Mage::helper('job')->getPic().'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('担当(PIC)').':</td><td> '.$customer->getPic().'</td></tr>';
 				$bodyHtml .= '</tbody></table>';
 				
 				$mail->setBodyHtml($bodyHtml);
 				$mail->addTo('auto_iconicjp@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
 				//$mail->addTo('auto_iconicjp@iconic-intl.com',Mage::helper('job')->__('IconicVN'));
 				$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
-				$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Registration - %s - %s', $customer->getName() ,Mage::helper('job')->getPic()));
+				$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Registration - %s - %s', $customer->getName() , $customer->getPic()));
 				$checkSend = $mail->send($transport);
 				
                 $this->_redirect('job/index/afterregister');

@@ -135,7 +135,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$mail->setBodyHtml($bodyHtml);
 			$mail->addTo('auto_iconicjp@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
 			$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
-			$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Apply Job No.%s - %s - %s', $job->getIconicId(), $data['name'], Mage::helper('job')->getPic()));
+			$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Apply Job No.%s - %s - %s', $job->getIconicId(), $data['name'], $user->getPic()));
 			$checkSend = $mail->send($transport);
 			
 			$mail2 = new Zend_Mail('UTF-8');
@@ -360,5 +360,12 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$this->_redirect('*/apply', array('id'=> $data['id']));
 		}
 	}
-
+	
+	public function picAction(){
+		$customer = Mage::getSingleton('customer/session')->getCustomer();
+		$customer->setPic('')->save();
+		$customer->setNewPic();
+		var_dump($customer->getPic());die;
+	}
+	
 }

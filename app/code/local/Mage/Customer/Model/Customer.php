@@ -1343,4 +1343,45 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
 
         return false;
     }
+	
+	public function setNewPic(){
+		$piclist = Mage::getModel('job/pic')->getCollection();
+		$model = Mage::getModel('job/pic');
+		$null = new Zend_Db_Expr("null");
+		if($this->getLocation() == '12'){ //vietnam
+			$collection = $piclist->addFieldToFilter('location', array('eq'=>1));
+			$col2 = clone $collection;
+			$lastpic = $model->load('yes', 'last_pic_vn');
+			$lastpic->setLastPicVn($null)->save();
+		}else if($this->getLocation() == '5'){ //indo
+			$collection = $piclist->addFieldToFilter('location', array('eq'=>2));
+			$col2 = clone $collection;
+			$lastpic = $model->load('yes', 'last_pic_id');
+			$lastpic->setLastPicId($null)->save();
+		}else{
+			$collection = $piclist;
+			$col2 = clone $collection;
+			$lastpic = $model->load('yes', 'last_pic');
+			$lastpic->setLastPic($null)->save();
+		}
+		$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$lastpic->getId()))->getFirstItem();
+		//var_dump($pic->getSelect()->__toString());die;
+		if(!$pic->getId()){
+			$pic = $col2->getFirstItem();
+		}
+		$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
+		if($this->getLocation() == '12'){
+			$pic->setLastPicVn('yes')->save();
+		}else if($this->getLocation() == '5'){
+			$pic->setLastPicId('yes')->save();
+		}else{
+			$pic->setLastPic('yes')->save();
+		}
+		if($pic->getCurrentInterval() ==  $pic->getInterval()){
+			$pic->setCurrentInterval(0)->save();
+			$this->setPic($pic->getName())->save();
+		}else{
+			$this->setNewPic();
+		}
+	}
 }

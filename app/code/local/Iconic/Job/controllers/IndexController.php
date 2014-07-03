@@ -183,7 +183,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$mail->addTo('auto_iconicjp@iconic-intl.com',Mage::helper('job')->__('IconicJP'));
 			//$mail->addTo('auto_iconicjp@iconic-intl.com',Mage::helper('job')->__('IconicVN'));
 			$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
-			$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Candidate - %s - %s', $data['first']. ' ' .$data['last'] ,Mage::helper('job')->getPic()));
+			$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Candidate - %s - %s', $data['first']. ' ' .$data['last'] , $customer->getPic()));
 			$checkSend = $mail->send($transport);
 			
 			//send mail to customer
