@@ -11,7 +11,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 			if($langId = $this->getRequest()->get('language')){
 				$lang = Mage::getModel('job/language')->load($langId);
 				$langname = Mage::helper('job')->getTransName($lang);
-				$tit .= $helper->__('[言語]');
+				$tit .= $helper->__('[母国語]');
 				$tit .= $langname;
 			}
 			if($catId = $this->getRequest()->get('location')){
@@ -50,7 +50,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 				foreach($multiLanguage as $langId){
 					$multilang[] = Mage::helper('job')->getTransName(Mage::getModel('job/language')->load($langId));
 				}
-				$tit .= $helper->__('[言語]');
+				$tit .= $helper->__('[母国語]');
 				$tit .= implode('、', $multilang);
 			}
 			if($multiCategory = $this->getRequest()->get('multicategory')){
