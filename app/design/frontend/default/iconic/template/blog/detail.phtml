@@ -5,10 +5,9 @@
 			<div class="inline parent <?php echo $parent->getUrlKey() ?>"><?php echo Mage::helper('job')->getTransName($parent) ?></div>
 		<?php endforeach; ?>
 	</div>
-	<span class='st_facebook_vcount' displayText='Facebook'></span>
-	<span class='st_twitter_vcount' displayText='Tweet'></span>
-	<span class='st_linkedin_vcount' displayText='LinkedIn'></span>
-	<span class='st_googleplus_vcount' displayText='Google +'></span>
+	<div class="inline social-share">
+		<div class="addthis_native_toolbox"></div>
+	</div>
 	<div class="inline"><?php echo $blog->getDate() ?></div>
 	<?php $author = Mage::getModel('blog/author')->load($blog->getAuthorId()) ?>
 	<div class="inline author">
