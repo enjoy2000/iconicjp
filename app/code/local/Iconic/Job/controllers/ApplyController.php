@@ -361,11 +361,4 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 		}
 	}
 	
-	public function picAction(){
-		$customer = Mage::getSingleton('customer/session')->getCustomer();
-		$customer->setPic('')->save();
-		$customer->setNewPic();
-		var_dump($customer->getPic());die;
-	}
-	
 }
