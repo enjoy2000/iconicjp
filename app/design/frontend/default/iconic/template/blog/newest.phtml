@@ -28,7 +28,8 @@
 						|
 						<div class="inline author"><a  href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a></div>
 						<br class="clear" />
-						<?php foreach($blog->getParentCats() as $parent): ?>
+						<?php $parents = $blog->getParentCats()->addFieldToFilter('url_key', array('neq'=>'country-information-in-asia')) ?>
+						<?php foreach($parents as $parent): ?>
 							<a class="<?php echo $parent->getUrlKey() ?>" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 								<?php echo Mage::helper('job')->getTransName($parent) ?>
 							</a>
@@ -57,7 +58,8 @@
 						|
 						<div class="inline author"><a  href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a></div>
 						<br class="clear" />
-						<?php foreach($blog->getParentCats() as $parent): ?>
+						<?php $parents = $blog->getParentCats()->addFieldToFilter('url_key', array('neq'=>'country-information-in-asia')) ?>
+						<?php foreach($parents as $parent): ?>
 							<a class="<?php echo $parent->getUrlKey() ?>" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 								<?php echo Mage::helper('job')->getTransName($parent) ?>
 							</a>
