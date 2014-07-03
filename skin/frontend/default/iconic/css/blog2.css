@@ -46,7 +46,6 @@
 }
 #blog-category ul.parent > li.active a{
 	background-color: #dbdcdd;
-	border-left-color: #34495E;
 }
 #blog-category ul.parent > li.active a.country-information-in-asia {
 	border-left-color: #16a085;
@@ -66,9 +65,7 @@
 #blog-category ul.parent > li.active a.business-in-asia {
 	border-left-color: #27AE60;
 }
-#blog-category ul.parent > li a:hover {
-	border-left-color: #34495E;
-}
+
 #blog-category ul.parent > li a.country-information-in-asia:hover {
 	border-left-color: #16a085;
 }
@@ -192,12 +189,12 @@
 	margin-right: 5px;
 	display: inline-block;
 	margin-top: 3px;
-	background-color: #34495E;
 }
 #blogs-content .blog-wrapper .blog-info .cat+.cat{
 }
 #blogs-content .blog-wrapper .country-information-in-asia {
 	background-color: #16a085;
+	display: none;
 }
 #blogs-content .blog-wrapper .work-in-asia-2 {
 	background-color: #3498db;
@@ -281,6 +278,7 @@
 }
 #blog-details .country-information-in-asia {
 	background-color: #16a085;
+	display: none;
 }
 #blog-details .work-in-asia-2 {
 	background-color: #3498db;
@@ -373,4 +371,6 @@
 }
 #newest-blog ul li .fll > a{
 	color: #E67E22;
+}
+#newest-blog ul li .country-information-in-asia{
 }

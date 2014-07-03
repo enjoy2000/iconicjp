@@ -29,7 +29,7 @@
 						<div class="inline author"><a  href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a></div>
 						<br class="clear" />
 						<?php foreach($blog->getParentCats() as $parent): ?>
-							<a href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
+							<a class="<?php echo $parent->getUrlKey() ?>" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 								<?php echo Mage::helper('job')->getTransName($parent) ?>
 							</a>
 							<?php echo ($parent->getId() != $blog->getParentCats()->getLastItem()->getId()) ? '|' : '' ?>
@@ -58,7 +58,7 @@
 						<div class="inline author"><a  href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a></div>
 						<br class="clear" />
 						<?php foreach($blog->getParentCats() as $parent): ?>
-							<a href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
+							<a class="<?php echo $parent->getUrlKey() ?>" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
 								<?php echo Mage::helper('job')->getTransName($parent) ?>
 							</a>
 							<?php echo ($parent->getId() != $blog->getParentCats()->getLastItem()->getId()) ? '|' : '' ?>
