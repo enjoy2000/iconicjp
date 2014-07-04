@@ -14,6 +14,7 @@ class Iconic_Job_PayloadController extends Mage_Core_Controller_Front_Action
 		$commands = array(
 			'echo $PWD',
 			'whoami',
+			'git status',
 			'git pull origin master',
 		);
 	 
