@@ -7,7 +7,7 @@ class Iconic_Job_PayloadController extends Mage_Core_Controller_Front_Action
 		 *
 		 * Used for automatically deploying websites via github or bitbucket, more deets here:
 		 *
-		 *		https://gist.github.com/1809044
+		 *		https://gist.github.com/1809044 test
 		 */
 	 
 		// The commands
