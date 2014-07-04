@@ -38,7 +38,7 @@ class Iconic_Blog_IndexController extends Mage_Core_Controller_Front_Action
 		$collection = Mage::getModel('blog/blog')->getCollection();
 		
 		if($parentId = $this->getRequest()->getParam('parent')){
-			$parent = Mage::getModel('job/parentcategory')->load($parentId);
+			$parent = Mage::getModel('blog/parentcategory')->load($parentId);
 			$cats = Mage::getModel('blog/category')->getCollection()->addFieldToFilter('parentcategory_id',array('eq'=>$parent->getId()));
 			if($cats->count() > 0){
 				$condition = array();

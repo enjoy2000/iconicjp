@@ -29,7 +29,7 @@ class Iconic_Job_DeployController extends Mage_Core_Controller_Front_Action
 		}
 	 
 		// Make it pretty for manual user access (and why not?)
-		echo '
+		$html = '
 		<!DOCTYPE HTML>
 		<html lang="en-US">
 		<head>
@@ -49,5 +49,8 @@ class Iconic_Job_DeployController extends Mage_Core_Controller_Front_Action
 		</body>
 		</html>
 		';
+		//echo $html;
+		$this->_redirect('/');
+		return;
 	}
 }
