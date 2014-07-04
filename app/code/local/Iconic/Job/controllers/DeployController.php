@@ -1,5 +1,5 @@
 <?php
-class Iconic_Job_PayloadController extends Mage_Core_Controller_Front_Action
+class Iconic_Job_DeployController extends Mage_Core_Controller_Front_Action
 {
 	public function indexAction(){
 		/**
@@ -14,9 +14,8 @@ class Iconic_Job_PayloadController extends Mage_Core_Controller_Front_Action
 		$commands = array(
 			'echo $PWD',
 			'whoami',
+			'git pull origin master',
 			'git status',
-			'git fetch --all',
-			'git reset --hard origin/master',
 		);
 	 
 		// Run the commands for output
