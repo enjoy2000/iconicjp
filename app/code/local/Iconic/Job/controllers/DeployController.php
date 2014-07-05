@@ -14,7 +14,8 @@ class Iconic_Job_DeployController extends Mage_Core_Controller_Front_Action
 		$commands = array(
 			'echo $PWD',
 			'whoami',
-			'git pull origin master',
+			'git fetch --all',
+			'git reset --hard origin/master',
 			'git status',
 		);
 	 
