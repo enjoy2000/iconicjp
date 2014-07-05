@@ -70,9 +70,11 @@
 						<li class="border">
 							<a href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getContactUrl() ?>"><?php echo $this->__('お問い合わせ') ?></a>
 						</li>
+						<?php if(Mage::getSingleton('customer/session')->getCustomer()->getCreatecv() != 1):  ?>
 						<li class="border">
 							<a href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getCreateCVUrl() ?>"><?php echo $this->__('転職支援サービスに申し込む') ?></a>
 						</li>
+						<?php endif; ?>
 					</ul>
 				</div><!-- End Menu -->
 			</div>

@@ -62,11 +62,11 @@ input[type="checkbox"]{
 	display: inline-block;
 }
 .row.lang label{
-	width: 80px;
+	width: 50px;
 	text-align: left;
 }
 .row.lang > div > select{
-	width: 272px;
+	width: 302px;
 }
 textarea{
 	width: 324px;

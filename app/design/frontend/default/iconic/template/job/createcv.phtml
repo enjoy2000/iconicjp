@@ -177,7 +177,7 @@
     			<?php endfor; ?>
     		</select>
     		
-    		<select id="workfunction" multiple="multiple" class="last" required name="workfunction">
+    		<select id="workfunction" multiple="multiple" class="last" required name="workfunction[]">
     			<option value=""><?php echo $this->__('経験職種') ?></option>
     			<?php echo $this->getFunctionList($data['workfunction']) ?>
     		</select>
@@ -201,7 +201,7 @@
 	    	</div>
 	    	
 	    	<div class="row row2">
-	    		<select multiple="multiple" id="companycategory" required class="first" name="companycategory">
+	    		<select multiple="multiple" id="companycategory" required class="first" name="companycategory[]">
 					<option value=""><?php echo $this->__('業種') ?></option>
 					<?php echo $this->getCategoryList($data['companycategory']) ?>			
 	    		</select>
@@ -312,7 +312,7 @@
     	</div>
     	
     	<div class="row row2">
-    		<select multiple="multiple" id="category" class="first" name="category">
+    		<select multiple="multiple" id="category" class="first" name="category[]">
     			<option value=""><?php echo $this->__('希望業種') ?></option>
     			<?php echo $this->getCategoryList($data['category']) ?>
     		</select>
@@ -322,7 +322,7 @@
 		            placeholder: '<?php echo $this->__('希望業種') ?>',
 		        });
     		</script>
-    		<select multiple="multiple" class="last" id="function" name="function">
+    		<select multiple="multiple" class="last" id="function" name="function[]">
     			<option value=""><?php echo $this->__('希望職種') ?></option>
     			<?php echo $this->getFunctionList($data['function']) ?>
     		</select>
@@ -335,7 +335,7 @@
     	</div>
     	
     	<div class="row row2">
-    		<select multiple="multiple" id="expectedlevel" class="first" name="expectedlevel">
+    		<select multiple="multiple" id="expectedlevel" class="first" name="expectedlevel[]">
     			<option value=""><?php echo $this->__('希望職務レベル') ?></option>
     			<?php $joblevels = Mage::getModel('job/level')->getCollection() ?>
     			<?php foreach($joblevels as $level): ?>
@@ -348,7 +348,7 @@
 		            placeholder: '<?php echo $this->__('希望職務レベル') ?>',
 		        });
     		</script>
-    		<select multiple="multiple" class="last" id="expectedcountry" name="expectedcountry">
+    		<select multiple="multiple" class="last" id="expectedcountry" name="expectedcountry[]">
     			<option value=""><?php echo $this->__('希望勤務地') ?></option>
     			<?php $countrylist = Mage::getModel('job/country')->getCollection() ?>
     			<?php foreach($countrylist as $country): ?>
