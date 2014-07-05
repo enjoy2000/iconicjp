@@ -29,7 +29,7 @@ class Iconic_Job_DeployController extends Mage_Core_Controller_Front_Action
 			$output .= htmlentities(trim($tmp)) . "\n";
 		}
 	 
-		// Make it pretty for manual user access (and why not?) test
+		// Make it pretty for manual user access (and why not?)
 		$html = '
 		<!DOCTYPE HTML>
 		<html lang="en-US">
