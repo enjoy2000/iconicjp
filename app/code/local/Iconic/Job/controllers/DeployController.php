@@ -50,8 +50,8 @@ class Iconic_Job_DeployController extends Mage_Core_Controller_Front_Action
 		</body>
 		</html>
 		';
-		//echo $html;
-		$this->_redirect('/');
-		return;
+		echo $html;
+		//$this->_redirect('/');
+		//return;
 	}
 }
