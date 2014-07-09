@@ -1351,20 +1351,20 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
 		if($this->getLocation() == '12'){ //vietnam
 			$collection = $piclist->addFieldToFilter('location', array('eq'=>1));
 			$col2 = clone $collection;
-			$lastpic = $collection->addFieldToFilter('last_pic_vn', array('eq'=>'yes'))->getFirstItem();
+			$lastpic = $model->load('yes', 'last_pic_vn');
 			$lastpic->setLastPicVn($null)->save();
 		}else if($this->getLocation() == '5'){ //indo
 			$collection = $piclist->addFieldToFilter('location', array('eq'=>2));
 			$col2 = clone $collection;
-			$lastpic = $collection->addFieldToFilter('last_pic_id', array('eq'=>'yes'))->getFirstItem();
+			$lastpic = $model->load('yes', 'last_pic_id');
 			$lastpic->setLastPicId($null)->save();
 		}else{
 			$collection = $piclist;
 			$col2 = clone $collection;
-			$lastpic = $collection->addFieldToFilter('last_pic', array('eq'=>'yes'))->getFirstItem();
+			$lastpic = $model->load('yes', 'last_pic');
 			$lastpic->setLastPic($null)->save();
 		}
-		$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$lastpic->getId()))->getFirstItem();
+		$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$lastpic->getPicId()))->getFirstItem();
 		//var_dump($pic->getSelect()->__toString());die;
 		if(!$pic->getId()){
 			$pic = $col2->getFirstItem();
@@ -1383,7 +1383,7 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
 		}
 		while($pic->getCurrentInterval() !=  $pic->getInterval() - 1){
 			$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
-			$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$pic->getId()))->getFirstItem();
+			$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$pic->getPicId()))->getFirstItem();
 			//var_dump($pic->getSelect()->__toString());die;
 			if(!$pic->getId()){
 				$pic = $col2->getFirstItem();
