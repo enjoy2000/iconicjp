@@ -1367,7 +1367,7 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
 		$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$lastpic->getPicId()))->getSelect()->limit(1);
 		//var_dump($pic->getSelect()->__toString());die;
 		if(!$pic->getId()){
-			$pic = $col2->->getSelect()->limit(1)();
+			$pic = $col2->getSelect()->limit(1);
 		}
 		
 		if($pic->getCurrentInterval() ==  $pic->getInterval() - 1){
@@ -1386,7 +1386,7 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
 			$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$pic->getPicId()))->getSelect()->limit(1);
 			//var_dump($pic->getSelect()->__toString());die;
 			if(!$pic->getId()){
-				$pic = $col2->->getSelect()->limit(1)();
+				$pic = $col2->getSelect()->limit(1);
 			}
 			if($pic->getCurrentInterval() ==  $pic->getInterval() - 1){
 				$pic->setCurrentInterval(0)->save();
