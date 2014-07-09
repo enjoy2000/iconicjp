@@ -57,7 +57,8 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 		            $url = $this->_getUrl('*/*/index', array('_secure' => true));
 		        } else {
 					//set new pic
-					$customer->setNewPic();
+					$pic = Mage::helper('job')->getPic();
+					$customer->setPic($pic)->save();
 		            $session->setCustomerAsLoggedIn($customer);
 		            $session->renewSession();
 		            $url = $this->_welcomeCustomer($customer);

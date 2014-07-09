@@ -327,41 +327,59 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 
 	public function getPic(){
 		$customer = Mage::getSingleton('customer/session')->getCustomer();
-		if($customer->getPic()){
-			return $customer->getPic();
+		$piclist = Mage::getModel('job/pic')->getCollection();
+		$model = Mage::getModel('job/pic');
+		$null = new Zend_Db_Expr("null");
+		if($customer->getLocation() == '12'){ //vietnam
+			$collection = $piclist->addFieldToFilter('location', array('eq'=>1));
+			$col2 = clone $collection;
+			$lastpic = $model->load('yes', 'last_pic_vn');
+			$lastpic->setLastPicVn($null)->save();
+		}else if($customer->getLocation() == '5'){ //indo
+			$collection = $piclist->addFieldToFilter('location', array('eq'=>2));
+			$col2 = clone $collection;
+			$lastpic = $model->load('yes', 'last_pic_id');
+			$lastpic->setLastPicId($null)->save();
 		}else{
-			$lastpic = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('last_pic', array('eq'=>'yes'))->getFirstItem();
-			if(!$lastpic->getId()){
-				$pic = Mage::getModel('job/pic')->getCollection()->getFirstItem();
-				$pic->setLastPic('yes')->save();
-				$customer->setPic($pic->getName())->save();
-				return $pic->getName();
+			$collection = $piclist;
+			$col2 = clone $collection;
+			$lastpic = $model->load('yes', 'last_pic');
+			$lastpic->setLastPic($null)->save();
+		}
+		$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$lastpic->getPicId()))->getFirstItem();
+		//var_dump($pic->getSelect()->__toString());die;
+		if(!$pic->getId()){
+			$pic = $col2->getFirstItem();
+		}
+		
+		if($pic->getCurrentInterval() ==  $pic->getInterval() - 1){
+			$pic->setCurrentInterval(0)->save();
+			if($customer->getLocation() == '12'){
+				$pic->setLastPicVn('yes')->save();
+			}else if($customer->getLocation() == '5'){
+				$pic->setLastPicId('yes')->save();
 			}else{
-				$pic = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('pic_id', array('gt'=>$lastpic->getId()))->getFirstItem();
-				if(!$pic->getId()){
-					$pic = Mage::getModel('job/pic')->getCollection()->getFirstItem();
-				}
-				$lastpic->setLastPic(NULL)->save();
-				$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
-				if($pic->getCurrentInterval() ==  $pic->getInterval()){
+				$pic->setLastPic('yes')->save();
+			}
+			return $pic->getName();
+		}
+		while($pic->getCurrentInterval() !=  $pic->getInterval() - 1){
+			$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
+			$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$pic->getPicId()))->getFirstItem();
+			//var_dump($pic->getSelect()->__toString());die;
+			if(!$pic->getId()){
+				$pic = $col2->getFirstItem();
+			}
+			if($pic->getCurrentInterval() ==  $pic->getInterval() - 1){
+				$pic->setCurrentInterval(0)->save();
+				if($customer->getLocation() == '12'){
+					$pic->setLastPicVn('yes')->save();
+				}else if($customer->getLocation() == '5'){
+					$pic->setLastPicId('yes')->save();
+				}else{
 					$pic->setLastPic('yes')->save();
-					$pic->setCurrentInterval(0)->save();
-					$customer->setPic($pic->getName())->save();
-					return $pic->getName();
 				}
-				while($pic->getCurrentInterval() !=  $pic->getInterval()){
-					$pic = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('pic_id', array('gt'=>$pic->getId()))->getFirstItem();
-					if(!$pic->getId()){
-						$pic = Mage::getModel('job/pic')->getCollection()->getFirstItem();
-					}
-					$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
-					if($pic->getCurrentInterval() ==  $pic->getInterval()){
-						$pic->setLastPic('yes')->save();
-						$pic->setCurrentInterval(0)->save();
-						$customer->setPic($pic->getName())->save();
-						return $pic->getName();
-					}
-				}
+				return $pic->getName();
 			}
 		}
 	}
