@@ -1369,19 +1369,36 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
 		if(!$pic->getId()){
 			$pic = $col2->getFirstItem();
 		}
-		$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
-		if($this->getLocation() == '12'){
-			$pic->setLastPicVn('yes')->save();
-		}else if($this->getLocation() == '5'){
-			$pic->setLastPicId('yes')->save();
-		}else{
-			$pic->setLastPic('yes')->save();
-		}
-		if($pic->getCurrentInterval() ==  $pic->getInterval()){
+		
+		if($pic->getCurrentInterval() ==  $pic->getInterval() - 1){
 			$pic->setCurrentInterval(0)->save();
 			$this->setPic($pic->getName())->save();
-		}else{
-			$this->setNewPic();
+			if($this->getLocation() == '12'){
+				$pic->setLastPicVn('yes')->save();
+			}else if($this->getLocation() == '5'){
+				$pic->setLastPicId('yes')->save();
+			}else{
+				$pic->setLastPic('yes')->save();
+			}
+		}
+		while($pic->getCurrentInterval() !=  $pic->getInterval() - 1){
+			$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
+			$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$pic->getId()))->getFirstItem();
+			//var_dump($pic->getSelect()->__toString());die;
+			if(!$pic->getId()){
+				$pic = $col2->getFirstItem();
+			}
+			if($pic->getCurrentInterval() ==  $pic->getInterval() - 1){
+				$pic->setCurrentInterval(0)->save();
+				$this->setPic($pic->getName())->save();
+				if($this->getLocation() == '12'){
+					$pic->setLastPicVn('yes')->save();
+				}else if($this->getLocation() == '5'){
+					$pic->setLastPicId('yes')->save();
+				}else{
+					$pic->setLastPic('yes')->save();
+				}
+			}
 		}
 	}
 }
