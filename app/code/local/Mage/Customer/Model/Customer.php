@@ -1351,17 +1351,17 @@ class Mage_Customer_Model_Customer extends Mage_Core_Model_Abstract
 		if($this->getLocation() == '12'){ //vietnam
 			$collection = $piclist->addFieldToFilter('location', array('eq'=>1));
 			$col2 = clone $collection;
-			$lastpic = $model->load('yes', 'last_pic_vn');
+			$lastpic = $collection->addFieldToFilter('last_pic_vn', array('eq'=>'yes'))->getFirstItem();
 			$lastpic->setLastPicVn($null)->save();
 		}else if($this->getLocation() == '5'){ //indo
 			$collection = $piclist->addFieldToFilter('location', array('eq'=>2));
 			$col2 = clone $collection;
-			$lastpic = $model->load('yes', 'last_pic_id');
+			$lastpic = $collection->addFieldToFilter('last_pic_id', array('eq'=>'yes'))->getFirstItem();
 			$lastpic->setLastPicId($null)->save();
 		}else{
 			$collection = $piclist;
 			$col2 = clone $collection;
-			$lastpic = $model->load('yes', 'last_pic');
+			$lastpic = $collection->addFieldToFilter('last_pic', array('eq'=>'yes'))->getFirstItem();
 			$lastpic->setLastPic($null)->save();
 		}
 		$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$lastpic->getId()))->getFirstItem();
