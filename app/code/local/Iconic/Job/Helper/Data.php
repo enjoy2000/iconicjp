@@ -346,10 +346,20 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 			$lastpic = $model->load('yes', 'last_pic');
 			$lastpic->setLastPic($null)->save();
 		}
-		$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$lastpic->getPicId()))->getFirstItem();
-		//var_dump($pic->getSelect()->__toString());die;
-		if(!$pic->getId()){
+		$newcol = $collection->addFieldToFilter('pic_id', array('gt'=>$lastpic->getPicId()));
+		if($newcol->count() == 0){
 			$pic = $col2->getFirstItem();
+		}else{
+			$pic = $newcol->getFirstItem();
+		}
+		while($pic->getCurrentInterval() !=  $pic->getInterval() - 1){
+			$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
+			$newcol = $collection->addFieldToFilter('pic_id', array('gt'=>$pic->getPicId()));
+			if($newcol->count() == 0){
+				$pic = $col2->getFirstItem();
+			}else{
+				$pic = $newcol->getFirstItem();
+			}
 		}
 		
 		if($pic->getCurrentInterval() ==  $pic->getInterval() - 1){
@@ -362,25 +372,6 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 				$pic->setLastPic('yes')->save();
 			}
 			return $pic->getName();
-		}
-		while($pic->getCurrentInterval() !=  $pic->getInterval() - 1){
-			$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
-			$pic = $collection->addFieldToFilter('pic_id', array('gt'=>$pic->getPicId()))->getFirstItem();
-			//var_dump($pic->getSelect()->__toString());die;
-			if(!$pic->getId()){
-				$pic = $col2->getFirstItem();
-			}
-			if($pic->getCurrentInterval() ==  $pic->getInterval() - 1){
-				$pic->setCurrentInterval(0)->save();
-				if($customer->getLocation() == '12'){
-					$pic->setLastPicVn('yes')->save();
-				}else if($customer->getLocation() == '5'){
-					$pic->setLastPicId('yes')->save();
-				}else{
-					$pic->setLastPic('yes')->save();
-				}
-				return $pic->getName();
-			}
 		}
 	}
 
