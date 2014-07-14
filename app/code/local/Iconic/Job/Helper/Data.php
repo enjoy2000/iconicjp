@@ -347,6 +347,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 			$lastpic->setLastPic($null)->save();
 		}
 		$newcol = $collection->addFieldToFilter('pic_id', array('gt'=>$lastpic->getPicId()));
+		var_dump($newcol);die;
 		if($newcol->count() == 0){
 			$pic = $col2->getFirstItem();
 		}else{
