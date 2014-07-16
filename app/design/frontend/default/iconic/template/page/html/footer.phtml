@@ -27,27 +27,16 @@
 <?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
 <footer id="footer">
 	<?php if(strpos($bodyclass, 'cms-index-index')): ?>
-	
-	<!-- Blog News -->
-    <div id="blog-news">
-    	<div class="wrapper clearfix">
-    		<div class="fll width-45 news">
-    			<h3 class="blue-tit">
-    				<?php echo $this->__('新着情報') ?>
-    			</h3>
-    			<div class="content" id="news-scroll">
-    				<div class="inside">
-    					<?php echo $this->getChildHtml('news') ?>
-    				</div>
-    			</div>
-    		</div>
-    		<div class="flr width-45 blog">
-    			<h3 class="blue-tit">
-    				<a href="<?php echo Mage::helper('job')->getBaseUrl() . Mage::helper('blog')->getRoute() ?>" title="<?php echo $this->__('ブログ') ?>">
-    					<?php echo $this->__('ブログ') ?>
-    				</a>
-    			</h3>
-    			<ul>
+	<!-- SLOGAN -->
+	<div id="newest-blogs-home">
+		<div class="heading">
+			<h2 class="centerwide">
+    			<?php echo $this->__('アジアで働くウェブメディア') ?>
+			</h2>
+		</div>
+		<div class="wrapper clearfix">
+			<div class="fll width-45">
+				<ul>
     				<?php $homeblogs = Mage::getModel('blog/blog')->getCollection()->setOrder('create_time', 'DESC') 
     									->setPageSize(3)
 										->setCurPage(1)
@@ -77,21 +66,65 @@
 						</li>
     				<?php endforeach; ?>
     			</ul>
-    			<div class="view-more">
-    				<a href="/<?php echo Mage::helper('blog')->getRoute() ?>" title="<?php echo $this->__('他の記事をもっと読む') ?>">
-    					<?php echo $this->__('他の記事をもっと読む') ?>
-    				</a>
+			</div>
+			<div class="flr width-45">
+				<ul>
+    				<?php $homeblogs = Mage::getModel('blog/blog')->getCollection()->setOrder('create_time', 'DESC') 
+    									->setPageSize(3)
+										->setCurPage(2)
+    				?>
+    				<?php foreach($homeblogs as $blog): ?>
+    					<?php $author = Mage::getModel('blog/author')->load($blog->getAuthorId()) ?>
+						<li class="clearfix">
+							<img class="fll" alt="" src="/media/resized/<?php echo $blog->getPhoto() ?>" />
+							<div class="fll">
+								<h6>
+									<a href="<?php echo $blog->getUrl() ?>" title="<?php echo $blog->getTitle() ?>">
+										<?php echo $blog->getTitle() ?>
+									</a>
+								</h6>
+								<div class="inline date"><?php echo $blog->getDate() ?></div>
+								|
+								<div class="inline author"><a target="_blank" href="<?php echo $author->getLink() ?>"><?php echo $author->getName() ?></a></div>
+								<br class="clear" />
+								<?php $parents = $blog->getParentCats()->addFieldToFilter('url_key', array('neq'=>'country-information-in-asia')) ?>
+								<?php foreach($parents as $parent): ?>
+									<a class="<?php echo $parent->getUrlKey() ?>" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?>">
+										<?php echo Mage::helper('job')->getTransName($parent) ?>
+									</a>
+									<?php echo ($parent->getId() != $blog->getParentCats()->getLastItem()->getId()) ? '|' : '' ?>
+								<?php endforeach; ?>
+							</div>
+						</li>
+    				<?php endforeach; ?>
+    			</ul>
+			</div>
+			<br class="clear" />
+			<div class="view-more">
+				<a href="/<?php echo Mage::helper('blog')->getRoute() ?>" title="<?php echo $this->__('他の記事をもっと読む') ?>">
+					<?php echo $this->__('他の記事をもっと読む') ?>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- Blog News -->
+    <div id="blog-news">
+    	<div class="wrapper clearfix">
+    		<div class="fll width-45 news">
+    			<h3 class="blue-tit">
+    				<?php echo $this->__('新着情報') ?>
+    			</h3>
+    			<div class="content" id="news-scroll">
+    				<div class="inside">
+    					<?php echo $this->getChildHtml('news') ?>
+    				</div>
     			</div>
     		</div>
-    	</div>
-    	
-    	<!-- Countries -->
-    	<div id="countries-link">
-	    	<div class="home-countries wrapper">
-				<h3 class="blue-tit">
-	    			<?php echo $this->__('各国ビジネス環境の紹介') ?>
-				</h3>
-				<div class="content">
+    		<div class="flr width-45 countries">
+    			<h3 class="blue-tit">
+    				<?php echo $this->__('各国ビジネス環境の紹介') ?>
+    			</h3>
+    			<div class="content">
 					<a class="vn" href="<?php echo Mage::helper('job')->getBaseUrl() ?>vietnam" title="<?php echo $this->__('ベトナム') ?>">
 						<?php echo $this->__('ベトナム') ?>
 					</a>
@@ -108,18 +141,14 @@
 						<?php echo $this->__('インド') ?>
 					</a>
 				</div>
-			</div>
-		</div>
+    		</div>
+    	</div>
     </div><!-- End Blog News -->
     
 	<!-- SLOGAN -->
 	<div id="banner">
-		<div class="heading">
-			<h2 class="centerwide">
-    			<?php echo $this->__('お取引先') ?>
-			</h2>
-		</div>
 		<div class="wrapper">
+			<h3 class="blue-tit"><?php echo $this->__('お取引先') ?></h2>
 			<div class="banners">
 				<?php echo $this->getChildHtml('footer_banners') ?>
 			</div>

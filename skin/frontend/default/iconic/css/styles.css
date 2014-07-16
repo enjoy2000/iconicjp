@@ -70,11 +70,38 @@ body.job-index-createcv #search-block{
 }
 #header-logo #switch-languages{
 	float: right;
-	margin-top: 30px;
+	margin-top: 20px;
 	margin-right: 20px;
 }
-#header-logo #switch-languages ul li{
+#header-logo #switch-languages a{
 	display: inline;
+	padding: 3px 5px;
+	border: solid 1px #4571EB;
+	font-weight: bold;
+	letter-spacing: -0.5px;
+	background-color: #fff;
+	color: #4571EB;
+	-webkit-transition: color 200ms,background-color 200ms;
+	-moz-transition: color 200ms,background-color 200ms;
+	-o-transition: color 200ms,background-color 200ms;
+	transition: color 200ms,background-color 200ms;
+}
+#header-logo #switch-languages a.active{
+	background-color: #4571EB;
+	color: #fff;
+}
+#header-logo #switch-languages a.jp{
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	margin-right: 3px;
+}
+#header-logo #switch-languages a.en{
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+#header-logo #switch-languages a:hover{
+	background-color: #4571EB;
+	color: #fff;
 }
 #header-menu{
 	background-color: #b5c6f7;
@@ -270,6 +297,23 @@ body.cms-home #ajax-load{
 }
 #slider{
 	height: 625px;
+}
+#slider .top-socials{
+	position: absolute;
+	width: 100%;
+	z-index: 22;
+	top: 120px;
+	text-align: right;
+}
+#slider .top-socials > div > div {
+	float: right;
+}
+#slider .top-socials div.tw{
+	margin-right: 20px;
+}
+#slider .top-socials div.fb{
+	margin-right: 10px;
+	margin-top: -1px;
 }
 #slider #home-message{
 	position: absolute;
@@ -478,27 +522,70 @@ body.cms-home #ajax-load{
 /*
  * Footer
  */
-#banner{
-	background-color: #fff;
+#newest-blogs-home{
+	background-color: #e6e6e7;
+	border-bottom: solid 1px #4571EB;
+	padding-top: 15px;
 }
-#banner .heading{
+#newest-blogs-home .heading{
 	background: url('../images/blue-bar.png') center 30px transparent repeat-x;
 	height: 50px;
 	width: 100%;
 	position: relative;
 }
-#banner .heading h2{
-	width: 170px;
+#newest-blogs-home .heading h2{
+	padding: 0 15px;
 	text-align: center;
-	background-color: #fff;
+	background-color: #e6e6e7;
 	position: absolute;
 	bottom: 10px;
 	font-size: 25px;
 	font-weight: bold;
 }
-#banner .banners{
+#newest-blogs-home .wrapper{
 	padding: 20px;
 	padding-bottom: 20px;
+}
+#newest-blogs-home ul li{
+	padding: 10px 20px;
+}
+#newest-blogs-home ul li img{
+	margin-right: 10px;
+}
+#newest-blogs-home ul li h6 a{
+	font-weight: bold;
+	color: #000;
+	font-size: 13px;
+	letter-spacing: 0;
+	text-decoration: none;
+}
+#newest-blogs-home ul li:hover{
+	background-color: #dae1e6;
+}
+#newest-blogs-home ul li h6 a:hover{
+	color: #4571EB;
+}
+#newest-blogs-home ul li .fll+.fll{
+	width: 330px;
+}
+#newest-blogs-home ul li .author a{
+	color: #636466;
+}
+#newest-blogs-home ul li .fll > a{
+	color: #E67E22;
+	text-decoration: underline;
+}
+#newest-blogs-home .view-more{
+	text-align: right;
+	padding-right: 240px;
+	margin-top: 15px;
+}
+#newest-blogs-home .view-more a{
+	padding-left: 30px;
+	background: url('../images/view-more.png') left center no-repeat transparent;
+	color: #b0b2b4;
+	font-weight: bold;
+	text-decoration: underline;
 }
 #blog-news{
 	margin-top: 60px;
@@ -510,51 +597,7 @@ body.cms-home #ajax-load{
 	margin-top: 20px;
 	overflow-y: auto;
 }
-
-#blog-news .blog ul li{
-	padding: 10px 20px;
-}
-#blog-news .blog ul li img{
-	margin-right: 10px;
-}
-#blog-news .blog ul li h6 a{
-	font-weight: bold;
-	color: #000;
-	font-size: 13px;
-	letter-spacing: 0;
-	text-decoration: none;
-}
-#blog-news .blog ul li:hover{
-	background-color: #dae1e6;
-}
-#blog-news .blog ul li h6 a:hover{
-	color: #4571EB;
-}
-#blog-news .blog ul li .fll+.fll{
-	width: 330px;
-}
-#blog-news .blog ul li .author a{
-	color: #636466;
-}
-#blog-news .blog ul li .fll > a{
-	color: #E67E22;
-	text-decoration: underline;
-}
-#blog-news .blog .view-more{
-	margin-top: 30px;
-	padding-left: 83px;
-}
-#blog-news .blog .view-more a{
-	padding-left: 30px;
-	background: url('../images/view-more.png') left center no-repeat transparent;
-	color: #E67E22;
-	font-weight: bold;
-	text-decoration: underline;
-}
-#countries-link .home-countries .content{
-	margin-top: 20px;
-}
-#countries-link .home-countries a{
+div.countries a{
 	padding: 7px 15px;
 	padding-left: 70px;
 	border: solid 1px #d0d4d8;
@@ -564,27 +607,41 @@ body.cms-home #ajax-load{
 	background-position: 15px center;
 	border-radius: 3px;
 	font-size: 16px;
+	display: inline-block;
+	margin-top: 20px;
+	width: 100px;
 }
-#countries-link .home-countries a:hover{
+div.countries a:hover{
 	background-color: #bcc2c8;
 }
-#countries-link .home-countries a+a{
-	margin-left: 34px;
+div.countries a:nth-child(1),
+div.countries a:nth-child(3){
+	margin-right: 30px;
 }
-#countries-link .home-countries .content a.vn{
+div.countries .content a.vn{
 	background-image: url('../images/vn.png')
 }
-#countries-link .home-countries .content a.myan{
+div.countries .content a.myan{
 	background-image: url('../images/myan.png')
 }
-#countries-link .home-countries .content a.cambodia{
+div.countries .content a.cambodia{
 	background-image: url('../images/cambodia.png')
 }
-#countries-link .home-countries .content a.indo{
+div.countries .content a.indo{
 	background-image: url('../images/indo.png')
 }
-#countries-link .home-countries .content a.india{
+div.countries .content a.india{
 	background-image: url('../images/india.png')
+}
+#banner{
+	background: url('../images/banner-bg.png') repeat transparent;
+}
+#banner .banners{
+	margin-top: 20px;
+	text-align: center;
+}
+#banner .wrapper{
+	padding: 30px 20px;
 }
 #contact-info{
 	margin-top: 40px;
@@ -699,7 +756,12 @@ body.cms-home #ajax-load{
 	border-right: solid 1px #7f8081;
 }
 #footer-menu ul li.current-menu-item > a{
-	color: #000;
+	color: #fff;
+	background-color: #6d6e70;
+}
+#footer-menu ul li > a:hover{
+	color: #fff;
+	background-color: #6d6e70;
 }
 #other-web .social-links a{
 	width: 30px;

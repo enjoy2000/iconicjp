@@ -51,6 +51,9 @@ p{
 .clearfix {
     *zoom: 1;
 }
+br.clear{
+	clear: both;
+}
 .wrapper{
 	width: 960px;
 	margin: 0 auto;

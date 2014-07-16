@@ -49,18 +49,12 @@
 				
 				<!-- Switch languages -->
 				<div id="switch-languages">
-					<ul>
-						<li>
-							<a href="<?php echo Mage::getBaseUrl() ?>" title="Japanese">
-								<img width="23" height="17" src="<?php echo $this->getSkinUrl('images/language/japanese.png') ?>" alt="Japanese" />
-							</a>
-						</li>
-						<li>
-							<a href="<?php echo Mage::getBaseUrl().'en/' ?>" title="English">
-								<img width="22" height="16" src="<?php echo $this->getSkinUrl('images/language/english.png') ?>" alt="English" />
-							</a>
-						</li>
-					</ul>
+					<a class="switch-lang jp<?php echo (Mage::helper('job')->getBaseUrl() == Mage::getBaseUrl()) ? ' active' : '' ?>" href="<?php echo Mage::getBaseUrl() ?>" title="<?php echo $this->__('日本語') ?>">
+						<?php echo $this->__('日本語') ?>
+					</a>
+					<a class="switch-lang en<?php echo (Mage::helper('job')->getBaseUrl() == Mage::getBaseUrl().'en/') ? ' active' : '' ?>" href="<?php echo Mage::getBaseUrl().'en/' ?>" title="<?php echo $this->__('English') ?>">
+						<?php echo $this->__('English') ?>
+					</a>
 				</div><!-- End Switch Languages -->
 				
 				<!-- Menu -->
@@ -83,6 +77,17 @@
 		<?php if(strpos($bodyclass, 'cms-index-index')): ?>
 		<div id="slider">
 			<div class="bg">&nbsp;</div>
+			<div class="top-socials">
+				<div class="wrapper clearfix">
+					<div class="tw">
+						<a href="https://twitter.com/iconicvn" class="twitter-follow-button" data-show-count="false" data-lang="jp">@iconicvn</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</div>
+					<div class="fb">
+						<div class="fb-like" data-href="https://www.facebook.com/iconic.jp" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+					</div>
+				</div>
+			</div>
 			<!-- Header Menu -->
 			<div id="header-menu">
 				<div class="wrapper">
@@ -177,18 +182,6 @@
 			
 			<div id="swiffycontainer" style="width: 100%; height: 625px; position: relative;">
 		    </div>
-			<!-- Slider content 
-			<div id="bannerscollection_zoominout_opportune">
-				<div class="myloader"></div>
-			    <!-- CONTENT 
-			    <ul class="bannerscollection_zoominout_list">
-			   		<li data-initialZoom="0.6" data-finalZoom="0.8" data-verticalPosition="center"><img src="<?php echo $this->getSkinUrl('images/slider/img1.jpg') ?>" alt="" width="2500" height="1126" /></li>
-			    	
-			    	<li data-initialZoom="0.6" data-finalZoom="0.8" data-verticalPosition="center"><img src="<?php echo $this->getSkinUrl('images/slider/img2.jpg') ?>" alt="" width="2500" height="1126" /></li>
-			    	
-			    	<li data-initialZoom="0.6" data-finalZoom="0.8" data-verticalPosition="center"><img src="<?php echo $this->getSkinUrl('images/slider/img3.jpg') ?>" alt="" width="2500" height="1126" /></li>
-			    </ul>    
-			</div> End slider -->
 			
 			<!-- Search Block -->
 			<?php echo $this->getChildHtml('searchform') ?>
