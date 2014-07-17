@@ -542,6 +542,9 @@ body.cms-home #ajax-load{
 	font-size: 25px;
 	font-weight: bold;
 }
+#newest-blogs-home .heading h2 a{
+	color: #4571EB;
+}
 #newest-blogs-home .wrapper{
 	padding: 20px;
 	padding-bottom: 20px;
