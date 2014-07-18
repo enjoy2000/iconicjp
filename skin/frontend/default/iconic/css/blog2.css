@@ -261,6 +261,9 @@
 #blog-details .blog-details-content{
 	padding: 30px;
 }
+#blog-details .blog-details-content #twitter-widget-0{
+	vertical-align: bottom;
+}
 #blog-details .blog-parents{
 	padding-bottom: 15px;
 	border-bottom: solid 1px #d7d8da;

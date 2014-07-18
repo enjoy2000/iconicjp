@@ -21,6 +21,7 @@
     <blog_detail_index>
     	<reference name="head">
     		<action method="addCss"><stylesheet>css/blog2.css</stylesheet></action>
+            <action method="addJs"><script>iconic/blog.js</script></action>
         </reference>
         <reference name="content">
             <block type="core/template" name="blog" template="blog/blog-details.phtml">
