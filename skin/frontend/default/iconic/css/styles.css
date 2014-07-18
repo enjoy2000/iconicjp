@@ -5,7 +5,7 @@
 	display: none;
 }
 body{
-	background-color: #f8f8f8;
+	background-color: #fff;
 }
 /*
  * SHORT TEMPLATE
@@ -1060,7 +1060,7 @@ div.countries .content a.india{
 }
 #tab-control .tab.active{
 	color: #636466;
-	background-color: #F8F8F8;
+	background-color: #fff;
 	border-color: #86a3f2;
 	border-bottom-color: #fff;
 	position: relative;
