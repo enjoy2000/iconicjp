@@ -350,8 +350,8 @@ body.cms-home #ajax-load{
 #slider .buttons.not-login{
 	background: url('../images/white-line.png') top center repeat-y rgba(255, 255, 255, 0.30);
 }
-#slider .buttons.not-createcv{
-	background: url('../images/arrow-home.png') center no-repeat rgba(255, 255, 255, 0.30);
+#slider .buttons.not-create{
+	background: url('../images/arrow-home.png') 57% center no-repeat rgba(255, 255, 255, 0.30);
 }
 #slider .buttons.not-createcv .not-createcv{
 	margin-top: 20px;
