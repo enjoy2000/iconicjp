@@ -6,7 +6,7 @@
             <codePool>local</codePool>
         </Eezy_Disable>
         <Mage_Catalog>
-            <active>false</active>
+            <active>true</active>
         </Mage_Catalog>
         <Mage_CatalogRule>
             <active>false</active>

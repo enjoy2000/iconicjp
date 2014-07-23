@@ -175,7 +175,7 @@ class Mage_Adminhtml_Block_Customer_Grid extends Mage_Adminhtml_Block_Widget_Gri
             'gmtoffset' => true
         ));
 		
-		/*
+		
         if (!Mage::app()->isSingleStoreMode()) {
             $this->addColumn('website_id', array(
                 'header'    => Mage::helper('customer')->__('Website'),
@@ -186,25 +186,6 @@ class Mage_Adminhtml_Block_Customer_Grid extends Mage_Adminhtml_Block_Widget_Gri
                 'index'     => 'website_id',
             ));
         }
-		*/
-        $this->addColumn('action',
-            array(
-                'header'    =>  Mage::helper('customer')->__('Action'),
-                'width'     => '100',
-                'type'      => 'action',
-                'getter'    => 'getId',
-                'actions'   => array(
-                    array(
-                        'caption'   => Mage::helper('customer')->__('Edit'),
-                        'url'       => array('base'=> '*/*/edit'),
-                        'field'     => 'id'
-                    )
-                ),
-                'filter'    => false,
-                'sortable'  => false,
-                'index'     => 'stores',
-                'is_system' => true,
-        ));
 
         $this->addExportType('*/*/exportCsv', Mage::helper('customer')->__('CSV'));
         $this->addExportType('*/*/exportXml', Mage::helper('customer')->__('Excel XML'));
