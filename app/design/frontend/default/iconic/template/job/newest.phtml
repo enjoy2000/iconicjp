@@ -91,49 +91,30 @@
 			</div>
 		</div>
 		
-		<!-- Content for category -->
-		<div style="display: none;" id="tab-content-category" class="tab-content category category-function">
-			<!-- Industry Category -->
-			<div class="group-category clearfix industry">
-				<h5><?php echo $this->__('業界から探す') ?></h5>
-				<div class="list-category">
-					<?php $industry = $this->getIndustryCollection(); ?>
-					<div class="left fll">
-						<?php $i=1;foreach($industry as $parent): ?>
-							<?php if($i > 0 && $i < 6): ?>
-							<div class="parent">
-								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
-									<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
-								</a>
-							</div>
-							<?php endif; ?>
-						<?php $i++;endforeach; ?>
+			<!-- Content for category -->
+			<div style="display: none;" id="tab-content-category" class="tab-content category category-function">
+				<!-- Industry Category -->
+				<div class="group-category clearfix industry">
+					<h5><?php echo $this->__('業界から探す') ?></h5>
+					<div class="list-category">
+						<table>
+							<tr>
+							<?php $j=1;foreach($this->getIndustryCollection() as $parent): ?>
+								<td>
+									<div class="parent">
+										<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
+											<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
+										</a>
+									</div>
+								</td>
+								<?php if($j%3==0 && $i != $this->getIndustryCollection()->count()): ?>
+								</tr><tr>
+								<?php elseif($i == $this->getIndustryCollection()->count()): ?>
+								</tr>
+								<?php endif; ?>
+							<?php $j++;endforeach; ?>
+						</table>
 					</div>
-					
-					<div class="mid fll">
-						<?php $i=1;foreach($industry as $parent): ?>
-							<?php if($i > 5 && $i < 8): ?>
-							<div class="parent">
-								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
-									<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
-								</a>
-							</div>
-							<?php endif; ?>
-						<?php $i++;endforeach; ?>
-					</div>
-					
-					<div class="right flr">
-						<?php $i=1;foreach($industry as $parent): ?>
-							<?php if($i > 7): ?>
-							<div class="parent">
-								<a class="parent" href="<?php echo $parent->getUrl() ?>" title="<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>">
-									<?php echo Mage::helper('job')->getTransName($parent) ?> <span><?php  echo '('.$parent->getCount().')' ?></span>
-								</a>
-							</div>
-							<?php endif; ?>
-						<?php $i++;endforeach; ?>
-					</div>
-				</div>
 				</div>
 			</div>
 			

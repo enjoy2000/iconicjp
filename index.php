@@ -102,7 +102,7 @@ if(isset($host[2]) && $host[2] == 'en'){
  break;
 
 default:
-if(isset($host[2]) && $host[2] == 'en'){
+if(isset($host[1]) && $host[1] == 'en'){
 	$_SERVER['REQUEST_URI']=str_replace("/en","",$_SERVER['REQUEST_URI']);
 	$mageRunCode  = "en";
 }else{

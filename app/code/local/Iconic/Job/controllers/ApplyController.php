@@ -55,7 +55,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 
 	public function uploadAction(){
 		error_reporting(E_ALL | E_STRICT);
-		require('UploadHandler.php');
+		require(Mage::getBaseDir().'/UploadHandler.php');
 		$upload_handler = new UploadHandler();
 		$user = Mage::getSingleton('customer/session')->getCustomer();
 		$upload_handler->options['upload_dir'] = Mage::getBaseDir().'/files/'.$user->getId().'/';

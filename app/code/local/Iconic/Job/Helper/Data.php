@@ -2,6 +2,11 @@
 
 class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 {
+	public function getUrl(){
+		$url = Mage::app()->getStore(1)->getBaseUrl();
+		return $url;
+	}
+	
     public function formatUrlKey($str)
     {
         $trans = array(
@@ -142,8 +147,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 					. '/'
 					. $job->getCategory()->getUrlKey()
 					. '/'
-					. $job->getUrlKey()
-					. Mage::helper('clnews')->getNewsitemUrlSuffix();
+					. $job->getUrlKey();
 		return $link;
 	}
 	
@@ -294,7 +298,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 
 	public function getTransName($obj){
 		$storeCode = Mage::app()->getStore()->getCode();
-		if($storeCode == 'jp'){
+		if($storeCode == 'jp' || $storeCode == 'cpjp'){
 			return $obj->getName();
 		}else{
 			return $obj->getNameEn();
@@ -302,12 +306,18 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 	}
 	
 	public function getBaseUrl(){
+		return Mage::getBaseUrl();
 		$storeCode = Mage::app()->getStore()->getCode();
 		if($storeCode == 'jp'){
-			return Mage::getBaseUrl();
+			$baseurl = Mage::getBaseUrl();
+		}else if(($storeCode == 'en')){
+			$baseurl = Mage::getBaseUrl().'en/';
+		}else if(($storeCode == 'cpen')){
+			$baseurl = Mage::getBaseUrl().'company/en/';
 		}else{
-			return Mage::getBaseUrl().'en/';
+			$baseurl = Mage::getBaseUrl().'company/';
 		}
+		//return $baseurl;
 	}
 	
 	public function checkLogin(){

@@ -44,17 +44,17 @@
 			<div class="wrapper clearfix">
 				<!-- Logo -->
 				<div id="logo" class="fll">
-					<a title="Iconic" href="/company">
+					<a title="Iconic" href="<?php echo Mage::helper('job')->getBaseUrl() ?>">
 						<img width="169" height="40" src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="Iconic's Logo"  />
 					</a>
 				</div><!-- End Logo -->
 				
 				<!-- Switch languages -->
 				<div id="switch-languages">
-					<a class="switch-lang jp<?php echo (Mage::app()->getStore()->getCode() == 'cpjp') ? ' active' : '' ?>" href="<?php echo Mage::getBaseUrl() ?>company/" title="<?php echo $this->__('日本語') ?>">
+					<a class="switch-lang jp<?php echo (Mage::app()->getStore()->getCode() == 'cpjp') ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl() ?>company/" title="<?php echo $this->__('日本語') ?>">
 						<?php echo $this->__('日本語') ?>
 					</a>
-					<a class="switch-lang en<?php echo (Mage::app()->getStore()->getCode() == 'cpen') ? ' active' : '' ?>" href="<?php echo Mage::getBaseUrl().'company/en/' ?>" title="<?php echo $this->__('English') ?>">
+					<a class="switch-lang en<?php echo (Mage::app()->getStore()->getCode() == 'cpen') ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl() ?>company/en/" title="<?php echo $this->__('English') ?>">
 						<?php echo $this->__('English') ?>
 					</a>
 				</div><!-- End Switch Languages -->
@@ -65,7 +65,7 @@
 					<?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
 					<ul>
 						<li class="border">
-							<a href="<?php echo Mage::helper('job')->getBaseUrl().Mage::helper('job')->getContactUrl() ?>"><?php echo $this->__('お問い合わせ') ?></a>
+							<a href="<?php echo Mage::helper('job')->getUrl().Mage::helper('job')->getContactUrl() ?>"><?php echo $this->__('お問い合わせ') ?></a>
 						</li>
 					</ul>
 				</div><!-- End Menu -->
@@ -75,7 +75,6 @@
 	<?php if($this->getIsHomePage()): ?>
 	<div id="slider">
 		<div class="bg">&nbsp;</div>
-		<?php endif; ?>
 		<div class="top-socials">
 			<div class="wrapper clearfix">
 				<div class="tw">
@@ -87,14 +86,15 @@
 				</div>
 			</div>
 		</div>
+		<?php endif; ?>
 			
 		<!-- Header Menu -->
 		<div id="header-menu">
 			<div class="wrapper">
 				<ul>
 					<li class="home <?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
-						<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('HOME') ?></a>
-						<a class="inactive" href="<?php echo Mage::getBaseUrl() ?>">
+						<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('HOME') ?></a>
+						<a class="inactive" href="<?php echo Mage::helper('job')->getUrl() ?>">
 							<?php echo $this->__('求職者の皆様はこちら') ?>
 						</a>
 					</li>
@@ -112,12 +112,36 @@
 						<?php if(!$this->helper('customer')->isLoggedIn()): ?>
 							<a id="login-button" href="#"><?php echo $this->__('ログイン') ?></a>
 						<?php else: ?>
-							<a id="logout-button" href="<?php echo $this->helper('customer')->getLogoutUrl() ?>"><?php echo $this->__('ログアウト') ?></a>
+							<a id="logout-button" href="<?php echo $this->helper('job')->getBaseUrl() ?>customer/account/logout"><?php echo $this->__('ログアウト') ?></a>
 						<?php endif; ?>
 					</li>
 				</ul>
 			</div>
 		</div><!-- End Header Menu -->
+		
+		<?php if($this->getIsHomePage()): ?>
+		<!-- Home Messages -->
+		<div id="home-message">
+			<div class="wrapper">
+				<div class="home-message">
+					<div class="top">
+						<h1><?php echo $this->__('アジアでの人材採用ならICONIC') ?></h1>
+						<p><?php echo $this->__('ICONIC（アイコニック）はアジアを舞台に国境を超えて働きたい方々に特化した転職エージェントです。') ?></p>
+					</div>
+					<div class="bot clearfix">
+						<span class="fll width-50 phone">(81) - 3 - 6222 5520</span>
+						<span class="flr width-45 mail">info[at]iconic-jp.com</span>
+					</div>
+					<div class="button">
+						<a href="#" class="button">
+							<?php echo $this->__('今すぐ、会員登録（無料）') ?>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php endif; ?>
+		
 		<div id="ajax-load">
 			<div class="wrapper">
 				<a title="<?php echo $this->__('CLOSE') ?>" id="close-button" href="#" class="close-button">X</a>
@@ -131,3 +155,21 @@
 	</div>
 	<?php endif; ?>
 </header>
+<?php if($this->getIsHomePage()): ?>
+<div id="company-services">
+	<div class="wrapper clearfix">
+		<div class="consulting fll">
+			<img alt="" src="<?php echo $this->getSkinUrl('images/service1.png') ?>" />
+			<p><?php echo $this->__('グローバル人材紹介') ?></p>
+		</div>
+		<div class="translation fll">
+			<img alt="" src="<?php echo $this->getSkinUrl('images/service2.png') ?>" />
+			<p><?php echo $this->__('通訳者の短期紹介<br />（日本語-アジア系言語）') ?></p>
+		</div>
+		<div class="support flr">
+			<img alt="" src="<?php echo $this->getSkinUrl('images/service3.png') ?>" />
+			<p><?php echo $this->__('人事労務コンサルティング') ?></p>
+		</div>
+	</div>
+</div>
+<?php endif; ?>

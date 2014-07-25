@@ -47,6 +47,7 @@ class Mage_Adminhtml_Block_Customer_Grid extends Mage_Adminhtml_Block_Widget_Gri
     {
         $collection = Mage::getResourceModel('customer/customer_collection')
             ->addNameToSelect()
+            ->addAttributeToFilter('website_id', array('eq'=>1))
             ->addAttributeToSelect('email')
             ->addAttributeToSelect('created_at')
             ->addAttributeToSelect('group_id')			
@@ -202,34 +203,7 @@ class Mage_Adminhtml_Block_Customer_Grid extends Mage_Adminhtml_Block_Widget_Gri
              'url'      => $this->getUrl('*/*/massDelete'),
              'confirm'  => Mage::helper('customer')->__('Are you sure?')
         ));
-
-        $this->getMassactionBlock()->addItem('newsletter_subscribe', array(
-             'label'    => Mage::helper('customer')->__('Subscribe to Newsletter'),
-             'url'      => $this->getUrl('*/*/massSubscribe')
-        ));
-
-        $this->getMassactionBlock()->addItem('newsletter_unsubscribe', array(
-             'label'    => Mage::helper('customer')->__('Unsubscribe from Newsletter'),
-             'url'      => $this->getUrl('*/*/massUnsubscribe')
-        ));
-
-        $groups = $this->helper('customer')->getGroups()->toOptionArray();
-
-        array_unshift($groups, array('label'=> '', 'value'=> ''));
-        $this->getMassactionBlock()->addItem('assign_group', array(
-             'label'        => Mage::helper('customer')->__('Assign a Customer Group'),
-             'url'          => $this->getUrl('*/*/massAssignGroup'),
-             'additional'   => array(
-                'visibility'    => array(
-                     'name'     => 'group',
-                     'type'     => 'select',
-                     'class'    => 'required-entry',
-                     'label'    => Mage::helper('customer')->__('Group'),
-                     'values'   => $groups
-                 )
-            )
-        ));
-
+		
         return $this;
     }
 

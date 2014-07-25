@@ -36,7 +36,6 @@ Default layout, loads most of the pages
 
             <block type="page/html_head" name="head" as="head">
                 <action method="addJs"><script>iconic/jquery1.9.0.min.js</script></action>
-                <action method="addJs"><script>iconic/iconic.js</script></action>
                 <action method="addJs"><script>iconic/company.js</script></action>
 		
 				<action method="addCss"><stylesheet>css/reset.css</stylesheet></action>

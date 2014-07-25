@@ -181,7 +181,6 @@ input[readonly]{
 	filter: alpha(opacity=80);
 	-moz-opacity: 0.8;
 	-khtml-opacity: 0.8;
-
 }
 .text-blue{
 	color: #4571EB;
@@ -191,6 +190,9 @@ input[readonly]{
 }
 .text-black{
 	color: #000;
+}
+.text-white{
+	color: #fff;
 }
 .width-10{
 	width: 10%;

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		
+    </default>
+    
+    <client_job_post>
+    	<reference name="head">
+    		<action method="addCss"><stylesheet>css/client.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="client/job" name="client_job_post" template="client/post.phtml">
+            </block>
+        </reference>
+    </client_job_post>
+</layout>
