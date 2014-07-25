@@ -86,7 +86,7 @@ class Iconic_Job_Block_Adminhtml_Job_Edit_Tab_Form extends Mage_Adminhtml_Block_
 			);
 		}
 		
-		$fieldset->addField('location_id', 'select', array(
+		$fieldset->addField('location_id', 'multiselect', array(
             'label'     => Mage::helper('job')->__('Location'),
             'class'     => 'required-entry',
             'required'  => true,

@@ -26,10 +26,6 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
 		
 		$collection->getSelect()->join(array("l" => $collection->getTable('job/level')), 
 			"main_table.job_level = l.level_id", "l.name as l_name");
-		/* @var $collection Iconic_Job_Model_Mysql4_Location_Collection */
-		
-		$collection->getSelect()->join(array("la" => $collection->getTable('job/country')), 
-			"main_table.location_id = la.country_id", "la.name as la_name");
 		
 		
         $this->setCollection($collection);
@@ -72,16 +68,12 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
             'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Category',
         ));
 		
-        $locations = Mage::getModel('job/country')->getCollection();
-		$locationOptions = array();
-		foreach($locations as $loc){
-			$locationOptions += array($loc->getId()=>$loc->getName());
-		}
         $this->addColumn('location_id', array(
             'header'    => Mage::helper('job')->__('Location'),
-            'name'		=> 'location_id',
-            'index'     => 'la_name',
-			'filter_condition_callback' => array($this, '_filterMultiCountry'),      
+            'index'		=> 'location_id',
+            'filter'	=> false,
+            'sortable'  => true,
+            'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Location',     
         ));
                 
         $this->addColumn('job_level', array(
@@ -113,12 +105,7 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
 		if (!$values = $column->getFilter()->getValue()) {
 			return;
 		}
-		$values = explode(',', $values);
-		$conditions = array();
-		foreach($values as $value){
-			$conditions[] = array('like'=>'%'.trim($value).'%');
-		}
-		$this->getCollection()->addFieldToFilter('la.name', $conditions);
+		$this->getCollection()->addFieldToFilter('location_id', array('like'=>'%,'.$value.',%'));
 	}
 
     protected function _prepareMassaction()

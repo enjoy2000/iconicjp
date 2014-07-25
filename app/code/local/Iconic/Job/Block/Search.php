@@ -113,7 +113,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 		}
 		
 		if ($this->getLocation()){
-			$collection->addFieldToFilter('location_id', array('eq' => $this->getLocation()));
+			$collection->addFieldToFilter('location_id', array(array('eq' => $this->getLocation()), array('like'=>'%,'.$this->getLocation().',%')));
 		}
 		
 		if ($this->getLanguage()){
@@ -151,7 +151,12 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 		}
 		
 		if($this->getMultiLocation()){
-			$collection->addFieldToFilter('location_id', array('in' => $this->getMultiLocation()));
+			$conditionloc = array();
+			foreach($this->getMultiLocation() as $loc){
+				$conditionloc[] = array('like' => '%,'.$loc.',%');
+				$conditionloc[] = array('eq' => $loc);
+			}
+			$collection->addFieldToFilter('location_id', $conditionloc);
 		}
 		if($this->getMultiCategory()){
 			$multicat = array();

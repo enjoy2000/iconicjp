@@ -48,12 +48,18 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 	}
 	
 	public function getCountry(){
-		$location = Mage::getModel('job/country')->load($this->getLocationId());
-		if(Mage::app()->getStore()->getCode() == 'jp'){
-			return $location->getName();
-		}else{
-			return $location->getNameEn();
+		$locIds = explode(',', substr($this->getLocationId(),1,-1));
+		$result = '';
+		foreach($locIds as $locId){
+			if($locId){
+				$location = Mage::getModel('job/country')->load($locId);
+				$result .= Mage::helper('job')->getTransName($location);
+				if($locId != end($locIds)){
+					$result .= ', ';
+				}
+			}
 		}
+		return $result;
 	}
 	
 	public function getCategoryName(){

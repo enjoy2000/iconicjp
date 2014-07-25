@@ -52,13 +52,15 @@ class Iconic_Job_Adminhtml_Job_JobController extends Mage_Adminhtml_Controller_A
     {
         if ( $this->getRequest()->getPost() ) {
             try {              
-                
                 $postData = $this->getRequest()->getPost();
                 $jobModel = Mage::getModel('job/job');
                 $currentDate = Date('Y-m-d H:i:s');
+                //$postData['location_id'] = ','.implode(',', $this->getRequest()->getParam('location_id')).',';
+				//var_dump($postData['location_id']);die;
                 $jobModel->setData($postData)
 	                     ->setId($this->getRequest()->getParam('id'))
 						 ->setUpdateTime($currentDate)
+						 ->setLocationId(','.implode(',', $this->getRequest()->getParam('location_id')).',')
 						 ->setLanguageId(','.implode(',', $this->getRequest()->getParam('language_id')).',')
 					     ->setFeatureId(','.implode(',', $this->getRequest()->getParam('feature_id')).',');
 						 
