@@ -41,7 +41,7 @@
 	vertical-align: bottom;
 }
 form#form-validate li{
-	margin: 7px 0;
+	margin: 10px 0;
 }
 form#form-validate li > input:not([type="radio"]){
 	width: 398px;

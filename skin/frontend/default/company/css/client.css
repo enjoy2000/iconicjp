@@ -1,4 +1,58 @@
+#main .col-main{
+	width: 420px;
+	margin: auto;
+}
 form#create-job{
 	width: 420px;
 	margin: auto;
+}
+form#create-job ul > li{
+	margin: 10px 0;
+}
+form#create-job ul > li.row2:after{
+	clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+form#create-job ul > li.row2 .first,
+form#create-job ul > li.row2 .last{
+	width: 202px;
+}
+form#create-job ul > li.row2 input.first,
+form#create-job ul > li.row2 input.last{
+	width: 180px;
+}
+form#create-job ul > li.row2 .first{
+	float: left;
+}
+form#create-job ul > li.row2 .last{
+	float: right;
+}
+form#create-job li > input:not([type="radio"]){
+	width: 398px;
+}
+form#create-job li > textarea{
+	width: 398px;
+	height: 80px;
+	padding: 5px 10px;
+}
+div.cke.cke_focus{
+	border-color: #4571EB;
+}
+form#create-job div.button{
+	text-align: center;
+	margin-top: 30px;
+}
+form#create-job div.button > button{
+	border-radius: 3px;
+}
+form#create-job div.button > button.inactive{
+	background-color: grey;
+}
+form#create-job div.button > button.active{
+	background-color: #4571EB;
 }

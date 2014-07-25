@@ -42,3 +42,23 @@
 <?php echo $this->getCssJsHtml() ?>
 <?php echo $this->getChildHtml() ?>
 <?php echo $this->getIncludes() ?>
+
+<?php if((!$this->helper('customer')->isLoggedIn()) && (Mage::getSingleton('customer/session')->getShowLogin() === 1)): ?>
+	<?php 
+	Mage::getSingleton('customer/session')->unsShowLogin(); 
+	?>
+<script>
+jQuery(document).ready(function(){
+	jQuery('#login-button').click();
+});
+</script>
+<?php endif; ?>
+
+<?php if((!$this->helper('customer')->isLoggedIn()) && (Mage::getSingleton('customer/session')->getShowForgotPassword() == 1)): ?>
+	<?php Mage::getSingleton('customer/session')->unsShowForgotPassword();  ?>
+<script>
+jQuery(document).ready(function(){
+	showForgotPage();
+});
+</script>
+<?php endif; ?>

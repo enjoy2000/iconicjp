@@ -103,14 +103,14 @@ br.clear{
 select{
 	text-indent: 0.01px;
 	text-overflow: ' ';
-	padding: 3px 15px;
+	padding: 3px 6px;
 	width: 100%;
 	border: none;
 	background: url('../images/select.png') right 5px center no-repeat #e6ecfc;
 	appearance: none;
 	-webkit-appearance: none;
 	border: solid 1px #b0b2b4;
-	color: #929496;
+	color: #A8A8A8;
 }
 select:disabled{
 }
@@ -309,4 +309,13 @@ h1{
 }
 hr.blue{
 	border-color: #4571EB;
+}
+ul.messages{
+	margin-bottom: 20px;
+}
+ul.messages .error-msg{
+	color: #E67E22;
+}
+ul.messages .success-msg{
+	color: #4571EB;
 }

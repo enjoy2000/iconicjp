@@ -1,5 +1,11 @@
 (function($){
 	$(document).ready(function(){
+		//check input
+		$('form input, form select').each(function(){
+			if($(this).val() != ''){
+				$(this).addClass('after-input');
+			}
+		});
 		//hover home button
 		var timer;
 		$('ul li.home a').hover(
@@ -123,6 +129,7 @@ function loginAjax(){
 			if(msg.status == true){ //logged in
 				jQuery('#ajax-load').removeClass('open');
 				if(msg.message){
+					//console.log(msg);
 					window.location.replace(msg.message);
 				}else{
 					location.reload();

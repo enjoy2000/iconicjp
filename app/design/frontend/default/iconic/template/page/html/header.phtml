@@ -49,10 +49,10 @@
 				
 				<!-- Switch languages -->
 				<div id="switch-languages">
-					<a class="switch-lang jp<?php echo (Mage::helper('job')->getBaseUrl() == Mage::getBaseUrl()) ? ' active' : '' ?>" href="<?php echo Mage::getBaseUrl() ?>" title="<?php echo $this->__('日本語') ?>">
+					<a class="switch-lang jp<?php echo (Mage::app()->getStore()->getCode() == 'jp') ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl().substr($_SERVER['REQUEST_URI'],1) ?>" title="<?php echo $this->__('日本語') ?>">
 						<?php echo $this->__('日本語') ?>
 					</a>
-					<a class="switch-lang en<?php echo (Mage::helper('job')->getBaseUrl() == Mage::getBaseUrl().'en/') ? ' active' : '' ?>" href="<?php echo Mage::getBaseUrl().'en/' ?>" title="<?php echo $this->__('English') ?>">
+					<a class="switch-lang en<?php echo (Mage::app()->getStore()->getCode() == 'en') ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl().'en/'.substr($_SERVER['REQUEST_URI'],1) ?>" title="<?php echo $this->__('English') ?>">
 						<?php echo $this->__('English') ?>
 					</a>
 				</div><!-- End Switch Languages -->

@@ -1,6 +1,6 @@
-<?php $data = $this->getRequest()->getPost() ?>
+<?php $data = Mage::getSingleton('customer/session')->getJobData() ?>
 <h1><?php echo $this->__('求人を投稿する') ?></h1>
-<form action="" id="create-job">
+<form method="POST" action="" id="create-job">
 	<ul>
 		<li>
 			<input required type="text" name="title" placeholder="<?php echo $this->__('求人タイトル') ?> *" value="<?php echo $data['title'] ?>" />
@@ -24,7 +24,7 @@
 			</select>
 		</li>
 		<li>
-			<input type="text" name="location_text" placeholder="<?php echo $this->__('勤務地域 （省、市など）') ?>" value="<?php echo $data['location_text'] ?>" />
+			<input required type="text" name="location_text" placeholder="<?php echo $this->__('勤務地域 （省、市など）') ?>" value="<?php echo $data['location_text'] ?>" />
 		</li>
 		<li>
 			<select required name="job_level">
@@ -75,10 +75,26 @@
 			</div>
 		</li>
 		<li>
-			<textarea required name="requirement" placeholder="<?php echo $this->__('必須要件') ?> *"><?php echo $data['requirement'] ?></textarea>
+			<textarea rows="5" id="requirement" required name="requirement" placeholder="<?php echo $this->__('必須要件') ?> *"><?php echo $data['requirement'] ?></textarea>
+			<script>
+				var editor1 = CKEDITOR.replace('requirement').config.extraPlugins = 'confighelper';
+				<?php if($data['requirement']): ?>
+				CKEDITOR.instances.requirement.setData('<?php echo $data['requirement'] ?>');
+				<?php endif; ?>
+			</script>
 		</li>
 		<li>
-			<textarea required name="info" placeholder="<?php echo $this->__('職務内容') ?> *"><?php echo $data['info'] ?></textarea>
+			<textarea id="info" required name="info" placeholder="<?php echo $this->__('職務内容') ?> *"><?php echo $data['info'] ?></textarea>
+			<script>
+				CKEDITOR.replace('info').config.extraPlugins = 'confighelper';
+				<?php if($data['info']): ?>
+				CKEDITOR.instances.info.setData('<?php echo $data['info'] ?>');
+				<?php endif; ?>
+			</script>
 		</li>
 	</ul>
+	<div class="button">
+		<button name="draft" value="1" class="inactive draft btn"><?php echo $this->__('SAVE AS DRAFT') ?></button>
+		<button name="submit" value="1" class="active submit btn blue-btn" type="submit"><?php echo $this->__('この内容で投稿する') ?></button>
+	</div>
 </form>
