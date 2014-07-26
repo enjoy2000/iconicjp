@@ -7,7 +7,7 @@
 		<ul>
 			<?php foreach($this->getJobCollection() as $job): ?>
 			<?php $locname = Mage::helper('job')->getTransName(Mage::getModel('job/country')->load($job->getLocationId())); ?>
-			<?php $locnameen = strtolower(Mage::getModel('job/country')->load($job->getLocationId())->getNameEn());
+			<?php $locnameen = strtolower(Mage::getModel('job/country')->load($job->getLocationId())->getNameEn()); ?>
 			<?php $imgname = explode(',', $job->getLocationId()); ?>
 			<li>
 				<div class="top clearfix">
