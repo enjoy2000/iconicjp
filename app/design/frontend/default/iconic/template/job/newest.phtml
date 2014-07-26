@@ -10,7 +10,7 @@
 			<?php $locnameen = strtolower(Mage::getModel('job/country')->load($job->getLocationId())->getNameEn()) ?>
 			<li>
 				<div class="top clearfix">
-					<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.Mage::getModel('job/country')->load($job->getLocationId())->getUrlKey().'.png') ?>" alt="" />
+					<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.Mage::getModel('job/country')->load(explode(',', $job->getLocationId())[1])->getUrlKey().'.png') ?>" alt="" />
 					<span class="fll location-name"><?php echo $locname ?></span>
 					<div class="date flr">
 						<?php echo Mage::helper('job')->formatDate($job->getCreatedTime()) ?>
