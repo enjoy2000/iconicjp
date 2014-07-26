@@ -6,13 +6,12 @@
 	<div class="jobs-carousel">
 		<ul>
 			<?php foreach($this->getJobCollection() as $job): ?>
-			<?php $locname = Mage::helper('job')->getTransName(Mage::getModel('job/country')->load($job->getLocationId())); ?>
-			<?php $locnameen = strtolower(Mage::getModel('job/country')->load($job->getLocationId())->getNameEn()); ?>
-			<?php $imgname = explode(',', $job->getLocationId()); ?>
+			<?php $countryId = explode(',', $job->getLocationId()); ?>
+			<?php $country = Mage::getModel('job/country')->load((int)$imgname[1]) ?>
 			<li>
 				<div class="top clearfix">
-					<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.Mage::getModel('job/country')->load((int)$imgname[1])->getUrlKey().'.png') ?>" alt="" />
-					<span class="fll location-name"><?php echo $locname ?></span>
+					<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.country->getUrlKey().'.png') ?>" alt="" />
+					<span class="fll location-name"><?php echo Mage::helper('job')->getTransName($country) ?></span>
 					<div class="date flr">
 						<?php echo Mage::helper('job')->formatDate($job->getCreatedTime()) ?>
 					</div>
