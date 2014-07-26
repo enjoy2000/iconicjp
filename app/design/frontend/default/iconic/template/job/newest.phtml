@@ -7,7 +7,7 @@
 		<ul>
 			<?php foreach($this->getJobCollection() as $job): ?>
 			<?php $countryId = explode(',', $job->getLocationId()); ?>
-			<?php $country = Mage::getModel('job/country')->load((int)$imgname[1]) ?>
+			<?php $country = Mage::getModel('job/country')->load((int)$countryId[1]) ?>
 			<li>
 				<div class="top clearfix">
 					<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.country->getUrlKey().'.png') ?>" alt="" />
