@@ -48,7 +48,7 @@ class Iconic_Job_Model_Country extends Mage_Core_Model_Abstract
 	
 	public function getCount(){
 		$count = Mage::getModel('job/job')->getCollection()
-					->addFieldToFilter('location_id', array('eq'=>$this->getId()))
+					->addFieldToFilter('location_id', array('like'=>'%,'.$this->getId().',%'))
 					->count();
 		return $count;
 	}
