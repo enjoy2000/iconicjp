@@ -10,7 +10,7 @@
 			<?php $country = Mage::getModel('job/country')->load((int)$countryId[1]) ?>
 			<li>
 				<div class="top clearfix">
-					<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.country->getUrlKey().'.png') ?>" alt="" />
+					<img class="fll" src="<?php echo $this->getSkinUrl('images/country/'.$country->getUrlKey().'.png') ?>" alt="" />
 					<span class="fll location-name"><?php echo Mage::helper('job')->getTransName($country) ?></span>
 					<div class="date flr">
 						<?php echo Mage::helper('job')->formatDate($job->getCreatedTime()) ?>
