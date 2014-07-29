@@ -44,7 +44,7 @@
             	<input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
            		<input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
                 <li id="company-logo">
-                	<div class="company-logo">
+                	<div class="company-logo<?php echo ($this->getFormData()->getCompanyLogo()) ? ' after-input' : '' ?>">
                 		<?php if($this->getFormData()->getCompanyLogo()): ?>
                 			<img alt="" src="<?php echo Mage::helper('job')->getUrl().'media/logo/'.$this->getFormData()->getCompanyLogo() ?>" />
                 		<?php else: ?>
@@ -92,7 +92,7 @@
                 </li>
                 <li>
                 	<input name="agree" required type="radio" value="1" />
-                	<?php echo $this->__('アイコニックの <a href="%s">個人情報保護方針</a> に同意する。', Mage::helper('job')->getUrl().'privacy-policy') ?>
+                	<?php echo $this->__('アイコニックの <a target="_blank" href="%s">個人情報保護方針</a> に同意する。', Mage::helper('job')->getUrl().'privacy-policy') ?>
                 </li>
             </ul>
         </div>
@@ -125,7 +125,7 @@
 		            $.each(data.result.files, function (index, file) {
 	            		$('#logo-file-name').val(file);
 	            		var img = '<img alt="" src="'+ '<?php echo Mage::helper('job')->getUrl().'media/logo/' ?>' + file +'" />';
-	            		$('#company-logo .company-logo').html(img).fadeIn();
+	            		$('#company-logo .company-logo').addClass('after-input').html(img).fadeIn();
 		            });
 		        }else{
 		        	var text = '<p>COMPANY LOGO</p>';

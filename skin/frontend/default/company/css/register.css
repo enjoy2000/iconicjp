@@ -3,7 +3,7 @@
 	margin: auto;
 }
 #company-logo .company-logo{
-	border: solid 1px grey;
+	border: solid 1px #d76f2c;
 	display: inline-block;
 	width: 140px;
 	height: 100px;
@@ -14,6 +14,9 @@
 	font-weight: bold;
 	font-size: 20px;
 	background-color: #fff;
+}
+#company-logo .company-logo.after-input{
+	border-color: #A8A8A8;
 }
 #company-logo .company-logo p{
 	vertical-align: middle;
