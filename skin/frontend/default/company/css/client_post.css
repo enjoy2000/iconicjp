@@ -1,0 +1,133 @@
+#main .col-main{
+	width: 420px;
+	margin: auto;
+}
+form#create-job{
+	width: 420px;
+	margin: auto;
+}
+form#create-job ul > li{
+	margin: 10px 0;
+	position: relative;
+}
+form#create-job ul > li.row2:after{
+	clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+form#create-job ul > li.row2 .first,
+form#create-job ul > li.row2 .last{
+	width: 202px;
+}
+form#create-job ul > li.row2 input.first,
+form#create-job ul > li.row2 input.last{
+	width: 180px;
+}
+form#create-job ul > li.row2 .first{
+	float: left;
+}
+form#create-job ul > li.row2 .last{
+	float: right;
+}
+form#create-job li > input:not([type="radio"]){
+	width: 398px;
+}
+form#create-job li > textarea{
+	width: 398px;
+	height: 80px;
+	padding: 5px 10px;
+}
+div.cke{
+	border-color: #d76f2c;
+}
+div.cke.cke_focus{
+	border-color: #4571EB;
+}
+div.cke.after-input{
+	border-color: #b0b2b4;
+}
+form#create-job div.button{
+	text-align: center;
+	margin-top: 30px;
+}
+form#create-job div.button > button{
+	border-radius: 3px;
+}
+form#create-job div.button > button.inactive{
+	background-color: grey;
+}
+form#create-job div.button > button.active{
+	background-color: #4571EB;
+}
+form#create-job .row2 a.select-button{
+	padding: 5px 10px;
+	width: 180px;
+	border: solid 1px #d76f2c;
+	display: block;
+	color: #A8A8A8;
+	text-decoration: none;
+	border-radius: 3px;
+	background: url('../images/select.png') right 5px center no-repeat #fff;
+	cursor: context-menu;
+}
+form#create-job .row2 a.select-button.after-input{
+	color: #000;
+	border-color: #b0b2b4;
+}
+form#create-job .row2 a.select-button.focus{
+	border-color: #000;
+	background-color: #000;
+	color: #fff;
+}
+form#create-job li.row2 .select-box{
+	position: absolute;
+	z-index: 99;
+	background-color: #fff;
+	top: 32px;
+	border: solid 1px #000;
+	display: none;
+}
+form#create-job li.row2 #language-level-box{
+	width: 640px;
+	height: 320px;
+	overflow-y: auto;
+}
+form#create-job li.row2 #features-box{
+	width: 400px;
+	padding: 15px;
+}
+form#create-job li.row2 #features-box > .feature{
+	width: 33%;
+	color: #000;
+}
+form#create-job li.row2 #features-box > .feature > input{
+	vertical-align: middle;
+	margin-right: 5px;
+}
+form#create-job li.row2 .select-box > .lang{
+	padding: 10px 20px;
+}
+form#create-job li.row2 .select-box > .lang+.lang{
+	border-top: solid 1px lightgrey;
+}
+form#create-job li.row2 .select-box > .lang .fll{
+	width: 100px;
+	font-weight: bold;
+	color: #000;
+}
+
+form#create-job li.row2 .select-box > .lang .flr{
+	width: 480px;
+}
+form#create-job li.row2 .select-box > .lang .lang-level{
+	width: 25%;
+	font-size: 12px;
+	letter-spacing: -1px;
+}
+form#create-job li.row2 .select-box > .lang .lang-level > input{
+	vertical-align: middle;
+}

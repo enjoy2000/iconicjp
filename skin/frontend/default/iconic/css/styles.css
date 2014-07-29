@@ -105,23 +105,69 @@ body.job-index-createcv #search-block{
 }
 #header-menu{
 	background-color: #b5c6f7;
-	padding: 8px 0px;
 	margin-top: 61px;
-	overflow: hidden;
 }
-#header-menu ul{
+#header-menu .wrapper > ul{
 	padding: 0 20px;
 }
-#header-logo #menu ul li, #header-menu ul li{
-	display: inline;
+#header-menu ul li.home > a{
+	color: #fff;
+	padding: 12px 70px;
+	background-color: #3e65d3;
+}
+#header-menu ul li.home > a.home:hover{
+	background-color: #3e65d3!important;
+	color: #fff!important;
+}
+#header-menu ul li ul.inactive{
+	position: absolute;
+	top: 43px;
+	padding-top: 12px;
+	z-index: 23;
+	display: none;
+	width: 100%;
+}
+#header-menu ul li.has-child ul.inactive:before{
+	content: '';
+	width: 0;
+	height: 0;
+	border: solid 10px transparent;
+	border-bottom-color: #4571EB;
+	position: absolute;
+	top: -8px;
+	left: 45%;
+}
+#header-menu ul li ul.inactive li{
+	background-color: #4571EB;
+	text-align: center;
+	position: relative;
+	z-index: 22;
+}
+#header-menu ul li ul.inactive li > a{
+	color: #fff;
+	padding: 12px;
+}
+#slider #header-menu ul > li.home > ul.inactive li > a:hover{
+	color: #fff;
+	background-color: #4571EB;
+}
+#header-menu ul li ul.inactive li+li{
+	border-top: solid 1px #0000FF;
+}
+#header-menu ul li.home ul.inactive li > a{
+	background: url('../images/home.png') 20px center no-repeat transparent;
+}
+#header-logo #menu ul li, #header-menu .wrapper > ul > li{
+	display: inline-block;
 	font-size: 14px;
 }
-#header-menu ul li{
-	margin: 0 5px;
+#header-menu .wrapper > ul > li{
+	position: relative;
 }
 #header-menu ul li > a{
 	color: #7495f0;
-	padding: 20px;
+	padding: 12px;
+	display: block;
 }
 #header-menu ul li > a:hover{
 	font-weight: bold;
@@ -161,11 +207,11 @@ body.job-index-createcv #search-block{
 }
 #ajax-load{
 	width: 100%;
+	top: 108px;
 	height: 0;
 	position: absolute;
 	z-index: 999;
 	background-color: rgba(181, 198, 247, 0.95);
-	border-top: solid 2px #dadbdc;
 	-webkit-transition: height 0.35s ease-out;
     -moz-transition: height 0.35s ease-out;
     -ms-transition: height 0.35s ease-out;
@@ -213,8 +259,8 @@ body.cms-home #ajax-load{
 	padding: 5px 20px;
 	text-align: center;
 	display: none;
-	color: #4571EB;
-	border: solid 1px #4571EB;
+	color: #fff;
+	border: solid 1px #fff;
 	margin-bottom: 10px;
 }
 /*

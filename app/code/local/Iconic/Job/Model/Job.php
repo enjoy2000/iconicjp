@@ -48,18 +48,9 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 	}
 	
 	public function getCountry(){
-		$locIds = explode(',', substr($this->getLocationId(),1,-1));
-		$result = '';
-		foreach($locIds as $locId){
-			if($locId){
-				$location = Mage::getModel('job/country')->load($locId);
-				$result .= Mage::helper('job')->getTransName($location);
-				if($locId != end($locIds)){
-					$result .= ', ';
-				}
-			}
-		}
-		return $result;
+		$location = explode(',', substr($this->getLocationId(),1,-1));
+		$location = Mage::getModel('job/country')->load($location[0]);
+		return Mage::helper('job')->getTransName($location);
 	}
 	
 	public function getCategoryName(){
@@ -92,11 +83,12 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 	
 	public function getLevel(){
 		$level = Mage::getModel('job/level')->load($this->getJobLevel());
-		if(Mage::app()->getStore()->getCode() == 'jp'){
-			return $level->getName();
-		}else{
-			return $level->getNameEn();
-		}
+		return Mage::helper('job')->getTransName($level);
+	}
+	
+	public function getType(){
+		$type = Mage::getModel('job/type')->load($this->getJobType());
+		return Mage::helper('job')->getTransName($type);
 	}
 	
 	public function getFullSalary(){
@@ -123,12 +115,12 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
 	}
 	
 	public function getApplyUrl(){
-		if(Mage::app()->getStore()->getCode() == 'jp'){
-			$url = Mage::getBaseUrl() . 'job/apply?id=' . $this->getId();
-		}else{
-			$url = Mage::getBaseUrl() . 'en/' . 'job/apply?id=' . $this->getId();
-		}
-		
+		$url = Mage::getUrl('job/apply/index', array('id'=>$this->getId()));
+		return $url;
+	}
+	
+	public function getEditUrl(){
+		$url = Mage::getUrl('client/job/post', array('id'=>$this->getId()));
 		return $url;
 	}
 }

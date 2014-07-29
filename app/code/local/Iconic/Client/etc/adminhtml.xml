@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config>
+    <layout>
+        <updates>
+            <client>
+                <file>client.xml</file>
+            </client>
+        </updates>
+    </layout>
+    <translate>
+        <modules>
+            <translations>
+                <files>
+                    <default>Iconic_Client.csv</default>
+                </files>
+            </translations>
+        </modules>
+    </translate>
+    <menu>
+        <client module="client">
+            <title>Company</title>
+            <sort_order>84</sort_order>               
+            <children>
+                <cpjobs module="client">
+                    <title>Manage Jobs</title>
+                    <sort_order>1</sort_order>
+                    <action>adminhtml/client_job</action>
+                </cpjobs>
+                <company translate="title" module="client">
+                    <title>Manage Companies</title>
+                    <action>adminhtml/client_company/</action>
+                    <sort_order>2</sort_order>
+                </company>
+            </children>
+        </client>
+    </menu>
+    <layout>
+        <updates>
+            <job>
+                <file>client.xml</file>
+            </job>
+        </updates>
+    </layout>
+</config>

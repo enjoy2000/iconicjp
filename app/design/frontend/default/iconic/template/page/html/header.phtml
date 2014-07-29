@@ -49,10 +49,10 @@
 				
 				<!-- Switch languages -->
 				<div id="switch-languages">
-					<a class="switch-lang jp<?php echo (Mage::helper('job')->getBaseUrl() == Mage::getBaseUrl()) ? ' active' : '' ?>" href="<?php echo Mage::getBaseUrl() ?>" title="<?php echo $this->__('日本語') ?>">
+					<a class="switch-lang jp<?php echo (Mage::app()->getStore()->getCode() == 'jp') ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl().substr($_SERVER['REQUEST_URI'],1) ?>" title="<?php echo $this->__('日本語') ?>">
 						<?php echo $this->__('日本語') ?>
 					</a>
-					<a class="switch-lang en<?php echo (Mage::helper('job')->getBaseUrl() == Mage::getBaseUrl().'en/') ? ' active' : '' ?>" href="<?php echo Mage::getBaseUrl().'en/' ?>" title="<?php echo $this->__('English') ?>">
+					<a class="switch-lang en<?php echo (Mage::app()->getStore()->getCode() == 'en') ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl().'en/'.substr($_SERVER['REQUEST_URI'],1) ?>" title="<?php echo $this->__('English') ?>">
 						<?php echo $this->__('English') ?>
 					</a>
 				</div><!-- End Switch Languages -->
@@ -93,10 +93,15 @@
 			<div id="header-menu">
 				<div class="wrapper">
 					<ul>
-						<li class="home <?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
-							<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>">
-								<img width="27" height="23" src="<?php echo $this->getSkinUrl('images/home-white.png') ?>" alt="Homepage" />
-							</a>
+						<li class="home has-child <?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
+							<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('ホーム') ?></a>
+							<ul class="inactive">
+								<li>
+									<a href="<?php echo Mage::helper('job')->getUrl() ?>company">
+										<?php echo $this->__('企業サイト') ?>
+									</a>
+								</li>
+							</ul>
 						</li>
 						<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">
 							<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>
@@ -188,20 +193,6 @@
 			<?php echo $this->getChildHtml('searchform') ?>
 			<!-- End Search Block -->
 		</div>
-			<script>
-			
-				jQuery(function() {
-					jQuery(document).ready(function(){
-						jQuery('li.home a').hover(function(){
-							jQuery('img', this).attr('src', '<?php echo $this->getSkinUrl('images/home.png') ?>')
-						},
-						function(){
-							jQuery('img', this).attr('src', '<?php echo $this->getSkinUrl('images/home-white.png') ?>')
-						}
-						);
-					});
-				});
-			</script>
 			<style>
 			#slider{
 				position: relative;
@@ -210,7 +201,7 @@
 				position: absolute;
 				top: 0;
 				background-color: rgba(253, 253, 253, 0.30);;
-				z-index: 21;
+				z-index: 23;
 				width: 100%;
 			}
 			#slider #header-menu ul li.border a{
@@ -257,14 +248,14 @@
 				height: 100%;
 				left: 0;
 				position: absolute;
-				background: url('skin/frontend/default/iconic/images/slider/bg.png');
+				background: url('/skin/frontend/default/iconic/images/slider/bg.png');
 				z-index: 20;
 				background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, rgba(0,0,0,0.8) 99%, rgba(0,0,0,0.8) 100%); /* FF3.6+ */
-				background: url('skin/frontend/default/iconic/images/slider/bg.png'),-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(1%,rgba(0,0,0,0)), color-stop(99%,rgba(0,0,0,0.8)), color-stop(100%,rgba(0,0,0,0.8))); /* Chrome,Safari4+ */
-				background: url('skin/frontend/default/iconic/images/slider/bg.png'),-webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* Chrome10+,Safari5.1+ */
-				background: url('skin/frontend/default/iconic/images/slider/bg.png'),-o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* Opera 11.10+ */
-				background: url('skin/frontend/default/iconic/images/slider/bg.png'),-ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* IE10+ */
-				background: url('skin/frontend/default/iconic/images/slider/bg.png'), linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* W3C */
+				background: url('/skin/frontend/default/iconic/images/slider/bg.png'),-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(1%,rgba(0,0,0,0)), color-stop(99%,rgba(0,0,0,0.8)), color-stop(100%,rgba(0,0,0,0.8))); /* Chrome,Safari4+ */
+				background: url('/skin/frontend/default/iconic/images/slider/bg.png'),-webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* Chrome10+,Safari5.1+ */
+				background: url('/skin/frontend/default/iconic/images/slider/bg.png'),-o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* Opera 11.10+ */
+				background: url('/skin/frontend/default/iconic/images/slider/bg.png'),-ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* IE10+ */
+				background: url('/skin/frontend/default/iconic/images/slider/bg.png'), linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* W3C */
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#4d000000',GradientType=0 ); /* IE6-9 */
 			}
 			</style>
@@ -273,10 +264,15 @@
 		<div id="header-menu">
 			<div class="wrapper">
 				<ul>
-					<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>">
-							<img src="<?php echo $this->getSkinUrl('images/home.png') ?>" src="Homepage" />
-						</a>
+					<li class="home has-child <?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
+						<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('ホーム') ?></a>
+						<ul class="inactive">
+							<li>
+								<a href="<?php echo Mage::helper('job')->getUrl() ?>company">
+									<?php echo $this->__('企業サイト') ?>
+								</a>
+							</li>
+						</ul>
 					</li>
 					<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">
 						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>

@@ -73,7 +73,7 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
             'index'		=> 'location_id',
             'filter'	=> false,
             'sortable'  => true,
-            'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Location',     
+            'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Location', 
         ));
                 
         $this->addColumn('job_level', array(

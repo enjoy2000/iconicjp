@@ -1,0 +1,157 @@
+<?php $data = Mage::getSingleton('customer/session')->getJobData() ?>
+<h1><?php echo $this->__('求人を投稿する') ?></h1>
+<form method="POST" action="" id="create-job">
+	<ul>
+		<li>
+			<input required type="text" name="title" placeholder="<?php echo $this->__('求人タイトル') ?> *" value="<?php echo $data['title'] ?>" />
+		</li>
+		<li>
+			<select required name="category_id">
+				<option value=""><?php echo $this->__('業界') ?> *</option>
+				<?php echo $this->getCategoryList('industry',$data['category_id']) ?>
+			</select>
+		</li>
+		<li>
+			<select required name="function_category_id">
+				<option value=""><?php echo $this->__('職種') ?> *</option>
+				<?php echo $this->getCategoryList('function',$data['function_category_id']) ?>
+			</select>
+		</li>
+		<li>
+			<select required name="location_id">
+				<option value=""><?php echo $this->__('勤務国') ?> *</option>
+				<?php echo $this->getLocationList($data['location_id']) ?>
+			</select>
+		</li>
+		<li>
+			<input required type="text" name="location_text" placeholder="<?php echo $this->__('勤務地域 （省、市など）') ?>" value="<?php echo $data['location_text'] ?>" />
+		</li>
+		<li>
+			<select required name="job_level">
+				<option value=""><?php echo $this->__('職務レベル') ?> *</option>
+				<?php echo $this->getLevelList($data['job_level']) ?>
+			</select>
+		</li>
+		<li class="row2">
+			<input required class="first" type="number" name="job_salary" placeholder="<?php echo $this->__('想定給与（下限）') ?> *" value="<?php echo $data['job_salary'] ?>" />
+			<input class="last" type="number" name="job_salary_to" placeholder="<?php echo $this->__('想定給与（上限）') ?>" value="<?php echo $data['job_salary_to'] ?>" />
+		</li>
+		<li class="row2">
+			<select class="first" required name="job_salary_currency">
+				<option value=""><?php echo $this->__('通貨') ?> *</option>
+				<option<?php echo ($data['job_salary_currency']=='JPY') ? ' selected="selected"' : '' ?> value="JPY">JPY</option>
+				<option<?php echo ($data['job_salary_currency']=='VND') ? ' selected="selected"' : '' ?> value="VND">VND</option>
+				<option<?php echo ($data['job_salary_currency']=='USD') ? ' selected="selected"' : '' ?> value="USD">USD</option>
+			</select>
+			<select class="last" required name="job_salary_type">
+				<option value=""><?php echo $this->__('給与タイプ') ?> *</option>
+				<option<?php echo ($data['job_salary_type']=='Gross') ? ' selected="selected"' : '' ?> value="Gross">Gross</option>
+				<option<?php echo ($data['job_salary_type']=='NET') ? ' selected="selected"' : '' ?> value="NET">NET</option>
+			</select>
+		</li>
+		<li class="row2">
+			<input required class="first" type="number" name="amount" placeholder="<?php echo $this->__('採用予定人数') ?> *" value="<?php echo $data['amount'] ?>" />
+			<select required class="last" name="job_type">
+				<option value=""><?php echo $this->__('就業形態') ?> *</option>
+				<?php echo $this->getTypeList($data['job_type']) ?>
+			</select>
+		</li>
+		<li class="row2">
+			<div class="first language-level">
+				<a data-box="language-level-box" class="select-button" href="#">
+					<?php echo $this->__('言語要件') ?> *
+				</a>
+				<div id="language-level-box" class="select-box">
+					<?php echo $this->getLanguageList($data['language_id']) ?>
+				</div>
+			</div>
+			<div class="last features">
+				<a data-box="features-box" class="select-button" href="#">
+					<?php echo $this->__('求人の特徴') ?> *
+				</a>
+				<div id="features-box" class="select-box">
+					<?php echo $this->getFeatureList($data['feature_id']) ?>
+				</div>
+			</div>
+		</li>
+		<li>
+			<textarea rows="5" id="requirement" required name="requirement" placeholder="<?php echo $this->__('必須要件') ?> *"><?php echo $data['requirement'] ?></textarea>
+			<script>
+				CKEDITOR.replace('requirement').config.extraPlugins = 'confighelper';
+				CKEDITOR.instances.requirement.on('blur', function() {
+					var content = CKEDITOR.instances.requirement.getData();
+					if(content.length > 3){
+						jQuery('#cke_requirement').addClass('after-input');
+					}else{
+						jQuery('#cke_requirement').removeClass('after-input');
+					}
+				});
+				<?php if($data['requirement']): ?>
+				CKEDITOR.instances.requirement.setData('<?php echo $data['requirement'] ?>');
+				jQuery(window).on('load', function(){
+					jQuery('#cke_requirement').addClass('after-input');
+				});
+				<?php endif; ?>
+			</script>
+		</li>
+		<li>
+			<textarea id="info" required name="info" placeholder="<?php echo $this->__('職務内容') ?> *"><?php echo $data['info'] ?></textarea>
+			<script>
+				CKEDITOR.replace('info').config.extraPlugins = 'confighelper';
+				CKEDITOR.instances.info.on('blur', function() {
+					var content = CKEDITOR.instances.info.getData();
+					if(content.length > 3){
+						jQuery('#cke_info').addClass('after-input');
+					}else{
+						jQuery('#cke_info').removeClass('after-input');
+					}
+				});
+				<?php if($data['info']): ?>
+				CKEDITOR.instances.info.setData('<?php echo $data['info'] ?>');
+				jQuery(window).on('load', function(){
+					jQuery('#cke_info').addClass('after-input');
+				});
+				<?php endif; ?>
+			</script>
+		</li>
+	</ul>
+	<div class="button">
+		<button name="draft" value="1" class="inactive draft btn"><?php echo $this->__('SAVE AS DRAFT') ?></button>
+		<button name="submit" value="1" class="active submit btn blue-btn" type="submit"><?php echo $this->__('この内容で投稿する') ?></button>
+	</div>
+</form>
+<script language="javascript">
+	(function($){
+		$(document).ready(function(){
+			$('.select-box').each(function(){
+				if($('input:checked', this).length > 0){
+					$(this).parent().find('a').addClass('after-input');
+				}
+			});
+			 
+			$('a.select-button').on('click', function(e){
+				e.preventDefault();
+				var $this = $(this);
+				$(this).addClass('focus');
+				var div = $('#'+$(this).data('box'));
+				div.show();
+				$(document).mouseup(function (e){
+				    if (!div.is(e.target) // if the target of the click isn't the container...
+				        && div.has(e.target).length === 0) // ... nor a descendant of the container
+				    {
+				        div.hide();
+				        $this.removeClass('focus');
+				        var count = $('input:checked', div).length;
+				        if(count > 0){
+				        	$this.addClass('after-input');
+				        	$this.removeClass('error');
+				        }else{
+				        	$this.removeClass('after-input');
+				        	$this.addClass('error');
+				        }
+				    }
+				});
+			});
+		});
+	})(jQuery)
+</script>

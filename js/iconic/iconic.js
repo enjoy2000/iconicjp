@@ -1,6 +1,16 @@
 var hook=true;
 (function($){
 	$(document).ready(function(){
+		//hover home button
+		$('ul li.has-child').hover(
+			function(){
+				$('ul.inactive', this).stop(true, true).slideDown();
+			}, function(){
+				$('ul.inactive', this).stop().slideUp();
+			}
+		);
+		
+		//center function
 		$('.centerwide').each(function(){
 			centerwide($(this));
 		});

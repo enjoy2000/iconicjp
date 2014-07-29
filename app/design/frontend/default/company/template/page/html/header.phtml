@@ -1,0 +1,191 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php if($this->getIsHomePage()): ?>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=516325528419845&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<?php endif; ?>
+<header id="header">
+	<div id="fixed-menu">
+		<!-- Header Logo -->
+		<div id="header-logo">
+			<div class="wrapper clearfix">
+				<!-- Logo -->
+				<div id="logo" class="fll">
+					<a title="Iconic" href="<?php echo Mage::helper('job')->getBaseUrl() ?>">
+						<img width="169" height="40" src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="Iconic's Logo"  />
+					</a>
+				</div><!-- End Logo -->
+				
+				<!-- Switch languages -->
+				<div id="switch-languages">
+					<a class="switch-lang jp<?php echo (Mage::app()->getStore()->getCode() == 'cpjp') ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl() ?>company<?php echo $_SERVER['REQUEST_URI'] ?>" title="<?php echo $this->__('日本語') ?>">
+						<?php echo $this->__('日本語') ?>
+					</a>
+					<a class="switch-lang en<?php echo (Mage::app()->getStore()->getCode() == 'cpen') ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl() ?>company/en<?php echo $_SERVER['REQUEST_URI'] ?>" title="<?php echo $this->__('English') ?>">
+						<?php echo $this->__('English') ?>
+					</a>
+				</div><!-- End Switch Languages -->
+				
+				<!-- Menu -->
+				<div id="menu" class="flr">
+					<?php //Mage::getSingleton('customer/session')->getCustomer()->setCreatecv(0)->save() ?>
+					<?php $bodyclass= $this->getLayout()->getBlock('root')->getBodyClass() ?>
+					<ul>
+						<li class="border">
+							<a href="<?php echo Mage::helper('job')->getUrl().Mage::helper('job')->getContactUrl() ?>"><?php echo $this->__('お問い合わせ') ?></a>
+						</li>
+					</ul>
+				</div><!-- End Menu -->
+			</div>
+		</div><!-- End Header Logo -->
+	</div>
+	<?php if($this->getIsHomePage()): ?>
+	<div id="slider">
+		<div class="bg">&nbsp;</div>
+		<div class="top-socials">
+			<div class="wrapper clearfix">
+				<div class="tw">
+					<a href="https://twitter.com/iconicvn" class="twitter-follow-button" data-show-count="false" data-lang="jp">@iconicvn</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div>
+				<div class="fb">
+					<div class="fb-like" data-href="https://www.facebook.com/iconic.jp" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+				</div>
+			</div>
+		</div>
+		<?php endif; ?>
+			
+		<!-- Header Menu -->
+		<div id="header-menu">
+			<div class="wrapper">
+				<ul>
+					<li class="home has-child <?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
+						<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('ホーム') ?></a>
+						<ul class="inactive">
+							<li>
+								<a href="<?php echo Mage::helper('job')->getUrl() ?>">
+									<?php echo $this->__('求職者の皆様はこちら') ?>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'client-job-post') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>client/job/post"><?php echo $this->__('求人を投稿する') ?></a>
+					</li>
+					<li class="<?php echo strpos($bodyclass, 'client-job-manage') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>client/job/manage"><?php echo $this->__('投稿を管理する') ?></a>
+					</li> 
+					<li class="has-child <?php echo strpos($bodyclass, 'customer-account') ? 'current-menu-item' : ''  ?>">
+						<a href="#"><?php echo $this->__('法人アカウント管理') ?></a>
+						<ul class="inactive">
+							<li>
+								<a href="<?php echo Mage::getUrl('customer/account/edit') ?>">
+									<?php echo $this->__('EDIT ACCOUNT') ?>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo Mage::getUrl('customer/account/edit', array('changepass'=>1)) ?>">
+									<?php echo $this->__('CHANGE PASSWORD') ?>
+								</a>
+							</li>
+						</ul>
+					</li>
+					
+					<li class="border">
+						<?php if(!$this->helper('customer')->isLoggedIn()): ?>
+							<a id="login-button" href="#"><?php echo $this->__('ログイン') ?></a>
+						<?php else: ?>
+							<a id="logout-button" href="<?php echo $this->helper('job')->getBaseUrl() ?>customer/account/logout"><?php echo $this->__('ログアウト') ?></a>
+						<?php endif; ?>
+					</li>
+				</ul>
+			</div>
+		</div><!-- End Header Menu -->
+		
+		<?php if($this->getIsHomePage()): ?>
+		<!-- Home Messages -->
+		<div id="home-message">
+			<div class="wrapper">
+				<div class="home-message">
+					<div class="top">
+						<h1><?php echo $this->__('アジアでの人材採用ならICONIC') ?></h1>
+						<p><?php echo $this->__('ICONIC（アイコニック）はアジアを舞台に国境を超えて働きたい方々に特化した転職エージェントです。') ?></p>
+					</div>
+					<div class="bot clearfix">
+						<span class="fll width-50 phone">(81) - 3 - 6222 5520</span>
+						<span class="flr width-45 mail">info[at]iconic-jp.com</span>
+					</div>
+					<div class="button">
+						<a href="#" class="button">
+							<?php echo $this->__('今すぐ、会員登録（無料）') ?>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php endif; ?>
+		
+		<div id="ajax-load">
+			<div class="wrapper">
+				<a title="<?php echo $this->__('CLOSE') ?>" id="close-button" href="#" class="close-button">X</a>
+				<div class="content">
+					
+				</div>
+			</div>
+			
+		</div>
+	<?php if($this->getIsHomePage()): ?>
+	</div>
+	<?php endif; ?>
+</header>
+<?php if($this->getIsHomePage()): ?>
+<div id="company-services">
+	<div class="wrapper clearfix">
+		<div class="consulting fll">
+			<img alt="" src="<?php echo $this->getSkinUrl('images/service1.png') ?>" />
+			<p><?php echo $this->__('グローバル人材紹介') ?></p>
+		</div>
+		<div class="translation fll">
+			<img alt="" src="<?php echo $this->getSkinUrl('images/service2.png') ?>" />
+			<p><?php echo $this->__('通訳者の短期紹介<br />（日本語-アジア系言語）') ?></p>
+		</div>
+		<div class="support flr">
+			<img alt="" src="<?php echo $this->getSkinUrl('images/service3.png') ?>" />
+			<p><?php echo $this->__('人事労務コンサルティング') ?></p>
+		</div>
+	</div>
+</div>
+<?php endif; ?>

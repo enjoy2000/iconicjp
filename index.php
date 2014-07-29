@@ -1,8 +1,4 @@
 <?php
-if(isset($_GET['___path'])){
-	$_SERVER['REQUEST_URI'] = $_GET['___path'];
-	unset($_GET['___path']);
-}
 /**
  * Magento
  *
@@ -83,8 +79,31 @@ ini_set('display_errors', 1);
 umask(0);
 
 /* Store or website code */
-$mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : '';
-
+//$mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : '';
 /* Run store or run website */
-$mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
+//$mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
+$host = explode("/",$_SERVER['REQUEST_URI']);
+
+$mageRunCode = 'jp';
+$mageRunType = "store";
+switch ($host[1]) {
+case 'company':
+if(isset($host[2]) && $host[2] == 'en'){
+	$_SERVER['REQUEST_URI']=str_replace("/company/en","",$_SERVER['REQUEST_URI']);
+	$mageRunCode  = "cpen";
+}else{
+	$_SERVER['REQUEST_URI']=str_replace("/company","",$_SERVER['REQUEST_URI']);
+	$mageRunCode = 'cpjp';
+}
+ break;
+
+default:
+if(isset($host[1]) && $host[1] == 'en'){
+	$_SERVER['REQUEST_URI']=str_replace("/en","",$_SERVER['REQUEST_URI']);
+	$mageRunCode  = "en";
+}else{
+	$mageRunCode = 'jp';
+}
+break;
+}
 Mage::run($mageRunCode, $mageRunType);

@@ -1,0 +1,156 @@
+<div class="manage-job-menu">
+	<a<?php echo ($this->getParam() == 'draft') ? ' class="active"' : '' ?> href="<?php echo $this->getUrl('draft') ?>" title="<?php echo $this->__('下書き') ?>">
+		<?php echo $this->__('下書き') ?>
+		(<?php echo $this->getCount('draft') ?>)
+	</a>
+	
+	<a<?php echo ($this->getParam() == 'pending') ? ' class="active"' : '' ?> href="<?php echo $this->getUrl('pending') ?>" title="<?php echo $this->__('投稿中') ?>">
+		<?php echo $this->__('投稿中') ?>
+		(<?php echo $this->getCount('pending') ?>)
+	</a>
+	
+	<a<?php echo ($this->getParam() == 'active') ? ' class="active"' : '' ?> href="<?php echo $this->getUrl('active') ?>" title="<?php echo $this->__('ACTIVE') ?>">
+		<?php echo $this->__('ACTIVE') ?>
+		(<?php echo $this->getCount('active') ?>)
+	</a>
+	
+	<a<?php echo ($this->getParam() == '') ? ' class="active"' : '' ?> href="<?php echo $this->getUrl() ?>" title="<?php echo $this->__('すべて') ?>">
+		<?php echo $this->__('すべて') ?>
+		(<?php echo $this->getCount() ?>)
+	</a>
+	
+	<div class="post-job inline">
+		<a href="<?php echo Mage::getUrl('client/job/post') ?>" class="post-job" title="<?php echo $this->__('求人を投稿する') ?>">
+			<?php echo $this->__('求人を投稿する') ?>
+		</a>
+	</div>
+</div>
+<div class="results">
+	<table>
+		<thead>
+			<tr>
+				<td class="title"><?php echo $this->__('求人名') ?></td>
+				<td><?php echo $this->__('勤務地') ?></td>
+				<td><?php echo $this->__('就業形態') ?></td>
+				<td><?php echo $this->__('給与') ?></td>
+				<td><?php echo $this->__('投稿日') ?></td>
+				<td><?php echo $this->__('アクション') ?></td>
+			</tr>
+		</thead>
+		<tbody>
+			<?php if($this->getResults()->count() > 0):  ?>
+			<?php foreach($this->getResults() as $job): ?> 
+				<tr class="job">
+					<td class="title"><?php echo $job->getTitle() ?></td>
+					<td><?php echo $job->getCountry() ?></td>
+					<td><?php echo $job->getType() ?></td>
+					<td><?php echo $job->getFullSalary() ?></td>
+					<td><?php echo Mage::helper('job')->formatDate($job->getCreatedTime()) ?></td>
+					<td class="action">
+						<a class="edit" href="<?php echo $job->getEditUrl() ?>" title="<?php echo $this->__('編集する') ?>"><?php echo $this->__('編集する') ?></a>
+						|
+						<a data-job="<?php echo $job->getId() ?>" class="delete" href="#" title="<?php echo $this->__('削除する') ?>"><?php echo $this->__('削除する') ?></a>
+						<a class="detail" href="#" title="<?php echo $this->__('Details') ?>">&nbsp;</a>
+					</td>
+				</tr>
+				<tr class="detail">
+					<td colspan="6">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<span><?php echo $this->__('業界') ?>:</span>
+										<?php echo $job->getCategoryName() ?><br />
+										<span><?php echo $this->__('職種') ?>:</span>
+										<?php echo $job->getFunctionName() ?><br />
+										<span><?php echo $this->__('職務レベル') ?>:</span>
+										<?php echo $job->getLevel() ?><br />
+										<span><?php echo $this->__('採用予定人数') ?>:</span>
+										<?php echo $job->getAmount() ?><br />
+									</td>
+									<td>
+										<span><?php echo $this->__('言語要件') ?>:</span><br />
+										<?php echo $job->getLanguage() ?>
+									</td>
+								</tr>
+								<tr class="feature">
+									<td colspan="2">
+										<span><?php echo $this->__('求人の特徴') ?>:</span>
+										<?php $features = explode(',', substr($job->getFeatureId(),1,-1)) ?>
+										<?php 
+											foreach($features as $id){
+												$feature = Mage::getModel('job/feature')->load($id);
+												echo Mage::helper('job')->getTransName($feature);
+												if($id != end($features)){
+													echo ' | ';
+												}
+											}
+										?>
+									</td>
+								</tr>
+								<tr class="info">
+									<td>
+										<span><?php echo $this->__('職務内容') ?>:</span><br />
+										<?php echo $job->getInfo() ?>
+									</td>
+									<td>
+										<span><?php echo $this->__('必須条件') ?>:</span><br />
+										<?php echo $job->getRequirement() ?>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+			<?php else: ?>
+				<tr class="noresult">
+					<td colspan="6">
+						<?php echo $this->__('NO RESULTS') ?>
+					</td>
+				</tr>
+			<?php endif; ?>
+			<tr class="pager">
+				<td colspan="6">
+					<?php echo $this->getPagerHtml() ?>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script language="javascript">
+	(function($){
+		$(document).ready(function(){
+			/* view job detail function */
+			$('a.detail').on('click', function(e){
+				e.preventDefault();
+				if($(this).hasClass('active')){
+					$(this).removeClass('active');
+					$(this).parents('tr').next().stop(true, true).slideUp();
+				}else{
+					$(this).addClass('active');
+					$(this).parents('tr').next().stop(true, true).slideDown();
+				}
+			});
+			
+			/* Delete job */
+			$('a.delete').on('click', function(e){
+				e.preventDefault();
+				if(confirm('<?php echo $this->__('This action will completely delete your job.\nAre you sure to continue?') ?>')){
+					$.ajax({
+						url: '<?php echo Mage::getUrl('client/ajax/deletejob') ?>',
+						data: {id: $(this).data('job')},
+						dataType: 'json',
+						success: function(msg){
+							if(msg.status){
+								location.reload();
+							}else{
+								alert(msg.message);
+							}
+						}
+					})
+				}
+			});
+		});
+	})(jQuery)
+</script>

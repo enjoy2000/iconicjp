@@ -98,7 +98,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 	}
 	
 	protected function _fetchJobs(){
-		$collection = Mage::getModel('job/job')->getCollection();
+		$collection = Mage::getModel('job/job')->getCollection()->addFieldToFilter('status', array('like'=>'active'));
 		/* @var $collection Iconic_Job_Model_Mysql4_Job_Collection */
 		
 		if ($this->getKeyword()){
