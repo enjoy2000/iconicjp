@@ -7,15 +7,11 @@
 			}
 		});
 		//hover home button
-		var timer;
-		$('ul li.home a').hover(
+		$('ul li.has-child').hover(
 			function(){
-				clearInterval(timer);
-				$('ul li.home a.inactive').show();
+				$('ul.inactive', this).stop(true,true).slideDown();
 			}, function(){
-				timer = setInterval(function(){
-					$('ul li.home a.inactive').hide();
-				}, 500);
+				$('ul.inactive', this).stop().slideUp();
 			}
 		);
 		
@@ -56,32 +52,6 @@
 				$(this).removeClass('after-input');
 			}
 		});
-		
-		//toggle content
-		$('.toggle-content a.toggle').click(function(e){
-			e.preventDefault();
-			if(!$(this).hasClass('active')){
-				$(this).addClass('active');
-			}else{
-				$(this).removeClass('active');
-			}
-			$(this).parent().find('.content').toggle();
-		});
-		
-		//download cv
-		$('.download-btn').click(function(e){
-			e.preventDefault();
-			if($(this).hasClass('active')){
-				$(this).removeClass('active');
-				$(this).parent().css('right',-285);
-			}else{
-				$(this).parent().css('right',0);
-				$(this).addClass('active');
-			}
-		});
-		
-		//multi select description
-		jQuery('.ms-drop li:first-child').html('最大３つまで選択可能です。');
 	});
 	
 	

@@ -12,7 +12,7 @@ CREATE TABLE {$this->getTable('job')} (
   `title` varchar(255) NOT NULL default '',
   `requirement` text NOT NULL default '',
   `info` text NOT NULL default '',
-  `status` varchar(20) NOT NULL default '0',
+  `status` varchar(20) NOT NULL default 'active',
   `created_time` datetime NULL,
   `category_id` int(11) unsigned NOT NULL,
   `location_id` int(11) unsigned NOT NULL,

@@ -1,11 +1,11 @@
 <?php
  
-class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class Iconic_Client_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
     public function __construct()
     {
         parent::__construct();
-        $this->setId('jobGrid');
+        $this->setId('clientGrid');
         // This is the primary key of the database
         $this->setDefaultSort('job_id');
         $this->setDefaultDir('DESC');
@@ -15,14 +15,15 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
  
     protected function _prepareCollection()
     {
-        $collection = Mage::getModel('job/job')->getCollection();
+        $collection = Mage::getModel('job/job')->getCollection()
+							->addFieldToFilter('customer_id', array('neq'=>NULL));
 		
 		//JOIN TABLES TO SHOW ON NAME ON GRID
-		/* @var $collection Iconic_Job_Model_Mysql4_Type_Collection */
+		/* @var $collection Iconic_Client_Model_Mysql4_Type_Collection */
 		
 		$collection->getSelect()->join(array("t" => $collection->getTable('job/type')), 
 			"main_table.job_type = t.type_id", "t.name as t_name");
-		/* @var $collection Iconic_Job_Model_Mysql4_Level_Collection */
+		/* @var $collection Iconic_Client_Model_Mysql4_Level_Collection */
 		
 		$collection->getSelect()->join(array("l" => $collection->getTable('job/level')), 
 			"main_table.job_level = l.level_id", "l.name as l_name");
@@ -41,15 +42,21 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
             'index'     => 'job_id',
         ));
 		
-		$this->addColumn('iconic_id', array(
-            'header'    => Mage::helper('job')->__('IconicId'),
-            'index'     => 'iconic_id',
+		$this->addColumn('status', array(
+            'header'    => Mage::helper('job')->__('Status'),
+            'index'     => 'status',
         ));
  
         $this->addColumn('title', array(
             'header'    => Mage::helper('job')->__('Title'),
             'align'     =>'left',
             'index'     => 'title',
+            'width'		=> '400px',
+        ));
+		
+		$this->addColumn('customer_id', array(
+            'header'    => Mage::helper('job')->__('CompanyID'),
+            'index'     => 'customer_id',
         ));
         
         $this->addColumn('category_id', array(
@@ -57,7 +64,7 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
             'index'     => 'category_id',
             'filter'	=> false,
             'sortable'  => true,
-            'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Category',
+            'renderer'  => 'Iconic_Client_Block_Adminhtml_Job_Grid_Renderer_Category',
         ));
 		
 		$this->addColumn('function_category_id', array(
@@ -65,7 +72,7 @@ class Iconic_Job_Block_Adminhtml_Job_Grid extends Mage_Adminhtml_Block_Widget_Gr
             'index'     => 'function_category_id',
             'filter'	=> false,
             'sortable'  => true,
-            'renderer'  => 'Iconic_Job_Block_Adminhtml_Job_Grid_Renderer_Category',
+            'renderer'  => 'Iconic_Client_Block_Adminhtml_Job_Grid_Renderer_Category',
         ));
                 
         $this->addColumn('location_id', array(

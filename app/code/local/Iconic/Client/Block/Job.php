@@ -3,6 +3,7 @@ class Iconic_Client_Block_Job extends Mage_Core_Block_Template
 {
 	protected function _prepareLayout(){
 		parent::_prepareLayout();
+		$this->getLayout()->getBlock('head')->setTitle(Mage::helper('client')->__('求人を投稿する'));
 	}
 	
 	public function getCategoryList($group, $data){
@@ -65,4 +66,44 @@ class Iconic_Client_Block_Job extends Mage_Core_Block_Template
 		return $option;
 	}
 	
+	public function getLanguageList($data){
+		$languages = Mage::getModel('job/language')->getCollection();
+		$levels = Mage::getModel('job/langlevel')->getCollection();
+		$langHtml = '';
+		foreach($languages as $lang){
+			$langHtml .= '<div class="lang clearfix '.strtolower($lang->getNameEn()).'">';
+			$langHtml .= '<div class="fll">'.Mage::helper('job')->getTransName($lang).'</div>';
+			$langHtml .= '<div class="flr">';
+			foreach($levels as $level){
+				$checked = '';
+				if($data[$lang->getId()] == $level->getId()){
+					$checked = ' checked';
+				}
+				$langHtml .= '<div class="lang-level inline-b">';
+				$langHtml .= '<input'.$checked.' type="radio" name="language_id['.$lang->getId().']" value="'.$level->getId().'" />';
+				$langHtml .= Mage::helper('job')->getTransName($level);
+				$langHtml .= '</div>';
+			}
+			$langHtml .= '</div>';
+			$langHtml .= '</div>';
+		}
+		return $langHtml;
+	}
+	
+	public function getFeatureList($data){
+		$features = Mage::getModel('job/feature')->getCollection();
+		$featureHtml = '';
+		foreach($features as $feature){
+			$checked = '';
+			if(in_array($feature->getId(), $data)){
+				$checked = ' checked';
+			}
+			$featureHtml .= '<div class="feature inline-b">';
+			$featureHtml .= '<input'.$checked.' type="checkbox" name="feature_id[]" value="'.$feature->getId().'" />';
+			$featureHtml .= Mage::helper('job')->getTransName($feature);
+			$featureHtml .= '</div>';
+		}
+		return $featureHtml;
+	}
+
 }

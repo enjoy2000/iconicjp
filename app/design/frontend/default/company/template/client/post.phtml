@@ -61,25 +61,36 @@
 				<a data-box="language-level-box" class="select-button" href="#">
 					<?php echo $this->__('言語要件') ?> *
 				</a>
-				<div id="language-level-box">
-					
+				<div id="language-level-box" class="select-box">
+					<?php echo $this->getLanguageList($data['language_id']) ?>
 				</div>
 			</div>
 			<div class="last features">
 				<a data-box="features-box" class="select-button" href="#">
 					<?php echo $this->__('求人の特徴') ?> *
 				</a>
-				<div id="features-box">
-					
+				<div id="features-box" class="select-box">
+					<?php echo $this->getFeatureList($data['feature_id']) ?>
 				</div>
 			</div>
 		</li>
 		<li>
 			<textarea rows="5" id="requirement" required name="requirement" placeholder="<?php echo $this->__('必須要件') ?> *"><?php echo $data['requirement'] ?></textarea>
 			<script>
-				var editor1 = CKEDITOR.replace('requirement').config.extraPlugins = 'confighelper';
+				CKEDITOR.replace('requirement').config.extraPlugins = 'confighelper';
+				CKEDITOR.instances.requirement.on('blur', function() {
+					var content = CKEDITOR.instances.requirement.getData();
+					if(content.length > 3){
+						jQuery('#cke_requirement').addClass('after-input');
+					}else{
+						jQuery('#cke_requirement').removeClass('after-input');
+					}
+				});
 				<?php if($data['requirement']): ?>
 				CKEDITOR.instances.requirement.setData('<?php echo $data['requirement'] ?>');
+				jQuery(window).on('load', function(){
+					jQuery('#cke_requirement').addClass('after-input');
+				});
 				<?php endif; ?>
 			</script>
 		</li>
@@ -87,8 +98,19 @@
 			<textarea id="info" required name="info" placeholder="<?php echo $this->__('職務内容') ?> *"><?php echo $data['info'] ?></textarea>
 			<script>
 				CKEDITOR.replace('info').config.extraPlugins = 'confighelper';
+				CKEDITOR.instances.info.on('blur', function() {
+					var content = CKEDITOR.instances.info.getData();
+					if(content.length > 3){
+						jQuery('#cke_info').addClass('after-input');
+					}else{
+						jQuery('#cke_info').removeClass('after-input');
+					}
+				});
 				<?php if($data['info']): ?>
 				CKEDITOR.instances.info.setData('<?php echo $data['info'] ?>');
+				jQuery(window).on('load', function(){
+					jQuery('#cke_info').addClass('after-input');
+				});
 				<?php endif; ?>
 			</script>
 		</li>
@@ -98,3 +120,38 @@
 		<button name="submit" value="1" class="active submit btn blue-btn" type="submit"><?php echo $this->__('この内容で投稿する') ?></button>
 	</div>
 </form>
+<script language="javascript">
+	(function($){
+		$(document).ready(function(){
+			$('.select-box').each(function(){
+				if($('input:checked', this).length > 0){
+					$(this).parent().find('a').addClass('after-input');
+				}
+			});
+			 
+			$('a.select-button').on('click', function(e){
+				e.preventDefault();
+				var $this = $(this);
+				$(this).addClass('focus');
+				var div = $('#'+$(this).data('box'));
+				div.show();
+				$(document).mouseup(function (e){
+				    if (!div.is(e.target) // if the target of the click isn't the container...
+				        && div.has(e.target).length === 0) // ... nor a descendant of the container
+				    {
+				        div.hide();
+				        $this.removeClass('focus');
+				        var count = $('input:checked', div).length;
+				        if(count > 0){
+				        	$this.addClass('after-input');
+				        	$this.removeClass('error');
+				        }else{
+				        	$this.removeClass('after-input');
+				        	$this.addClass('error');
+				        }
+				    }
+				});
+			});
+		});
+	})(jQuery)
+</script>

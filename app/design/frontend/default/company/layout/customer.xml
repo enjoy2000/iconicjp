@@ -167,17 +167,14 @@ New customer registration
     </customer_account_confirmation>
 
     <customer_account_edit translate="label">
-        <label>Customer Account Edit Form</label>
-        <update handle="customer_account"/>
         <reference name="root">
             <action method="setHeaderTitle" translate="title" module="customer"><title>Edit Account Info</title></action>
         </reference>
-        <reference name="my.account.wrapper">
-            <block type="customer/form_edit" name="customer_edit" template="customer/form/edit.phtml"/>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/register.css</stylesheet></action>
         </reference>
-
-        <reference name="left">
-          <action method="unsetChild"><name>left.permanent.callout</name></action>
+        <reference name="content">
+            <block type="customer/form_edit" name="customer_edit" template="customer/form/edit.phtml"/>
         </reference>
     </customer_account_edit>
 

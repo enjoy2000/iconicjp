@@ -93,10 +93,15 @@
 			<div id="header-menu">
 				<div class="wrapper">
 					<ul>
-						<li class="home <?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
-							<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>">
-								<img width="27" height="23" src="<?php echo $this->getSkinUrl('images/home-white.png') ?>" alt="Homepage" />
-							</a>
+						<li class="home has-child <?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
+							<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('ホーム') ?></a>
+							<ul class="inactive">
+								<li>
+									<a href="<?php echo Mage::helper('job')->getUrl() ?>company">
+										<?php echo $this->__('企業サイト') ?>
+									</a>
+								</li>
+							</ul>
 						</li>
 						<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">
 							<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>
@@ -188,20 +193,6 @@
 			<?php echo $this->getChildHtml('searchform') ?>
 			<!-- End Search Block -->
 		</div>
-			<script>
-			
-				jQuery(function() {
-					jQuery(document).ready(function(){
-						jQuery('li.home a').hover(function(){
-							jQuery('img', this).attr('src', '<?php echo $this->getSkinUrl('images/home.png') ?>')
-						},
-						function(){
-							jQuery('img', this).attr('src', '<?php echo $this->getSkinUrl('images/home-white.png') ?>')
-						}
-						);
-					});
-				});
-			</script>
 			<style>
 			#slider{
 				position: relative;
@@ -210,7 +201,7 @@
 				position: absolute;
 				top: 0;
 				background-color: rgba(253, 253, 253, 0.30);;
-				z-index: 21;
+				z-index: 23;
 				width: 100%;
 			}
 			#slider #header-menu ul li.border a{
@@ -273,10 +264,15 @@
 		<div id="header-menu">
 			<div class="wrapper">
 				<ul>
-					<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>">
-							<img src="<?php echo $this->getSkinUrl('images/home.png') ?>" src="Homepage" />
-						</a>
+					<li class="home has-child <?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
+						<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('ホーム') ?></a>
+						<ul class="inactive">
+							<li>
+								<a href="<?php echo Mage::helper('job')->getUrl() ?>company">
+									<?php echo $this->__('企業サイト') ?>
+								</a>
+							</li>
+						</ul>
 					</li>
 					<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">
 						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>

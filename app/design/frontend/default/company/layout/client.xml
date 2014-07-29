@@ -6,7 +6,7 @@
     
     <client_job_post>
     	<reference name="head">
-    		<action method="addCss"><stylesheet>css/client.css</stylesheet></action>
+    		<action method="addCss"><stylesheet>css/client_post.css</stylesheet></action>
             <action method="addJs"><script>ckeditor/ckeditor.js</script></action>
         </reference>
         <reference name="content">
@@ -14,4 +14,14 @@
             </block>
         </reference>
     </client_job_post>
+    
+    <client_job_manage>
+    	<reference name="head">
+    		<action method="addCss"><stylesheet>css/client_manage.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="client/manage" name="manage_job" template="client/manage.phtml">
+            </block>
+        </reference>
+    </client_job_manage>
 </layout>

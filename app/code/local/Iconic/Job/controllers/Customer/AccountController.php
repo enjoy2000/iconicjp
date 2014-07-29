@@ -164,16 +164,22 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
      */
     public function loginAction()
     {
-        if ($this->_getSession()->isLoggedIn()) {
-            $this->_redirect('*/*/');
-            return;
-        }
-        $this->getResponse()->setHeader('Login-Required', 'true');
-        $this->loadLayout();
-		
-        $this->_initLayoutMessages('customer/session');
-        $this->_initLayoutMessages('catalog/session');
-        $this->renderLayout();
+		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+			if ($this->_getSession()->isLoggedIn()) {
+	            $this->_redirect('*/*/');
+	            return;
+	        }
+			$this->getResponse()->setHeader('Login-Required', 'true');
+	        $this->loadLayout();
+			
+	        $this->_initLayoutMessages('customer/session');
+	        $this->_initLayoutMessages('catalog/session');
+	        $this->renderLayout();
+		}else{
+			$this->_getSession()->setShowLogin(1);
+			$this->_redirect('/');
+			return;
+		}
     }
 	
 	/**
@@ -370,5 +376,153 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             ));
             return;
         }
+    }
+
+	/**
+     * Forgot customer account information page
+     */
+    public function editAction()
+    {
+    	// redirect if user not login 
+		if (!$this->_getSession()->isLoggedIn()) {
+            $session = $this->_getSession();
+			$session->setShowLogin(1);
+            $session->setAfterAuthUrl( Mage::getUrl('*/*/*', array('_current' => true)) );
+            $session->setBeforeAuthUrl( Mage::getUrl('*/*/*', array('_current' => true)) );
+            $this->_redirect('/');
+            return $this;
+        }
+        $this->loadLayout();
+        $this->_initLayoutMessages('customer/session');
+        $this->_initLayoutMessages('catalog/session');
+		if(Mage::app()->getWebsite()->getCode() == 'base'){
+    		header("Location: ".Mage::helper('job')->getUrl().'company/');
+    		die;
+    	}
+        $block = $this->getLayout()->getBlock('customer_edit');
+        if ($block) {
+            $block->setRefererUrl($this->_getRefererUrl());
+        }
+        $data = $this->_getSession()->getCustomerFormData(true);
+        $customer = $this->_getSession()->getCustomer();
+        $this->_getSession()->setCustomerFormData(false);
+        if ($this->getRequest()->getParam('changepass') == 1) {
+            $customer->setChangePassword(1);
+        }
+
+        $this->getLayout()->getBlock('head')->setTitle($this->__('Account Information'));
+        $this->getLayout()->getBlock('messages')->setEscapeMessageFlag(true);
+        $this->renderLayout();
+    }
+
+	/**
+     * Change customer password action
+     */
+    public function editPostAction()
+    {
+    	if(Mage::app()->getWebsite()->getCode() == 'base'){
+    		header("Location: ".Mage::helper('job')->getUrl().'company/');
+    		die;
+    	}
+        if (!$this->_validateFormKey()) {
+            return $this->_redirect('*/*/edit');
+        }
+
+        if ($this->getRequest()->isPost()) {
+        	$customer = $this->_getSession()->getCustomer();
+			
+            // If password change was requested then add it to common validation scheme
+            if ($this->getRequest()->getParam('confirmation')) {
+                $currPass   = $this->getRequest()->getPost('current_password');
+                $newPass    = $this->getRequest()->getPost('password');
+                $confPass   = $this->getRequest()->getPost('confirmation');
+
+                $oldPass = $customer->getPasswordHash();
+                if ( $this->_getHelper('core/string')->strpos($oldPass, ':')) {
+                    list($_salt, $salt) = explode(':', $oldPass);
+                } else {
+                    $salt = false;
+                }
+
+                if ($customer->hashPassword($currPass, $salt) == $oldPass) {
+                    if (strlen($newPass)) {
+                        /**
+                         * Set entered password and its confirmation - they
+                         * will be validated later to match each other and be of right length
+                         */
+                        $customer->setPassword($newPass);
+                        $customer->setConfirmation($confPass);
+                    } else {
+						$this->_getSession()->addError($this->__('New password field cannot be empty.'));
+	                	$this->_redirect('*/*/edit', array('changepass'=>1));
+						return;
+                    }
+                } else {
+					$this->_getSession()->addError($this->__('Invalid current password'));
+                	$this->_redirect('*/*/edit', array('changepass'=>1));
+					return;
+                }
+			}else{
+				$data = $this->getRequest()->getPost();
+				if($data['company_logo'] && $data['company_name'] && $data['company_address'] && $data['company_size'] && $data['company_detail'] && $data['firstname']){
+					$customer->setCompanyLogo($data['company_logo'])
+							->setCompanyName($data['company_name'])
+							->setCompanyAddress($data['company_address'])
+							->setCompanySize($data['company_size'])
+							->setCompanyWebsite($data['company_website'])
+							->setCompanyDetail($data['company_detail'])
+							->setFirstname($data['firstname']);
+					if($data['company_website'] && !filter_var($data['company_website'],FILTER_VALIDATE_URL)){
+						$this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
+						$this->_getSession()->addError($this->__('Invalid website URL.'));
+	                	$this->_redirect('*/*/edit');
+						return;
+					}
+					if(!file_exists(Mage::getBaseDir().'/media/logo/'.$data['company_logo'])){
+						$this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
+						$this->_getSession()->addError($this->__('You\'ve not uploaded your company logo.'));
+	                	$this->_redirect('*/*/edit');
+						return;
+					}
+				}else{
+                	$this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
+					$this->_getSession()->addError($this->__('Not enough information.'));
+                	$this->_redirect('*/*/edit');
+					return;
+				}
+			}
+
+            try {
+                $customer->save();
+                $this->_getSession()->setCustomer($customer);
+                $this->_getSession()->addSuccess($this->__('The account information has been saved.'));
+                $this->_getSession()->setCustomerFormData(false);
+                $this->_redirect('customer/account/edit');
+                return;
+            } catch (Exception $e) {
+                $this->_getSession()->setCustomerFormData($this->getRequest()->getPost())
+                    ->addException($e, $this->__('Cannot save the customer.'));
+            }
+        }
+
+        $this->_redirect('*/*/edit');
+    }
+
+	/**
+     * Default customer account page
+     */
+    public function indexAction()
+    {
+    	$this->_redirect('client/job/manage');
+		return;
+        $this->loadLayout();
+        $this->_initLayoutMessages('customer/session');
+        $this->_initLayoutMessages('catalog/session');
+
+        $this->getLayout()->getBlock('content')->append(
+            $this->getLayout()->createBlock('customer/account_dashboard')
+        );
+        $this->getLayout()->getBlock('head')->setTitle($this->__('My Account'));
+        $this->renderLayout();
     }
 }

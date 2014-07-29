@@ -90,11 +90,6 @@
                     <action>adminhtml/customer/</action>
                     <sort_order>0</sort_order>
                 </manage>
-                <client translate="title" module="client">
-                    <title>Manage Companies</title>
-                    <action>adminhtml/client_company/</action>
-                    <sort_order>1</sort_order>
-                </client>
                 <group translate="title" module="customer">
                     <title>Candidate Groups</title>
                     <action>adminhtml/customer_group/</action>

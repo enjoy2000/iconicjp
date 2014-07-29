@@ -42,26 +42,17 @@
     	<div class="wrapper">
     		<div class="menu">
     			<ul>
-					<li class="<?php echo strpos($bodyclass, 'cms-index-index') ? 'current-menu-item' : ''  ?>">
+					<li class="<?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
 						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('ホーム') ?></a>
 					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>
+					<li class="<?php echo strpos($bodyclass, 'client-job-post') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>client/job/post"><?php echo $this->__('求人を投稿する') ?></a>
 					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-for-candidate-in-japan') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>for-candidate-in-japan"><?php echo $this->__('求職者の皆様') ?></a>
-					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-for-company-in-japan') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>for-company-in-japan"><?php echo $this->__('採用担当者の皆様') ?></a>
+					<li class="<?php echo strpos($bodyclass, 'client-job-manage') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>client/job/manage"><?php echo $this->__('投稿を管理する') ?></a>
 					</li> 
-					<li class="<?php echo strpos($bodyclass, 'cms-faq') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>faq"><?php echo $this->__('よくある質問と答え') ?></a>
-					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-company-profile') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>company-profile"><?php echo $this->__('会社概要') ?></a>
-					</li>
-					<li class="">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>site-map"><?php echo $this->__('プライバシーポリシ ') ?></a>
+					<li class="<?php echo strpos($bodyclass, 'customer-account-edit') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::getUrl('customer/account/edit') ?>"><?php echo $this->__('EDIT ACCOUNT') ?></a>
 					</li>
 				</ul>
     		</div>

@@ -122,17 +122,20 @@ input{
 input,
 select,
 textarea{
-	background-color: #c6c7c9;
+	background-color: #fff;
 	border-radius: 3px;
 }
 input:required,
 select:required,
 textarea:required{
-	background-color: #f5dbca;
+	border-color: #d76f2c;
 }
 input:focus,
 select:focus,
-textarea:focus{
+textarea:focus,
+input.error:focus,
+select.error:focus,
+textarea.error:focus{
 	border-color: #4571eb;
 	color: #000;
 	background-color: #fff;
@@ -140,6 +143,7 @@ textarea:focus{
 input.after-input,
 select.after-input,
 textarea.after-input{
+	border-color: #b0b2b4;
 	background-color: #fff;
 	color: #000;
 }
@@ -163,7 +167,13 @@ input[readonly]{
     border: none;
 }
 .btn-blue{
-	background: url('../images/btn-blue.png') center no-repeat transparent;
+}
+a.btn-grey{
+	text-decoration: none;
+	color: #fff;
+	background-color: lightgrey;
+	border-radius: 3px;
+	padding: 5px 10px;
 }
 .btn-orange{
 	background-color: #df8c56;

@@ -80,15 +80,16 @@ body.cms-home #header-logo,
 	background: url('../images/slider/bg2.png') repeat transparent;
 	margin-top: 61px;
 }
-#header-menu ul{
+#header-menu .wrapper > ul{
 	padding: 0 20px;
 }
 #header-logo #menu ul li, #header-menu ul li{
 	display: inline-block;
 	font-size: 14px;
 }
-#header-menu ul li{
+#header-menu .wrapper > ul > li{
 	margin: 0 5px;
+	position: relative;
 }
 #header-menu ul li > a{
 	color: #fff;
@@ -100,10 +101,13 @@ body.cms-home #header-logo,
 #header-menu ul li > a:hover{
 	border-color: #4571EB;
 }
+#slider #header-menu ul li > a:hover{
+	border-color: transparent;
+}
 #slider #header-menu ul li > a{
 	color: #fff;
 }
-#slider #header-menu ul li > a:hover{
+#slider #header-menu .wrapper > ul > li:hover > a{
 	font-weight: normal;
 	color: #4571EB;
 	background-color: #fff;
@@ -151,42 +155,53 @@ body.cms-home #header-logo,
 	z-index: 23;
 	background-color: rgba(255,255,255,0.3);
 }
-#header-menu ul li.home{
-	position: relative;
-}
 #header-menu ul li.home a.home{
 	color: #fff;
-	padding: 12px 60px;
-	padding-left: 80px;
-	background: url('../images/home.png') 47px center no-repeat #3e65d3;
+	padding: 12px 70px;
+	background-color: #3e65d3;
 }
 #slider #header-menu ul li.home > a.home{
 	background-color: #3e65d3;
 	color: #fff;
 }
-#header-menu ul li.home a.inactive{
+#header-menu ul li ul.inactive{
 	display: none;
 	position: absolute;
-	bottom: -55px;
-	color: #fff;
-	padding: 12px 32px;
-	padding-right: 10px;
-	background: url('../images/candidate.png') 3px center no-repeat #4571EB;;
+	top: 47px;
+	padding-top: 10px;
+	z-index: 6;
 }
-#slider #header-menu ul li.home a.inactive{
+#header-menu ul li ul.inactive li{
+	background-color: #4571EB;
+	text-align: center;
+	display: block;
+}
+#header-menu ul li ul.inactive li > a{
+	color: #fff;
+	padding: 12px;
+}
+#header-menu ul li ul.inactive li+li{
+	border-top: solid 1px #0000FF;
+}
+#header-menu ul li.home ul.inactive li > a{
+	padding-right: 10px;
+	padding-left: 32px;
+	background: url('../images/candidate.png') 3px center no-repeat transparent;
+}
+#slider #header-menu ul li.home ul.inactive li{
 	background-color: rgba(255,255,255,0.3);
 }
-#header-menu ul li.home a.inactive:before{
+#header-menu ul li.has-child ul.inactive:before{
 	content: '';
 	width: 0;
 	height: 0;
 	border: solid 10px transparent;
 	border-bottom-color: #4571EB;
 	position: absolute;
-	top: -20px;
+	top: -10px;
 	left: 45%;
 }
-#slider #header-menu ul li.home a.inactive:before{
+#slider #header-menu ul li.home ul.inactive:before{
 	border-bottom-color: rgba(255,255,255,0.3);
 }
 #ajax-load{

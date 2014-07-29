@@ -92,20 +92,36 @@
 		<div id="header-menu">
 			<div class="wrapper">
 				<ul>
-					<li class="home <?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
-						<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('HOME') ?></a>
-						<a class="inactive" href="<?php echo Mage::helper('job')->getUrl() ?>">
-							<?php echo $this->__('求職者の皆様はこちら') ?>
-						</a>
+					<li class="home has-child <?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
+						<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('ホーム') ?></a>
+						<ul class="inactive">
+							<li>
+								<a href="<?php echo Mage::helper('job')->getUrl() ?>">
+									<?php echo $this->__('求職者の皆様はこちら') ?>
+								</a>
+							</li>
+						</ul>
 					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-for-candidate-in-japan') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>for-candidate-in-japan"><?php echo $this->__('求人を投稿する') ?></a>
+					<li class="<?php echo strpos($bodyclass, 'client-job-post') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>client/job/post"><?php echo $this->__('求人を投稿する') ?></a>
 					</li>
-					<li class="<?php echo strpos($bodyclass, 'cms-for-company-in-japan') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>for-company-in-japan"><?php echo $this->__('投稿を管理する') ?></a>
+					<li class="<?php echo strpos($bodyclass, 'client-job-manage') ? 'current-menu-item' : ''  ?>">
+						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>client/job/manage"><?php echo $this->__('投稿を管理する') ?></a>
 					</li> 
-					<li class="<?php echo strpos($bodyclass, 'cms-faq') ? 'current-menu-item' : ''  ?>">
-						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>faq"><?php echo $this->__('法人アカウント管理') ?></a>
+					<li class="has-child <?php echo strpos($bodyclass, 'customer-account') ? 'current-menu-item' : ''  ?>">
+						<a href="#"><?php echo $this->__('法人アカウント管理') ?></a>
+						<ul class="inactive">
+							<li>
+								<a href="<?php echo Mage::getUrl('customer/account/edit') ?>">
+									<?php echo $this->__('EDIT ACCOUNT') ?>
+								</a>
+							</li>
+							<li>
+								<a href="<?php echo Mage::getUrl('customer/account/edit', array('changepass'=>1)) ?>">
+									<?php echo $this->__('CHANGE PASSWORD') ?>
+								</a>
+							</li>
+						</ul>
 					</li>
 					
 					<li class="border">
