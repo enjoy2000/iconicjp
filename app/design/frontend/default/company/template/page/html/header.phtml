@@ -112,13 +112,13 @@
 						<a href="#"><?php echo $this->__('法人アカウント管理') ?></a>
 						<ul class="inactive">
 							<li>
-								<a href="<?php echo Mage::getUrl('customer/account/edit') ?>">
-									<?php echo $this->__('EDIT ACCOUNT') ?>
+								<a title="<?php echo $this->__('アカウント変更') ?>" href="<?php echo Mage::getUrl('customer/account/edit') ?>">
+									<?php echo $this->__('アカウント変更') ?>
 								</a>
 							</li>
 							<li>
-								<a href="<?php echo Mage::getUrl('customer/account/edit', array('changepass'=>1)) ?>">
-									<?php echo $this->__('CHANGE PASSWORD') ?>
+								<a title="<?php echo $this->__('パスワード変更') ?>" href="<?php echo Mage::getUrl('customer/account/edit', array('changepass'=>1)) ?>">
+									<?php echo $this->__('パスワード変更') ?>
 								</a>
 							</li>
 						</ul>
