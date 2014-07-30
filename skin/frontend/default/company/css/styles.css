@@ -170,6 +170,7 @@ body.cms-home #header-logo,
 	top: 47px;
 	padding-top: 10px;
 	z-index: 6;
+	width: 100%;
 }
 #header-menu ul li ul.inactive li{
 	background-color: #4571EB;
