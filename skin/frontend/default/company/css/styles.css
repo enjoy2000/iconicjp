@@ -326,6 +326,7 @@ body.cms-home #ajax-load{
 	margin-bottom: 25px;
 	margin-top: 10px;
 	text-align: center;
+	color: #fff;
 }
 #ajax-load #form-forgot-password button{
 	padding: 5px 10px;
