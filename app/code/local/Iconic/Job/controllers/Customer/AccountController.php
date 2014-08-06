@@ -452,6 +452,16 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
                          */
                         $customer->setPassword($newPass);
                         $customer->setConfirmation($confPass);
+						
+						// Validate account and compose list of errors if any
+		                $customerErrors = $customer->validate();
+		                if (is_array($customerErrors)) {
+		                	foreach($customerErrors as $error){
+		                    	$this->_getSession()->addError($error);
+		                	}
+		                	$this->_redirect('*/*/edit', array('changepass'=>1));
+							return;
+		                }
                     } else {
 						$this->_getSession()->addError($this->__('New password field cannot be empty.'));
 	                	$this->_redirect('*/*/edit', array('changepass'=>1));
