@@ -33,7 +33,7 @@
     <?php echo $this->getBlockHtml('formkey')?>
     <?php if($this->getRequest()->getParam('changepass') != 1): ?>
     	<li id="company-logo">
-        	<div class="company-logo">
+        	<div class="company-logo<?php echo $this->getCustomerFormData()->getCompanyLogo() ? ' after-input' : '' ?>">
         		<?php if($this->getCustomerFormData()->getCompanyLogo()): ?>
         			<img alt="" src="<?php echo Mage::helper('job')->getUrl().'media/logo/'.$this->getCustomerFormData()->getCompanyLogo() ?>" />
         		<?php else: ?>
@@ -94,12 +94,14 @@
 				            $.each(data.result.files, function (index, file) {
 			            		$('#logo-file-name').val(file);
 			            		var img = '<img alt="" src="'+ '<?php echo Mage::helper('job')->getUrl().'media/logo/' ?>' + file +'" />';
+			            		$('#company-logo .company-logo').addClass('after-input');
 			            		$('#company-logo .company-logo').html(img).fadeIn();
 				            });
 				        }else{
 				        	var text = '<p>COMPANY LOGO</p>';
 		                	$('#company-logo .company-logo').html(text);
 		                	alert(data.result.error);
+		                	$('#company-logo .company-logo').removeClass('after-input');
 		                }
 			            $('#upload-input').val('');
 			        }
