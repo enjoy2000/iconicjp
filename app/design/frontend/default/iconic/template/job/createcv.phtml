@@ -4,6 +4,7 @@
         <h1><?php echo $this->__('転職支援サービスに申し込む<br />（アイコニック求職登録）') ?></h1>
     </div>
     <form action="/<?php echo Mage::helper('job')->getCreateCVUrl() ?>" method="post" id="form-validate">
+    	<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
     	<div class="row heading">
     		<?php echo $this->__('プロフィール') ?>
     	</div>

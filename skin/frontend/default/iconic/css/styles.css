@@ -219,7 +219,6 @@ body.job-index-createcv #search-block{
     transition: height 0.35s ease-out;
 }
 body.cms-home #ajax-load{
-	margin-top: 106px;
 	border-width: 0;
 }
 #ajax-load a#close-button{

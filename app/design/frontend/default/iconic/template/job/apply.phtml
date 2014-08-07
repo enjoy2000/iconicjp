@@ -13,6 +13,7 @@
 </h1>
 <div class="form-apply width-70">
 	<form id="form-apply" action="<?php echo Mage::getBaseUrl() ?>job/apply/send" method="POST" >
+		<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
 		<input type="hidden" name="id" value="<?php echo $job->getId() ?>" />
 		<div class="row align-center clearfix">
 			<input class="fll width-30" name="name" type="text" value="<?php echo $user->getName() ?>" readonly="readonly"  />

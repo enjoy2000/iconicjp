@@ -1,6 +1,7 @@
 <div id="request-recruitment">
 	<h1><?php echo $this->__('人材紹介サービスに申し込む') ?></h1>
 	<form id="request-form" action="" method="POST">
+		<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
 		<input required type="text" name="company_name" placeholder="<?php echo $this->__('会社名') ?>" />
 		<input required type="text" name="name" placeholder="<?php echo $this->__('担当者名') ?>" />
 		<input required type="text" name="full_name" placeholder="<?php echo $this->__('担当者名（フリガナ）') ?>" />

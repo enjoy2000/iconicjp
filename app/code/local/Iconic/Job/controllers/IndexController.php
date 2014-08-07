@@ -27,7 +27,10 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 			$breadcrumbs->addCrumb('create_cv', array('label'=>$helper->__('問い合わせる'), $helper->__('問い合わせる')));
 		}
 		$this->getLayout()->getBlock('head')->setTitle($helper->__('問い合わせる'));
-		if($post){
+		if(count($post)){
+			if (!$this->_validateFormKey()) {
+	            return $this->_redirect('*/*/contact');
+	        }
 			try{
 				$mail = new Zend_Mail('UTF-8');
 				$nameAdmin = Mage::getStoreConfig('trans_email/ident_general/name'); 
@@ -93,6 +96,9 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		}
 		$this->getLayout()->getBlock('head')->setTitle($helper->__('転職支援サービスに申し込む'));
 		if($this->getRequest()->getPost()){
+			if (!$this->_validateFormKey()) {
+	            return $this->_redirect('*/*/createcv');
+	        }
 			$customer = Mage::getSingleton('customer/session')->getCustomer();
 			$data = $this->getRequest()->getPost();
 			$birthday = $data['month'].'/'.$data['day'].'/'.$data['year'];
@@ -473,6 +479,9 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 		}
 		$this->getLayout()->getBlock('head')->setTitle($helper->__('求人依頼申込'));
 		if($this->getRequest()->getPost()){
+			if (!$this->_validateFormKey()) {
+	            return $this->_redirect('*/*/request');
+	        }
 			if($this->getRequest()->get('email') == $this->getRequest()->get('confirm_email')){
 				try{
 					$requestModel = Mage::getModel('job/request');
