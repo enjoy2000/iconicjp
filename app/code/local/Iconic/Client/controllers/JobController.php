@@ -110,8 +110,8 @@ class Iconic_Client_JobController extends Mage_Core_Controller_Front_Action{
 					$langIds[] = $k.'-'.$v;
 				}
 				$data['language_id'] = ','.implode(',', $langIds).',';
-				var_dump($data['feature_id']);
-				var_dump($data['language_id']);die;
+				
+				/* Save Job */
 				$jobModel->setData($data)
 						->setId($jobId)
 						->save();
