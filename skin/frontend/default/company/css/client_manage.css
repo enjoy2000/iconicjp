@@ -90,10 +90,8 @@ div.results > table tbody tr.detail > td{
 div.results > table tbody tr.detail td > table{
 	width: 920px;
 	table-layout: fixed;
-}
-div.results > table tbody tr.detail td > table tr{
-	border-left: solid 1px #A8A8A8;
-	border-right: solid 1px #A8A8A8;
+	border: solid 1px #4571EB;
+	background-color: #dfe4f1;
 }
 div.results > table tbody tr.detail td > table tr td{
 	color: #000;
@@ -110,8 +108,7 @@ div.results > table tbody tr.detail td > table tr:first-child td{
 	border-bottom: dotted 1px #A8A8A8;
 }
 div.results > table tbody tr.detail td > table tr.info{
-	border: solid 1px #4571EB;
-	background-color: #dfe4f1;
+	border-top: solid 1px #A8A8A8;
 }
 tr.pager{
 	text-align: center;
