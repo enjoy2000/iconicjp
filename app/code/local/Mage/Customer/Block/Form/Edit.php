@@ -33,11 +33,5 @@
  */
 class Mage_Customer_Block_Form_Edit extends Mage_Customer_Block_Account_Dashboard
 {
-	public function getCustomerFormData(){
-		if(!empty(Mage::getSingleton('customer/session')->getCustomerFormData())){
-			return Mage::getSingleton('customer/session')->getCustomerFormData();
-		}else{
-			return Mage::getSingleton('customer/session')->getCustomer();
-		}
-	}
+
 }
