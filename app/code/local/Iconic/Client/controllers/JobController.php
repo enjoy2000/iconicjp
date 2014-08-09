@@ -80,11 +80,7 @@ class Iconic_Client_JobController extends Mage_Core_Controller_Front_Action{
 					$this->_redirect('*/*/*', array('id'=>$jobId));
 					return;
 				}
-				foreach($data as $k=>$v){
-					if(!is_array($v)){
-						$data[$k] = mysql_real_escape_string($v);
-					}
-				}
+				
 				if($data['submit'] == 1){
 					$data['status'] = 'pending';
 				}else{
