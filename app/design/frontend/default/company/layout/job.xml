@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.4">
+	
+    <job_index_afterregister>
+        <reference name="content">
+             <block type="core/template" name="register-success" template="customer/form/register-success.phtml" />
+        </reference>
+    </job_index_afterregister>
+
+</layout>

@@ -1,0 +1,20 @@
+<div class="register-top">
+	<h1><?php echo $this->__('ご登録、ありがとうございました！') ?></h1>
+	
+	<p><?php echo $this->__('アイコニックへの会員登録が完了しました。') ?></p>
+	<p><?php echo $this->__('弊社<a href="%s">ホームページ</a>から、%s様のご要望に叶う求人を検索してみてくださいね！', Mage::helper('job')->getBaseUrl() ,Mage::getSingleton('customer/session')->getCustomer()->getFirstname()) ?></p>
+</div>
+<style>
+	h1{
+		color: #d76f2c;
+		font-weight: bold;
+		margin-top: 20px;
+	}
+	#main .main{
+		background: transparent;
+		border: none;
+	}
+	.register-top p{
+		text-align: center;
+	}
+</style>
