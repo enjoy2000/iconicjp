@@ -4,13 +4,13 @@
 		(<?php echo $this->getCount('draft') ?>)
 	</a>
 	
-	<a<?php echo ($this->getParam() == 'pending') ? ' class="active"' : '' ?> href="<?php echo $this->getUrl('pending') ?>" title="<?php echo $this->__('投稿中') ?>">
-		<?php echo $this->__('投稿中') ?>
+	<a<?php echo ($this->getParam() == 'pending') ? ' class="active"' : '' ?> href="<?php echo $this->getUrl('pending') ?>" title="<?php echo $this->__('承認待ち') ?>">
+		<?php echo $this->__('承認待ち') ?>
 		(<?php echo $this->getCount('pending') ?>)
 	</a>
 	
-	<a<?php echo ($this->getParam() == 'active') ? ' class="active"' : '' ?> href="<?php echo $this->getUrl('active') ?>" title="<?php echo $this->__('ACTIVE') ?>">
-		<?php echo $this->__('ACTIVE') ?>
+	<a<?php echo ($this->getParam() == 'active') ? ' class="active"' : '' ?> href="<?php echo $this->getUrl('active') ?>" title="<?php echo $this->__('投稿中') ?>">
+		<?php echo $this->__('投稿中') ?>
 		(<?php echo $this->getCount('active') ?>)
 	</a>
 	
