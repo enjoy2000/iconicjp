@@ -116,7 +116,6 @@ div.results > table tbody tr.detail td > table tr.info ul{
 }
 div.results > table tbody tr.detail td > table tr.info ul ul{
 	list-style: circle;
-	margin-left: 17px;
 }
 tr.pager{
 	text-align: center;
