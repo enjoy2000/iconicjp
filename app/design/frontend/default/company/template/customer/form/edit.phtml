@@ -37,7 +37,7 @@
         		<?php if($this->getCustomerFormData()->getCompanyLogo()): ?>
         			<img alt="" src="<?php echo Mage::helper('job')->getUrl().'media/logo/'.$this->getCustomerFormData()->getCompanyLogo() ?>" />
         		<?php else: ?>
-        			<p><?php echo $this->__('COMPANY LOGO') ?></p>
+        			<img src="<?php echo $this->getSkinUrl('images/default-company-logo.jpg') ?>" alt="" />
         		<?php endif; ?>
         		
         	</div>

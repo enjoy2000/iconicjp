@@ -104,7 +104,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 	                return;
 	        	}else{
 	        		$data = $this->getRequest()->getPost();
-	        		if($data['company_logo'] && $data['company_name'] && $data['company_address'] && $data['company_detail'] && $data['firstname']){
+	        		if($data['email'] && $data['company_name'] && $data['company_address'] && $data['company_detail'] && $data['firstname']){
 						/* Check Url Structure */
 						if($data['company_website'] && !filter_var($data['company_website'],FILTER_VALIDATE_URL)){
 							$this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
