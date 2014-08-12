@@ -103,6 +103,34 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 	                $this->_redirect('job/index/afterregister');
 	                return;
 	        	}else{
+	        		if($data['company_logo'] && $data['company_name'] && $data['company_address'] && $data['company_size'] && $data['company_detail'] && $data['firstname']){
+						$customer->setCompanyLogo($data['company_logo'])
+								->setCompanyName($data['company_name'])
+								->setCompanyAddress($data['company_address'])
+								->setCompanySize($data['company_size'])
+								->setCompanyWebsite($data['company_website'])
+								->setCompanyDetail($data['company_detail'])
+								->setFirstname($data['firstname']);
+						/* Check Url Structure */
+						if($data['company_website'] && !filter_var($data['company_website'],FILTER_VALIDATE_URL)){
+							$this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
+							$this->_getSession()->addError($this->__('Invalid website URL.'));
+		                	$this->_redirect('*/*/create');
+							return;
+						}
+						/* Check logo image exist or not */
+						if(!file_exists(Mage::getBaseDir().'/media/logo/'.$data['company_logo'])){
+							$this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
+							$this->_getSession()->addError($this->__('You\'ve not yet uploaded your company logo.'));
+		                	$this->_redirect('*/*/create');
+							return;
+						}
+					}else{
+	                	$this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
+						$this->_getSession()->addError($this->__('Not enough information.'));
+	                	$this->_redirect('*/*/create');
+						return;
+					}
 	        		$customer->setData($this->getRequest()->getPost())->save();
 	        		$this->_dispatchRegisterSuccess($customer);
 					//success action

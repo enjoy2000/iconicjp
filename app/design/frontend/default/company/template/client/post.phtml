@@ -3,6 +3,9 @@
 <form method="POST" action="" id="create-job">
 	<ul>
 		<li>
+			<?php echo $this->__('＊＝必須') ?>
+		</li>
+		<li>
 			<input required type="text" name="title" placeholder="<?php echo $this->__('求人タイトル') ?> *" value="<?php echo $data['title'] ?>" />
 		</li>
 		<li>
@@ -142,12 +145,15 @@
 				        div.hide();
 				        $this.removeClass('focus');
 				        var count = $('input:checked', div).length;
+				        var defaultText = $this.text();
 				        if(count > 0){
 				        	$this.addClass('after-input');
 				        	$this.removeClass('error');
+				        	$this.text('<?php echo $this->__('入力済み') ?>')
 				        }else{
 				        	$this.removeClass('after-input');
 				        	$this.addClass('error');
+				        	$this.text(defaultText);
 				        }
 				    }
 				});

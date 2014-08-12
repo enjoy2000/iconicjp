@@ -25,7 +25,7 @@ class Iconic_Client_Block_Job extends Mage_Core_Block_Template
 	}
 	
 	public function getLocationList($data){
-		$locations = Mage::getModel('job/location')->getCollection();
+		$locations = Mage::getModel('job/country')->getCollection();
 		$option = '';
 		foreach($locations as $loc){
 			$locName = Mage::helper('job')->getTransName($loc);

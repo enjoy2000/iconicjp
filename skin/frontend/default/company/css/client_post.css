@@ -131,3 +131,7 @@ form#create-job li.row2 .select-box > .lang .lang-level{
 form#create-job li.row2 .select-box > .lang .lang-level > input{
 	vertical-align: middle;
 }
+form#create-job .cke_editable{
+	font: 15px 'MS PGothic';
+	font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,Osaka,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+}

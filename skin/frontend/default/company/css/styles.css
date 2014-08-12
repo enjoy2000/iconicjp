@@ -291,13 +291,13 @@ body.cms-home #ajax-load{
 .account-login a div.register-btn{
 	border-radius: 5px;
 	text-align: center;
-	color: #000;
+	color: #fff;
 	background-color: transparent;
-	font-size: 25px;
+	font-size: 27px;
 	font-weight: bold;
-	padding: 15px 40px;
+	padding: 15px 20px;
 	margin-top: 50px;
-	border: solid 2px #000;
+	border: solid 2px #fff;
 }
 .account-login a div.register-btn span{
 	font-weight: normal;

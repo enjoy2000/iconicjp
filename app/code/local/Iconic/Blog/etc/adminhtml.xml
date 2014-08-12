@@ -90,11 +90,4 @@
             </admin>
         </resources>   
     </acl>
-    <layout>
-        <updates>
-            <blog>
-                <file>blog.xml</file>
-            </blog>
-        </updates>
-    </layout>
 </config>

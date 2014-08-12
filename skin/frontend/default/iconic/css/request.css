@@ -54,6 +54,9 @@
 #phone-number a{
 	color: #636466;
 }
+#phone-number p.number{
+	letter-spacing: -1px;
+}
 #phone-number .inline-b+.inline-b{
-	margin-left: 50px;
+	margin-left: 37px;
 }
