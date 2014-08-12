@@ -43,6 +43,9 @@
             <ul class="form-list">
             	<input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
            		<input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+           		<li>
+           			<?php echo $this->__('＊＝必須') ?>
+           		</li>
                 <li id="company-logo">
                 	<div class="company-logo<?php echo ($this->getFormData()->getCompanyLogo()) ? ' after-input' : '' ?>">
                 		<?php if($this->getFormData()->getCompanyLogo()): ?>

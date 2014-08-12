@@ -5,6 +5,9 @@
     </div>
     <form action="/<?php echo Mage::helper('job')->getCreateCVUrl() ?>" method="post" id="form-validate">
     	<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+    	<div class="row">
+    		<?php echo $this->__('＊＝必須') ?>
+    	</div>
     	<div class="row heading">
     		<?php echo $this->__('プロフィール') ?>
     	</div>

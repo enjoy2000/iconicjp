@@ -6,6 +6,9 @@
 		<p><?php echo $this->__('弊社コンサルタントが速やかにお答えします。') ?></p>
 		<form action="" method="post" id="contact-form">
 			<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+			<div class="row">
+				<?php echo $this->__('＊＝必須') ?>
+			</div>
 			<div class="row clearfix">
 				<input class="fll" required name="name" type="text" placeholder="<?php echo $this->__('お名前') ?>*" />
 				<input class="flr" required name="email" type="email" placeholder="<?php echo $this->__('メールアドレス') ?>*" />
