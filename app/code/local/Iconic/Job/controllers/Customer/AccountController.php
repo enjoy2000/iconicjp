@@ -496,7 +496,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 						return;
                     }
                 } else {
-					$this->_getSession()->addError($this->__('Invalid current password'));
+					$this->_getSession()->addError($this->__('このパスワードは有効ではありません'));
                 	$this->_redirect('*/*/edit', array('changepass'=>1));
 					return;
                 }
@@ -527,7 +527,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 					}
 				}else{
                 	$this->_getSession()->setCustomerFormData($this->getRequest()->getPost());
-					$this->_getSession()->addError($this->__('Not enough information.'));
+					$this->_getSession()->addError($this->__('情報が不足しています'));
                 	$this->_redirect('*/*/edit');
 					return;
 				}
@@ -546,7 +546,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             try {
                 $customer->save();
                 $this->_getSession()->setCustomer($customer);
-                $this->_getSession()->addSuccess($this->__('The account information has been saved.'));
+                $this->_getSession()->addSuccess($this->__('あなたのアカウント情報は確かに保存されました'));
                 $this->_getSession()->setCustomerFormData(false);
                 $this->_redirect('*/*/edit');
                 return;
