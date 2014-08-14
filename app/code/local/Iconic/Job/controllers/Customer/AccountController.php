@@ -301,10 +301,6 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
      */
     public function logoutAction()
     {
-        $this->_getSession()->logout()
-            ->renewSession()
-            ->setBeforeAuthUrl($this->_getRefererUrl());
-
         header("Location: " . Mage::helper('job')->getBaseUrl());die;
     }
 	
