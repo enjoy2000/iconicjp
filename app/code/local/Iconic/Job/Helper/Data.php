@@ -129,7 +129,8 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 	public function getCurrency(){
 		return Mage::helper('job')->__('VND');
 	}
-
+	
+	/* Limit string by words count */
 	public function string_limit_words($string,$number=7){
 		$string = strip_tags($string);
 		$words = explode(' ', $string, ($number + 1));
@@ -141,6 +142,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		}		
 	}
 	
+	/* Get job Url */
 	public function getJobLink($job){
 		$link = Mage::getBaseUrl()
 					. $job->getCategory()->getParentCategory()->getUrlKey()
@@ -151,10 +153,12 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		return $link;
 	}
 	
+	/* Get apply link base on job ID */
 	public function getApplyLink($jobId){
 		return Mage::getBaseUrl().'job/apply?id='.$jobId;
 	}
 	
+	/* Render job HTML */
 	public function renderJob($job){
 		?>
 		<div class="job clearfix">
@@ -202,7 +206,8 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		</div>
 		<?php
 	}
-
+	
+	/* Hightlight string that match words */
 	public function highlight($inp, $words){
 		$replace=array_flip(array_flip($words)); // remove duplicates
 		$pattern=array();
@@ -213,11 +218,13 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		return preg_replace($pattern, $replace, $inp);
 	}
 	
+	/* Render title of job */
 	public function renderTitle($job){
 		$title = $this->__('No. %s <span>|</span> %s', $job->getIconicId(), $job->getTitle());
 		return $title;
 	}
 	
+	/* Redirect to search page */
 	public function redirectToSearchPage(){		
 		Mage::app()->getResponse()->setRedirect('/job/search');
 		return;
@@ -263,6 +270,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		return 'contact';
 	}
 	
+	/* Limit string by strlen with limit and add ... */
 	public function limitText($str, $limit=58){
 		if(strlen($str) > $limit){
 			// truncate string
@@ -274,6 +282,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		return $str;
 	}
 	
+	/* Write excel file for submit-cv function */
 	public function writeExcel($fileName, $arrData){
 		//Create new PHPExcel object
 		$objPHPExcel = new PHPExcel();
@@ -295,7 +304,8 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 		$objWriter->save($fileName);
 	}
-
+	
+	/* Check locale and get name in Japanese or English */
 	public function getTransName($obj){
 		$storeCode = Mage::app()->getStore()->getCode();
 		if($storeCode == 'jp' || $storeCode == 'cpjp'){
@@ -305,21 +315,12 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		}
 	}
 	
+	/* Get base url of website base on store view */
 	public function getBaseUrl(){
 		return Mage::getBaseUrl();
-		$storeCode = Mage::app()->getStore()->getCode();
-		if($storeCode == 'jp'){
-			$baseurl = Mage::getBaseUrl();
-		}else if(($storeCode == 'en')){
-			$baseurl = Mage::getBaseUrl().'en/';
-		}else if(($storeCode == 'cpen')){
-			$baseurl = Mage::getBaseUrl().'company/en/';
-		}else{
-			$baseurl = Mage::getBaseUrl().'company/';
-		}
-		//return $baseurl;
 	}
 	
+	/* Check user or login or not then redirect to homepage */
 	public function checkLogin(){
 		if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
 			$session = Mage::getSingleton('customer/session');
@@ -334,7 +335,8 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
         	return;
         }
 	}
-
+	
+	/* Auto get next PIC to set for each user */
 	public function getPic(){
 		$customer = Mage::getSingleton('customer/session')->getCustomer();
 		$location = $customer->getLocation();
@@ -363,6 +365,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		if(!$pic->getId()){
 			$pic = $col2->getFirstItem();
 		}
+		// Run loop until find next PIC 
 		while($pic->getCurrentInterval() !=  $pic->getInterval() - 1){
 			$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
 			$pic = $collection->clear()->addFieldToFilter('pic_id', array('gt'=>$pic->getPicId()))->getFirstItem();
@@ -371,6 +374,7 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 			}
 		}
 		
+		// When file PIC reset interval and set as last PIC return function
 		if($pic->getCurrentInterval() ==  $pic->getInterval() - 1){
 			$pic->setCurrentInterval(0)->save();
 			if($location == 12){
@@ -383,7 +387,8 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 			return $pic->getName();
 		}
 	}
-
+	
+	/* Mail config for sending with SMTP */
 	public function getMailConfig(){
 		$config = array(
 	                    'auth' => 'login',

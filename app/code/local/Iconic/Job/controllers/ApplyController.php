@@ -69,6 +69,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 		if (!$this->_validateFormKey()) {
             return $this->_redirect('*/*/send');
         }
+		
 		// redirect if user not login 
 		if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
             $session = Mage::getSingleton('customer/session');
@@ -90,6 +91,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$job = Mage::getModel('job/job')->load($id);
 			$block = $this->getLayout()->getBlock('job_apply_success');
 			$block->setItem($job);
+			
 			//set breadcrumbs		
 			$helper = Mage::helper('job');
 			if ($breadcrumbs = $this->getLayout()->getBlock('breadcrumbs')) {
@@ -97,6 +99,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 				$breadcrumbs->addCrumb('search_results', array('label'=>$helper->__('コミュニケーション・メディ'), 'title'=>$helper->__('コミュニケーション・メディ'), 'link'=>Mage::getUrl('job/search')));
 				$breadcrumbs->addCrumb('job_apply', array('label'=>$helper->__('応募する | %s', $job->getTitle()), $helper->__('応募する | %s', $job->getTitle())));
 			}	
+			
 			//get jobs form same category
 			$block->setJobsInCategory($job->getJobsInCategory());
 			
@@ -119,6 +122,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 				$this->_redirect('job/apply', array('id'=>$data['id']));
 			}
 			$transport = Mage::helper('job')->getMailConfig();
+			
 			//get general contact from config admin
 			/* Sender Name */
 			$nameAdmin = Mage::getStoreConfig('trans_email/ident_general/name'); 
