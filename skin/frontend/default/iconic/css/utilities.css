@@ -109,6 +109,7 @@ select{
 	background: url('../images/select.png') right 5px center no-repeat #e6ecfc;
 	appearance: none;
 	-webkit-appearance: none;
+	-moz-appearance: none;
 	border: solid 1px #b0b2b4;
 	color: #929496;
 }
@@ -119,10 +120,14 @@ input{
 	border: solid 1px #b0b2b4;
 	background-color: #e6ecfc;
 }
+input[type="number"]{
+	-webkit-appearance: none;
+	-moz-appearance: textfield;
+}
 input,
 select,
 textarea{
-	background-color: #c6c7c9;
+	background-color: #f8f8f8;
 	border-radius: 3px;
 }
 input:required,

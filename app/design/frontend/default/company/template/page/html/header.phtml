@@ -51,10 +51,10 @@
 				
 				<!-- Switch languages -->
 				<div id="switch-languages">
-					<a class="switch-lang jp<?php echo (Mage::app()->getStore()->getCode() == 'cpjp') ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl() ?>company<?php echo $_SERVER['REQUEST_URI'] ?>" title="<?php echo $this->__('日本語') ?>">
+					<a class="switch-lang jp<?php echo (Mage::helper('client')->isJapanese()) ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl() ?>company<?php echo $_SERVER['REQUEST_URI'] ?>" title="<?php echo $this->__('日本語') ?>">
 						<?php echo $this->__('日本語') ?>
 					</a>
-					<a class="switch-lang en<?php echo (Mage::app()->getStore()->getCode() == 'cpen') ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl() ?>company/en<?php echo $_SERVER['REQUEST_URI'] ?>" title="<?php echo $this->__('English') ?>">
+					<a class="switch-lang en<?php echo (!Mage::helper('client')->isJapanese()) ? ' active' : '' ?>" href="<?php echo Mage::helper('job')->getUrl() ?>company/en<?php echo $_SERVER['REQUEST_URI'] ?>" title="<?php echo $this->__('English') ?>">
 						<?php echo $this->__('English') ?>
 					</a>
 				</div><!-- End Switch Languages -->

@@ -31,7 +31,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
             $errors = $this->_getCustomerErrors($customer);
 
             if (empty($errors)) {
-	            if(Mage::app()->getWebsite()->getCode() == 'base'){	
+	            if(!Mage::helper('client')->isEmployerSite()){	
 	            	$customer->setSex($this->getRequest()->getParam('sex'));
 	            	$customer->setLocation($this->getRequest()->getParam('location'));
 					$birthyear = $this->getRequest()->getParam('year').'/'.$this->getRequest()->getParam('month').'/'.$this->getRequest()->getParam('day');
@@ -418,7 +418,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
         $this->loadLayout();
         $this->_initLayoutMessages('customer/session');
         $this->_initLayoutMessages('catalog/session');
-		if(Mage::app()->getWebsite()->getCode() == 'base'){
+		if(!Mage::helper('client')->isEmployerSite()){
     		header("Location: ".Mage::helper('job')->getUrl().'company/');
     		die;
     	}
@@ -443,7 +443,7 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
      */
     public function editPostAction()
     {
-    	if(Mage::app()->getWebsite()->getCode() == 'base'){
+    	if(!Mage::helper('client')->isEmployerSite()){
     		header("Location: ".Mage::helper('job')->getUrl().'company/');
     		die;
     	}
