@@ -99,9 +99,14 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 					$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
 					$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Registration - %s - %s', $customer->getName() , $customer->getPic()));
 					$checkSend = $mail->send($transport);
-					
-	                $this->_redirect('job/index/afterregister');
-	                return;
+					if($checkSend){
+						$this->_redirect('job/index/afterregister');
+	                	return;
+					}else{
+						$session->setCustomerFormData($this->getRequest()->getPost());
+						$this->_redirect('*/*/create');
+						return;
+					}
 	        	}else{
 	        		$data = $this->getRequest()->getPost();
 	        		if($data['email'] && $data['company_name'] && $data['company_address'] && $data['company_detail'] && $data['firstname']){
@@ -559,8 +564,14 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
      */
     public function indexAction()
     {
-    	$this->_redirect('client/job/manage');
-		return;
+    	if(Mage::helper('client')->isEmployerSite()){
+			$this->_redirect('client/job/manage');
+			return;
+		}else{
+			$this->_redirect('/');
+			return;
+		}
+    	
         $this->loadLayout();
         $this->_initLayoutMessages('customer/session');
         $this->_initLayoutMessages('catalog/session');
