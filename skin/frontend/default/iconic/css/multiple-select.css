@@ -24,7 +24,7 @@
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    background: url('../images/select.png') right 5px center no-repeat #c6c7c9;
+    background: url('../images/select.png') right 5px center no-repeat #f8f8f8;
 }
 .required .ms-choice{
 	background-color: #f5dbca;
