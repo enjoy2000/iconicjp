@@ -27,4 +27,5 @@ class Iconic_Job_SuccessController extends Mage_Core_Controller_Front_Action{
 		$this->_redirect('/');
 		return;
 	}
+	
 }

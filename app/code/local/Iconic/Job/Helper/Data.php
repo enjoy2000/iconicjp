@@ -344,12 +344,12 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		$model = Mage::getModel('job/pic');
 		$null = new Zend_Db_Expr("null");
 		if($location == 12){ //vietnam
-			$collection = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('location', array('eq'=>1));
+			$collection = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('location', array('eq'=>1))->load();
 			$col2 = clone $collection;
 			$pic = $model->load('yes', 'last_pic_vn');
 			$pic->setLastPicVn($null)->save();
 		}else if($location == 5){ //indo
-			$collection = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('location', array('eq'=>2));
+			$collection = Mage::getModel('job/pic')->getCollection()->addFieldToFilter('location', array('eq'=>2))->load();
 			$col2 = clone $collection;
 			$pic = $model->load('yes', 'last_pic_id');
 			$pic->setLastPicId($null)->save();
@@ -362,14 +362,14 @@ class Iconic_Job_Helper_Data extends Mage_Core_Helper_Abstract
 		//var_dump($pic);die;
 		$pic = $collection->clear()->addFieldToFilter('pic_id', array('gt'=>$pic->getId()))->getFirstItem();
 		//var_dump($pic);die;
-		if(!$pic->getId()){
+		if(!$pic->hasData()){
 			$pic = $col2->getFirstItem();
 		}
 		// Run loop until find next PIC 
 		while($pic->getCurrentInterval() !=  $pic->getInterval() - 1){
 			$pic->setCurrentInterval($pic->getCurrentInterval() + 1)->save();
 			$pic = $collection->clear()->addFieldToFilter('pic_id', array('gt'=>$pic->getPicId()))->getFirstItem();
-			if(!$pic->getId()){
+			if(!$pic->hasData()){
 				$pic = $col2->getFirstItem();
 			}
 		}
