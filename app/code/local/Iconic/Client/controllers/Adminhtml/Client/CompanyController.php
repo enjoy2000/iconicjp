@@ -93,6 +93,28 @@ class Iconic_Client_Adminhtml_Client_CompanyController extends Mage_Adminhtml_Co
         }
         $this->_redirect('*/*/');
     }
+	
+	/*
+	 * MassDelete action for delete many companies at once. 
+	*/
+	public function massDeleteAction()
+    {
+        if(is_array($this->getRequest()->getParam('customer'))) {
+        	try{
+                $customerIds = $this->getRequest()->get('customer');
+            	foreach($customerIds as $k => $v){
+            	   Mage::getModel('customer/customer')->setId($v)->delete();
+            	}
+               Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Companies were successfully deleted'));
+               $this->_redirect('*/*/');
+            }catch(Exception $e){
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                $this->_redirect('*/*/');
+            }
+        }
+        $this->_redirect('*/*/');
+    }
+	
     /**
      * Product grid for AJAX company.
      * Sort and filter result for example.
