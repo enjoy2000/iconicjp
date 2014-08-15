@@ -42,8 +42,11 @@
 			<div class="wrapper clearfix">
 				<!-- Logo -->
 				<div id="logo" class="fll">
-					<a title="Iconic" href="/">
-						<img width="169" height="40" src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="Iconic's Logo"  />
+					<a class="candidate<?php echo Mage::helper('client')->isEmployerSite() ? '' : ' active' ?>" href="/">
+						<?php echo $this->__('求職者の皆様はこちら') ?>
+					</a>
+					<a class="employer<?php echo Mage::helper('client')->isEmployerSite() ? ' active' : '' ?>" href="/company/">
+						<?php echo $this->__('企業向けサイト') ?>
 					</a>
 				</div><!-- End Logo -->
 				
@@ -93,15 +96,10 @@
 			<div id="header-menu">
 				<div class="wrapper">
 					<ul>
-						<li class="home has-child <?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
-							<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('ホーム') ?></a>
-							<ul class="inactive">
-								<li>
-									<a href="<?php echo Mage::helper('job')->getUrl() ?>company/">
-										<?php echo $this->__('企業サイト') ?>
-									</a>
-								</li>
-							</ul>
+						<li class="home">
+							<a title="Iconic" href="<?php echo Mage::getBaseUrl() ?>">
+								<img width="131" height="31" src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="Iconic's Logo"  />
+							</a>
 						</li>
 						<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">
 							<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>
@@ -200,19 +198,9 @@
 			#slider #header-menu{
 				position: absolute;
 				top: 0;
-				background-color: rgba(253, 253, 253, 0.30);;
+				background-color: rgba(36, 55, 102, 0.82);
 				z-index: 23;
 				width: 100%;
-			}
-			#slider #header-menu ul li.border a{
-				border-color: #fff;
-			}
-			#slider #header-menu ul li a{
-				color: #fff;
-			}
-			#slider #header-menu ul li a:hover{
-				background-color: #fff;
-				color: #4571EB;
 			}
 			#slider #search-block{
 				position: absolute;
@@ -264,16 +252,11 @@
 		<div id="header-menu">
 			<div class="wrapper">
 				<ul>
-					<li class="home has-child <?php echo strpos($bodyclass, 'cms-home') ? 'current-menu-item' : ''  ?>">
-						<a class="home" href="<?php echo Mage::helper('job')->getBaseUrl() ?>"><?php echo $this->__('ホーム') ?></a>
-						<ul class="inactive">
-							<li>
-								<a href="<?php echo Mage::helper('job')->getUrl() ?>company/">
-									<?php echo $this->__('企業サイト') ?>
-								</a>
-							</li>
-						</ul>
-					</li>
+					<li class="home">
+							<a title="Iconic" href="<?php echo Mage::getBaseUrl() ?>">
+								<img width="131" height="31" src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="Iconic's Logo"  />
+							</a>
+						</li>
 					<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">
 						<a href="<?php echo Mage::helper('job')->getBaseUrl() ?>about-iconic"><?php echo $this->__('アイコニックとは') ?></a>
 					</li>

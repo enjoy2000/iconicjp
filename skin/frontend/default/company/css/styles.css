@@ -9,14 +9,63 @@
 	width: 100%;
 	z-index: 99999;
 }
-body.cms-home #header-logo,
-#fixed-menu.f-nav #header-logo{
-	border-bottom: solid 1px #bbbcbf;
+#header-logo{
+	background-color: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 99999;
+	border-bottom: solid 2px #4571EB;
+	height: 64px;
+}
+#header-logo > .wrapper{
+	height: 100%;
 }
 #header-logo #logo{
-	padding-top: 10px;
-	padding-bottom: 5px;
-	margin-left: 20px;
+	position: absolute;
+	bottom: 0;
+}
+#header-logo #logo > a{
+	border: solid 1px #b2b2b2;
+	border-bottom: 0;
+	padding: 10px;
+	padding-left: 30px;
+	color: #b2b2b2;
+	display: inline-block;
+	background: url('../images/person-grey.png') no-repeat left 5px bottom 12px;
+	font-size: 12px;
+}
+#header-logo #logo > a.active{
+	border-color: #4571EB;
+	background-color: #4571EB;
+	color: #fff;
+	font-weight: bold;
+	background-image: url('../images/person.png');
+	padding-top: 15px;
+	-webkit-box-shadow: 1px -2px 4px 0px rgba(50, 50, 50, 0.30);
+	-moz-box-shadow:    1px -2px 4px 0px rgba(50, 50, 50, 0.30);
+	box-shadow:         1px -2px 4px 0px rgba(50, 50, 50, 0.30);
+}
+#header-logo #logo > a:hover{
+	border-color: #4571EB;
+	background-color: #4571EB;
+	color: #fff;
+	font-weight: bold;
+	background-image: url('../images/person.png');
+	padding-top: 15px;
+	-webkit-box-shadow: 1px -2px 4px 0px rgba(50, 50, 50, 0.30);
+	-moz-box-shadow:    1px -2px 4px 0px rgba(50, 50, 50, 0.30);
+	box-shadow:         1px -2px 4px 0px rgba(50, 50, 50, 0.30);
+}
+#header-logo #logo > a.employer{
+	background-image: url('../images/com-grey.png');
+}
+#header-logo #logo > a.employer.active{
+	background-image: url('../images/com.png');
+}
+#header-logo #logo > a.employer:hover{
+	background-image: url('../images/com.png');
 }
 #header-logo #menu{
 	margin-right: 20px;
@@ -77,47 +126,44 @@ body.cms-home #header-logo,
 	color: #fff;
 }
 #header-menu{
-	background: url('../images/slider/bg2.png') repeat transparent;
-	margin-top: 61px;
+	background-color: rgba(36, 55, 102, 1);
+	margin-top: 66px;
+	position: relative;
+	z-index: 25;
+}
+body.cms-home #header-menu{
+	background-color: rgba(36, 55, 102, 0.82);
 }
 #header-menu .wrapper > ul{
 	padding: 0 20px;
 }
-#header-logo #menu ul li, #header-menu ul li{
+#header-menu ul li.home{
+	float: left;
+	margin-right: 80px;
+}
+#header-menu ul li.home > a{
+	padding: 0;
+	padding-top: 5px;
+}
+#header-logo #menu ul li, #header-menu .wrapper > ul > li{
 	display: inline-block;
 	font-size: 14px;
 }
 #header-menu .wrapper > ul > li{
-	margin: 0 5px;
 	position: relative;
 }
 #header-menu ul li > a{
 	color: #fff;
-	padding: 12px 20px;
+	padding: 12px;
 	display: block;
-	color: #4571EB;
-	border-bottom: solid 2px transparent;
 }
-#header-menu ul li > a:hover{
-	border-color: #4571EB;
-}
-#slider #header-menu ul li > a:hover{
-	border-color: transparent;
-}
-#slider #header-menu ul li > a{
-	color: #fff;
-}
-#slider #header-menu .wrapper > ul > li:hover > a{
-	font-weight: normal;
-	color: #4571EB;
+#header-menu ul li:not(.home) > a:hover{
 	background-color: #fff;
-	border-color: transparent;
+	color: #4571EB;
 }
 #header-menu ul li.current-menu-item > a{
-	border-color: #4571EB;
-}
-#slider #header-menu ul li.current-menu-item > a{
-	border-color: transparent;
+	background-color: #fff;
+	color: #4571EB;
 }
 #header-menu ul li:first-child{
 	margin-left: 0;
@@ -126,7 +172,7 @@ body.cms-home #header-logo,
 	float: right;
 	display: block;
 	margin: 0;
-	margin-top: 5px;
+	margin-top: 7px;
 	border-radius: 3px;
 }
 #header-menu ul li.border > a{
@@ -137,37 +183,15 @@ body.cms-home #header-logo,
 	padding: 3px 10px;
 	border: solid 2px #fff;
 	border-radius: 4px;
-	border-color: #4571EB;
 }
 #header-menu ul li.border > a:hover{
-	color: #fff;
-	background-color: #4571EB;
-}
-#slider #header-menu ul li.border > a{
-	border-color: #fff;
-}
-#slider #header-menu ul li.border > a:hover{
 	color: #4571EB;
 	background-color: #fff;
-}
-#slider #header-menu{
-	position: relative;
-	z-index: 23;
-	background-color: rgba(255,255,255,0.3);
-}
-#header-menu ul li.home a.home{
-	color: #fff;
-	padding: 12px 70px;
-	background-color: #3e65d3;
-}
-#slider #header-menu ul li.home > a.home{
-	background-color: #3e65d3;
-	color: #fff;
 }
 #header-menu ul li ul.inactive{
 	display: none;
 	position: absolute;
-	top: 47px;
+	top: 51px;
 	padding-top: 10px;
 	z-index: 6;
 	width: 100%;
@@ -189,9 +213,6 @@ body.cms-home #header-logo,
 	padding-left: 32px;
 	background: url('../images/candidate.png') 3px center no-repeat transparent;
 }
-#slider #header-menu ul li.home ul.inactive li{
-	background-color: rgba(255,255,255,0.3);
-}
 #header-menu ul li.has-child ul.inactive:before{
 	content: '';
 	width: 0;
@@ -201,9 +222,6 @@ body.cms-home #header-logo,
 	position: absolute;
 	top: -10px;
 	left: 45%;
-}
-#slider #header-menu ul li.home ul.inactive:before{
-	border-bottom-color: rgba(255,255,255,0.3);
 }
 #ajax-load{
 	width: 100%;
