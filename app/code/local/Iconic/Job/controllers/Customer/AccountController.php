@@ -99,10 +99,13 @@ class Iconic_Job_Customer_AccountController extends Mage_Customer_AccountControl
 					$mail->setFrom('info@iconic-jp.com', Mage::helper('job')->__('IconicJP'));
 					$mail->setSubject(Mage::helper('job')->__('ICONIC-JP Registration - %s - %s', $customer->getName() , $customer->getPic()));
 					$checkSend = $mail->send($transport);
+					
+					//check email send or not
 					if($checkSend){
 						$this->_redirect('job/index/afterregister');
 	                	return;
 					}else{
+						$session->addError(Mage::helper('job')->__('Your mail has not been sent. We will try to fix this ASAP. Please be patient!'));
 						$session->setCustomerFormData($this->getRequest()->getPost());
 						$this->_redirect('*/*/create');
 						return;
