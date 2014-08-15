@@ -191,7 +191,7 @@ body.cms-home #header-menu{
 #header-menu ul li ul.inactive{
 	display: none;
 	position: absolute;
-	top: 51px;
+	top: 45px;
 	padding-top: 10px;
 	z-index: 6;
 	width: 100%;
