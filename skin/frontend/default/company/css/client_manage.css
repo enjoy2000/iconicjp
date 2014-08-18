@@ -36,12 +36,14 @@
 div.results > table{
 	width: 100%;
 	margin-top: 10px;
+	font-size: 13px;
 }
 div.results > table tr td{
 	padding: 10px;
 }
 div.results > table thead{
 	border: solid 1px #A8A8A8;
+	background-color: #E2E2E2;
 }
 div.results > table thead tr td{
 	font-weight: bold;
@@ -61,16 +63,35 @@ div.results > table tbody tr.job td.action > a{
 	text-decoration: none;
 	font-size: 12px;
 }
-div.results > table tbody tr.job td.action > a.detail{
+
+div.results > table tbody tr.job td.actions > a{
 	display: inline-block;
-	width: 19px;
-	height: 19px;
-	background-image: url('../images/job-detail-active.png');
-	background-position: center;
-	background-repeat: no-repeat;
+	background: url('../images/actions/edit.png') center no-repeat #b2b2b2;
+	overflow: hidden;
+	text-indent: -9999px;
+	text-align: left;
+	width: 24px;
+	height: 24px;
+	border-radius: 2px;
+	-webkit-transition: color 200ms,background-color 200ms;
+	-moz-transition: color 200ms,background-color 200ms;
+	-o-transition: color 200ms,background-color 200ms;
+	transition: color 200ms,background-color 200ms;
 }
-div.results > table tbody tr.job td.action > a.detail.active{
-	background-image: url('../images/job-detail.png');
+div.results > table tbody tr.job td.actions > a:hover{
+	background-color: #000;
+}
+div.results > table tbody tr.job td.actions a.details {
+	background-image: url('../images/actions/details.png');
+}
+div.results > table tbody tr.job td.actions a.delete {
+	background-image: url('../images/actions/delete.png');
+}
+div.results > table tbody tr.job td.actions > a.details.active{
+	background-color: #000;
+}
+div.results > table tbody tr.job td.actions > a.details.active:hover{
+	background-color: #b2b2b2;
 }
 div.results > table tbody tr.pager > td{
 	text-align: center;

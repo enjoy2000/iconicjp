@@ -98,7 +98,7 @@
 					<ul>
 						<li class="home">
 							<a title="Iconic" href="<?php echo Mage::getBaseUrl() ?>">
-								<img width="131" height="31" src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="Iconic's Logo"  />
+								<img width="131" height="31" src="<?php echo $this->getSkinUrl('images/logo-white.png') ?>" alt="Iconic's Logo"  />
 							</a>
 						</li>
 						<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">
@@ -191,62 +191,6 @@
 			<?php echo $this->getChildHtml('searchform') ?>
 			<!-- End Search Block -->
 		</div>
-			<style>
-			#slider{
-				position: relative;
-			}
-			#slider #header-menu{
-				position: absolute;
-				top: 0;
-				background-color: rgba(36, 55, 102, 0.82);
-				z-index: 23;
-				width: 100%;
-			}
-			#slider #search-block{
-				position: absolute;
-				bottom: 0;
-				background-color: transparent;
-				z-index: 21;
-				width: 100%;
-				border-top-width: 0;
-			}
-			#slider #search-block form > input{
-				padding: 2px;
-				padding-left: 30px;
-				width: 469px;
-				border: solid 2px transparent;
-			}
-			#slider #search-block form > input:focus{
-				background-color: #000;
-				color: #fff;
-			}
-			#slider #search-block .ms-choice{
-				height: 29px;
-				border: solid 2px transparent;
-			}
-			#slider #search-block .ms-choice.focus{
-				background-color: #000;
-				color: #fff;
-			}
-			#slider #search-block .ms-choice > span{
-				top: 2px;
-			}
-			#slider .bg{
-				width: 100%;
-				height: 100%;
-				left: 0;
-				position: absolute;
-				background: url('/skin/frontend/default/iconic/images/slider/bg.png');
-				z-index: 20;
-				background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 1%, rgba(0,0,0,0.8) 99%, rgba(0,0,0,0.8) 100%); /* FF3.6+ */
-				background: url('/skin/frontend/default/iconic/images/slider/bg.png'),-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(1%,rgba(0,0,0,0)), color-stop(99%,rgba(0,0,0,0.8)), color-stop(100%,rgba(0,0,0,0.8))); /* Chrome,Safari4+ */
-				background: url('/skin/frontend/default/iconic/images/slider/bg.png'),-webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* Chrome10+,Safari5.1+ */
-				background: url('/skin/frontend/default/iconic/images/slider/bg.png'),-o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* Opera 11.10+ */
-				background: url('/skin/frontend/default/iconic/images/slider/bg.png'),-ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* IE10+ */
-				background: url('/skin/frontend/default/iconic/images/slider/bg.png'), linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 1%,rgba(0,0,0,0.8) 99%,rgba(0,0,0,0.8) 100%); /* W3C */
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#4d000000',GradientType=0 ); /* IE6-9 */
-			}
-			</style>
 		<?php else: ?>
 		<!-- Header Menu -->
 		<div id="header-menu">
@@ -254,7 +198,7 @@
 				<ul>
 					<li class="home">
 							<a title="Iconic" href="<?php echo Mage::getBaseUrl() ?>">
-								<img width="131" height="31" src="<?php echo $this->getSkinUrl('images/logo.png') ?>" alt="Iconic's Logo"  />
+								<img width="131" height="31" src="<?php echo $this->getSkinUrl('images/logo-white.png') ?>" alt="Iconic's Logo"  />
 							</a>
 						</li>
 					<li class="<?php echo strpos($bodyclass, 'cms-about-iconic') ? 'current-menu-item' : ''  ?>">

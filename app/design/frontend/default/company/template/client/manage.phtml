@@ -46,11 +46,12 @@
 					<td><?php echo $job->getType() ?></td>
 					<td><?php echo $job->getFullSalary() ?></td>
 					<td><?php echo Mage::helper('job')->formatDate($job->getCreatedTime()) ?></td>
-					<td class="action">
-						<a class="edit" href="<?php echo $job->getEditUrl() ?>" title="<?php echo $this->__('編集する') ?>"><?php echo $this->__('編集する') ?></a>
-						|
-						<a data-job="<?php echo $job->getId() ?>" class="delete" href="#" title="<?php echo $this->__('削除する') ?>"><?php echo $this->__('削除する') ?></a>
-						<a class="detail" href="#" title="<?php echo $this->__('Details') ?>">&nbsp;</a>
+					<td class="actions">
+						<a class="details" href="#" title="<?php echo $this->__('詳細') ?>">&nbsp;</a>
+						<?php if($this->getParam() != 'active'): ?>
+						<a class="edit" href="<?php echo $job->getEditUrl() ?>" title="<?php echo $this->__('編集する') ?>">&nbsp;</a>
+						<?php endif; ?>
+						<a data-job="<?php echo $job->getId() ?>" class="delete" href="#" title="<?php echo $this->__('削除する') ?>">&nbsp;</a>
 					</td>
 				</tr>
 				<tr class="detail">
@@ -122,7 +123,7 @@
 	(function($){
 		$(document).ready(function(){
 			/* view job detail function */
-			$('a.detail').on('click', function(e){
+			$('a.details').on('click', function(e){
 				e.preventDefault();
 				if($(this).hasClass('active')){
 					$(this).removeClass('active');

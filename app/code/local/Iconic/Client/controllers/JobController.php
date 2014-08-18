@@ -43,10 +43,13 @@ class Iconic_Client_JobController extends Mage_Core_Controller_Front_Action{
 		$customer = Mage::getSingleton('customer/session')->getCustomer();
 		if($jobId = $this->getRequest()->getParam('id')){
 			$job = Mage::getModel('job/job')->load($jobId);
-			if($job->getCustomerId() != $customer->getId()){
+			
+			//check job belongs to customer and not actived
+			if(($job->getCustomerId() != $customer->getId()) && ($job->getStatus() == 'active')){
 				$this->_redirect('/');
 				return;
 			}
+			
 			/* Change data format to render to edit page */
 			$job = (array) $job->getData();
 			$job['feature_id'] = explode(',', substr($job['feature_id'], 1, -1));
