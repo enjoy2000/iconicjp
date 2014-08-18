@@ -342,6 +342,12 @@ body.cms-home #ajax-load{
 #header-landing .wrapper{
 	position: relative;
 }
+#header-menu a{
+	-webkit-transition: color 200ms,background-color 200ms;
+	-moz-transition: color 200ms,background-color 200ms;
+	-o-transition: color 200ms,background-color 200ms;
+	transition: color 200ms,background-color 200ms;
+}
 #slider{
 	position: relative;
 	height: 625px;

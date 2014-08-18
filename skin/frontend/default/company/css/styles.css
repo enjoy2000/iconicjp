@@ -134,6 +134,12 @@
 body.cms-home #header-menu{
 	background-color: rgba(36, 55, 102, 0.82);
 }
+#header-menu a{
+	-webkit-transition: color 200ms,background-color 200ms;
+	-moz-transition: color 200ms,background-color 200ms;
+	-o-transition: color 200ms,background-color 200ms;
+	transition: color 200ms,background-color 200ms;
+}
 #header-menu .wrapper > ul{
 	padding: 0 20px;
 }
