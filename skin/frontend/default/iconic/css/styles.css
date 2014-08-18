@@ -54,6 +54,10 @@ body.job-index-createcv #search-block{
 	display: inline-block;
 	background: url('../images/person-grey.png') no-repeat left 5px bottom 12px;
 	font-size: 12px;
+	-webkit-transition: padding 200ms,background-color 200ms,color 200ms;
+	-moz-transition: padding 200ms,background-color 200ms,color 200ms;
+	-o-transition: padding 200ms,background-color 200ms,color 200ms;
+	transition: padding 200ms,background-color 200ms,color 200ms;
 }
 #header-logo #logo > a.active{
 	border-color: #4571EB;

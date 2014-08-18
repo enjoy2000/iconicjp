@@ -9,12 +9,17 @@
 	padding: 0px 10px;
 	text-decoration: none;
 	color: #b0b2b4;
+	font-weight: bold;
+	-webkit-transition: color 200ms,background-color 200ms;
+	-moz-transition: color 200ms,background-color 200ms;
+	-o-transition: color 200ms,background-color 200ms;
+	transition: color 200ms,background-color 200ms;
 }
 .manage-job-menu > a + a{
 	border-left: solid 1px #b0b2b4;
 }
-.manage-job-menu > a.active{
-	font-weight: bold;
+.manage-job-menu > a.active,
+.manage-job-menu > a:hover{
 	color: #000;
 }
 .manage-job-menu .post-job > a{
@@ -52,6 +57,9 @@ div.results > table thead tr td{
 div.results > table tbody tr.job{
 	border: solid 1px #A8A8A8;
 	border-top-color: transparent;
+}
+div.results > table tbody tr.job.active{
+	border-bottom-color: transparent;
 }
 div.results > table tbody tr.job td.action{
 	color: #4571EB;

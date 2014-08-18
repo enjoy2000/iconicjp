@@ -128,9 +128,11 @@
 				if($(this).hasClass('active')){
 					$(this).removeClass('active');
 					$(this).parents('tr').next().stop(true, true).slideUp();
+					$(this).parents('tr').removeClass('active');
 				}else{
 					$(this).addClass('active');
 					$(this).parents('tr').next().stop(true, true).slideDown();
+					$(this).parents('tr').addClass('active');
 				}
 			});
 			

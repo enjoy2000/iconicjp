@@ -316,3 +316,9 @@ h1{
 hr.blue{
 	border-color: #4571EB;
 }
+.transition{
+	-webkit-transition: color 200ms,background-color 200ms;
+	-moz-transition: color 200ms,background-color 200ms;
+	-o-transition: color 200ms,background-color 200ms;
+	transition: color 200ms,background-color 200ms;
+}
