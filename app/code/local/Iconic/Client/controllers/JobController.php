@@ -118,7 +118,7 @@ class Iconic_Client_JobController extends Mage_Core_Controller_Front_Action{
 				}
 				Mage::getSingleton('core/session')->addSuccess($successMessage);
 				Mage::getSingleton('customer/session')->setJobData(false);
-				$this->_redirect('client/job/manage', array('status'=>'pending'));
+				$this->_redirect('client/job/manage', array('status' => $data['status']));
 				return;
 			}catch(Exception $e){
 				Mage::getSingleton('core/session')->addError($e->getMessage());

@@ -25,85 +25,101 @@ class Iconic_Client_Block_Job extends Mage_Core_Block_Template
 	}
 	
 	public function getLocationList($data){
-		$locations = Mage::getModel('job/country')->getCollection();
-		$option = '';
-		foreach($locations as $loc){
-			$locName = Mage::helper('job')->getTransName($loc);
-			$selected = '';
-			if($loc->getId() == $data){
-				$selected = ' selected="selected"';
+		if(!$this->hasData('locationList')){
+			$locations = Mage::getModel('job/country')->getCollection();
+			$option = '';
+			foreach($locations as $loc){
+				$locName = Mage::helper('job')->getTransName($loc);
+				$selected = '';
+				if($loc->getId() == $data){
+					$selected = ' selected="selected"';
+				}
+				$option .= "<option{$selected} value=\"{$loc->getId()}\">{$locName}</option>";
 			}
-			$option .= "<option{$selected} value=\"{$loc->getId()}\">{$locName}</option>";
+			$this->setData('locationList', $option);
 		}
-		return $option;
+		return $this->setData('locationList');
 	}
 
 	public function getLevelList($data){
-		$levels = Mage::getModel('job/level')->getCollection();
-		$option = '';
-		foreach($levels as $level){
-			$levelName = Mage::helper('job')->getTransName($level);
-			$selected = '';
-			if($level->getId() == $data){
-				$selected = ' selected="selected"';
+		if(!$this->hasData('levelList')){
+			$levels = Mage::getModel('job/level')->getCollection();
+			$option = '';
+			foreach($levels as $level){
+				$levelName = Mage::helper('job')->getTransName($level);
+				$selected = '';
+				if($level->getId() == $data){
+					$selected = ' selected="selected"';
+				}
+				$option .= "<option{$selected} value=\"{$level->getId()}\">{$levelName}</option>";
 			}
-			$option .= "<option{$selected} value=\"{$level->getId()}\">{$levelName}</option>";
+			$this->setData('levelList', $option);
 		}
-		return $option;
+		return $this->getData('levelList');
 	}
 
 	public function getTypeList($data){
-		$types = Mage::getModel('job/type')->getCollection();
-		$option = '';
-		foreach($types as $type){
-			$typeName = Mage::helper('job')->getTransName($type);
-			$selected = '';
-			if($type->getId() == $data){
-				$selected = ' selected="selected"';
+		if(!$this->hasData('typeList')){
+			$types = Mage::getModel('job/type')->getCollection();
+			$option = '';
+			foreach($types as $type){
+				$typeName = Mage::helper('job')->getTransName($type);
+				$selected = '';
+				if($type->getId() == $data){
+					$selected = ' selected="selected"';
+				}
+				$option .= "<option{$selected} value=\"{$type->getId()}\">{$typeName}</option>";
 			}
-			$option .= "<option{$selected} value=\"{$type->getId()}\">{$typeName}</option>";
+			$this->setData('typeList', $option);
 		}
-		return $option;
+		return $this->getData('typeList');
 	}
 	
 	public function getLanguageList($data){
-		$languages = Mage::getModel('job/language')->getCollection();
-		$levels = Mage::getModel('job/langlevel')->getCollection();
-		$langHtml = '';
-		foreach($languages as $lang){
-			$langHtml .= '<div class="lang clearfix '.strtolower($lang->getNameEn()).'">';
-			$langHtml .= '<div class="fll">'.Mage::helper('job')->getTransName($lang).'</div>';
-			$langHtml .= '<div class="flr">';
-			foreach($levels as $level){
-				$checked = '';
-				if($data[$lang->getId()] == $level->getId()){
-					$checked = ' checked';
+		if(!$this->hasData('languageList')){
+			$languages = Mage::getModel('job/language')->getCollection();
+			$levels = Mage::getModel('job/langlevel')->getCollection();
+			$langHtml = '';
+			foreach($languages as $lang){
+				$langHtml .= '<div class="lang clearfix '.strtolower($lang->getNameEn()).'">';
+				$langHtml .= '<div class="fll">'.Mage::helper('job')->getTransName($lang).'</div>';
+				$langHtml .= '<div class="flr">';
+				foreach($levels as $level){
+					$checked = '';
+					if($data[$lang->getId()] == $level->getId()){
+						$checked = ' checked';
+					}
+					$langHtml .= '<div class="lang-level inline-b">';
+					$langHtml .= '<input'.$checked.' type="radio" name="language_id['.$lang->getId().']" value="'.$level->getId().'" />';
+					$langHtml .= Mage::helper('job')->getTransName($level);
+					$langHtml .= '</div>';
 				}
-				$langHtml .= '<div class="lang-level inline-b">';
-				$langHtml .= '<input'.$checked.' type="radio" name="language_id['.$lang->getId().']" value="'.$level->getId().'" />';
-				$langHtml .= Mage::helper('job')->getTransName($level);
+				$langHtml .= '</div>';
 				$langHtml .= '</div>';
 			}
-			$langHtml .= '</div>';
-			$langHtml .= '</div>';
+			$this->setData('languageList', $langHtml);
 		}
-		return $langHtml;
+		return $this->getData('languageList');
 	}
 	
 	public function getFeatureList($data){
-		$features = Mage::getModel('job/feature')->getCollection();
-		$featureHtml = '';
-		foreach($features as $feature){
-			$checked = '';
-			if(in_array($feature->getId(), $data)){
-				$checked = ' checked';
+		if(!$this->hasData('featureList')){
+			$features = Mage::getModel('job/feature')->getCollection();
+			$featureHtml = '';
+			foreach($features as $feature){
+				$checked = '';
+				// check option is checked or not 
+				if(in_array($feature->getId(), $data)){
+					$checked = ' checked';
+				}
+				$featureHtml .= '<div class="feature inline-b">';
+				$featureHtml .= '<input'.$checked.' type="checkbox" name="feature_id[]" value="'.$feature->getId().'" />';
+				$featureHtml .= Mage::helper('job')->getTransName($feature);
+				$featureHtml .= '</div>';
 			}
-			$featureHtml .= '<div class="feature inline-b">';
-			$featureHtml .= '<input'.$checked.' type="checkbox" name="feature_id[]" value="'.$feature->getId().'" />';
-			$featureHtml .= Mage::helper('job')->getTransName($feature);
-			$featureHtml .= '</div>';
+			$this->setData('featureList', $featureHtml);
 		}
-		return $featureHtml;
+		return $this->getData('featureList');
 	}
 
 }
