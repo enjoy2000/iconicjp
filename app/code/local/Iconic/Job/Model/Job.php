@@ -10,6 +10,7 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
     
     protected function _beforeSave()
     {
+    	// check url key is set or not; if not generate url based on title then set
         if(!$this->getUrlKey()){
             $urlKey = Mage::helper('job')->formatUrlKeyJp($this->getTitle());
             if(!Mage::getModel('job/job')->load($urlKey, 'url_key')->getId()){
@@ -19,6 +20,12 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
             	$this->setUrlKey($urlKey);
             }
         }
+		// check update time or set or not; if not set current time
+		// this is for employer job post when I'm lazy
+		if(!$this->getUpdateTime()){
+			$currentTime = Date('Y-m-d H:i:s');
+			$this->setUpdateTime($currentTime);
+		}
         parent::_beforeSave();
     }
     

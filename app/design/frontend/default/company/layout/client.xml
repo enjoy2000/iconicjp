@@ -8,6 +8,7 @@
     	<reference name="head">
     		<action method="addCss"><stylesheet>css/client_post.css</stylesheet></action>
             <action method="addJs"><script>ckeditor/ckeditor.js</script></action>
+			<action method="addItem"><type>skin_js</type><name>js/client_post.js</name><params/><if/></action>
         </reference>
         <reference name="content">
             <block type="client/job" name="client_job_post" template="client/post.phtml">
@@ -18,6 +19,7 @@
     <client_job_manage>
     	<reference name="head">
     		<action method="addCss"><stylesheet>css/client_manage.css</stylesheet></action>
+			<action method="addItem"><type>skin_js</type><name>js/client_manage.js</name><params/><if/></action>
         </reference>
         <reference name="content">
             <block type="client/manage" name="manage_job" template="client/manage.phtml">

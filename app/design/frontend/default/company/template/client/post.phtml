@@ -79,43 +79,9 @@
 		</li>
 		<li>
 			<textarea rows="5" id="requirement" required name="requirement" placeholder="<?php echo $this->__('必須要件') ?> *"><?php echo $data['requirement'] ?></textarea>
-			<script>
-				CKEDITOR.replace('requirement').config.extraPlugins = 'confighelper';
-				CKEDITOR.instances.requirement.on('blur', function() {
-					var content = CKEDITOR.instances.requirement.getData();
-					if(content.length > 3){
-						jQuery('#cke_requirement').addClass('after-input');
-					}else{
-						jQuery('#cke_requirement').removeClass('after-input');
-					}
-				});
-				<?php if($data['requirement']): ?>
-				CKEDITOR.instances.requirement.setData('<?php echo $data['requirement'] ?>');
-				jQuery(window).on('load', function(){
-					jQuery('#cke_requirement').addClass('after-input');
-				});
-				<?php endif; ?>
-			</script>
 		</li>
 		<li>
 			<textarea id="info" required name="info" placeholder="<?php echo $this->__('職務内容') ?> *"><?php echo $data['info'] ?></textarea>
-			<script>
-				CKEDITOR.replace('info').config.extraPlugins = 'confighelper';
-				CKEDITOR.instances.info.on('blur', function() {
-					var content = CKEDITOR.instances.info.getData();
-					if(content.length > 3){
-						jQuery('#cke_info').addClass('after-input');
-					}else{
-						jQuery('#cke_info').removeClass('after-input');
-					}
-				});
-				<?php if($data['info']): ?>
-				CKEDITOR.instances.info.setData('<?php echo $data['info'] ?>');
-				jQuery(window).on('load', function(){
-					jQuery('#cke_info').addClass('after-input');
-				});
-				<?php endif; ?>
-			</script>
 		</li>
 	</ul>
 	<div class="button">
@@ -123,41 +89,3 @@
 		<button name="submit" value="1" class="active submit btn blue-btn" type="submit"><?php echo $this->__('この内容で投稿する') ?></button>
 	</div>
 </form>
-<script language="javascript">
-	(function($){
-		$(document).ready(function(){
-			$('.select-box').each(function(){
-				if($('input:checked', this).length > 0){
-					$(this).parent().find('a').addClass('after-input');
-				}
-			});
-			 
-			$('a.select-button').on('click', function(e){
-				e.preventDefault();
-				var $this = $(this);
-				$(this).addClass('focus');
-				var div = $('#'+$(this).data('box'));
-				div.show();
-				$(document).mouseup(function (e){
-				    if (!div.is(e.target) // if the target of the click isn't the container...
-				        && div.has(e.target).length === 0) // ... nor a descendant of the container
-				    {
-				        div.hide();
-				        $this.removeClass('focus');
-				        var count = $('input:checked', div).length;
-				        var defaultText = $this.text();
-				        if(count > 0){
-				        	$this.addClass('after-input');
-				        	$this.removeClass('error');
-				        	$this.text('<?php echo $this->__('入力済み') ?>')
-				        }else{
-				        	$this.removeClass('after-input');
-				        	$this.addClass('error');
-				        	$this.text(defaultText);
-				        }
-				    }
-				});
-			});
-		});
-	})(jQuery)
-</script>

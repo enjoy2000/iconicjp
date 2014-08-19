@@ -27,7 +27,7 @@ class Iconic_Client_Block_Manage extends Mage_Core_Block_Template
 		if($this->getParam()){
 			$collection->addFieldToFilter('status', array('like'=>$this->getParam()));
 		}
-		$collection->setOrder('created_time','DESC');
+		$collection->setOrder('update_time','DESC');
 		$this->setResults($collection);
 	}
 	
