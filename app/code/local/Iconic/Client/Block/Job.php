@@ -38,7 +38,7 @@ class Iconic_Client_Block_Job extends Mage_Core_Block_Template
 			}
 			$this->setData('locationList', $option);
 		}
-		return $this->setData('locationList');
+		return $this->getData('locationList');
 	}
 
 	public function getLevelList($data){
