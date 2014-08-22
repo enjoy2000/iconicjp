@@ -21,11 +21,12 @@
 	color: #272525;
 }
 .job-wrapper .title{
-	color: #fff;
+	color: #4571EB;
 	font-weight: bold;
-	padding: 10px;
-	background-color: #919294;
-	font-size: 17px;
+	padding: 5px 10px;
+	background-color: #cad6f8;
+	font-size: 15px;
+	border-bottom: solid 2px #4571EB;
 }
 .job-wrapper table{
 	width: 100%;

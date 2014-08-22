@@ -7,11 +7,12 @@
 	display: inline-block;
 }
 h1{
-	color: #fff;
+	color: #4571EB;
 	font-weight: bold;
-	padding: 10px;
-	background-color: #919294;
-	font-size: 17px;
+	padding: 5px 10px;
+	background-color: #cad6f8;
+	font-size: 15px;
+	border-bottom: solid 2px #4571EB;
 	margin-bottom: 0;
 	text-align: left;
 }

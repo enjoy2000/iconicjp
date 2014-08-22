@@ -89,6 +89,11 @@ class Iconic_Client_JobController extends Mage_Core_Controller_Front_Action{
 				}else{
 					$data['status'] = 'draft';
 				}
+				
+				//if edit exist job not change url key
+				if($jobId){
+					$data['url_key'] = $job['url_key'];
+				}
 				$data['customer_id'] = $customer->getId();
 				/* Created time */
 	            $currentDate = Date('Y-m-d H:i:s');
