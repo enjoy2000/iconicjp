@@ -11,7 +11,7 @@
 			function(){
 				$('ul.inactive', this).stop(true,true).slideDown();
 			}, function(){
-				$('ul.inactive', this).stop().slideUp();
+				$('ul.inactive', this).stop().delay(200).slideUp();
 			}
 		);
 		
@@ -51,6 +51,77 @@
 				}
 				$(this).removeClass('after-input');
 			}
+		});
+		
+		// link rel box effect
+		$('a[rel=box]').click(function(e){
+			e.preventDefault();
+			
+			var maxHeight = 650, maxWidth = 780;
+			var mainDiv = $('#'+$(this).data('box'));
+			//show overlay background
+			mainDiv.after('<div id="box-overlay"></div>');
+			var overlay = $('#box-overlay');
+			//css for overlay
+			overlay.css('width', $(window).width())
+					.css('height', $(window).height());
+			
+			//css for main div
+			mainDiv.css('max-height', maxHeight).css('max-width', maxWidth);
+		    // create close button
+		    mainDiv.prepend('<a href="#" class="close-btn">X</a>');
+		    //create div content outside main Div
+		    if(!mainDiv.find('.inner-box').length){
+		    	mainDiv.wrapInner('<div class="inner-box"></div>');
+		    }
+			// center box content
+			mainDiv.css({
+		        left: ($(window).width() - mainDiv.outerWidth())/2,
+		        top: ($(window).height() - mainDiv.outerHeight())/2
+		    });
+		    //show box content
+			mainDiv.fadeIn(200);
+			
+			/*
+			 * CLOSE EVENT
+			 */
+			$(document).mouseup(function (e)
+				{
+				    var container = $('.box-content');
+				
+				    if (!container.is(e.target) // if the target of the click isn't the container...
+				        && container.has(e.target).length === 0) // ... nor a descendant of the container
+				    {
+				        container.fadeOut(300);
+				        overlay.remove();
+				    }
+				});
+			//close btn
+			$('.box-content a.close-btn').click(function(e){
+				e.preventDefault();
+				
+				$(this).parents('.box-content').fadeOut(300);
+				overlay.remove();
+			});
+		});
+		
+		// toggle button
+		$('a.toggle').click(function(e){
+			e.preventDefault();
+			$(this).next('.toggle-content').toggle();
+			if($(this).hasClass('active')){
+				$(this).removeClass('active');
+			}else{
+				$(this).addClass('active');
+			}
+		});
+		//scroll
+		$('.ch-item').click(function(e){
+			e.preventDefault();
+			
+			$('html,body').animate({
+		      scrollTop: $('#'+$(this).data('scroll')).offset().top - $('#header-logo').outerHeight()
+		    }, 1000);
 		});
 	});
 	

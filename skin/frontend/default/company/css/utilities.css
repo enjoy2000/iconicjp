@@ -335,3 +335,7 @@ ul.messages .success-msg{
 	-o-transition: color 200ms,background-color 200ms;
 	transition: color 200ms,background-color 200ms;
 }
+div.box-content,
+div.toggle-content{
+	display: none;
+}
