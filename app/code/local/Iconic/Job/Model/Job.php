@@ -31,6 +31,8 @@ class Iconic_Job_Model_Job extends Mage_Core_Model_Abstract
     
     protected function _afterSave()
     {
+    	// call function for insert new row to Job table
+    	//this is for sync to IS system
         parent::_afterSave();
     } 
 
