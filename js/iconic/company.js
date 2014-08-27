@@ -109,11 +109,7 @@
 		$('a.toggle').click(function(e){
 			e.preventDefault();
 			$(this).next('.toggle-content').toggle();
-			if($(this).hasClass('active')){
-				$(this).removeClass('active');
-			}else{
-				$(this).addClass('active');
-			}
+			$(this).toggleClass('active');
 		});
 		//scroll
 		$('.ch-item').click(function(e){

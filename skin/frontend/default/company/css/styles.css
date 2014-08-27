@@ -710,6 +710,8 @@ body.cms-home div.view-more a.view{
 }
 .box-content .block a.toggle.active{
 	background-image: url('../images/services/toggle-active.png');
+	color: #000;
+	font-weight: bold;
 }
 .box-content .block .toggle-content + a.toggle{
 	margin-top: 3px;
