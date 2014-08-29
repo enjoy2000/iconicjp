@@ -135,7 +135,7 @@ class Iconic_Job_ApplyController extends Mage_Core_Controller_Front_Action{
 			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('氏名 (Name)').':</td><td> '.$data['name'].'</td></tr>';
 			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('メールアドレス(E-mail)').':</td><td> '.$data['email'].'</td></tr>';
 			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('電話番号(TEL)').':</td><td> '.$data['phone'].'</td></tr>';		
-			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('メッセージ(Content)').':</td><td> '.$data['message'].'</td></tr>';
+			$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('メッセージ(Content)').':</td><td> '.nl2br($data['message']).'</td></tr>';
 			$bodyHtml .= '</tbody></table>';
 			
 			$mail->setBodyHtml($bodyHtml);

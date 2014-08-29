@@ -46,7 +46,7 @@ class Iconic_Job_IndexController extends Mage_Core_Controller_Front_Action
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Email').':</td><td> '.$post['email'].'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Company Name').':</td><td> '.$post['companyname'].'</td></tr>';
 				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Phone').':</td><td> '.$post['phone'].'</td></tr>';
-				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Nội dung').':</td><td> '.$post['message'].'</td></tr>';
+				$bodyHtml .= '<tr><td>'.Mage::helper('job')->__('Nội dung').':</td><td> '.nl2br($post['message']).'</td></tr>';
 				$bodyHtml .= '</tbody></table>';
 				
 				$mail->setBodyHtml($bodyHtml);
