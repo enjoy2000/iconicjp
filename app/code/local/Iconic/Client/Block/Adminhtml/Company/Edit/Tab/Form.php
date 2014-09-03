@@ -24,9 +24,40 @@ class Iconic_Client_Block_Adminhtml_Company_Edit_Tab_Form extends Mage_Adminhtml
 		
 		$fieldset->addField('company_website', 'text', array(
             'label'     => Mage::helper('client')->__('Company Website'),
-            'class'     => 'required-entry',
-            'required'  => true,
+            'required'  => false,
             'name'      => 'company_website',
+        ));
+		
+		$fieldset->addField('company_size', 'select', array(
+            'label'     => Mage::helper('client')->__('Company Size'),
+            'required'  => false,
+            'name'      => 'company_size',
+            'values'	=> array(
+            	array(
+					'label'	=> 'Select company size',
+					'value' => '',
+				),
+				array(
+					'label'	=> 'Less than 10',
+					'value' => 1,
+				),
+				array(
+					'label'	=> '10-24',
+					'value' => 2,
+				),
+				array(
+					'label'	=> '25-99',
+					'value' => 3,
+				),
+				array(
+					'label'	=> '100-500',
+					'value' => 4,
+				),
+				array(
+					'label'	=> 'More than 500',
+					'value' => 5,
+				),
+            ),
         ));
 		
 		$fieldset->addField('company_detail', 'textarea', array(
