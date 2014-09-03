@@ -62,12 +62,12 @@ div.results > table tbody tr.job.active{
 	border-bottom-color: transparent;
 }
 div.results > table tbody tr.job td.action{
-	color: #4571EB;
+	color: #f9690e;
 	text-decoration: none;
 	font-size: 12px;
 }
 div.results > table tbody tr.job td.action > a{
-	color: #4571EB;
+	color: #f9690e;
 	text-decoration: none;
 	font-size: 12px;
 }
@@ -119,7 +119,7 @@ div.results > table tbody tr.detail > td{
 div.results > table tbody tr.detail td > table{
 	width: 920px;
 	table-layout: fixed;
-	border: solid 1px #4571EB;
+	border: solid 1px #f9690e;
 	background-color: #dfe4f1;
 }
 div.results > table tbody tr.detail td > table tr td{
@@ -157,14 +157,14 @@ tr.pager ol li{
 }
 tr.pager ol li.current{
 	padding: 0 7px;
-	background-color: #4571EB;
+	background-color: #f9690e;
 	color: #fff;
-	border: solid 1px #4571EB;
+	border: solid 1px #f9690e;
 }
 tr.pager ol li a{
 	padding: 0 7px;
 	background-color: #fff;
-	color: #4571EB;
-	border: solid 1px #4571EB;
+	color: #f9690e;
+	border: solid 1px #f9690e;
 	text-decoration: none;
 }

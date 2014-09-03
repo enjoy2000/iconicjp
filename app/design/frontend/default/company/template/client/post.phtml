@@ -61,16 +61,16 @@
 		</li>
 		<li class="row2">
 			<div class="first language-level">
-				<a data-box="language-level-box" class="select-button" href="#">
-					<?php echo $this->__('言語要件') ?> *
+				<a data-box="language-level-box" class="select-button<?php echo $data['language_id'] ? ' after-input' : '' ?>" href="#">
+					<?php echo $data['language_id'] ? $this->__('入力済み') : $this->__('言語要件') . ' *' ?>
 				</a>
 				<div id="language-level-box" class="select-box">
 					<?php echo $this->getLanguageList($data['language_id']) ?>
 				</div>
 			</div>
 			<div class="last features">
-				<a data-box="features-box" class="select-button" href="#">
-					<?php echo $this->__('求人の特徴') ?> *
+				<a data-box="features-box" class="select-button<?php echo $data['feature_id'] ? ' after-input' : '' ?>" href="#">
+					<?php echo $data['feature_id'] ? $this->__('入力済み') : $this->__('求人の特徴') . ' *' ?>
 				</a>
 				<div id="features-box" class="select-box">
 					<?php echo $this->getFeatureList($data['feature_id']) ?>

@@ -45,7 +45,7 @@ div.cke{
 	border-color: #d76f2c;
 }
 div.cke.cke_focus{
-	border-color: #4571EB;
+	border-color: #f9690e;
 }
 div.cke.after-input{
 	border-color: #b0b2b4;
@@ -61,7 +61,7 @@ form#create-job div.button > button.inactive{
 	background-color: grey;
 }
 form#create-job div.button > button.active{
-	background-color: #4571EB;
+	background-color: #f9690e;
 }
 form#create-job .row2 a.select-button{
 	padding: 5px 10px;
