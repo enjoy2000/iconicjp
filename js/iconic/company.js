@@ -103,6 +103,18 @@
 				$(this).parents('.box-content').fadeOut(300);
 				overlay.remove();
 			});
+			
+			// Adjust position when resize window
+			$(window).resize(function(){
+				//css for overlay
+				overlay.css('width', $(window).width())
+					.css('height', $(window).height());
+				// center box content
+				mainDiv.css({
+			        left: ($(window).width() - mainDiv.outerWidth())/2,
+			        top: ($(window).height() - mainDiv.outerHeight())/2
+			    });
+			});
 		});
 		
 		// toggle button
