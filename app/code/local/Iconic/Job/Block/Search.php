@@ -85,6 +85,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 	}
 	
 	protected function _beforeToHtml(){
+		// create custom pager for search collection
 		if($this->needFetchJobs()){
 			$this->_fetchJobs();
 			$pager = $this->getLayout()->createBlock('page/html_pager', 'custom.pager');
@@ -94,6 +95,7 @@ class Iconic_Job_Block_Search extends Mage_Core_Block_Template
 	        $pager->setCollection($this->getResults());
 	        $this->setChild('pager', $pager);
 		}
+		
 		return parent::_beforeToHtml();
 	}
 	
