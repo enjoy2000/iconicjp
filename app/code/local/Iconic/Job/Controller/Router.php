@@ -59,20 +59,20 @@ class Iconic_Job_Controller_Router extends Mage_Core_Controller_Varien_Router_Ab
 				$feature = Mage::getModel('job/feature')->load($part, 'url_key');
 				if($loc->getId()){
 					$request
-						->setParam('language', (string)$loc->getId().'-1');
+						->setParam('multilanguage', array((string)$loc->getId().'-1'));
 				}
 				if($cat->getId()){
 					if($cat->getGroupCategory() == 'industry'){
 						$request
-							->setParam('industry', $cat->getId());
+							->setParam('multicategory', array($cat->getId()));
 					}else{
 						$request
-							->setParam('function', $cat->getId());
+							->setParam('multifunction', array($cat->getId()));
 					}
 				}
 				if($location->getId()){
 					$request
-						->setParam('location', $location->getId());
+						->setParam('multilocation', array($location->getId()));
 				}
 				if($feature->getId()){
 					$request

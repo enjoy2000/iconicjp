@@ -15,8 +15,9 @@ class Iconic_Job_Block_Search_Form extends Iconic_Job_Block_Search
 	}
 	
 	public function getKeyword(){
-		// get keyword search string from session
-		$keyword = Mage::getSingleton('core/session')->getKeywordSearch();
+		// get keyword search string
+		//$keyword = Mage::getSingleton('core/session')->getKeywordSearch();
+		$keyword = $this->getRequest()->getParam('q');
 		return $keyword;
 	}
 	

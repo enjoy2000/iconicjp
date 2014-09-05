@@ -77,14 +77,7 @@ class Iconic_Job_SearchController extends Mage_Core_Controller_Front_Action{
 		$data = $this->getRequest()->getPost();
 		$url = Mage::helper('job')->getSearchUrl();
 		
-		// Check if there is keyword in search, set to session
-		if($data['q']){
-			Mage::getSingleton('core/session')->setKeywordSearch($data['q']);
-		}else{
-			Mage::getSingleton('core/session')->unsKeywordSearch();
-		}
-		
-		// Check if there is single value of each param, use friendly URL
+		// Check all parameters have single value, then use friendly URL
 		if((count($data['multilocation']) < 2) && (count($data['multilanguage']) < 2) && (count($data['multicategory']) < 2) && (count($data['multifunction']) < 2)){
 			if($data['multilocation']){
 				$url .= '/' . Mage::getModel('job/country')->load($data['multilocation'])->getUrlKey();
@@ -100,6 +93,9 @@ class Iconic_Job_SearchController extends Mage_Core_Controller_Front_Action{
 			}
 			if($data['q']){
 				$url .= '/' . Mage::helper('job')->formatUrlKeyJp($data['q']);
+				Mage::getSingleton('core/session')->setKeywordSearch($data['q']);
+			}else{
+				Mage::getSingleton('core/session')->unsKeywordSearch();
 			}
 			$url .= '/';
 			if(Mage::app()->getStore()->getCode() == 'jp'){

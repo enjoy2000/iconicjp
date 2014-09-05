@@ -3,7 +3,7 @@
 		<div class="search-block clearfix">
 			<form action="/job/search/searchform" method="POST">
 				<input name="q" class="width-80" id="keyword"
-					value="<?php echo Mage::getSingleton('core/session')->getKeywordSearch()?>"
+					value="<?php echo $this->getKeyword() ?>"
 					placeholder="<?php echo $this->__('検索キーワードはこちらに入力してください。') ?>" />
 				<select multiple="multiple" id="multicategory" name="multicategory[]" class="inline multicategory">
 					<option value=""><?php echo $this->__('業界から探す') ?></option>
