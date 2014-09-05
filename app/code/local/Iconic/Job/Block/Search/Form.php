@@ -1,8 +1,9 @@
 <?php
 
-class Iconic_Job_Block_Search_Form extends Mage_Core_Block_Template
+class Iconic_Job_Block_Search_Form extends Iconic_Job_Block_Search
 {
 	protected function _prepareLayout(){
+		//var_dump($this->getMultiLanguage());die;
 		$this->setTemplate('job/search/form.phtml');
 	}
 	
@@ -13,18 +14,40 @@ class Iconic_Job_Block_Search_Form extends Mage_Core_Block_Template
 		return parent::_toHtml();
 	}
 	
+	public function getKeyword(){
+		// get keyword search string from session
+		$keyword = Mage::getSingleton('core/session')->getKeywordSearch();
+		return $keyword;
+	}
+	
+	public function getMultiLanguage(){
+		return $this->getRequest()->getParam('multilanguage');
+	}
+	
+	public function getMultiLocation(){
+		return $this->getRequest()->getParam('multilocation');
+	}
+	
+	public function getMultiCategory(){
+		return $this->getRequest()->getParam('multicategory');
+	}
+	
+	public function getMultiFunction(){
+		return $this->getRequest()->getParam('multifunction');
+	}
+	
 	public function getLanguageList(){
 		//get list location and category
 		if (!$this->hasData('languageList')){
 			$language = Mage::getModel('job/language')->getCollection();
-			if ($this->getLanguage()){
+			if ($this->getMultiLanguage()){
 				foreach ($language as $loc){
 					$name = Mage::helper('job')->getTransName($loc);
 					$selected = "";
-					if($loc->getId().'-1' == $this->getLanguage()){
+					if(in_array($loc->getId().'-1', $this->getMultiLanguage())){
 						$selected = " selected=\"selected\"";
 					}
-					$listLocation .= "<option value=\"{$loc->getId()}\"{$selected}>{$name}</option>";
+					$listLanguage .= "<option value=\"{$loc->getId()}-1\"{$selected}>{$name}</option>";
 				}
 			} else {
 				foreach ($language as $loc){
@@ -43,7 +66,11 @@ class Iconic_Job_Block_Search_Form extends Mage_Core_Block_Template
 			$countries = Mage::getModel('job/country')->getCollection();
 			$listLocation = '';
 			foreach($countries as $country){
-				$listLocation .= '<option value="'.$country->getId().'">'.Mage::helper('job')->getTransName($country).'</option>';		
+				$selected = '';
+				if(in_array($country->getId(), $this->getMultiLocation())){
+					$selected = ' selected="selected"';
+				}
+				$listLocation .= '<option'. $selected .' value="'.$country->getId().'">'.Mage::helper('job')->getTransName($country).'</option>';		
 			}	
 			$this->setData('locationList', $listLocation);
 		}
@@ -56,7 +83,11 @@ class Iconic_Job_Block_Search_Form extends Mage_Core_Block_Template
 			$listCategory = '';
 			foreach ($parentCategory as $parent){
 				$parentname = Mage::helper('job')->getTransName($parent);
-				$listCategory .= '<option value="'.$parent->getId().'">'.$parentname.'</option>';
+				$selected = '';
+				if(in_array($parent->getId(), $this->getMultiCategory())){
+					$selected = ' selected="selected"';
+				}
+				$listCategory .= '<option'. $selected .' value="'.$parent->getId().'">'.$parentname.'</option>';
 			}
 			$this->setData('categoryList', $listCategory);
 		}
@@ -69,7 +100,11 @@ class Iconic_Job_Block_Search_Form extends Mage_Core_Block_Template
 			$listCategory = '';
 			foreach ($parentCategory as $parent){
 				$parentname = Mage::helper('job')->getTransName($parent);
-				$listCategory .= '<option value="'.$parent->getId().'">'.$parentname.'</option>';
+				$selected = '';
+				if(in_array($parent->getId(), $this->getMultiFunction())){
+					$selected = ' selected="selected"';
+				}
+				$listCategory .= '<option'. $selected .' value="'.$parent->getId().'">'.$parentname.'</option>';
 			}
 			$this->setData('functionList', $listCategory);
 		}
