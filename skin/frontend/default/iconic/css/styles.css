@@ -227,9 +227,12 @@ body.job-index-createcv #search-block{
 body.cms-home #ajax-load{
 	border-width: 0;
 }
+#ajax-load > .wrapper{
+	position: relative;
+}
 #ajax-load a#close-button{
 	position: absolute;
-	right: 272px;
+	right: 220px;
 	border: solid 1px #fff;
 	color: #fff;
 	display: none;
