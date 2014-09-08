@@ -452,6 +452,9 @@ body.cms-home #ajax-load{
 	font-weight: bold;
 	margin-bottom: 5px;
 }
+body.en #slider .create-cv p.slogan{
+	font-size: 26px;
+}
 #slider .buttons{
 	margin-top: 10px;
 	text-align: center;
@@ -837,6 +840,9 @@ div.countries .content a.india{
 	display: block;
 	margin-top: 7px;
 }
+body.en #contact-info .info a.contact-btn{
+	padding: 5px 15px;
+}
 #other-web{
 	background-color: #4571EB;
 	font-size: 12px;
@@ -1159,6 +1165,10 @@ div.countries .content a.india{
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	font-size: 19px;
+}
+body.en #tab-control .tab{
+	font-size: 18px;
+	padding: 5px 10px;
 }
 #tab-control .tab:hover{
 	cursor: pointer;
