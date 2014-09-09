@@ -602,6 +602,7 @@ body.en #slider .create-cv p.slogan{
 #feature-tags .feature-tags .fll{
 	color: #000;
 	font-size: 15px;
+	width: 80px;
 }
 #feature-tags .feature-tags .flr{
 	width: 89%;
@@ -857,6 +858,18 @@ body.en #contact-info .info a.contact-btn{
 	color: #fff;
 	letter-spacing: -1px;
 	display: block;
+	position: relative;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+#other-web a:hover{
+	-webkit-transform: translateY(-5px);
+	transform: translateY(-5px);
 }
 #footer-menu{
 	background-color: #d3d3d3;
@@ -866,8 +879,15 @@ body.en #contact-info .info a.contact-btn{
 #footer-menu .fll{
 	margin-top: 10px;
 }
+#footer-menu .menu{
+	text-align: center;
+}
+#footer-menu ul{
+	white-space: nowrap;
+}
 #footer-menu ul li{
-	display: inline;
+	display: inline-block;
+	margin-left: -5px;
 }
 #footer-menu ul li:first-child > a{
 	border-left: solid 1px #7f8081;
