@@ -339,3 +339,6 @@ div.box-content,
 div.toggle-content{
 	display: none;
 }
+body.open-box{
+	overflow: hidden;
+}

@@ -57,6 +57,9 @@
 		$('a[rel=box]').click(function(e){
 			e.preventDefault();
 			
+			// add class open-box to body
+			$('body').addClass('open-box');
+			
 			var maxHeight = 650, maxWidth = 780;
 			var mainDiv = $('#'+$(this).data('box'));
 			//show overlay background
@@ -94,6 +97,8 @@
 				    {
 				        container.fadeOut(300);
 				        overlay.remove();
+				        // remove class open-box from body
+						$('body').removeClass('open-box');
 				    }
 				});
 			//close btn
@@ -102,6 +107,8 @@
 				
 				$(this).parents('.box-content').fadeOut(300);
 				overlay.remove();
+		        // remove class open-box from body
+				$('body').removeClass('open-box');
 			});
 			
 			// Adjust position when resize window
