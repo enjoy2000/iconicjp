@@ -255,7 +255,7 @@ body.cms-home #ajax-load{
 }
 #ajax-load a#close-button{
 	position: absolute;
-	right: 220px;
+	right: 20px;
 	border: solid 1px #fff;
 	color: #fff;
 	display: none;
@@ -265,7 +265,7 @@ body.cms-home #ajax-load{
 	display: block;
 }
 #ajax-load.open.open-1 a#close-button{
-	right: 272px;
+	right: 20px;
 }
 #ajax-load h2{
 	text-align: center;
