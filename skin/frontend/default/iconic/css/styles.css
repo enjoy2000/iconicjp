@@ -232,7 +232,7 @@ body.cms-home #ajax-load{
 }
 #ajax-load a#close-button{
 	position: absolute;
-	right: 220px;
+	right: 20px;
 	border: solid 1px #fff;
 	color: #fff;
 	display: none;

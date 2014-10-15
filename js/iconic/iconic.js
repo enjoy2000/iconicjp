@@ -84,7 +84,12 @@ function centerwide(div){
 	div.css("left", Math.max(0, ((jQuery(window).width() - jQuery(div).outerWidth()) / 2) + jQuery(window).scrollLeft()) + "px");
 }
 function showLogin(){
-	jQuery('#ajax-load .content').load('/customer/account/login', function(){
+	var loginUrl = '/customer/account/login';
+	if(LANGUAGE_ID == 'en'){
+		loginUrl = '/en' + loginUrl;
+	}
+	console.log(loginUrl);
+	jQuery('#ajax-load .content').load(loginUrl, function(){
 		scrollToTop();
     	jQuery('#ajax-load').addClass('open');
     	loginAjax();
@@ -92,9 +97,13 @@ function showLogin(){
 	});
 }
 function showForgotPass(){
+	var forgotUrl = '/customer/account/forgotpassword';
+	if(LANGUAGE_ID == 'en'){
+		forgotUrl = '/en' + forgotUrl;
+	}
 	jQuery('#forgot-password').click(function(e){
 		e.preventDefault();
-		jQuery('#ajax-load .content').load('/customer/account/forgotpassword', function(){
+		jQuery('#ajax-load .content').load(forgotUrl, function(){
 			scrollToTop();
 	    	jQuery('#ajax-load').addClass('open');
 	    	forgotpassAjax();
@@ -102,7 +111,11 @@ function showForgotPass(){
 	});
 }
 function showForgotPage(){
-	jQuery('#ajax-load .content').load('/customer/account/forgotpassword', function(){
+	var forgotUrl = '/customer/account/forgotpassword';
+	if(LANGUAGE_ID == 'en'){
+		forgotUrl = '/en' + forgotUrl;
+	}
+	jQuery('#ajax-load .content').load(forgotUrl, function(){
 		scrollToTop();
     	jQuery('#ajax-load').addClass('open');
     	forgotpassAjax();
