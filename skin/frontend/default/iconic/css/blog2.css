@@ -262,7 +262,7 @@
 #blog-details .blog-details-content{
 	padding: 30px;
 }
-#blog-details .blog-details-content #twitter-widget-0{
+#blog-details .blog-details-content iframe.twitter-share-button{
 	vertical-align: bottom;
 }
 #blog-details .blog-parents{
